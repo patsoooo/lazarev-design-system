@@ -9,64 +9,32 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "pages": [
+    "tabs": [
       {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
+        "tab": "Design System",
+        "groups": [
+          { "group": "Overview", "pages": ["index"] },
+          { "group": "Foundations", "pages": ["foundations/overview", "foundations/colors", "foundations/typography", "foundations/spacing", "foundations/tokens"] },
+          { "group": "Components", "pages": ["components/overview", "components/button"] },
+          { "group": "Patterns", "pages": ["patterns/overview", "patterns/hero", "patterns/stats", "patterns/faq"] },
+          { "group": "Recipes", "pages": ["recipes/overview", "recipes/service-page", "recipes/case-study"] },
+          { "group": "Content & SEO", "pages": ["content-seo/voice-tone", "content-seo/seo-rules"] }
+        ]
+      },
+      {
+        "tab": "Building & Process",
+        "groups": [
+          { "group": "Playbook", "pages": ["playbook/build-new-page"] },
+          { "group": "Rules", "pages": ["rules/process", "rules/naming"] }
+        ]
+      },
+      {
+        "tab": "Site & Tech",
+        "groups": [
+          { "group": "Site registry", "pages": ["site-registry/overview", "site-registry/home"] },
+          { "group": "Tech", "pages": ["tech/webflow-constraints"] }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
-    }
-  },
-  "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude",
-      "perplexity",
-      "mcp",
-      "cursor",
-      "vscode"
     ]
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/lazarev",
-      "github": "https://github.com/lazarev",
-      "linkedin": "https://linkedin.com/company/lazarev"
-    }
   }
 }
