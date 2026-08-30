@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Lazarev Design System",
+  "name": "Lazarev",
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
@@ -14,25 +14,8 @@
         "tab": "Design System",
         "groups": [
           { "group": "Overview", "pages": ["index"] },
-          { "group": "Foundations", "pages": ["foundations/overview", "foundations/colors", "foundations/typography", "foundations/spacing", "foundations/tokens"] },
-          { "group": "Components", "pages": ["components/overview", "components/button"] },
-          { "group": "Patterns", "pages": ["patterns/overview", "patterns/hero", "patterns/stats", "patterns/faq"] },
-          { "group": "Recipes", "pages": ["recipes/overview", "recipes/service-page", "recipes/case-study"] },
-          { "group": "Content & SEO", "pages": ["content-seo/voice-tone", "content-seo/seo-rules"] }
-        ]
-      },
-      {
-        "tab": "Building & Process",
-        "groups": [
-          { "group": "Playbook", "pages": ["playbook/build-new-page"] },
-          { "group": "Rules", "pages": ["rules/process", "rules/naming"] }
-        ]
-      },
-      {
-        "tab": "Site & Tech",
-        "groups": [
-          { "group": "Site registry", "pages": ["site-registry/overview", "site-registry/home"] },
-          { "group": "Tech", "pages": ["tech/webflow-constraints"] }
+          { "group": "Foundations", "pages": ["foundations/colors", "foundations/typography", "foundations/spacing"] },
+          { "group": "Components", "pages": ["components/button", "components/input"] }
         ]
       }
     ]
