@@ -18,32 +18,36 @@
   --color-action-inactive-content: #cdd4deff;  /* → primitives.color.gray.300 */
   --color-action-primary-invers: #ffffffff;    /* → primitives.color.white.1000 */
 
+  --color-action-bg-hover: #e9e9e9ff;           /* → primitives.color.gray.100 */
+
   /* --- Кольори: semantic.color.text.* / icon.* --- */
+  --color-icon-secondary: #697382ff;           /* → primitives.color.gray.600 */
   --color-text-primary: #000000ff;             /* → primitives.color.black.1000 */
   --color-text-inverse: #ffffffff;             /* → primitives.color.white.1000 */
   --color-icon-default: #000000ff;             /* → primitives.color.black.1000 */
   --color-icon-inverse: #ffffffff;             /* → primitives.color.white.1000 */
 
+  --color-action-brand-hover: #0da34eff;        /* → primitives.color.green.400 */
+
   /* --- Кольори: semantic.color.border.* / background.* --- */
+  --color-background-elements: #2a2a2aff;      /* → primitives.color.black.800 */
+  --color-border-default: #e9e9e9ff;           /* → primitives.color.gray.100 */
   --color-border-subtle: #d9d9d9ff;            /* → primitives.color.gray.200 */
   --color-border-white-30: #ffffff4d;          /* → primitives.color.white.1000-30% */
   --color-background-block: #ffffffff;         /* → primitives.color.white.1000 */
   --color-background-page: #e9e9e9ff;          /* → primitives.color.gray.100 */
 
-  /* --- Стани без токена в експорті --- */
-  --color-action-secondary-pressed: #0a783aff; /* TODO: звірити з Figma — токена Secondary pressed немає */
-  --color-action-play-pressed: #ffffffff;      /* TODO: звірити з Figma — токена Play pressed немає */
-  --color-action-loading-track: #ffffff4d;     /* TODO: звірити з Figma — токена Loading немає */
-  --color-action-loading-indicator: #ffffffff; /* TODO: звірити з Figma — токена Loading немає */
-
   /* --- Розміри: primitives.spacing.* --- */
+  --spacing-2: 2px;
   --spacing-4: 4px;
   --spacing-8: 8px;
   --spacing-12: 12px;
   --spacing-16: 16px;
+  --spacing-24: 24px;
   --spacing-48: 48px;
 
   /* --- Радіуси: primitives.radius.* --- */
+  --radius-8: 8px;
   --radius-32: 32px;
   --radius-80: 80px;
 
@@ -188,6 +192,12 @@
 .ds-sw--icon-inverse { background: var(--color-icon-inverse); }
 .ds-sw--border-subtle { background: var(--color-border-subtle); }
 .ds-sw--background-block { background: var(--color-background-block); }
+.ds-sw--background-elements { background: var(--color-background-elements); }
+.ds-sw--background-page { background: var(--color-background-page); }
+.ds-sw--action-bg-hover { background: var(--color-action-bg-hover); }
+.ds-sw--border-default { background: var(--color-border-default); }
+.ds-sw--icon-secondary { background: var(--color-icon-secondary); }
+.ds-sw--action-brand-hover { background: var(--color-action-brand-hover); }
 
 /* Напівпрозорий токен — шахова підкладка, щоб було видно прозорість */
 .ds-sw--border-white-30 {
@@ -299,9 +309,10 @@
   color: var(--color-action-primary-invers);
 }
 
+/* Pressed повторює кольори Hover */
 .ds-btn--industry.is-pressed {
   background: var(--color-action-brand-pressed);
-  color: var(--color-action-primary-invers); /* TODO: звірити з Figma — токена text-pressed немає */
+  color: var(--color-action-primary-invers);
 }
 
 .ds-btn--industry.is-inactive {
@@ -411,14 +422,51 @@
   border-color: var(--color-action-primary);
 }
 
+/* Pressed повторює Hover */
 .ds-btn--icon-outline.is-pressed {
-  border-color: var(--color-action-secondary-pressed);
-  color: var(--color-action-secondary-pressed);
+  border-color: var(--color-action-primary);
 }
 
 .ds-btn--icon-outline.is-inactive {
   border-color: var(--color-border-subtle);
   color: var(--color-action-inactive);
+}
+
+/* ==========================================================================
+   Plus — кругла, іконка + / ×
+   Розмір, заокруглення, розмір та колір іконки підтверджені з дизайном.
+   Кольори межі по станах у Figma не визначені — значення нижче тимчасові,
+   зчитані з макета.
+   ========================================================================== */
+
+.ds-btn--plus {
+  width: var(--button-height);
+  height: var(--button-height);
+  padding: 0;
+  border-radius: var(--radius-32);
+  background: transparent;
+  border-color: var(--color-border-subtle); /* TODO: звірити з Figma */
+  color: var(--color-icon-default);
+  font-size: var(--icon-size);
+  line-height: var(--icon-size);
+  gap: 0;
+}
+
+.ds-btn--plus::after {
+  content: none;
+}
+
+.ds-btn--plus.is-hover,
+.ds-btn--plus.is-pressed {
+  border-color: var(--color-action-primary); /* TODO: звірити з Figma */
+}
+
+.ds-btn--plus.is-inactive {
+  border-color: var(--color-action-inactive); /* TODO: звірити з Figma */
+}
+
+.ds-btn--plus.is-close {
+  border-color: var(--color-border-subtle); /* TODO: звірити з Figma */
 }
 
 /* Варіант для темного фону: semantic.color.border.white-30% */
@@ -437,14 +485,15 @@
   position: relative;
 }
 
+/* Фон і колір спінера — ті самі, що в Default */
 .ds-btn--icon.is-loading::before {
   content: "";
   position: absolute;
-  width: 16px;
-  height: 16px;
+  width: var(--icon-size);
+  height: var(--icon-size);
   border-radius: var(--radius-80);
-  border: 2px solid var(--color-action-loading-track);
-  border-top-color: var(--color-action-loading-indicator);
+  border: 2px solid var(--color-border-white-30);
+  border-top-color: var(--color-action-primary-invers);
   animation: ds-btn-spin 0.8s linear infinite;
 }
 
@@ -458,6 +507,352 @@
   .ds-btn--icon.is-loading::before {
     animation: none;
   }
+}
+
+/* ==========================================================================
+   Dropdown — тригер, меню, пункт меню, група
+   Токени component.dropdown описують лише панель меню. Кольори тригера,
+   лічильника, підсвітки рядка та контейнера групи в експорті відсутні —
+   значення нижче тимчасові, зчитані з макета.
+   ========================================================================== */
+
+.ds-dd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: var(--spacing-8);
+  height: var(--button-height);
+  padding: 0 var(--spacing-16);
+  border-radius: var(--radius-32);
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: var(--button-line-height);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.ds-dd::after {
+  content: "▾";
+  flex: none;
+  font-size: var(--icon-size);
+  line-height: var(--icon-size);
+}
+
+.ds-dd.is-open::after {
+  content: "▴";
+}
+
+/* У варіанті з лічильником Hover замінює каретку на × */
+.ds-dd--count.is-hover::after {
+  content: "✕";
+}
+
+.ds-dd.is-default {
+  background: var(--color-action-primary-invers); /* TODO: звірити з Figma */
+  color: var(--color-text-primary);
+}
+
+.ds-dd.is-hover,
+.ds-dd.is-open {
+  background: var(--color-action-primary); /* TODO: звірити з Figma */
+  color: var(--color-text-inverse);
+}
+
+.ds-dd.is-disabled {
+  background: var(--color-action-inactive); /* TODO: звірити з Figma */
+  color: var(--color-action-inactive-content);
+}
+
+/* Лічильник обраних пунктів */
+.ds-dd__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 24px;  /* TODO: звірити з Figma */
+  height: 24px; /* TODO: звірити з Figma */
+  border-radius: var(--radius-32);
+  background: var(--color-action-primary);        /* TODO: звірити з Figma */
+  color: var(--color-action-primary-invers);      /* TODO: звірити з Figma */
+  font-size: 12px;
+}
+
+.ds-dd.is-hover .ds-dd__count,
+.ds-dd.is-open .ds-dd__count,
+.ds-dd.is-disabled .ds-dd__count {
+  background: var(--color-action-primary-invers);
+  color: var(--color-action-primary);
+}
+
+/* --- Панель меню: тут токени справжні --- */
+
+.ds-dd-menu {
+  box-sizing: border-box;
+  width: 280px; /* TODO: звірити з Figma */
+  padding: var(--spacing-16);
+  border: var(--border-width-1) solid var(--color-border-default);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-dd-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8); /* TODO: звірити з Figma — dropdown/gap дорівнює 24px */
+}
+
+/* --- Пункт меню з чекбоксом --- */
+
+.ds-dd-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12); /* TODO: звірити з Figma */
+  padding: var(--spacing-8);
+  border-radius: var(--radius-8);
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
+  line-height: var(--button-line-height);
+  color: var(--color-text-primary);
+}
+
+.ds-dd-item.is-hover {
+  background: var(--color-action-bg-hover); /* TODO: звірити з Figma */
+}
+
+.ds-dd-item__box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  box-sizing: border-box;
+  width: 24px;  /* TODO: звірити з Figma */
+  height: 24px; /* TODO: звірити з Figma */
+  border: var(--border-width-1) solid var(--color-border-subtle);
+  border-radius: var(--radius-8);
+  color: var(--color-icon-default);
+  font-size: 14px;
+}
+
+.ds-dd-item.is-hover .ds-dd-item__box {
+  border-color: var(--color-action-primary);
+}
+
+.ds-dd-item.is-selected .ds-dd-item__box::before {
+  content: "✓";
+}
+
+/* --- Група дропдаунів --- */
+
+.ds-dd-group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);        /* TODO: звірити з Figma */
+  padding: var(--spacing-4);    /* TODO: звірити з Figma */
+  border-radius: var(--radius-32);
+  background: var(--color-background-page); /* TODO: звірити з Figma */
+}
+
+/* ==========================================================================
+   Chip — фільтр-пігулка з трейлінг-стрілкою
+   Окремого токена фону для Hover немає: Hover і Active обидва
+   використовують chip/bg-active.
+   ========================================================================== */
+
+.ds-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: var(--spacing-8);
+  height: var(--button-height);
+  padding: 0 var(--spacing-16);
+  border: var(--border-width-1) solid transparent;
+  border-radius: var(--radius-32);
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: var(--button-line-height);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.ds-chip::after {
+  content: "↗";
+  flex: none;
+  font-size: var(--icon-size);
+  line-height: var(--icon-size);
+}
+
+.ds-chip.is-default {
+  background: transparent;
+  border-color: var(--color-action-primary);
+  color: var(--color-text-primary);
+}
+
+.ds-chip.is-hover,
+.ds-chip.is-active {
+  background: var(--color-action-primary);
+  border-color: var(--color-action-primary);
+  color: var(--color-text-inverse);
+}
+
+.ds-chip.is-inactive {
+  background: transparent;
+  border-color: var(--color-border-subtle);
+  color: var(--color-action-inactive);
+}
+
+/* ==========================================================================
+   Pagination — номер сторінки та група
+   Стрілки навігації — це button-icon-primary, окремих токенів не мають.
+   Фон групи збігається з фоном сторінки, тому приклад на білій підкладці.
+   ========================================================================== */
+
+.ds-pagi {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--button-height);
+  height: var(--button-height);
+  border-radius: var(--radius-32);
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: var(--button-line-height);
+  user-select: none;
+}
+
+.ds-pagi.is-active,
+.ds-pagi.is-hover {
+  background: var(--color-action-primary);
+  color: var(--color-action-primary-invers);
+}
+
+.ds-pagi.is-inactive {
+  background: var(--color-action-primary-invers);
+  color: var(--color-action-primary);
+}
+
+/* Роздільник «…» — не кнопка, фону не має */
+.ds-pagi--dots {
+  background: none;
+  color: var(--color-action-primary);
+}
+
+.ds-pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-24);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-32);
+  background: var(--color-background-page);
+}
+
+.ds-pagination__numbers {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* ==========================================================================
+   Tab — окремий таб і група табів
+   Фон групи tab/wrapper/bg збігається з фоном сторінки, тому приклад
+   групи показано на білій підкладці, інакше контейнер був би невидимий.
+   ========================================================================== */
+
+.ds-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: var(--spacing-8);
+  height: var(--button-height);
+  padding: 0 var(--spacing-12);
+  border: none;
+  border-radius: var(--radius-32);
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: var(--button-line-height);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.ds-tab::before {
+  content: "◻";
+  flex: none;
+  font-size: var(--icon-size);
+  line-height: var(--icon-size);
+}
+
+.ds-tab.is-default {
+  background: var(--color-action-primary-invers);
+  color: var(--color-action-primary);
+}
+
+/* Hover і Active мають однакові кольори */
+.ds-tab.is-hover,
+.ds-tab.is-active {
+  background: var(--color-action-primary);
+  color: var(--color-action-primary-invers);
+}
+
+.ds-tab.is-inactive {
+  background: var(--color-action-inactive);
+  color: var(--color-action-inactive-content);
+}
+
+.ds-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-32);
+  background: var(--color-background-page);
+}
+
+/* Світла підкладка для прикладів, де демо-фон збігається з фоном компонента */
+.ds-btn-row--plain {
+  background: var(--color-background-block);
+}
+
+/* ==========================================================================
+   Toggle — перемикач
+   Кольори та заокруглення взяті з групи button/toggle.
+   Розміри підтверджені з дизайном, але змінних під них в експорті немає.
+   Внутрішній відступ 1px виведений з розмірів: (16 − 14) / 2.
+   ========================================================================== */
+
+.ds-toggle {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 28px;
+  height: 16px;
+  padding: 1px;
+  border-radius: var(--radius-32);
+  background: var(--color-background-elements);
+}
+
+.ds-toggle__knob {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-32);
+}
+
+.ds-toggle.is-default .ds-toggle__knob {
+  background: var(--color-action-inactive);
+}
+
+.ds-toggle.is-active {
+  justify-content: flex-end;
+}
+
+.ds-toggle.is-active .ds-toggle__knob {
+  background: var(--color-action-brand-hover);
 }
 
 /* ==========================================================================

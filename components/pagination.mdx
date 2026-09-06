@@ -1,0 +1,110 @@
+---
+title: "Pagination"
+description: "Пагінація: номери сторінок, група, токени, правила."
+---
+
+Пагінація розбиває довгий список на сторінки й показує, де користувач зараз.
+
+Складається з круглих номерів сторінок і двох кнопок навігації по краях. Один номер завжди активний.
+
+## Коли використовувати
+
+- Коли список довгий і його потрібно розбити на сторінки.
+- Коли користувачеві важливо розуміти обсяг: скільки сторінок усього і котра відкрита.
+
+## Коли не використовувати
+
+- Для стрічки, яку зручніше гортати без розривів — там доречніше довантаження.
+- Для перемикання між розділами. Використовуйте [Tab](/components/tab).
+
+## Стани номера
+
+<div className="ds-btn-row">
+  <div className="ds-btn-item"><span className="ds-btn-caption">Active</span><span className="ds-pagi is-active">00</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Inactive</span><span className="ds-pagi is-inactive">00</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-pagi is-hover">00</span></div>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Active | Inactive | Hover |
+| --- | --- | --- | --- |
+| Фон | <span className="ds-sw ds-sw--action-primary" /> `pagination/pagi-button/bg-active` | <span className="ds-sw ds-sw--action-primary-invers" /> `pagination/pagi-button/bg-default` | <span className="ds-sw ds-sw--action-primary" /> `pagination/pagi-button/bg-hover` |
+| Колір тексту | <span className="ds-sw ds-sw--action-primary-invers" /> `pagination/pagi-button/element-active` | <span className="ds-sw ds-sw--action-primary" /> `pagination/pagi-button/element-default` | <span className="ds-sw ds-sw--action-primary-invers" /> `pagination/pagi-button/element-hover` |
+| Межа | — | — | — |
+| Розмір тексту | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 |
+| Заокруглення | 32px | 32px | 32px |
+| Розмір | 40px | 40px | 40px |
+
+</div>
+
+## Pagination group
+
+Контейнер із номерами сторінок і кнопками навігації. Кнопки вліво та вправо — це [Icon-primary button](/components/button), власних токенів вони не мають.
+
+<div className="ds-btn-row ds-btn-row--plain">
+  <span className="ds-pagination">
+    <span className="ds-btn ds-btn--icon is-default">←</span>
+    <span className="ds-pagination__numbers">
+      <span className="ds-pagi is-active">1</span>
+      <span className="ds-pagi is-inactive">2</span>
+      <span className="ds-pagi is-inactive">3</span>
+      <span className="ds-pagi is-inactive">4</span>
+      <span className="ds-pagi is-inactive">5</span>
+      <span className="ds-pagi ds-pagi--dots">…</span>
+      <span className="ds-pagi is-inactive">7</span>
+    </span>
+    <span className="ds-btn ds-btn--icon is-default">→</span>
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Фон контейнера | <span className="ds-sw ds-sw--background-page" /> `pagination/wrapper/bg` | — |
+| Заокруглення | `pagination/wrapper/radius` | 32px |
+| Внутрішній відступ | `pagination/wrapper/padding` | 4px |
+| Проміжок між номерами | `pagination/wrapper/gap-number` | 2px |
+| Проміжок номери — кнопки | `pagination/wrapper/gap-elements` | 24px |
+
+</div>
+
+<Warning>
+  `pagination/wrapper/gap-elements` в експорті дорівнює 20px, а підтверджене значення — 24px. У прикладі використано 24px. Оновіть токен у Figma.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Контейнер | Пігулка, що обгортає всю пагінацію | Так |
+| Кнопка назад | Icon-primary button зі стрілкою вліво | Так |
+| Номери сторінок | Круглі номери, один активний | Так |
+| Роздільник «…» | Позначає пропущені сторінки | Лише коли сторінок багато |
+| Кнопка вперед | Icon-primary button зі стрілкою вправо | Так |
+
+## Токени
+
+<div className="ds-table">
+
+| Властивість | Токен |
+| --- | --- |
+| Розмір номера | `pagination/pagi-button/width` |
+| Заокруглення номера | `pagination/pagi-button/radius` |
+
+</div>
+
+## Правила
+
+<Check>
+  Тримайте один активний номер. Активний стан не може бути порожнім або подвійним.
+</Check>
+
+<Check>
+  Показуйте першу й останню сторінку завжди, а пропущені згортайте в «…».
+</Check>
+
+<Warning>
+  Не приховуйте кнопки навігації на краях діапазону. Робіть їх неактивними, інакше пагінація стрибатиме по ширині.
+</Warning>

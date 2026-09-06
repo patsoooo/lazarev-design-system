@@ -1,0 +1,114 @@
+---
+title: "Tab"
+description: "Таби: стани, група табів, токени, правила."
+---
+
+Таб перемикає вміст усередині сторінки, не змінюючи саму сторінку. Один таб у групі завжди активний.
+
+Складається з провідної іконки та лейбла в контейнері-пігулці. Окремий таб самостійно не використовується — він завжди живе всередині групи.
+
+## Коли використовувати
+
+- Для перемикання між рівнозначними розділами одного набору даних.
+- Коли розділів небагато і всі вміщаються в один ряд.
+
+## Коли не використовувати
+
+- Для навігації між сторінками — використовуйте меню.
+- Для дії, яка щось змінює або відправляє. Використовуйте [Button](/components/button).
+- Коли розділів так багато, що група починає переноситись на другий рядок.
+
+## Стани
+
+<div className="ds-btn-row">
+  <div className="ds-btn-item"><span className="ds-btn-caption">Active</span><span className="ds-tab is-active">Tab label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-tab is-default">Tab label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-tab is-hover">Tab label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Inactive</span><span className="ds-tab is-inactive">Tab label</span></div>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Active | Default | Hover | Inactive |
+| --- | --- | --- | --- | --- |
+| Фон | <span className="ds-sw ds-sw--action-primary" /> `tab/tab/bg-avtive` | <span className="ds-sw ds-sw--action-primary-invers" /> `tab/tab/bg-default` | <span className="ds-sw ds-sw--action-primary" /> `tab/tab/bg-hover` | <span className="ds-sw ds-sw--action-inactive" /> `tab/tab/bg-inactive` |
+| Колір тексту | <span className="ds-sw ds-sw--action-primary-invers" /> `tab/tab/text-hover` | <span className="ds-sw ds-sw--action-primary" /> `tab/tab/text-default` | <span className="ds-sw ds-sw--action-primary-invers" /> `tab/tab/text-hover` | <span className="ds-sw ds-sw--action-inactive-content" /> `tab/tab/inactive-content` |
+| Колір іконки | <span className="ds-sw ds-sw--action-primary-invers" /> `tab/tab/icon-hover` | <span className="ds-sw ds-sw--action-primary" /> `tab/tab/icon-default` | <span className="ds-sw ds-sw--action-primary-invers" /> `tab/tab/icon-hover` | <span className="ds-sw ds-sw--action-inactive-content" /> `tab/tab/inactive-content` |
+| Межа | — | — | — | — |
+| Розмір тексту | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 |
+| Розмір іконки | 16px | 16px | 16px | 16px |
+| Внутрішні відступи | 12px | 12px | 12px | 12px |
+| Проміжок | 8px | 8px | 8px | 8px |
+| Заокруглення | 32px | 32px | 32px | 32px |
+| Висота | 40px | 40px | 40px | 40px |
+
+</div>
+
+## Tabs group
+
+Контейнер, у якому лежать усі таби. Активний таб один, решта у стані Default.
+
+<div className="ds-btn-row ds-btn-row--plain">
+  <span className="ds-tabs">
+    <span className="ds-tab is-active">Tab label</span>
+    <span className="ds-tab is-default">Tab label</span>
+    <span className="ds-tab is-default">Tab label</span>
+    <span className="ds-tab is-default">Tab label</span>
+    <span className="ds-tab is-default">Tab label</span>
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Фон контейнера | <span className="ds-sw ds-sw--background-page" /> `tab/wrapper/bg` | — |
+| Заокруглення | `tab/wrapper/radius` | 32px |
+| Внутрішній відступ | `tab/wrapper/padding` | 4px |
+| Проміжок між табами | `tab/wrapper/gap` | 2px |
+
+</div>
+
+<Warning>
+  Фон групи — `background.page`, той самий, що й фон сторінки.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Контейнер групи | Пігулка, що обгортає всі таби | Так |
+| Таб | Пігулка з іконкою та лейблом | Так |
+| Провідна іконка | Зліва від лейбла | Так |
+| Лейбл | Назва розділу | Так |
+
+## Токени
+
+<div className="ds-table">
+
+| Властивість | Токен |
+| --- | --- |
+| Внутрішній відступ таба | `tab/tab/padding-x`, `tab/tab/padding-y` |
+| Проміжок іконка — лейбл | `tab/tab/gap` |
+| Заокруглення таба | `tab/tab/radius` |
+| Висота таба | `tab/tab/height` |
+
+</div>
+
+## Правила
+
+<Check>
+  Тримайте один активний таб у групі. Стан Active не може бути порожнім.
+</Check>
+
+<Check>
+  Пишіть лейбли коротко й в одному відмінку, щоб таби не розповзались по ширині.
+</Check>
+
+<Warning>
+  Не використовуйте таби для дій. Таб перемикає вміст, а не запускає процес.
+</Warning>
+
+<Warning>
+  Не вкладайте групу табів у групу табів. Два рівні перемикачів поруч читаються як помилка інтерфейсу.
+</Warning>

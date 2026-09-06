@@ -1,0 +1,174 @@
+---
+title: "Dropdown"
+description: "Дропдаун: тригер, меню, пункти, група, токени, правила."
+---
+
+Дропдаун відкриває список опцій, з якого користувач обирає одну або кілька. Використовується для фільтрів.
+
+Складається з тригера-пігулки та панелі меню з пунктами-чекбоксами. Тригер може показувати лічильник обраних опцій.
+
+<Warning>
+  У Figma група `component.dropdown` містить лише сім токенів, і всі вони описують **панель меню**. Для тригера, лічильника, підсвітки рядка та контейнера групи токенів немає — у прикладах нижче ці значення тимчасові, зчитані з макета, і позначені `[уточнити]`.
+</Warning>
+
+## Коли використовувати
+
+- Для фільтра з великою кількістю опцій, які не вміщаються на екран.
+- Коли треба показати, скільки опцій уже обрано.
+
+## Коли не використовувати
+
+- Для двох-трьох опцій, які вміщаються поруч. Використовуйте [Chips](/components/chips).
+- Для перемикання розділів сторінки. Використовуйте [Tab](/components/tab).
+
+## Тригер
+
+<div className="ds-btn-row">
+  <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-dd is-default">Tab label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-dd is-hover">Tab label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Open</span><span className="ds-dd is-open">Tab label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Disabled</span><span className="ds-dd is-disabled">Tab label</span></div>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Default | Hover | Open | Disabled |
+| --- | --- | --- | --- | --- |
+| Фон | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
+| Колір тексту | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
+| Колір каретки | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
+| Каретка | ▾ вниз | ▾ вниз | ▴ вгору | ▾ вниз |
+| Розмір тексту | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
+| Заокруглення | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
+| Висота | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
+
+</div>
+
+### Тригер з лічильником
+
+Той самий тригер із круглим лічильником обраних опцій зліва. На Hover каретка змінюється на ✕ — це скидання вибору, а не відкриття меню.
+
+<div className="ds-btn-row">
+  <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-dd ds-dd--count is-default"><span className="ds-dd__count">3</span>Tab label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-dd ds-dd--count is-hover"><span className="ds-dd__count">3</span>Tab label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Open</span><span className="ds-dd ds-dd--count is-open"><span className="ds-dd__count">3</span>Tab label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Disabled</span><span className="ds-dd ds-dd--count is-disabled"><span className="ds-dd__count">3</span>Tab label</span></div>
+</div>
+
+<Warning>
+  На Hover іконка перемикається з каретки на ✕, тобто та сама зона відповідає за різні дії залежно від стану. Переконайтесь, що скидання вибору — окрема зона натискання, інакше користувач закриватиме фільтр, намагаючись його відкрити.
+</Warning>
+
+## Меню
+
+Панель, що розкривається під тригером. Єдина частина компонента з власними токенами.
+
+<div className="ds-btn-row">
+  <span className="ds-dd-menu">
+    <span className="ds-dd-menu__list">
+      <span className="ds-dd-item"><span className="ds-dd-item__box" />Item label</span>
+      <span className="ds-dd-item"><span className="ds-dd-item__box" />Item label</span>
+      <span className="ds-dd-item is-selected"><span className="ds-dd-item__box" />Item label</span>
+      <span className="ds-dd-item is-hover"><span className="ds-dd-item__box" />Item label</span>
+      <span className="ds-dd-item"><span className="ds-dd-item__box" />Item label</span>
+    </span>
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Фон панелі | <span className="ds-sw ds-sw--background-block" /> `dropdown/bg` | — |
+| Межа | <span className="ds-sw ds-sw--border-default" /> `dropdown/border` | — |
+| Колір тексту | <span className="ds-sw ds-sw--text-primary" /> `dropdown/text` | — |
+| Колір іконки | <span className="ds-sw ds-sw--icon-secondary" /> `dropdown/icon` | — |
+| Заокруглення | `dropdown/radius` | 8px |
+| Внутрішній відступ | `dropdown/padding` | 16px |
+| Проміжок | `dropdown/gap` | 24px |
+| Ширина панелі | [уточнити] | — |
+
+</div>
+
+<Warning>
+  `dropdown/gap` дорівнює 24px, але на макеті пункти стоять помітно щільніше. Незрозуміло, чи цей токен описує проміжок між пунктами меню, чи щось інше — [уточнити].
+</Warning>
+
+## Пункт меню
+
+Рядок із чекбоксом. Має два незалежні виміри: наведення та вибір.
+
+<div className="ds-btn-row ds-btn-row--plain">
+  <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-dd-item"><span className="ds-dd-item__box" />Item label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-dd-item is-hover"><span className="ds-dd-item__box" />Item label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Обрано</span><span className="ds-dd-item is-selected"><span className="ds-dd-item__box" />Item label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Обрано + Hover</span><span className="ds-dd-item is-hover is-selected"><span className="ds-dd-item__box" />Item label</span></div>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Межа чекбокса | <span className="ds-sw ds-sw--border-subtle" /> `checkbox/border` | — |
+| Межа чекбокса на Hover | <span className="ds-sw ds-sw--action-primary" /> `checkbox/border-hover` | — |
+| Товщина межі | `checkbox/border-width` | 1px |
+| Заокруглення чекбокса | `checkbox/radius` | 8px |
+| Колір галочки | <span className="ds-sw ds-sw--icon-default" /> `checkbox/check-icon` | — |
+| Розмір чекбокса | [уточнити] | — |
+| Фон рядка на Hover | [уточнити] | — |
+| Внутрішні відступи рядка | [уточнити] | — |
+
+</div>
+
+## Група дропдаунів
+
+Кілька тригерів у спільному контейнері.
+
+<div className="ds-btn-row ds-btn-row--plain">
+  <span className="ds-dd-group">
+    <span className="ds-dd is-default">Tab label</span>
+    <span className="ds-dd is-default">Tab label</span>
+    <span className="ds-dd is-default">Tab label</span>
+    <span className="ds-dd is-default">Tab label</span>
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Токен |
+| --- | --- |
+| Фон контейнера | [уточнити] |
+| Заокруглення | [уточнити] |
+| Внутрішній відступ | [уточнити] |
+| Проміжок між тригерами | [уточнити] |
+
+</div>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Тригер | Пігулка з лейблом і кареткою | Так |
+| Лічильник | Круг із кількістю обраних опцій | Лише у варіанті з лічильником |
+| Каретка | ▾ у закритому стані, ▴ у відкритому | Так |
+| Панель меню | Контейнер зі списком пунктів | Так |
+| Пункт меню | Чекбокс і лейбл | Так |
+| Смуга прокрутки | З'являється, коли пункти не вміщаються | Ні |
+
+## Правила
+
+<Check>
+  Показуйте лічильник, щойно обрано хоча б одну опцію. Інакше користувач не побачить, що фільтр активний.
+</Check>
+
+<Check>
+  Тримайте каретку синхронною зі станом панелі: ▾ коли закрито, ▴ коли відкрито.
+</Check>
+
+<Warning>
+  Не робіть меню ширшим за тригер більше ніж удвічі. Широка панель відривається від елемента, який її відкрив.
+</Warning>
+
+<Warning>
+  Не ховайте вибрані опції під прокруткою. Піднімайте обране до початку списку.
+</Warning>

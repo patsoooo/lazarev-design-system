@@ -15,7 +15,7 @@
         "groups": [
           { "group": "Overview", "pages": ["index"] },
           { "group": "Foundations", "pages": ["foundations/colors", "foundations/typography", "foundations/spacing"] },
-          { "group": "Components", "pages": ["components/button", "components/input"] }
+          { "group": "Components", "pages": ["components/button", "components/chips", "components/dropdown", "components/input", "components/pagination", "components/tab", "components/toggle"] }
         ]
       }
     ]

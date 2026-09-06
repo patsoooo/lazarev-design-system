@@ -7,7 +7,7 @@ description: "Кнопки: варіанти, стани, правила."
 
 У таблицях кожного варіанта рядки — це властивості, а колонки — стани. Так усі дані одного стану читаються в одну колонку.
 
-Імена кольорів наведені без префікса `semantic.color.` — усі вони з цього простору й описані на сторінці [Colors](/foundations/colors).
+Кольори вказані **компонентними** токенами в нотації Figma: `button/primary/bg-default`. У файлі змінних це `component.button.primary.bg-default`. Кожен із них — аліас на семантичний токен, описаний на сторінці [Colors](/foundations/colors); квадратик показує вже розкручене значення.
 
 ## Коли використовувати
 
@@ -35,9 +35,9 @@ description: "Кнопки: варіанти, стани, правила."
 
 | Властивість | Default | Hover | Pressed | Inactive |
 | --- | --- | --- | --- | --- |
-| Фон | <span className="ds-sw ds-sw--action-primary" /> `action.primary` | <span className="ds-sw ds-sw--action-primary-hover" /> `action.primary-hover` | <span className="ds-sw ds-sw--action-brand-pressed" /> `action.brand-pressed` | <span className="ds-sw ds-sw--action-inactive" /> `action.inactive` |
-| Колір тексту | <span className="ds-sw ds-sw--text-inverse" /> `text.inverse` | <span className="ds-sw ds-sw--text-inverse" /> `text.inverse` | <span className="ds-sw ds-sw--text-inverse" /> `text.inverse` | <span className="ds-sw ds-sw--action-inactive-content" /> `action.inactive-content` |
-| Колір іконки | <span className="ds-sw ds-sw--icon-inverse" /> `icon.inverse` | <span className="ds-sw ds-sw--icon-inverse" /> `icon.inverse` | <span className="ds-sw ds-sw--icon-inverse" /> `icon.inverse` | <span className="ds-sw ds-sw--action-inactive-content" /> `action.inactive-content` |
+| Фон | <span className="ds-sw ds-sw--action-primary" /> `button/primary/bg-default` | <span className="ds-sw ds-sw--action-primary-hover" /> `button/primary/bg-hover` | <span className="ds-sw ds-sw--action-brand-pressed" /> `button/primary/bg-pressed` | <span className="ds-sw ds-sw--action-inactive" /> `button/primary/bg-inactive` |
+| Колір тексту | <span className="ds-sw ds-sw--text-inverse" /> `button/primary/text` | <span className="ds-sw ds-sw--text-inverse" /> `button/primary/text` | <span className="ds-sw ds-sw--text-inverse" /> `button/primary/text` | <span className="ds-sw ds-sw--action-inactive-content" /> `button/primary/inactive-content` |
+| Колір іконки | <span className="ds-sw ds-sw--icon-inverse" /> `button/primary/icon` | <span className="ds-sw ds-sw--icon-inverse" /> `button/primary/icon` | <span className="ds-sw ds-sw--icon-inverse" /> `button/primary/icon` | <span className="ds-sw ds-sw--action-inactive-content" /> `button/primary/inactive-content` |
 | Межа | — | — | — | — |
 | Розмір тексту | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 |
 | Розмір іконки | 16px | 16px | 16px | 16px |
@@ -52,7 +52,7 @@ description: "Кнопки: варіанти, стани, правила."
 <div className="ds-btn-row">
   <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-btn ds-btn--secondary is-default">Button label</span></div>
   <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-btn ds-btn--secondary is-hover">Button label</span></div>
-  <div className="ds-btn-item"><span className="ds-btn-caption">Pressed</span><span className="ds-btn ds-btn--secondary is-pressed">Button label</span><span className="ds-btn-flag">колір тексту не підтверджено</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Pressed</span><span className="ds-btn ds-btn--secondary is-pressed">Button label</span><span className="ds-btn-flag">колір іконки не підтверджено</span></div>
   <div className="ds-btn-item"><span className="ds-btn-caption">Inactive</span><span className="ds-btn ds-btn--secondary is-inactive">Button label</span></div>
 </div>
 
@@ -61,9 +61,9 @@ description: "Кнопки: варіанти, стани, правила."
 | Властивість | Default | Hover | Pressed | Inactive |
 | --- | --- | --- | --- | --- |
 | Фон | немає | немає | немає | немає |
-| Колір тексту | <span className="ds-sw ds-sw--text-primary" /> `text.primary` | <span className="ds-sw ds-sw--text-primary" /> `text.primary` | [уточнити] | <span className="ds-sw ds-sw--action-inactive" /> `action.inactive` |
-| Колір іконки | <span className="ds-sw ds-sw--icon-default" /> `icon.default` | <span className="ds-sw ds-sw--icon-default" /> `icon.default` | [уточнити] | <span className="ds-sw ds-sw--action-inactive" /> `action.inactive` |
-| Межа | <span className="ds-sw ds-sw--border-subtle" /> `border.subtle` | <span className="ds-sw ds-sw--action-primary" /> `action.primary` | <span className="ds-sw ds-sw--action-primary" /> `action.primary` | [уточнити] |
+| Колір тексту | <span className="ds-sw ds-sw--text-primary" /> `button/secondary/text` | <span className="ds-sw ds-sw--text-primary" /> `button/secondary/text` | <span className="ds-sw ds-sw--text-primary" /> `button/secondary/text` | <span className="ds-sw ds-sw--action-inactive" /> `button/secondary/inactive` |
+| Колір іконки | <span className="ds-sw ds-sw--icon-default" /> `button/secondary/icon` | <span className="ds-sw ds-sw--icon-default" /> `button/secondary/icon` | [уточнити] | <span className="ds-sw ds-sw--action-inactive" /> `button/secondary/inactive` |
+| Межа | <span className="ds-sw ds-sw--border-subtle" /> `button/secondary/border-default` | <span className="ds-sw ds-sw--action-primary" /> `button/secondary/border-hover` | <span className="ds-sw ds-sw--action-primary" /> `button/secondary/border-hover` | [уточнити] |
 | Товщина межі | 1px | 1px | 1px | 1px |
 | Розмір тексту | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 |
 | Розмір іконки | 16px | 16px | 16px | 16px |
@@ -73,18 +73,14 @@ description: "Кнопки: варіанти, стани, правила."
 
 </div>
 
-<Warning>
-  Межа на Hover і Pressed — `action.primary`, тобто чорна, а не зелена. Це єдиний варіант, який не підпорядковується правилу «Hover = зелений». Обидва стани використовують той самий токен `border-hover`.
-</Warning>
-
-Для темного фону передбачені окремі токени: `text.inverse` для тексту й `border.white-30%` для межі.
+Для темного фону передбачені окремі токени: <span className="ds-sw ds-sw--text-inverse" /> `button/secondary/text-inverse` для тексту й <span className="ds-sw ds-sw--border-white-30" /> `button/secondary/border-inverse` для межі.
 
 ## Industry button
 
 <div className="ds-btn-row">
   <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-btn ds-btn--industry is-default">Button label</span></div>
   <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-btn ds-btn--industry is-hover">Button label</span></div>
-  <div className="ds-btn-item"><span className="ds-btn-caption">Pressed</span><span className="ds-btn ds-btn--industry is-pressed">Button label</span><span className="ds-btn-flag">колір тексту тимчасовий</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Pressed</span><span className="ds-btn ds-btn--industry is-pressed">Button label</span></div>
   <div className="ds-btn-item"><span className="ds-btn-caption">Inactive</span><span className="ds-btn ds-btn--industry is-inactive">Button label</span></div>
 </div>
 
@@ -92,9 +88,9 @@ description: "Кнопки: варіанти, стани, правила."
 
 | Властивість | Default | Hover | Pressed | Inactive |
 | --- | --- | --- | --- | --- |
-| Фон | <span className="ds-sw ds-sw--action-primary-invers" /> `action.primary-invers` | <span className="ds-sw ds-sw--action-primary-hover" /> `action.primary-hover` | <span className="ds-sw ds-sw--action-brand-pressed" /> `action.brand-pressed` | <span className="ds-sw ds-sw--action-inactive" /> `action.inactive` |
-| Колір тексту | <span className="ds-sw ds-sw--action-primary" /> `action.primary` | <span className="ds-sw ds-sw--action-primary-invers" /> `action.primary-invers` | [уточнити] | <span className="ds-sw ds-sw--action-inactive-content" /> `action.inactive-content` |
-| Колір іконки | <span className="ds-sw ds-sw--action-primary" /> `action.primary` | <span className="ds-sw ds-sw--action-primary-invers" /> `action.primary-invers` | [уточнити] | <span className="ds-sw ds-sw--action-inactive-content" /> `action.inactive-content` |
+| Фон | <span className="ds-sw ds-sw--action-primary-invers" /> `button/industry/bg-default` | <span className="ds-sw ds-sw--action-primary-hover" /> `button/industry/bg-hover` | <span className="ds-sw ds-sw--action-brand-pressed" /> `button/industry/bg-pressed` | <span className="ds-sw ds-sw--action-inactive" /> `button/industry/bg-inactive` |
+| Колір тексту | <span className="ds-sw ds-sw--action-primary" /> `button/industry/text-default` | <span className="ds-sw ds-sw--action-primary-invers" /> `button/industry/text-hover` | <span className="ds-sw ds-sw--action-primary-invers" /> `button/industry/text-hover` | <span className="ds-sw ds-sw--action-inactive-content" /> `button/industry/inactive-content` |
+| Колір іконки | <span className="ds-sw ds-sw--action-primary" /> `button/industry/icon-default` | <span className="ds-sw ds-sw--action-primary-invers" /> `button/industry/icon-hover` | <span className="ds-sw ds-sw--action-primary-invers" /> `button/industry/icon-hover` | <span className="ds-sw ds-sw--action-inactive-content" /> `button/industry/inactive-content` |
 | Межа | — | — | — | — |
 | Розмір тексту | `font.paragraph.p3-16` — 16 / 20 | `font.paragraph.p3-16` — 16 / 20 | `font.paragraph.p3-16` — 16 / 20 | `font.paragraph.p3-16` — 16 / 20 |
 | Розмір іконки | 16px | 16px | 16px | 16px |
@@ -120,8 +116,8 @@ description: "Кнопки: варіанти, стани, правила."
 | Властивість | Default | Hover |
 | --- | --- | --- |
 | Фон | немає | немає |
-| Колір тексту | <span className="ds-sw ds-sw--action-primary" /> `action.primary` | <span className="ds-sw ds-sw--action-primary-hover" /> `action.primary-hover` |
-| Колір іконки | <span className="ds-sw ds-sw--action-primary" /> `action.primary` | <span className="ds-sw ds-sw--action-primary-hover" /> `action.primary-hover` |
+| Колір тексту | <span className="ds-sw ds-sw--action-primary" /> `button/link-button/text-color` | <span className="ds-sw ds-sw--action-primary-hover" /> `button/link-button/text-hover` |
+| Колір іконки | <span className="ds-sw ds-sw--action-primary" /> `button/link-button/icon-color` | <span className="ds-sw ds-sw--action-primary-hover" /> `button/link-button/icon-hover` |
 | Межа | — | — |
 | Розмір тексту | `font.paragraph.p4-14` — 14 / 16, UPPERCASE | `font.paragraph.p4-14` — 14 / 16, UPPERCASE |
 | Розмір іконки | 16px | 16px |
@@ -130,8 +126,6 @@ description: "Кнопки: варіанти, стани, правила."
 | Висота | за вмістом | за вмістом |
 
 </div>
-
-Окремого текстового стилю під UPPERCASE в експорті немає — [уточнити], чи має бути власний токен.
 
 ## Play button
 
@@ -145,10 +139,10 @@ description: "Кнопки: варіанти, стани, правила."
 
 | Властивість | Default | Hover | Pressed |
 | --- | --- | --- | --- |
-| Фон | немає | <span className="ds-sw ds-sw--action-primary-invers" /> `action.primary-invers` | <span className="ds-sw ds-sw--action-primary-invers" /> `action.primary-invers` |
-| Колір тексту | <span className="ds-sw ds-sw--action-primary-invers" /> `action.primary-invers` | <span className="ds-sw ds-sw--action-primary" /> `action.primary` | <span className="ds-sw ds-sw--action-primary" /> `action.primary` |
-| Колір іконки | <span className="ds-sw ds-sw--action-primary-invers" /> `action.primary-invers` | <span className="ds-sw ds-sw--action-primary" /> `action.primary` | <span className="ds-sw ds-sw--action-primary" /> `action.primary` |
-| Межа | <span className="ds-sw ds-sw--action-primary-invers" /> `action.primary-invers` | [уточнити] | [уточнити] |
+| Фон | немає | <span className="ds-sw ds-sw--action-primary-invers" /> `button/play/bg-hover` | <span className="ds-sw ds-sw--action-primary-invers" /> `button/play/bg-hover` |
+| Колір тексту | <span className="ds-sw ds-sw--action-primary-invers" /> `button/play/text-default` | <span className="ds-sw ds-sw--action-primary" /> `button/play/text-hover` | <span className="ds-sw ds-sw--action-primary" /> `button/play/text-hover` |
+| Колір іконки | <span className="ds-sw ds-sw--action-primary-invers" /> `button/play/icon-default` | <span className="ds-sw ds-sw--action-primary" /> `button/play/icon-hover` | <span className="ds-sw ds-sw--action-primary" /> `button/play/icon-hover` |
+| Межа | <span className="ds-sw ds-sw--action-primary-invers" /> `button/play/border-default` | <span className="ds-sw ds-sw--action-primary-invers" /> `button/play/border-default` | <span className="ds-sw ds-sw--action-primary-invers" /> `button/play/border-default` |
 | Розмір тексту | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 |
 | Розмір іконки | 16px | 16px | 16px |
 | Внутрішні відступи | 8px по горизонталі | 8px по горизонталі | 8px по горизонталі |
@@ -158,14 +152,6 @@ description: "Кнопки: варіанти, стани, правила."
 
 </div>
 
-<Warning>
-  Приклад показано на темному фоні навмисно. Усі токени Play — білі (`action.primary-invers` для межі, тексту та іконки), тому на світлій підкладці кнопка практично не видима. Підтвердьте, що варіант призначений тільки для темних секцій.
-</Warning>
-
-<Warning>
-  Висота 28px не сходиться з відступами: текст 14/16 плюс вертикальні відступи 8px з експорту дали б 32px. У прикладі висота задана явно, а вертикальні відступи виведені з неї.
-</Warning>
-
 ## Icon-primary button
 
 <div className="ds-btn-row">
@@ -173,15 +159,15 @@ description: "Кнопки: варіанти, стани, правила."
   <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-btn ds-btn--icon is-hover">↗</span></div>
   <div className="ds-btn-item"><span className="ds-btn-caption">Pressed</span><span className="ds-btn ds-btn--icon is-pressed">↗</span></div>
   <div className="ds-btn-item"><span className="ds-btn-caption">Inactive</span><span className="ds-btn ds-btn--icon is-inactive">↗</span></div>
-  <div className="ds-btn-item"><span className="ds-btn-caption">Loading</span><span className="ds-btn ds-btn--icon is-loading">↗</span><span className="ds-btn-flag">тимчасовий колір</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Loading</span><span className="ds-btn ds-btn--icon is-loading">↗</span></div>
 </div>
 
 <div className="ds-table">
 
 | Властивість | Default | Hover | Pressed | Inactive | Loading |
 | --- | --- | --- | --- | --- | --- |
-| Фон | <span className="ds-sw ds-sw--action-primary" /> `action.primary` | <span className="ds-sw ds-sw--action-primary-hover" /> `action.primary-hover` | <span className="ds-sw ds-sw--action-brand-pressed" /> `action.brand-pressed` | <span className="ds-sw ds-sw--action-inactive" /> `action.inactive` | [уточнити] |
-| Колір іконки | <span className="ds-sw ds-sw--action-primary-invers" /> `action.primary-invers` | <span className="ds-sw ds-sw--action-primary-invers" /> `action.primary-invers` | [уточнити] | <span className="ds-sw ds-sw--action-inactive-content" /> `action.inactive-content` | [уточнити] |
+| Фон | <span className="ds-sw ds-sw--action-primary" /> `button/button-icon-primary/bg` | <span className="ds-sw ds-sw--action-primary-hover" /> `button/button-icon-primary/bg-hover` | <span className="ds-sw ds-sw--action-brand-pressed" /> `button/button-icon-primary/bg-pressed` | <span className="ds-sw ds-sw--action-inactive" /> `button/button-icon-primary/bg-inactive` | <span className="ds-sw ds-sw--action-primary" /> `button/button-icon-primary/bg` |
+| Колір іконки | <span className="ds-sw ds-sw--action-primary-invers" /> `button/button-icon-primary/icon` | <span className="ds-sw ds-sw--action-primary-invers" /> `button/button-icon-primary/icon` | [уточнити] | <span className="ds-sw ds-sw--action-inactive-content" /> `button/button-icon-primary/inactive-content` | <span className="ds-sw ds-sw--action-primary-invers" /> `button/button-icon-primary/icon` |
 | Межа | — | — | — | — | — |
 | Розмір іконки | 16px | 16px | 16px | 16px | 16px |
 | Внутрішні відступи | 12px | 12px | 12px | 12px | 12px |
@@ -195,7 +181,7 @@ description: "Кнопки: варіанти, стани, правила."
 <div className="ds-btn-row">
   <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-btn ds-btn--icon-outline is-default">◻</span></div>
   <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-btn ds-btn--icon-outline is-hover">◻</span></div>
-  <div className="ds-btn-item"><span className="ds-btn-caption">Pressed</span><span className="ds-btn ds-btn--icon-outline is-pressed">◻</span><span className="ds-btn-flag">тимчасовий колір</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Pressed</span><span className="ds-btn ds-btn--icon-outline is-pressed">◻</span></div>
   <div className="ds-btn-item"><span className="ds-btn-caption">Inactive</span><span className="ds-btn ds-btn--icon-outline is-inactive">◻</span></div>
 </div>
 
@@ -204,8 +190,8 @@ description: "Кнопки: варіанти, стани, правила."
 | Властивість | Default | Hover | Pressed | Inactive |
 | --- | --- | --- | --- | --- |
 | Фон | немає | немає | немає | немає |
-| Колір іконки | <span className="ds-sw ds-sw--icon-default" /> `icon.default` | <span className="ds-sw ds-sw--icon-default" /> `icon.default` | [уточнити] | <span className="ds-sw ds-sw--action-inactive" /> `action.inactive` |
-| Межа | <span className="ds-sw ds-sw--border-subtle" /> `border.subtle` | <span className="ds-sw ds-sw--action-primary" /> `action.primary` | [уточнити] | [уточнити] |
+| Колір іконки | <span className="ds-sw ds-sw--icon-default" /> `button/button-icon-secondary/icon` | <span className="ds-sw ds-sw--icon-default" /> `button/button-icon-secondary/icon` | <span className="ds-sw ds-sw--icon-default" /> `button/button-icon-secondary/icon` | <span className="ds-sw ds-sw--action-inactive" /> `button/button-icon-secondary/inactive` |
+| Межа | <span className="ds-sw ds-sw--border-subtle" /> `button/button-icon-secondary/border-default` | <span className="ds-sw ds-sw--action-primary" /> `button/button-icon-secondary/border-hover` | <span className="ds-sw ds-sw--action-primary" /> `button/button-icon-secondary/border-hover` | [уточнити] |
 | Товщина межі | 1px | 1px | 1px | 1px |
 | Розмір іконки | 16px | 16px | 16px | 16px |
 | Внутрішні відступи | 8px | 8px | 8px | 8px |
@@ -214,7 +200,7 @@ description: "Кнопки: варіанти, стани, правила."
 
 </div>
 
-На темному фоні межа — `border.white-30%`.
+На темному фоні межа — <span className="ds-sw ds-sw--border-white-30" /> `button/button-icon-secondary/border-inverse`.
 
 <div className="ds-btn-row ds-btn-row--dark">
   <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-btn ds-btn--icon-outline is-default">◻</span><span className="ds-btn-flag">на темному фоні</span></div>
@@ -222,23 +208,27 @@ description: "Кнопки: варіанти, стани, правила."
 
 ## Plus button
 
+<div className="ds-btn-row">
+  <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-btn ds-btn--plus is-default">+</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-btn ds-btn--plus is-hover">+</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Pressed</span><span className="ds-btn ds-btn--plus is-pressed">×</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Inactive</span><span className="ds-btn ds-btn--plus is-inactive">+</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Close</span><span className="ds-btn ds-btn--plus is-close">×</span></div>
+</div>
+
 <div className="ds-table">
 
 | Властивість | Default | Hover | Pressed | Inactive | Close |
 | --- | --- | --- | --- | --- | --- |
-| Фон | [уточнити] | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
-| Колір іконки | [уточнити] | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
+| Іконка | + | + | × | + | × |
+| Фон | немає | немає | немає | немає | немає |
+| Колір іконки | <span className="ds-sw ds-sw--icon-default" /> `color/icon/default` | <span className="ds-sw ds-sw--icon-default" /> `color/icon/default` | <span className="ds-sw ds-sw--icon-default" /> `color/icon/default` | <span className="ds-sw ds-sw--icon-default" /> `color/icon/default` | <span className="ds-sw ds-sw--icon-default" /> `color/icon/default` |
 | Межа | [уточнити] | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
-| Розмір іконки | [уточнити] | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
-| Внутрішні відступи | [уточнити] | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
-| Заокруглення | [уточнити] | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
-| Висота | [уточнити] | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
+| Розмір іконки | 16px | 16px | 16px | 16px | 16px |
+| Заокруглення | 32px | 32px | 32px | 32px | 32px |
+| Розмір | 40px | 40px | 40px | 40px | 40px |
 
 </div>
-
-<Warning>
-  Для Plus button в експорті Figma немає **жодного** токена — групи `component.button.plus` не існує. Прикладу теж немає: рендерити його означало б вигадати значення. Заведіть їх у Figma або отримайте від розробників.
-</Warning>
 
 ## Block buttons
 
@@ -258,8 +248,8 @@ description: "Кнопки: варіанти, стани, правила."
 
 | Властивість | Значення |
 | --- | --- |
-| Фон контейнера | <span className="ds-sw ds-sw--background-block" /> `background.block` |
-| Колір тексту | <span className="ds-sw ds-sw--text-primary" /> `text.primary` |
+| Фон контейнера | <span className="ds-sw ds-sw--background-block" /> `button/button-block/bg` |
+| Колір тексту | <span className="ds-sw ds-sw--text-primary" /> `button/button-block/text` |
 | Заокруглення | 80px |
 | Внутрішній відступ зліва | 16px |
 | Відступ справа, зверху й знизу | 8px |
@@ -285,18 +275,18 @@ description: "Кнопки: варіанти, стани, правила."
 
 ### Розміри й відступи
 
-Дивіться [Spacing & layout](/foundations/spacing).
+Компонентні токени розмірів. Значення, на які вони посилаються, описані на сторінці [Spacing & layout](/foundations/spacing).
 
 <div className="ds-table">
 
-| Властивість | Primary та Secondary | Industry | Play | Icon-primary | Icon-secondary |
-| --- | --- | --- | --- | --- | --- |
-| Горизонтальний відступ | `primitives.spacing.16px` | `primitives.spacing.12px` | `primitives.spacing.8px` | `primitives.spacing.12px` | `primitives.spacing.8px` |
-| Вертикальний відступ | `primitives.spacing.12px` | `primitives.spacing.8px` | `primitives.spacing.8px` | `primitives.spacing.12px` | `primitives.spacing.8px` |
-| Висота | 40px | 44px | 28px | 40px | 40px |
-| Радіус | `primitives.radius.32px` | `primitives.radius.32px` | [уточнити] | [уточнити] | `primitives.radius.32px` |
-| Проміжок | `primitives.spacing.8px` | `primitives.spacing.8px` | `primitives.spacing.4px` | — | — |
-| Товщина межі | `primitives.border-width.1px` (Secondary) | — | [уточнити] | — | `primitives.border-width.1px` |
+| Властивість | Primary | Secondary | Industry | Play | Icon-primary | Icon-secondary |
+| --- | --- | --- | --- | --- | --- | --- |
+| Горизонтальний відступ | `button/primary/padding-x` | `button/secondary/padding-x` | `button/industry/padding-x` | `button/play/padding` | `button/button-icon-primary/padding` | `button/button-icon-secondary/padding` |
+| Вертикальний відступ | `button/primary/padding-y` | `button/secondary/padding-y` | `button/industry/padding-y` | `button/play/padding` | `button/button-icon-primary/padding` | `button/button-icon-secondary/padding` |
+| Висота | `button/primary/height` | `button/secondary/height` | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
+| Заокруглення | `button/primary/radius` | `button/secondary/radius` | `button/industry/radius` | `button/play/radius` | `button/button-icon-primary/radius` | `button/button-icon-secondary/radius` |
+| Проміжок | `button/primary/gap` | `button/secondary/gap` | `button/industry/gap` | `button/play/gap` | — | — |
+| Товщина межі | — | `button/secondary/border-width` | — | [уточнити] | — | `button/button-icon-secondary/border-width` |
 
 </div>
 
@@ -317,32 +307,6 @@ description: "Кнопки: варіанти, стани, правила."
 | Проміжок між текстом та іконками | `primitives.spacing.8px` |
 
 </div>
-
-<Warning>
-  Ім'я `p3` означає два різні розміри. Текстовий стиль `font.paragraph.p3-16` — це 16/20, а семантичний токен `semantic.font.font-size.body.p3` — 13px з інтерліньяжем 16px. Для Industry чинний перший. Розбіжність варто усунути у Figma, інакше розробник візьме не той токен.
-</Warning>
-
-<Warning>
-  Ні стиль тексту, ні розмір іконки не є токенами кнопки. У `component.button.*` немає жодної змінної шрифту, тому наступний експорт із Figma знову прийде без типографіки. Заведіть їх у Figma, інакше значення житимуть тільки в цій документації.
-</Warning>
-
-## Figma ↔ Webflow
-
-| Варіант | Компонент Figma | Клас Webflow |
-| --- | --- | --- |
-| Primary button | `button-primary` | [уточнити в розробників] |
-| Secondary button | `button-secondary` [звірити назву в Figma] | [уточнити в розробників] |
-| Industry button | `button-industry` | [уточнити в розробників] |
-| Link button | `button-link` [звірити назву в Figma] | [уточнити в розробників] |
-| Play button | `button-play` [звірити назву в Figma] | [уточнити в розробників] |
-| Icon-primary button | `button-icon-primary` [звірити назву в Figma] | [уточнити в розробників] |
-| Icon-secondary button | `button-icon-secondary` [звірити назву в Figma] | [уточнити в розробників] |
-| Plus button | `button-plus` [звірити назву в Figma] | [уточнити в розробників] |
-| Block buttons | `buttons-block` | [уточнити в розробників] |
-
-<Warning>
-  У змінних Figma група кнопок називається інакше, ніж компоненти: `link-button` замість `button-link` і `button-block` замість `buttons-block`. Перед підключенням токенів у Webflow звірте обидва набори назв.
-</Warning>
 
 ## Правила
 

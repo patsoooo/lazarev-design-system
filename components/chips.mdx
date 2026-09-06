@@ -1,0 +1,87 @@
+---
+title: "Chips"
+description: "Чипи: стани, токени, правила."
+---
+
+Чип — компактна пігулка для фільтра або мітки. Використовується наборами: кілька чипів стоять поруч, і користувач вмикає потрібні.
+
+Складається з лейбла та трейлінг-стрілки ↗. Форма й висота ті самі, що в [Button](/components/button), але чип завжди контурний у стані спокою.
+
+## Коли використовувати
+
+- Для фільтрів, які вмикаються й вимикаються без перезавантаження вмісту.
+- Для набору міток, з якого користувач обирає один або кілька варіантів.
+
+## Коли не використовувати
+
+- Для головної дії на екрані. Використовуйте [Button](/components/button).
+- Для перемикання розділів сторінки. Використовуйте [Tab](/components/tab).
+- Поодиноко: один чип на екрані читається як кнопка, що не спрацьовує.
+
+## Стани
+
+<div className="ds-btn-row">
+  <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-chip is-default">Chip label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-chip is-hover">Chip label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Active</span><span className="ds-chip is-active">Chip label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Inactive</span><span className="ds-chip is-inactive">Chip label</span></div>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Default | Hover | Active | Inactive |
+| --- | --- | --- | --- | --- |
+| Фон | немає | <span className="ds-sw ds-sw--action-primary" /> `chip/bg-active` | <span className="ds-sw ds-sw--action-primary" /> `chip/bg-active` | немає |
+| Колір тексту | <span className="ds-sw ds-sw--text-primary" /> `chip/text` | <span className="ds-sw ds-sw--text-inverse" /> `chip/text-active` | <span className="ds-sw ds-sw--text-inverse" /> `chip/text-active` | <span className="ds-sw ds-sw--action-inactive" /> `chip/inactive` |
+| Колір іконки | <span className="ds-sw ds-sw--icon-default" /> `chip/icon` | <span className="ds-sw ds-sw--icon-inverse" /> `chip/icon-active` | <span className="ds-sw ds-sw--icon-inverse" /> `chip/icon-active` | <span className="ds-sw ds-sw--action-inactive" /> `chip/inactive` |
+| Межа | <span className="ds-sw ds-sw--action-primary" /> `chip/border` | <span className="ds-sw ds-sw--action-primary" /> `chip/border` | <span className="ds-sw ds-sw--action-primary" /> `chip/border` | <span className="ds-sw ds-sw--border-subtle" /> `chip/border-inactive` |
+| Товщина межі | 1px | 1px | 1px | 1px |
+| Розмір тексту | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 |
+| Розмір іконки | 16px | 16px | 16px | 16px |
+| Внутрішні відступи | 16px / 12px | 16px / 12px | 16px / 12px | 16px / 12px |
+| Проміжок | 8px | 8px | 8px | 8px |
+| Заокруглення | 32px | 32px | 32px | 32px |
+| Висота | 40px | 40px | 40px | 40px |
+
+</div>
+
+<Warning>
+  Hover і Active використовують той самий токен фону `chip/bg-active` — окремого фону для Hover в експорті немає. Стани візуально нерозрізненні.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Контейнер | Пігулка з межею та внутрішніми відступами | Так |
+| Лейбл | Назва фільтра або мітки | Так |
+| Трейлінг-іконка ↗ | Праворуч від лейбла | Так |
+| Проміжок | Відстань між лейблом та іконкою | Так |
+
+## Токени
+
+<div className="ds-table">
+
+| Властивість | Токен |
+| --- | --- |
+| Внутрішні відступи | `chip/padding-x`, `chip/padding-y` |
+| Проміжок лейбл — іконка | `chip/gap` |
+| Заокруглення | `chip/radius` |
+| Висота | `chip/height` |
+| Товщина межі | `chip/border-width` |
+
+</div>
+
+## Правила
+
+<Check>
+  Ставте чипи набором. Користувач має бачити, з чого обирає.
+</Check>
+
+<Check>
+  Пишіть лейбли коротко й однією формою — одним словом або однією фразою для всього набору.
+</Check>
+
+<Warning>
+  Не змінюйте висоту чипа під довгий текст. Якщо лейбл не вміщається, скорочуйте текст, а не розтягуйте пігулку.
+</Warning>
