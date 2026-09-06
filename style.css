@@ -1,0 +1,505 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=Pragati+Narrow:wght@400;700&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap');
+
+/* ==========================================================================
+   Живі приклади кнопок для сторінки /components/button
+   --------------------------------------------------------------------------
+   Значення взяті з foundations (джерело — tokens.json, експорт Figma).
+   Імена змінних виведені з семантичних токенів:
+   semantic.color.action.primary → --color-action-primary
+   Усе, чого в експорті немає, позначено коментарем TODO.
+   ========================================================================== */
+
+:root {
+  /* --- Кольори: semantic.color.action.* --- */
+  --color-action-primary: #000000ff;           /* → primitives.color.black.1000 */
+  --color-action-primary-hover: #0f9549ff;     /* → primitives.color.green.500 */
+  --color-action-brand-pressed: #0a783aff;     /* → primitives.color.green.600 */
+  --color-action-inactive: #697382ff;          /* → primitives.color.gray.600 */
+  --color-action-inactive-content: #cdd4deff;  /* → primitives.color.gray.300 */
+  --color-action-primary-invers: #ffffffff;    /* → primitives.color.white.1000 */
+
+  /* --- Кольори: semantic.color.text.* / icon.* --- */
+  --color-text-primary: #000000ff;             /* → primitives.color.black.1000 */
+  --color-text-inverse: #ffffffff;             /* → primitives.color.white.1000 */
+  --color-icon-default: #000000ff;             /* → primitives.color.black.1000 */
+  --color-icon-inverse: #ffffffff;             /* → primitives.color.white.1000 */
+
+  /* --- Кольори: semantic.color.border.* / background.* --- */
+  --color-border-subtle: #d9d9d9ff;            /* → primitives.color.gray.200 */
+  --color-border-white-30: #ffffff4d;          /* → primitives.color.white.1000-30% */
+  --color-background-block: #ffffffff;         /* → primitives.color.white.1000 */
+  --color-background-page: #e9e9e9ff;          /* → primitives.color.gray.100 */
+
+  /* --- Стани без токена в експорті --- */
+  --color-action-secondary-pressed: #0a783aff; /* TODO: звірити з Figma — токена Secondary pressed немає */
+  --color-action-play-pressed: #ffffffff;      /* TODO: звірити з Figma — токена Play pressed немає */
+  --color-action-loading-track: #ffffff4d;     /* TODO: звірити з Figma — токена Loading немає */
+  --color-action-loading-indicator: #ffffffff; /* TODO: звірити з Figma — токена Loading немає */
+
+  /* --- Розміри: primitives.spacing.* --- */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-48: 48px;
+
+  /* --- Радіуси: primitives.radius.* --- */
+  --radius-32: 32px;
+  --radius-80: 80px;
+
+  /* --- Межі: primitives.border-width.* --- */
+  --border-width-1: 1px;
+
+  /* --- Висота: component.button.primary.height → primitives.spacing.40px --- */
+  --button-height: 40px;
+
+  /* --- Родини шрифтів: primitives.font.family.* --- */
+  /* Жоден із трьох не має кириличного набору — український текст піде у фолбек */
+  --font-pragati: "Pragati Narrow", "Arial Narrow", Arial, sans-serif;
+  --font-archivo: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-instrument: "Instrument Serif", Georgia, "Times New Roman", serif;
+
+  /* --- Ролі шрифтів: semantic.font.font-family.* --- */
+  --font-heading: var(--font-pragati);            /* h1–h4 */
+  --font-heading-small: var(--font-archivo);      /* h5–h6 */
+  --font-body: var(--font-archivo);               /* p1–p4 */
+  --font-caption-c1: var(--font-pragati);
+  --font-caption-c2: var(--font-archivo);
+  --font-article-heading: var(--font-instrument); /* article h1, quote */
+  --font-article-body: var(--font-archivo);       /* article body, lead */
+
+  /* --- Типографіка лейбла кнопки --- */
+  /* Типово Paragraph p4 — font.paragraph.p4-14: Archivo 14/16, вага 500.
+     Industry — виняток: Paragraph p3 (font.paragraph.p3-16), Archivo 16/20, вага 400.
+     У Figma це поки не токени: у component.button.* немає жодної змінної шрифту. */
+  --button-font-family: var(--font-archivo);
+  --button-font-size: 14px;
+  --button-line-height: 16px;
+  --button-font-weight: 500;
+
+  --button-font-size-lg: 16px;
+  --button-line-height-lg: 20px;
+  --button-font-weight-lg: 400;
+
+  /* --- Розмір іконок --- */
+  /* Підтверджено з дизайном; окремого токена в експорті немає */
+  --icon-size: 16px;
+
+  /* --- Висоти кнопок (підтверджено з дизайном) --- */
+  --button-height-industry: 44px;
+  --button-height-play: 28px;
+}
+
+/* ==========================================================================
+   Обгортка прикладів (оформлення демо, не токени системи)
+   ========================================================================== */
+
+/* Стани йдуть згори вниз; кнопка та її підпис — в один рядок */
+.ds-btn-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  align-items: flex-start;
+  padding: var(--spacing-16);
+  margin: var(--spacing-16) 0;
+  border-radius: var(--radius-32);
+  background: var(--color-background-page);
+}
+
+.ds-btn-row--dark {
+  background: var(--color-action-primary);
+}
+
+.dark .ds-btn-row {
+  background: #1e1e1e; /* демо-фон під темну тему Mintlify, не токен */
+}
+
+.ds-btn-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-16);
+}
+
+/* Фіксована ширина підпису вирівнює кнопки в колонку */
+.ds-btn-caption {
+  flex: none;
+  width: 88px;
+  text-align: right;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-action-inactive);
+}
+
+.ds-btn-flag {
+  font-size: 12px;
+  line-height: 16px;
+  font-style: italic;
+  color: var(--color-action-inactive);
+}
+
+.ds-btn-row--dark .ds-btn-caption,
+.ds-btn-row--dark .ds-btn-flag {
+  color: var(--color-action-inactive-content);
+}
+
+/* ==========================================================================
+   Таблиці станів: горизонтальний скрол замість переносу назв токенів
+   ========================================================================== */
+
+.ds-table {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.ds-table table {
+  font-size: 12px;
+}
+
+/* Назва токена й зразок кольору лишаються в одному рядку */
+.ds-table th,
+.ds-table td {
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Зразки кольору для таблиць станів
+   ========================================================================== */
+
+.ds-sw {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  border-radius: 3px;
+  vertical-align: -2px;
+  border: 1px solid rgba(128, 128, 128, 0.35);
+}
+
+.ds-sw--action-primary { background: var(--color-action-primary); }
+.ds-sw--action-primary-hover { background: var(--color-action-primary-hover); }
+.ds-sw--action-brand-pressed { background: var(--color-action-brand-pressed); }
+.ds-sw--action-inactive { background: var(--color-action-inactive); }
+.ds-sw--action-inactive-content { background: var(--color-action-inactive-content); }
+.ds-sw--action-primary-invers { background: var(--color-action-primary-invers); }
+.ds-sw--text-primary { background: var(--color-text-primary); }
+.ds-sw--text-inverse { background: var(--color-text-inverse); }
+.ds-sw--icon-default { background: var(--color-icon-default); }
+.ds-sw--icon-inverse { background: var(--color-icon-inverse); }
+.ds-sw--border-subtle { background: var(--color-border-subtle); }
+.ds-sw--background-block { background: var(--color-background-block); }
+
+/* Напівпрозорий токен — шахова підкладка, щоб було видно прозорість */
+.ds-sw--border-white-30 {
+  background:
+    linear-gradient(var(--color-border-white-30), var(--color-border-white-30)),
+    repeating-conic-gradient(#d8d8d8 0% 25%, #ffffff 0% 50%) 0 0 / 8px 8px;
+}
+
+/* ==========================================================================
+   Базовий клас
+   ========================================================================== */
+
+.ds-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-8);
+  box-sizing: border-box;
+  height: var(--button-height);
+  padding: 0 var(--spacing-16);
+  border: var(--border-width-1) solid transparent;
+  border-radius: var(--radius-32);
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: var(--button-line-height);
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* Трейлінг-стрілка — спільна ознака всіх текстових варіантів */
+.ds-btn::after {
+  content: "↗";
+  flex: none;
+  font-size: var(--icon-size);
+  line-height: var(--icon-size);
+}
+
+/* ==========================================================================
+   Primary
+   ========================================================================== */
+
+.ds-btn--primary {
+  background: var(--color-action-primary);
+  color: var(--color-text-inverse);
+}
+
+.ds-btn--primary.is-hover {
+  background: var(--color-action-primary-hover);
+}
+
+.ds-btn--primary.is-pressed {
+  background: var(--color-action-brand-pressed);
+}
+
+.ds-btn--primary.is-inactive {
+  background: var(--color-action-inactive);
+  color: var(--color-action-inactive-content);
+}
+
+/* ==========================================================================
+   Secondary — контурна, без заливки
+   ========================================================================== */
+
+.ds-btn--secondary {
+  background: transparent;
+  border-color: var(--color-border-subtle);
+  color: var(--color-text-primary);
+}
+
+.ds-btn--secondary.is-hover {
+  border-color: var(--color-action-primary);
+}
+
+/* Pressed використовує той самий border-hover, що й Hover */
+.ds-btn--secondary.is-pressed {
+  border-color: var(--color-action-primary);
+}
+
+.ds-btn--secondary.is-inactive {
+  border-color: var(--color-border-subtle);
+  color: var(--color-action-inactive);
+}
+
+/* ==========================================================================
+   Industry — провідна іконка зліва
+   ========================================================================== */
+
+/* Єдиний варіант із текстом 16/20 і висотою 44px */
+.ds-btn--industry {
+  background: var(--color-action-primary-invers);
+  color: var(--color-action-primary);
+  height: var(--button-height-industry);
+  padding: 0 var(--spacing-12);
+  font-size: var(--button-font-size-lg);
+  line-height: var(--button-line-height-lg);
+  font-weight: var(--button-font-weight-lg);
+}
+
+.ds-btn--industry::before {
+  content: "◻";
+  flex: none;
+  font-size: var(--icon-size);
+  line-height: var(--icon-size);
+}
+
+.ds-btn--industry.is-hover {
+  background: var(--color-action-primary-hover);
+  color: var(--color-action-primary-invers);
+}
+
+.ds-btn--industry.is-pressed {
+  background: var(--color-action-brand-pressed);
+  color: var(--color-action-primary-invers); /* TODO: звірити з Figma — токена text-pressed немає */
+}
+
+.ds-btn--industry.is-inactive {
+  background: var(--color-action-inactive);
+  color: var(--color-action-inactive-content);
+}
+
+/* ==========================================================================
+   Link — тільки текст UPPERCASE + стрілка
+   ========================================================================== */
+
+.ds-btn--link {
+  background: transparent;
+  border-color: transparent;
+  padding: 0;
+  height: auto;
+  color: var(--color-action-primary);
+  text-transform: uppercase; /* TODO: звірити з Figma — стиль тексту не визначений */
+}
+
+.ds-btn--link.is-hover {
+  color: var(--color-action-primary-hover);
+}
+
+/* ==========================================================================
+   Play — призначена для темного фону
+   ========================================================================== */
+
+.ds-btn--play {
+  background: transparent;
+  border-color: var(--color-action-primary-invers);
+  color: var(--color-action-primary-invers);
+  height: var(--button-height-play);
+  gap: var(--spacing-4);
+  padding: 0 var(--spacing-8);
+}
+
+.ds-btn--play::before {
+  content: "▶";
+  flex: none;
+  font-size: var(--icon-size);
+  line-height: var(--icon-size);
+}
+
+/* Play не має трейлінг-стрілки */
+.ds-btn--play::after {
+  content: none;
+}
+
+.ds-btn--play.is-hover {
+  background: var(--color-action-primary-invers);
+  color: var(--color-action-primary);
+}
+
+/* Pressed повторює Hover */
+.ds-btn--play.is-pressed {
+  background: var(--color-action-primary-invers);
+  color: var(--color-action-primary);
+}
+
+/* ==========================================================================
+   Іконкові — круглі, без лейбла й трейлінг-стрілки
+   ========================================================================== */
+
+/* Обидва іконкові варіанти — 40 × 40px */
+.ds-btn--icon,
+.ds-btn--icon-outline {
+  width: var(--button-height);
+  height: var(--button-height);
+  padding: 0;
+  border-radius: var(--radius-32); /* на боксі 40px обрізається до кола */
+  font-size: var(--icon-size);
+  line-height: var(--icon-size);
+  gap: 0;
+}
+
+.ds-btn--icon::after,
+.ds-btn--icon-outline::after {
+  content: none;
+}
+
+.ds-btn--icon {
+  background: var(--color-action-primary);
+  color: var(--color-icon-inverse);
+}
+
+.ds-btn--icon.is-hover {
+  background: var(--color-action-primary-hover);
+}
+
+.ds-btn--icon.is-pressed {
+  background: var(--color-action-brand-pressed);
+}
+
+.ds-btn--icon.is-inactive {
+  background: var(--color-action-inactive);
+  color: var(--color-action-inactive-content);
+}
+
+.ds-btn--icon-outline {
+  background: transparent;
+  border-color: var(--color-border-subtle);
+  color: var(--color-icon-default);
+}
+
+.ds-btn--icon-outline.is-hover {
+  border-color: var(--color-action-primary);
+}
+
+.ds-btn--icon-outline.is-pressed {
+  border-color: var(--color-action-secondary-pressed);
+  color: var(--color-action-secondary-pressed);
+}
+
+.ds-btn--icon-outline.is-inactive {
+  border-color: var(--color-border-subtle);
+  color: var(--color-action-inactive);
+}
+
+/* Варіант для темного фону: semantic.color.border.white-30% */
+.ds-btn-row--dark .ds-btn--icon-outline {
+  border-color: var(--color-border-white-30);
+  color: var(--color-icon-inverse);
+}
+
+/* ==========================================================================
+   Loading — спінер
+   ========================================================================== */
+
+.ds-btn--icon.is-loading {
+  background: var(--color-action-primary);
+  color: transparent;
+  position: relative;
+}
+
+.ds-btn--icon.is-loading::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-80);
+  border: 2px solid var(--color-action-loading-track);
+  border-top-color: var(--color-action-loading-indicator);
+  animation: ds-btn-spin 0.8s linear infinite;
+}
+
+@keyframes ds-btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-btn--icon.is-loading::before {
+    animation: none;
+  }
+}
+
+/* ==========================================================================
+   Block buttons — композит
+   ========================================================================== */
+
+.ds-btn-block {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-48);
+  box-sizing: border-box;
+  padding: var(--spacing-8) var(--spacing-8) var(--spacing-8) var(--spacing-16);
+  border-radius: var(--radius-80);
+  background: var(--color-background-block);
+  color: var(--color-text-primary);
+}
+
+.ds-btn-block__text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  font-family: var(--button-font-family);
+  font-size: var(--button-font-size);
+  line-height: 1;
+}
+
+/* ==========================================================================
+   Зразки типографіки для демонстрацій
+   Застосовуйте лише всередині прикладів — інтерфейс документації
+   лишається на шрифті Mintlify.
+   ========================================================================== */
+
+.ds-type--heading { font-family: var(--font-heading); }
+.ds-type--heading-small { font-family: var(--font-heading-small); }
+.ds-type--body { font-family: var(--font-body); }
+.ds-type--caption-c1 { font-family: var(--font-caption-c1); text-transform: uppercase; }
+.ds-type--caption-c2 { font-family: var(--font-caption-c2); }
+.ds-type--article-heading { font-family: var(--font-article-heading); }
+.ds-type--article-body { font-family: var(--font-article-body); }
+
+.ds-btn-block__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+}
