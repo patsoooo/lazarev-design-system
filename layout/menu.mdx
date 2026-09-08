@@ -1,0 +1,227 @@
+---
+title: "Menu"
+description: "Випадаюче меню хедера: колонки посилань, блок статей, обмеження."
+---
+
+Меню розкривається під [посиланням](/components/links) у хедері при наведенні. Складається з двох частин: ліворуч заголовок і колонки посилань, праворуч добірка статей.
+
+## Збірка
+
+Поки описана лише десктопна розкладка. Tablet і Mobile буде додано окремими підрозділами.
+
+### Desktop
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-menu">
+    <span className="ds-menu__main">
+      <span className="ds-menu__title">Product design for the AI era: launch new products, redesign live ones, and build interfaces that both people and AI agents can use.</span>
+      <span className="ds-menu__columns">
+        <span className="ds-menu__col">
+          <span>
+            <span className="ds-menu__caption">Programs</span>
+            <span className="ds-menu__links">
+              <span><span className="ds-menu__link-title">Product design and redesign</span><span className="ds-menu__link-desc">Redesign a live product without breaking revenue.</span></span>
+              <span><span className="ds-menu__link-title">AI product launch</span><span className="ds-menu__link-desc">From stalled pilot to a launch people adopt.</span></span>
+            </span>
+          </span>
+        </span>
+        <span className="ds-menu__col">
+          <span>
+            <span className="ds-menu__caption">Craft</span>
+            <span className="ds-menu__links">
+              <span><span className="ds-menu__link-title">Human and agent experience</span><span className="ds-menu__link-desc">Interfaces for people and AI agents.</span></span>
+              <span><span className="ds-menu__link-title">UI/UX design</span><span className="ds-menu__link-desc">Interface craft for complex products.</span></span>
+              <span><span className="ds-menu__link-title">AI UX patterns</span><span className="ds-menu__link-desc">AI patterns without a full redesign.</span></span>
+              <span><span className="ds-menu__link-title">Mobile app design</span><span className="ds-menu__link-desc">Apps designed for daily use.</span></span>
+            </span>
+          </span>
+        </span>
+        <span className="ds-menu__col">
+          <span>
+            <span className="ds-menu__caption">By business model</span>
+            <span className="ds-menu__links">
+              <span><span className="ds-menu__link-title">Product design for B2B</span><span className="ds-menu__link-desc">Stages, approach and products for B2B.</span></span>
+              <span><span className="ds-menu__link-title">Product design for B2C</span><span className="ds-menu__link-desc">Stages, approach and products for B2C.</span></span>
+            </span>
+          </span>
+          <span>
+            <span className="ds-menu__caption">Who we work with</span>
+            <span className="ds-menu__links">
+              <span><span className="ds-menu__link-title">Heads of AI product innovation</span><span className="ds-menu__link-desc">For the person whose AI bets must ship.</span></span>
+            </span>
+          </span>
+        </span>
+      </span>
+    </span>
+    <span className="ds-menu__aside">
+      <span className="ds-menu__aside-title">Latest articles</span>
+      <span className="ds-menu__articles">
+        <span className="ds-card-am">
+          <span className="ds-media" />
+          <span className="ds-card-am__title">New Milestone: Our Financial Fund Achieves Growth and Stability</span>
+          <span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span>
+        </span>
+        <span className="ds-card-am">
+          <span className="ds-media" />
+          <span className="ds-card-am__title">Empowering Communities: Impact Stories from Grand Founders</span>
+          <span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span>
+        </span>
+        <span className="ds-card-am">
+          <span className="ds-media" />
+          <span className="ds-card-am__title">New Milestone: Our Financial Fund Achieves Growth and Stability</span>
+          <span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+
+Приклад показано в проєктній ширині **1342px** — у вужчій колонці документації він прокручується вбік.
+
+## Контейнер
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `heading-menu/submenu/bg` | — |
+| Межа | <span className="ds-sw ds-sw--border-subtle" /> `heading-menu/submenu/border` | — |
+| Товщина межі | `heading-menu/submenu/border-width` | 1px |
+| Заокруглення | `heading-menu/submenu/radius` | 8px |
+| Внутрішній відступ | `heading-menu/submenu/padding` | 24px |
+
+</div>
+
+<Warning>
+  `heading-menu/submenu/padding` в експорті дорівнює **12px**, а підтверджене значення — 24px. У прикладі використано 24px. Оновіть токен у Figma.
+</Warning>
+
+## Заголовок
+
+<div className="ds-table">
+
+| Властивість | Значення |
+| --- | --- |
+| Стиль | `font.heading.h4-36` — Pragati Narrow 36 / 32 |
+| Максимальна ширина | 600px |
+| Максимум рядків | 3 |
+| Максимум символів | приблизно **150** |
+
+</div>
+
+Звідки 150. При ширині 600px і кеглі 36px кількість символів у рядку залежить від середньої ширини гліфа. Pragati Narrow — вузька гарнітура, її середній гліф займає близько 0,33em, тобто ≈12px. Виходить ≈50 символів у рядку і ≈150 на три рядки.
+
+Це збігається з макетом: приклад у ньому має 132 символи й займає рівно три рядки, тобто запас до межі ще є.
+
+<Warning>
+  Ліміт орієнтовний. Заголовок із широких літер, цифр або великих літер вичерпає ширину швидше — там межа ближча до 125 символів. Надійне правило — три рядки, а 150 символів лише орієнтир для редактора.
+</Warning>
+
+## Колонки посилань
+
+Одна, дві або три колонки однакової ширини. Колонка може містити кілька груп: заголовок і свій набір посилань.
+
+<div className="ds-table">
+
+| Властивість | Значення |
+| --- | --- |
+| Кількість колонок | 1, 2 або 3 |
+| Ширина колонок | однакова, ділиться порівну |
+| Проміжок між колонками | 32px |
+| Максимум посилань у колонці | 6 |
+| Проміжок між посиланнями | `heading-menu/submenu/menu-item-gap` — 16px |
+| Проміжок між групами в колонці | [уточнити] |
+
+</div>
+
+### Заголовок колонки
+
+<div className="ds-table">
+
+| Властивість | Значення |
+| --- | --- |
+| Стиль | `font.caption.c1-16` — Pragati Narrow 16 / 16 |
+| Накреслення | великі літери |
+| Нижній відступ | 20px |
+
+</div>
+
+Великі літери задає сам стиль: у `font.caption.c1-16` властивість `textCase` дорівнює `uppercase`. Окремо переводити текст у капс не потрібно.
+
+### Посилання
+
+<div className="ds-table">
+
+| Елемент | Стиль | Колір | Максимум рядків |
+| --- | --- | --- | --- |
+| Заголовок | `font.paragraph.p2-18` — 18 / 20 | <span className="ds-sw ds-sw--action-primary" /> `heading-menu/menu-item/text-default` | 2 |
+| Опис | `font.caption.c2-12` — 12 / 12 | <span className="ds-sw ds-sw--action-inactive" /> `heading-menu/menu-item/text-inactive` | 2 |
+
+</div>
+
+Проміжок між заголовком і описом — 4px.
+
+<Warning>
+  Ліміти в символах для посилань порахувати поки не можна: вони залежать від ширини колонки, а та — від ширини всього меню, яка не визначена. Обмеження діють у рядках: два на заголовок, два на опис.
+</Warning>
+
+## Блок статей
+
+<div className="ds-table">
+
+| Властивість | Значення |
+| --- | --- |
+| Заголовок | `font.heading.h6-20` — Archivo 20 / 24 |
+| Колір заголовка | <span className="ds-sw ds-sw--text-primary" /> `heading-menu/submenu/text` |
+| Нижній відступ заголовка | 28px |
+| Картки | [Article (menu)](/layout/card-article-menu) |
+| Максимум карток | 3 |
+| Проміжок між картками | 16px |
+| Ширина блоку | [уточнити] |
+
+</div>
+
+<Warning>
+  `heading-menu/submenu/article-gap` в експорті дорівнює **8px**, а підтверджене значення — 16px. У прикладі використано 16px.
+</Warning>
+
+<Warning>
+  Відступ 28px не належить до шкали `primitives.spacing`: там є 24 і 32, десятків із вісімкою немає. Або додайте 28px у шкалу, або вирівняйте відступ до сусіднього значення.
+</Warning>
+
+<Warning>
+  На макеті кожна картка статті має рядок категорії над заголовком — «FINANCIAL NEWS», «COMMUNITY IMPACT NEWS». У компоненті [Article (menu)](/layout/card-article-menu) такого елемента немає. Або картка складніша, ніж описано, або в меню використовується інший її варіант — [уточнити].
+</Warning>
+
+## Висота
+
+Меню не має заданої висоти. Вона визначається тим, що вище — блок статей чи колонки посилань.
+
+<div className="ds-table">
+
+| Ситуація | Що визначає висоту |
+| --- | --- |
+| Посилань мало | блок статей: заголовок плюс три картки з проміжками |
+| Посилань багато | найдовша колонка, до 6 посилань |
+
+</div>
+
+Відступ між заголовком меню й колонками — **не менше 56px**. Якщо посилань мало і ліва частина нижча за блок статей, відступ росте автоматично, притискаючи колонки до низу. Так обидві частини лишаються однакової висоти, а низ колонок вирівнюється з низом останньої картки.
+
+## Правила
+
+<Check>
+  Тримайте колонки однакової ширини незалежно від кількості посилань у них.
+</Check>
+
+<Check>
+  Не перевищуйте 6 посилань у колонці і 3 картки статей. Далі меню стає вищим за екран.
+</Check>
+
+<Warning>
+  Не залишайте заголовок меню без колонок. Порожня ліва частина робить меню несиметричним і безпідставно високим.
+</Warning>
+
+<Warning>
+  Не додавайте четверту колонку. Якщо розділів більше трьох, групуйте їх усередині колонки під окремими заголовками.
+</Warning>

@@ -24,6 +24,7 @@
   --color-icon-secondary: #697382ff;           /* → primitives.color.gray.600 */
   --color-text-primary: #000000ff;             /* → primitives.color.black.1000 */
   --color-text-inverse: #ffffffff;             /* → primitives.color.white.1000 */
+  --color-text-secondary: #697382ff;           /* → primitives.color.gray.600 */
   --color-icon-default: #000000ff;             /* → primitives.color.black.1000 */
   --color-icon-inverse: #ffffffff;             /* → primitives.color.white.1000 */
 
@@ -43,10 +44,15 @@
   --spacing-8: 8px;
   --spacing-12: 12px;
   --spacing-16: 16px;
+  --spacing-20: 20px;
   --spacing-24: 24px;
+  --spacing-28: 28px;
+  --spacing-32: 32px;
+  --spacing-56: 56px;
   --spacing-48: 48px;
 
   /* --- Радіуси: primitives.radius.* --- */
+  --radius-4: 4px;
   --radius-8: 8px;
   --radius-32: 32px;
   --radius-80: 80px;
@@ -88,6 +94,15 @@
   /* --- Розмір іконок --- */
   /* Підтверджено з дизайном; окремого токена в експорті немає */
   --icon-size: 16px;
+
+  /* --- Іконки (SVG з Figma), описані на сторінці Foundations → Icons --- */
+  --icon-caret: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M8.00373 10L5 6H11L8.00373 10Z' fill='black'/%3E%3C/svg%3E");
+  --icon-burger: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M2 3H14' stroke='black' stroke-linecap='round'/%3E%3Cpath d='M2 8H14' stroke='black' stroke-linecap='round'/%3E%3Cpath d='M2 13H14' stroke='black' stroke-linecap='round'/%3E%3C/svg%3E");
+  --icon-arrow-side: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M10 8.00373L6 5L6 11L10 8.00373Z' fill='black'/%3E %3C/svg%3E");
+  --icon-placeholder: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M2 14L14 2' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3Cpath d='M14 14L2 2' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3Crect x='1.5' y='1.5' width='13' height='13' stroke='black'/%3E %3C/svg%3E");
+  --icon-arrow-up-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M4 12L12 4' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E %3Cpath d='M4 4H12V12' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E");
+  --icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M4 11.6569L12 3.65686' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3Cpath d='M4 3.65685L12 11.6569' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E");
+  --icon-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M4 8L6.78261 11L12 5' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E");
 
   /* --- Висоти кнопок (підтверджено з дизайном) --- */
   --button-height-industry: 44px;
@@ -188,6 +203,7 @@
 .ds-sw--action-primary-invers { background: var(--color-action-primary-invers); }
 .ds-sw--text-primary { background: var(--color-text-primary); }
 .ds-sw--text-inverse { background: var(--color-text-inverse); }
+.ds-sw--text-secondary { background: var(--color-text-secondary); }
 .ds-sw--icon-default { background: var(--color-icon-default); }
 .ds-sw--icon-inverse { background: var(--color-icon-inverse); }
 .ds-sw--border-subtle { background: var(--color-border-subtle); }
@@ -230,10 +246,13 @@
 
 /* Трейлінг-стрілка — спільна ознака всіх текстових варіантів */
 .ds-btn::after {
-  content: "↗";
+  content: "";
   flex: none;
-  font-size: var(--icon-size);
-  line-height: var(--icon-size);
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background-color: currentColor;
+  -webkit-mask: var(--icon-arrow-up-right) no-repeat center / contain;
+  mask: var(--icon-arrow-up-right) no-repeat center / contain;
 }
 
 /* ==========================================================================
@@ -298,10 +317,13 @@
 }
 
 .ds-btn--industry::before {
-  content: "◻";
+  content: "";
   flex: none;
-  font-size: var(--icon-size);
-  line-height: var(--icon-size);
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background-color: currentColor;
+  -webkit-mask: var(--icon-placeholder) no-repeat center / contain;
+  mask: var(--icon-placeholder) no-repeat center / contain;
 }
 
 .ds-btn--industry.is-hover {
@@ -510,6 +532,542 @@
 }
 
 /* ==========================================================================
+   Icons — прев'ю для сторінки Foundations → Icons
+   Іконки малюються маскою, тому беруть колір тексту навколо.
+   ========================================================================== */
+
+.ds-icon-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-12);
+  margin: var(--spacing-16) 0;
+}
+
+.ds-icon-card {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  padding: var(--spacing-12) var(--spacing-16);
+  border: var(--border-width-1) solid var(--color-border-subtle);
+  border-radius: var(--radius-8);
+  font-family: var(--font-archivo);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.ds-icon {
+  display: inline-block;
+  flex: none;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.ds-icon--caret {
+  -webkit-mask-image: var(--icon-caret);
+  mask-image: var(--icon-caret);
+}
+
+.ds-icon--burger {
+  -webkit-mask-image: var(--icon-burger);
+  mask-image: var(--icon-burger);
+}
+
+.ds-icon--arrow-side {
+  -webkit-mask-image: var(--icon-arrow-side);
+  mask-image: var(--icon-arrow-side);
+}
+
+.ds-icon--placeholder {
+  -webkit-mask-image: var(--icon-placeholder);
+  mask-image: var(--icon-placeholder);
+}
+
+.ds-icon--arrow-up-right {
+  -webkit-mask-image: var(--icon-arrow-up-right);
+  mask-image: var(--icon-arrow-up-right);
+}
+
+.ds-icon--close {
+  -webkit-mask-image: var(--icon-close);
+  mask-image: var(--icon-close);
+}
+
+.ds-icon--check {
+  -webkit-mask-image: var(--icon-check);
+  mask-image: var(--icon-check);
+}
+
+/* Повороти для прев'ю: та сама іконка в різних напрямках */
+.ds-icon--rotate-180 { transform: rotate(180deg); }
+.ds-icon--rotate-270 { transform: rotate(-90deg); }
+
+/* ==========================================================================
+   Footer — десктопна розкладка
+   Три блоки один під одним, кожен на власному фоні footer/bg.
+   ========================================================================== */
+
+.ds-footer {
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  gap: var(--spacing-8);
+  width: 1342px; /* TODO: звірити з Figma — токена ширини немає */
+  font-family: var(--font-archivo);
+}
+
+.ds-footer__block {
+  box-sizing: border-box;
+  padding: var(--spacing-24);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-footer__label {
+  display: block;
+  margin-bottom: var(--spacing-12);
+  font-family: var(--font-pragati);
+  /* font.caption.c1-16 — Pragati Narrow 16/16, uppercase */
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+/* --- Верхній блок: дві рівні частини --- */
+
+.ds-footer__top {
+  display: flex;
+  gap: var(--spacing-56);
+}
+
+.ds-footer__half {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  gap: var(--spacing-56);
+}
+
+.ds-footer__address {
+  display: block;
+  font-family: var(--font-pragati);
+  /* font.heading.h2-56 — Pragati Narrow 56/48, вага 400 */
+  font-size: 56px;
+  line-height: 48px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-footer__group {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.ds-footer__socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-8);
+}
+
+/* --- Середній блок: колонки посилань --- */
+
+.ds-footer__cols {
+  display: flex;
+  gap: var(--spacing-56);
+}
+
+.ds-footer__col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+}
+
+.ds-footer__link {
+  font-family: var(--font-archivo);
+  /* font.paragraph.p4-14 — Archivo 14/16 */
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+/* --- Нижній блок --- */
+
+.ds-footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-24);
+  font-family: var(--font-archivo);
+  /* font.caption.c2-12 — Archivo 12/12 */
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+/* ==========================================================================
+   Menu — випадаюче меню хедера
+   Ліва частина тримається низу, щоб зрівнятися з висотою блоку статей.
+   ========================================================================== */
+
+.ds-menu {
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
+  gap: var(--spacing-32); /* TODO: звірити з Figma */
+  /* Проєктна ширина десктопної розкладки. У вужчій колонці документації
+     приклад не стискається, а прокручується всередині блоку. */
+  flex: none;
+  width: 1342px;
+  padding: var(--spacing-24);
+  border: var(--border-width-1) solid var(--color-border-subtle);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-menu__main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.ds-menu__title {
+  max-width: 600px;
+  font-family: var(--font-pragati);
+  /* font.heading.h4-36 — Pragati Narrow 36/32, вага 400, трекінг -0.5 */
+  font-size: 36px;
+  line-height: 32px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Мінімум 56px, далі відступ росте сам і притискає колонки до низу */
+.ds-menu__columns {
+  display: flex;
+  gap: var(--spacing-32);
+  margin-top: auto;
+  padding-top: var(--spacing-56);
+}
+
+.ds-menu__col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-32); /* TODO: звірити з Figma — проміжок між групами в колонці */
+}
+
+.ds-menu__caption {
+  /* block обов'язковий: на рядковому елементі margin-bottom не діє */
+  display: block;
+  font-family: var(--font-pragati);
+  /* font.caption.c1-16 — Pragati Narrow 16/16, uppercase */
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--color-action-inactive);
+  margin-bottom: var(--spacing-20);
+}
+
+.ds-menu__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+.ds-menu__link-title {
+  font-family: var(--font-archivo);
+  /* font.paragraph.p2-18 — Archivo 18/20 */
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-action-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ds-menu__link-desc {
+  margin-top: var(--spacing-4);
+  font-family: var(--font-archivo);
+  /* font.caption.c2-12 — Archivo 12/12 */
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  color: var(--color-action-inactive);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ds-menu__aside {
+  flex: 0 0 38%; /* TODO: звірити з Figma — ширина блоку статей */
+  display: flex;
+  flex-direction: column;
+}
+
+.ds-menu__aside-title {
+  /* працює як flex-елемент, але задаємо явно — щоб не залежало від контексту */
+  display: block;
+  margin-bottom: var(--spacing-28);
+  font-family: var(--font-archivo);
+  /* font.heading.h6-20 — Archivo 20/24, вага 500 */
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-menu__articles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+}
+
+/* ==========================================================================
+   Article (menu) — картка статті в підменю хедера
+   Заголовок обрізається на третьому рядку.
+   ========================================================================== */
+
+.ds-card-am {
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+  gap: var(--spacing-24);
+  width: 100%;
+  padding: var(--spacing-16);
+  border: var(--border-width-1) solid var(--color-border-default);
+  border-radius: var(--radius-4);
+  background: var(--color-background-block);
+}
+
+/* У картці прев'ю малюється 159 × 100 — це власне співвідношення 1.59,
+   а не пропорційне зменшення Size S (1.505). */
+.ds-card-am .ds-media {
+  flex: none;
+  width: 159px;
+  aspect-ratio: 159 / 100;
+}
+
+.ds-card-am__title {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-archivo);
+  /* font.heading.h6-20 — Archivo 20/24, вага 500, трекінг -0.5 */
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Media — заглушка зображення
+   Три розміри в співвідношенні 3:2. Шахова заливка — оформлення заглушки,
+   не токен системи.
+   ========================================================================== */
+
+.ds-media {
+  display: block;
+  max-width: 100%;
+  border-radius: var(--radius-4);
+  background: repeating-conic-gradient(#f4f4f4 0% 25%, #fbfbfb 0% 50%) 0 0 / 46px 46px;
+}
+
+.ds-media--s {
+  width: 280px;
+  aspect-ratio: 280 / 186;
+}
+
+.ds-media--m {
+  width: 388px;
+  aspect-ratio: 388 / 258;
+}
+
+.ds-media--l {
+  width: 616px;
+  aspect-ratio: 616 / 410;
+}
+
+/* ==========================================================================
+   Header — збірка: логотип, ряд посилань, кнопка
+   Власних токенів у групі heading-menu під зовнішній контейнер немає.
+   ========================================================================== */
+
+.ds-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-24);
+  width: 100%;
+  /* Проєктна ширина 1360px. У документації колонка вужча, тому приклад
+     не стискається, а прокручується всередині блоку. */
+  min-width: 1360px; /* TODO: звірити з Figma — токена ширини немає */
+}
+
+.ds-header__logo {
+  flex: none;
+  height: 32px;
+  width: auto;
+}
+
+/* Приклад на всю ширину рядка, з горизонтальним скролом, якщо не вміщається */
+.ds-btn-row--stretch {
+  align-items: stretch;
+  overflow-x: auto;
+}
+
+/* ==========================================================================
+   Header links — ряд посилань хедера
+   Контейнер описаний токенами heading-menu/header-menu.
+   ========================================================================== */
+
+.ds-header-menu {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  gap: var(--spacing-20);
+  padding: var(--spacing-12) var(--spacing-16);
+  border: var(--border-width-1) solid var(--color-border-subtle);
+  border-radius: var(--radius-4);
+  background: var(--color-background-block);
+  font-family: var(--font-archivo);
+  font-size: var(--button-font-size);
+  line-height: var(--button-line-height);
+  font-weight: var(--button-font-weight);
+  color: var(--color-action-primary);
+}
+
+/* Посилання без каретки — не розкриває меню */
+.ds-link--plain::after {
+  content: none;
+}
+
+/* ==========================================================================
+   Link — пункт навігації в хедері
+   Кольори з heading-menu/menu-item. Відступів і проміжку немає:
+   padding-x, padding-y та gap у токенах дорівнюють нулю.
+   ========================================================================== */
+
+.ds-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  height: 16px;
+  font-family: var(--font-archivo);
+  /* font.paragraph.p4-14 — 14 / 16 */
+  font-size: var(--button-font-size);
+  line-height: var(--button-line-height);
+  font-weight: var(--button-font-weight);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.ds-link::after {
+  content: "";
+  flex: none;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background-color: currentColor;
+  -webkit-mask: var(--icon-caret) no-repeat center / contain;
+  mask: var(--icon-caret) no-repeat center / contain;
+}
+
+/* У відкритому стані каретка дивиться вгору */
+.ds-link.is-active::after {
+  transform: rotate(180deg);
+}
+
+.ds-link.is-default {
+  color: var(--color-action-primary);
+}
+
+.ds-link.is-hover,
+.ds-link.is-active {
+  color: var(--color-action-brand-hover);
+}
+
+.ds-link.is-pressed {
+  color: var(--color-action-brand-pressed);
+}
+
+.ds-link.is-inactive {
+  color: var(--color-action-inactive);
+}
+
+/* ==========================================================================
+   Breadcrumbs — пункт і блок
+   Колір іконки не залежить від стану: завжди breadcrumbs-item/icon-default.
+   ========================================================================== */
+
+.ds-bc-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  padding-right: var(--spacing-8);
+  font-family: var(--font-archivo);
+  /* font.caption.c2-12 — Archivo 12/12, вага 400 */
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.ds-bc-item::after {
+  content: "";
+  flex: none;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-action-primary);
+  -webkit-mask: var(--icon-arrow-side) no-repeat center / contain;
+  mask: var(--icon-arrow-side) no-repeat center / contain;
+}
+
+.ds-bc-item.is-inactive {
+  color: var(--color-action-inactive);
+}
+
+.ds-bc-item.is-active,
+.ds-bc-item.is-hover {
+  color: var(--color-action-primary);
+}
+
+.ds-bc {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  padding: var(--spacing-8);
+}
+
+/* ==========================================================================
    Dropdown — тригер, меню, пункт меню, група
    Токени component.dropdown описують лише панель меню. Кольори тригера,
    лічильника, підсвітки рядка та контейнера групи в експорті відсутні —
@@ -523,7 +1081,8 @@
   box-sizing: border-box;
   gap: var(--spacing-8);
   height: var(--button-height);
-  padding: 0 var(--spacing-16);
+  /* 12 / 12 / 12 / 10 — лівий відступ 10px поза шкалою primitives.spacing */
+  padding: var(--spacing-12) var(--spacing-12) var(--spacing-12) 10px;
   border-radius: var(--radius-32);
   font-family: var(--button-font-family);
   font-size: var(--button-font-size);
@@ -534,19 +1093,23 @@
 }
 
 .ds-dd::after {
-  content: "▾";
+  content: "";
   flex: none;
-  font-size: var(--icon-size);
-  line-height: var(--icon-size);
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background-color: currentColor;
+  -webkit-mask: var(--icon-caret) no-repeat center / contain;
+  mask: var(--icon-caret) no-repeat center / contain;
 }
 
 .ds-dd.is-open::after {
-  content: "▴";
+  transform: rotate(180deg);
 }
 
-/* У варіанті з лічильником Hover замінює каретку на × */
+/* У варіанті з лічильником Hover замінює каретку на × — це гліф, не маска */
 .ds-dd--count.is-hover::after {
-  content: "✕";
+  -webkit-mask-image: var(--icon-close);
+  mask-image: var(--icon-close);
 }
 
 .ds-dd.is-default {
@@ -621,7 +1184,10 @@
   background: var(--color-action-bg-hover); /* TODO: звірити з Figma */
 }
 
-.ds-dd-item__box {
+/* Чекбокс — спільний компонент, описаний на сторінці Checkbox.
+   Пункт меню дропдауна використовує той самий клас. */
+
+.ds-cb {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -633,14 +1199,23 @@
   border-radius: var(--radius-8);
   color: var(--color-icon-default);
   font-size: 14px;
+  line-height: 1;
 }
 
-.ds-dd-item.is-hover .ds-dd-item__box {
+.ds-cb.is-hover,
+.ds-dd-item.is-hover .ds-cb {
   border-color: var(--color-action-primary);
 }
 
-.ds-dd-item.is-selected .ds-dd-item__box::before {
-  content: "✓";
+.ds-cb.is-checked::before,
+.ds-dd-item.is-selected .ds-cb::before {
+  content: "";
+  flex: none;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background-color: currentColor;
+  -webkit-mask: var(--icon-check) no-repeat center / contain;
+  mask: var(--icon-check) no-repeat center / contain;
 }
 
 /* --- Група дропдаунів --- */
@@ -679,10 +1254,13 @@
 }
 
 .ds-chip::after {
-  content: "↗";
+  content: "";
   flex: none;
-  font-size: var(--icon-size);
-  line-height: var(--icon-size);
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background-color: currentColor;
+  -webkit-mask: var(--icon-arrow-up-right) no-repeat center / contain;
+  mask: var(--icon-arrow-up-right) no-repeat center / contain;
 }
 
 .ds-chip.is-default {
@@ -782,10 +1360,13 @@
 }
 
 .ds-tab::before {
-  content: "◻";
+  content: "";
   flex: none;
-  font-size: var(--icon-size);
-  line-height: var(--icon-size);
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background-color: currentColor;
+  -webkit-mask: var(--icon-placeholder) no-repeat center / contain;
+  mask: var(--icon-placeholder) no-repeat center / contain;
 }
 
 .ds-tab.is-default {

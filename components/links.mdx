@@ -1,0 +1,89 @@
+---
+title: "Links"
+description: "Посилання навігації: стани, токени, правила."
+icon: "link"
+---
+
+Посилання — пункт навігації в хедері. За межами хедера не використовується.
+
+При наведенні під посиланням розкривається меню. Сам компонент меню буде описаний окремо в розділі [Layout](/layout/header).
+
+Складається з лейбла та каретки праворуч. Каретка вказує вниз у звичайному стані й вгору, коли меню відкрите.
+
+## Коли використовувати
+
+- Для пунктів головної навігації в хедері.
+- Коли пункт розкриває меню з підрозділами.
+
+## Коли не використовувати
+
+- Будь-де поза хедером. Для посилань у тексті використовуйте звичайне текстове посилання, для дій — [Button](/components/button).
+- Для перемикання вмісту всередині сторінки. Використовуйте [Tab](/components/tab).
+
+## Стани
+
+<div className="ds-btn-row ds-btn-row--plain">
+  <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-link is-default">Label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-link is-hover">Label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Pressed</span><span className="ds-link is-pressed">Label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Active</span><span className="ds-link is-active">Label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Inactive</span><span className="ds-link is-inactive">Label</span></div>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Default | Hover | Pressed | Active | Inactive |
+| --- | --- | --- | --- | --- | --- |
+| Колір тексту | <span className="ds-sw ds-sw--action-primary" /> `heading-menu/menu-item/text-default` | <span className="ds-sw ds-sw--action-brand-hover" /> `heading-menu/menu-item/text-hover` | <span className="ds-sw ds-sw--action-brand-pressed" /> `heading-menu/menu-item/text-pressed` | <span className="ds-sw ds-sw--action-brand-hover" /> `heading-menu/menu-item/text-active` | <span className="ds-sw ds-sw--action-inactive" /> `heading-menu/menu-item/text-inactive` |
+| Колір іконки | <span className="ds-sw ds-sw--action-primary" /> `heading-menu/menu-item/icon-default` | <span className="ds-sw ds-sw--action-brand-hover" /> `heading-menu/menu-item/icon-hover` | <span className="ds-sw ds-sw--action-brand-pressed" /> `heading-menu/menu-item/icon-pressed` | <span className="ds-sw ds-sw--action-brand-hover" /> `heading-menu/menu-item/icon-active` | <span className="ds-sw ds-sw--action-inactive" /> `heading-menu/menu-item/icon-inactive` |
+| Каретка | ▼ вниз | ▼ вниз | ▼ вниз | ▲ вгору | ▼ вниз |
+| Фон | немає | немає | немає | немає | немає |
+| Межа | — | — | — | — | — |
+| Розмір тексту | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 |
+| Розмір іконки | 16px | 16px | 16px | 16px | 16px |
+| Внутрішні відступи | 0 | 0 | 0 | 0 | 0 |
+| Проміжок текст — іконка | 0 | 0 | 0 | 0 | 0 |
+| Висота | 16px | 16px | 16px | 16px | 16px |
+
+</div>
+
+<Warning>
+  Hover і Active використовують той самий колір — обидва `action.brand-hover`. Відрізнити відкритий пункт від того, що під курсором, можна лише за напрямком каретки.
+</Warning>
+
+<Warning>
+  Відступи, проміжок і висота дорівнюють нулю та 16px відповідно, тобто клікабельна зона точно збігається з текстом. Для навігації в хедері це замало — особливо на дотику. Перевірте, чи не потрібна більша зона натискання.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Лейбл | Назва розділу | Так |
+| Каретка | ▼ коли меню закрите, ▲ коли відкрите | Так |
+
+## Токени
+
+<div className="ds-table">
+
+| Властивість | Токен |
+| --- | --- |
+| Висота | `heading-menu/menu-item/height` |
+| Внутрішні відступи | `heading-menu/menu-item/padding-x`, `heading-menu/menu-item/padding-y` |
+| Проміжок | `heading-menu/menu-item/gap` |
+
+</div>
+
+## Правила
+
+<Check>
+  Тримайте каретку синхронною з меню: ▼ коли закрите, ▲ коли відкрите. Це єдина ознака, що відрізняє Active від Hover.
+</Check>
+
+<Check>
+  Пишіть лейбли одним-двома словами. Довгі назви розсувають хедер і ламають ряд.
+</Check>
+
+<Warning>
+  Не використовуйте цей компонент поза хедером. Його стани прив'язані до токенів `heading-menu`, і в іншому контексті вони втрачають зміст.
+</Warning>

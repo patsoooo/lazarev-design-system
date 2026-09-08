@@ -1,0 +1,90 @@
+---
+title: "Header links"
+description: "Ряд посилань хедера: десктоп, планшет, мобільний."
+---
+
+Ряд навігаційних посилань у хедері. Той самий компонент має три вигляди залежно від ширини екрана: повний ряд на десктопі, кнопка «Menu» на планшеті, сама лише іконка на мобільному.
+
+Кожне посилання всередині — це [Links](/components/links) з розділу Components. Іконка на планшеті та мобільному — `burger-menu` з [Icons](/foundations/icons).
+
+## Desktop
+
+Повний ряд посилань. Ті, що розкривають меню, мають каретку; решта — звичайні переходи.
+
+<div className="ds-btn-row">
+  <span className="ds-header-menu">
+    <span className="ds-link is-default">Product design</span>
+    <span className="ds-link is-default">Agentic websites</span>
+    <span className="ds-link is-default">AI visibility</span>
+    <span className="ds-link ds-link--plain is-default">Outcomes</span>
+    <span className="ds-link ds-link--plain is-default">Cases studies</span>
+    <span className="ds-link is-default">About us</span>
+  </span>
+</div>
+
+## Tablet
+
+Посилання згортаються в одну кнопку з лейблом і іконкою.
+
+<div className="ds-btn-row">
+  <span className="ds-header-menu">
+    Menu
+    <span className="ds-icon ds-icon--burger" />
+  </span>
+</div>
+
+## Mobile
+
+Лишається сама іконка.
+
+<div className="ds-btn-row">
+  <span className="ds-header-menu">
+    <span className="ds-icon ds-icon--burger" />
+  </span>
+</div>
+
+## Контейнер
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `heading-menu/header-menu/bg-default` | — |
+| Межа | <span className="ds-sw ds-sw--border-subtle" /> `heading-menu/header-menu/border` | — |
+| Товщина межі | `heading-menu/header-menu/border-width` | 1px |
+| Заокруглення | `heading-menu/header-menu/radius` | 4px |
+| Внутрішні відступи | `heading-menu/header-menu/padding-y`, `heading-menu/header-menu/padding-x` | 12px / 16px |
+| Проміжок між посиланнями | `heading-menu/header-menu/gap` | 20px |
+
+</div>
+
+<Warning>
+  `heading-menu/header-menu/gap` в експорті дорівнює **16px**, а підтверджене значення — 20px. У прикладах вище використано 20px. Оновіть токен у Figma.
+</Warning>
+
+<Warning>
+  Брейкпоінтів, на яких ряд перемикається на «Menu» і далі на саму іконку, у токенах немає — [уточнити]. Це та сама дірка, що й у [Header](/layout/header): в експорті немає жодного брейкпоінта.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Контейнер | Прямокутник із межею та заокругленням 4px | Так |
+| Посилання | [Links](/components/links), з кареткою або без | Лише на десктопі |
+| Лейбл «Menu» | Підпис кнопки згорнутого меню | Лише на планшеті |
+| Іконка burger-menu | Виклик мобільного меню | На планшеті та мобільному |
+
+## Правила
+
+<Check>
+  Ставте каретку лише тим посиланням, які справді розкривають меню. Для звичайного переходу вона зайва.
+</Check>
+
+<Check>
+  Тримайте ряд в одну лінію. Якщо посилання перестають вміщатися, переходьте на вигляд «Menu», а не переносьте на другий рядок.
+</Check>
+
+<Warning>
+  Не змінюйте порядок посилань між брейкпоінтами. У згорнутому меню він має лишатися тим самим, що й на десктопі.
+</Warning>

@@ -1,6 +1,7 @@
 ---
 title: "Button"
 description: "Кнопки: варіанти, стани, правила."
+icon: "hand-pointer"
 ---
 
 Кнопка — основний елемент дії. Усі варіанти мають форму-пігулку та лейбл із трейлінг-іконкою ↗ праворуч. Виняток — іконкові варіанти, у яких лейбла немає взагалі.
@@ -155,11 +156,11 @@ description: "Кнопки: варіанти, стани, правила."
 ## Icon-primary button
 
 <div className="ds-btn-row">
-  <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-btn ds-btn--icon is-default">↗</span></div>
-  <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-btn ds-btn--icon is-hover">↗</span></div>
-  <div className="ds-btn-item"><span className="ds-btn-caption">Pressed</span><span className="ds-btn ds-btn--icon is-pressed">↗</span></div>
-  <div className="ds-btn-item"><span className="ds-btn-caption">Inactive</span><span className="ds-btn ds-btn--icon is-inactive">↗</span></div>
-  <div className="ds-btn-item"><span className="ds-btn-caption">Loading</span><span className="ds-btn ds-btn--icon is-loading">↗</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-btn ds-btn--icon is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-btn ds-btn--icon is-hover"><span className="ds-icon ds-icon--arrow-up-right" /></span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Pressed</span><span className="ds-btn ds-btn--icon is-pressed"><span className="ds-icon ds-icon--arrow-up-right" /></span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Inactive</span><span className="ds-btn ds-btn--icon is-inactive"><span className="ds-icon ds-icon--arrow-up-right" /></span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Loading</span><span className="ds-btn ds-btn--icon is-loading"><span className="ds-icon ds-icon--arrow-up-right" /></span></div>
 </div>
 
 <div className="ds-table">
@@ -179,10 +180,10 @@ description: "Кнопки: варіанти, стани, правила."
 ## Icon-secondary button
 
 <div className="ds-btn-row">
-  <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-btn ds-btn--icon-outline is-default">◻</span></div>
-  <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-btn ds-btn--icon-outline is-hover">◻</span></div>
-  <div className="ds-btn-item"><span className="ds-btn-caption">Pressed</span><span className="ds-btn ds-btn--icon-outline is-pressed">◻</span></div>
-  <div className="ds-btn-item"><span className="ds-btn-caption">Inactive</span><span className="ds-btn ds-btn--icon-outline is-inactive">◻</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--placeholder" /></span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-btn ds-btn--icon-outline is-hover"><span className="ds-icon ds-icon--placeholder" /></span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Pressed</span><span className="ds-btn ds-btn--icon-outline is-pressed"><span className="ds-icon ds-icon--placeholder" /></span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Inactive</span><span className="ds-btn ds-btn--icon-outline is-inactive"><span className="ds-icon ds-icon--placeholder" /></span></div>
 </div>
 
 <div className="ds-table">
@@ -203,7 +204,7 @@ description: "Кнопки: варіанти, стани, правила."
 На темному фоні межа — <span className="ds-sw ds-sw--border-white-30" /> `button/button-icon-secondary/border-inverse`.
 
 <div className="ds-btn-row ds-btn-row--dark">
-  <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-btn ds-btn--icon-outline is-default">◻</span><span className="ds-btn-flag">на темному фоні</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--placeholder" /></span><span className="ds-btn-flag">на темному фоні</span></div>
 </div>
 
 ## Plus button
@@ -211,9 +212,9 @@ description: "Кнопки: варіанти, стани, правила."
 <div className="ds-btn-row">
   <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-btn ds-btn--plus is-default">+</span></div>
   <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-btn ds-btn--plus is-hover">+</span></div>
-  <div className="ds-btn-item"><span className="ds-btn-caption">Pressed</span><span className="ds-btn ds-btn--plus is-pressed">×</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Pressed</span><span className="ds-btn ds-btn--plus is-pressed"><span className="ds-icon ds-icon--close" /></span></div>
   <div className="ds-btn-item"><span className="ds-btn-caption">Inactive</span><span className="ds-btn ds-btn--plus is-inactive">+</span></div>
-  <div className="ds-btn-item"><span className="ds-btn-caption">Close</span><span className="ds-btn ds-btn--plus is-close">×</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Close</span><span className="ds-btn ds-btn--plus is-close"><span className="ds-icon ds-icon--close" /></span></div>
 </div>
 
 <div className="ds-table">

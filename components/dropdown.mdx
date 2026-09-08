@@ -1,6 +1,7 @@
 ---
 title: "Dropdown"
 description: "Дропдаун: тригер, меню, пункти, група, токени, правила."
+icon: "square-caret-down"
 ---
 
 Дропдаун відкриває список опцій, з якого користувач обирає одну або кілька. Використовується для фільтрів.
@@ -8,7 +9,11 @@ description: "Дропдаун: тригер, меню, пункти, група
 Складається з тригера-пігулки та панелі меню з пунктами-чекбоксами. Тригер може показувати лічильник обраних опцій.
 
 <Warning>
-  У Figma група `component.dropdown` містить лише сім токенів, і всі вони описують **панель меню**. Для тригера, лічильника, підсвітки рядка та контейнера групи токенів немає — у прикладах нижче ці значення тимчасові, зчитані з макета, і позначені `[уточнити]`.
+  Імена токенів тригера наведені зі слів дизайну і **не перевірені**: у `tokens.json` групи `dropdown/dropdown` немає. Той експорт зроблено 30 серпня і він містить лише сім пласких токенів `dropdown/*`, які описують панель меню. Потрібен свіжий експорт Variables з Figma — після нього імена на цій сторінці треба звірити ще раз.
+</Warning>
+
+<Warning>
+  Для стану Open, Disabled, лічильника, підсвітки рядка та контейнера групи імен токенів немає — вони позначені `[уточнити]`, а значення в прикладах тимчасові й зчитані з макета.
 </Warning>
 
 ## Коли використовувати
@@ -34,13 +39,14 @@ description: "Дропдаун: тригер, меню, пункти, група
 
 | Властивість | Default | Hover | Open | Disabled |
 | --- | --- | --- | --- | --- |
-| Фон | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
-| Колір тексту | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
-| Колір каретки | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
+| Фон | `dropdown/dropdown/bg-default` | `dropdown/dropdown/bg-hover` | [уточнити] | [уточнити] |
+| Колір тексту | `dropdown/dropdown/text-default` | `dropdown/dropdown/text-hover` | [уточнити] | [уточнити] |
+| Колір іконки | `dropdown/dropdown/icon-default` | `dropdown/dropdown/icon-hover` | [уточнити] | [уточнити] |
 | Каретка | ▾ вниз | ▾ вниз | ▴ вгору | ▾ вниз |
-| Розмір тексту | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
-| Заокруглення | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
-| Висота | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
+| Розмір тексту | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 |
+| Внутрішні відступи | 12 / 12 / 12 / 10px | 12 / 12 / 12 / 10px | 12 / 12 / 12 / 10px | 12 / 12 / 12 / 10px |
+| Заокруглення | 32px | 32px | 32px | 32px |
+| Висота | 40px | 40px | 40px | 40px |
 
 </div>
 
@@ -66,11 +72,11 @@ description: "Дропдаун: тригер, меню, пункти, група
 <div className="ds-btn-row">
   <span className="ds-dd-menu">
     <span className="ds-dd-menu__list">
-      <span className="ds-dd-item"><span className="ds-dd-item__box" />Item label</span>
-      <span className="ds-dd-item"><span className="ds-dd-item__box" />Item label</span>
-      <span className="ds-dd-item is-selected"><span className="ds-dd-item__box" />Item label</span>
-      <span className="ds-dd-item is-hover"><span className="ds-dd-item__box" />Item label</span>
-      <span className="ds-dd-item"><span className="ds-dd-item__box" />Item label</span>
+      <span className="ds-dd-item"><span className="ds-cb" />Item label</span>
+      <span className="ds-dd-item"><span className="ds-cb" />Item label</span>
+      <span className="ds-dd-item is-selected"><span className="ds-cb" />Item label</span>
+      <span className="ds-dd-item is-hover"><span className="ds-cb" />Item label</span>
+      <span className="ds-dd-item"><span className="ds-cb" />Item label</span>
     </span>
   </span>
 </div>
@@ -99,10 +105,10 @@ description: "Дропдаун: тригер, меню, пункти, група
 Рядок із чекбоксом. Має два незалежні виміри: наведення та вибір.
 
 <div className="ds-btn-row ds-btn-row--plain">
-  <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-dd-item"><span className="ds-dd-item__box" />Item label</span></div>
-  <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-dd-item is-hover"><span className="ds-dd-item__box" />Item label</span></div>
-  <div className="ds-btn-item"><span className="ds-btn-caption">Обрано</span><span className="ds-dd-item is-selected"><span className="ds-dd-item__box" />Item label</span></div>
-  <div className="ds-btn-item"><span className="ds-btn-caption">Обрано + Hover</span><span className="ds-dd-item is-hover is-selected"><span className="ds-dd-item__box" />Item label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-dd-item"><span className="ds-cb" />Item label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-dd-item is-hover"><span className="ds-cb" />Item label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Обрано</span><span className="ds-dd-item is-selected"><span className="ds-cb" />Item label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Обрано + Hover</span><span className="ds-dd-item is-hover is-selected"><span className="ds-cb" />Item label</span></div>
 </div>
 
 <div className="ds-table">

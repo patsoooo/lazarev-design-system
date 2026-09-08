@@ -1,0 +1,106 @@
+---
+title: "Breadcrumbs"
+description: "Хлібні крихти: стани пункту, блок, токени, правила."
+icon: "angles-right"
+---
+
+Хлібні крихти показують, де користувач перебуває в структурі сайту, і дають повернутися на рівень вище.
+
+Складаються з пунктів, розділених трикутною іконкою ▶. Кожен пункт — це посилання, крім останнього.
+
+## Коли використовувати
+
+- На сторінках, вкладених глибше за перший рівень.
+- Коли користувач може прийти на сторінку з пошуку й не бачити шляху, яким сюди потрапив.
+
+## Коли не використовувати
+
+- На головній сторінці та сторінках першого рівня.
+- Замість основної навігації.
+
+## Стани пункту
+
+<div className="ds-btn-row ds-btn-row--plain">
+  <div className="ds-btn-item"><span className="ds-btn-caption">Inactive</span><span className="ds-bc-item is-inactive">label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Active</span><span className="ds-bc-item is-active">label</span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-bc-item is-hover">label</span></div>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Inactive | Active | Hover |
+| --- | --- | --- | --- |
+| Колір тексту | <span className="ds-sw ds-sw--action-inactive" /> `breadcrumbs-item/text-inactive` | <span className="ds-sw ds-sw--action-primary" /> `breadcrumbs-item/text-active` | <span className="ds-sw ds-sw--action-primary" /> `breadcrumbs-item/text-hover` |
+| Колір іконки | <span className="ds-sw ds-sw--action-primary" /> `breadcrumbs-item/icon-default` | <span className="ds-sw ds-sw--action-primary" /> `breadcrumbs-item/icon-default` | <span className="ds-sw ds-sw--action-primary" /> `breadcrumbs-item/icon-default` |
+| Фон | немає | немає | немає |
+| Межа | — | — | — |
+| Розмір тексту | `font.caption.c2-12` — 12 / 12 | `font.caption.c2-12` — 12 / 12 | `font.caption.c2-12` — 12 / 12 |
+| Розмір іконки | 12px | 12px | 12px |
+| Відступ справа | `breadcrumbs-item/padding` — 8px | `breadcrumbs-item/padding` — 8px | `breadcrumbs-item/padding` — 8px |
+| Проміжок текст — іконка | `breadcrumbs-item/gap` — 8px | `breadcrumbs-item/gap` — 8px | `breadcrumbs-item/gap` — 8px |
+
+</div>
+
+Колір іконки один для всіх станів. Навіть у неактивному пункті, де текст сірий, трикутник лишається чорним.
+
+## Блок
+
+<div className="ds-btn-row ds-btn-row--plain">
+  <span className="ds-bc">
+    <span className="ds-bc-item is-inactive">label</span>
+    <span className="ds-bc-item is-inactive">label</span>
+    <span className="ds-bc-item is-inactive">label</span>
+    <span className="ds-bc-item is-active">label</span>
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Внутрішній відступ | [уточнити] | 8px |
+| Проміжок між пунктами | [уточнити] | 8px |
+| Фон | немає | — |
+
+</div>
+
+<Warning>
+  Групи `breadcrumbs-block` в експорті немає — є лише `breadcrumbs-item`. Значення 8px підтверджені з дизайном, але імен токенів під них немає. Або заведіть групу у Figma, або зафіксуйте, що блок використовує `breadcrumbs-item/padding` та `breadcrumbs-item/gap`.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Пункт | Лейбл із роздільником | Так |
+| Лейбл | Назва розділу або сторінки | Так |
+| Роздільник ▶ | Трикутник праворуч від лейбла | Так |
+
+## Токени
+
+<div className="ds-table">
+
+| Властивість | Токен |
+| --- | --- |
+| Текст, неактивний | `breadcrumbs-item/text-inactive` |
+| Текст, активний | `breadcrumbs-item/text-active` |
+| Текст на Hover | `breadcrumbs-item/text-hover` |
+| Іконка | `breadcrumbs-item/icon-default` |
+| Відступ справа | `breadcrumbs-item/padding` |
+| Проміжок | `breadcrumbs-item/gap` |
+
+</div>
+
+## Правила
+
+<Check>
+  Робіть останній пункт неклікабельним. Це поточна сторінка, і посилання на саму себе збиває.
+</Check>
+
+<Check>
+  Скорочуйте довгі назви до кількох слів. Крихти мають вміщатися в один рядок.
+</Check>
+
+<Warning>
+  Не дублюйте крихтами заголовок сторінки. Вони показують шлях, а не назву.
+</Warning>

@@ -1,0 +1,91 @@
+---
+title: "Checkbox"
+description: "Чекбокс: стани, токени, правила."
+icon: "square-check"
+---
+
+Чекбокс вмикає або вимикає окремий пункт. На відміну від [Toggle](/components/toggle), зміна зазвичай застосовується не одразу, а після підтвердження форми.
+
+Має два незалежні виміри: **вибір** (Unchecked або Checked) і **наведення** (Default або Hover). Тому станів чотири.
+
+Той самий елемент використовується як пункт списку в [Dropdown](/components/dropdown).
+
+## Коли використовувати
+
+- Для набору незалежних пунктів, з яких можна обрати кілька.
+- Для згоди з умовою перед відправленням форми.
+
+## Коли не використовувати
+
+- Для налаштування, яке застосовується миттєво. Використовуйте [Toggle](/components/toggle).
+- Для вибору одного варіанта з кількох взаємовиключних.
+
+## Стани
+
+<div className="ds-btn-row ds-btn-row--plain">
+  <div className="ds-btn-item"><span className="ds-btn-caption">Unchecked</span><span className="ds-cb" /></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Checked</span><span className="ds-cb is-checked" /></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Unchecked · Hover</span><span className="ds-cb is-hover" /></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Checked · Hover</span><span className="ds-cb is-hover is-checked" /></div>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Unchecked | Checked | Unchecked · Hover | Checked · Hover |
+| --- | --- | --- | --- | --- |
+| Межа | <span className="ds-sw ds-sw--border-subtle" /> `checkbox/border` | <span className="ds-sw ds-sw--border-subtle" /> `checkbox/border` | <span className="ds-sw ds-sw--action-primary" /> `checkbox/border-hover` | <span className="ds-sw ds-sw--action-primary" /> `checkbox/border-hover` |
+| Товщина межі | `checkbox/border-width` — 1px | `checkbox/border-width` — 1px | `checkbox/border-width` — 1px | `checkbox/border-width` — 1px |
+| Фон | немає | немає | немає | немає |
+| Галочка | немає | <span className="ds-sw ds-sw--icon-default" /> `checkbox/check-icon` | немає | <span className="ds-sw ds-sw--icon-default" /> `checkbox/check-icon` |
+| Заокруглення | `checkbox/radius` — 8px | `checkbox/radius` — 8px | `checkbox/radius` — 8px | `checkbox/radius` — 8px |
+| Розмір | [уточнити] | [уточнити] | [уточнити] | [уточнити] |
+
+</div>
+
+<Warning>
+  На макеті межа в стані Hover виглядає товщою за межу в Default, але токен `checkbox/border-width` один і дорівнює 1px. Або товщина однакова і різницю створює лише колір, або потрібен окремий токен — [уточнити].
+</Warning>
+
+<Warning>
+  Розміру чекбокса в експорті немає. У прикладах вище він тимчасовий.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Контейнер | Квадрат із заокругленням і межею | Так |
+| Галочка | З'являється у стані Checked | Лише коли обрано |
+| Лейбл | Текст поруч із чекбоксом | Залежить від контексту |
+
+## Токени
+
+<div className="ds-table">
+
+| Властивість | Токен |
+| --- | --- |
+| Межа | `checkbox/border` |
+| Межа на Hover | `checkbox/border-hover` |
+| Товщина межі | `checkbox/border-width` |
+| Заокруглення | `checkbox/radius` |
+| Колір галочки | `checkbox/check-icon` |
+
+</div>
+
+<Warning>
+  Група `component.checkbox` містить лише ці п'ять токенів. Стани Disabled, Focus та Indeterminate не описані — [уточнити], чи вони потрібні.
+</Warning>
+
+## Правила
+
+<Check>
+  Робіть клікабельним і чекбокс, і його лейбл. Ціль розміром у 24px замала для впевненого влучання.
+</Check>
+
+<Check>
+  Формулюйте лейбл ствердно, щоб позначка означала «так». «Надсилати листи», а не «Не надсилати листи».
+</Check>
+
+<Warning>
+  Не використовуйте чекбокс для взаємовиключного вибору. Якщо варіант може бути лише один, чекбокси вводять в оману.
+</Warning>

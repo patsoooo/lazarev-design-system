@@ -1,0 +1,217 @@
+---
+title: "Footer"
+description: "Футер: блоки, колонки посилань, токени."
+icon: "grip-lines"
+---
+
+Футер — нижня частина сторінки. Складається з трьох блоків один під одним: контакти, перелік послуг, правовий рядок. Кожен блок лежить на власному фоні із заокругленням.
+
+## Збірка
+
+Поки описана лише десктопна розкладка. Tablet і Mobile буде додано окремими підрозділами.
+
+### Desktop
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-footer">
+    <span className="ds-footer__block ds-footer__top">
+      <span className="ds-footer__half">
+        <span className="ds-footer__group">
+          <span className="ds-footer__label">Our location:</span>
+          <span className="ds-footer__address">1300 W El Camino Real #100, Mountain View, CA 94040</span>
+        </span>
+      </span>
+      <span className="ds-footer__half">
+        <span className="ds-footer__group">
+          <span className="ds-footer__label">Let's connect:</span>
+          <span className="ds-btn ds-btn--primary is-default">Check our latest deck</span>
+        </span>
+        <span className="ds-footer__group">
+          <span className="ds-footer__label">Join us on social media</span>
+          <span className="ds-footer__socials">
+            <span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--placeholder" /></span>
+            <span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--placeholder" /></span>
+            <span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--placeholder" /></span>
+            <span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--placeholder" /></span>
+            <span className="ds-btn ds-btn--secondary is-default">Prefer us on Google</span>
+          </span>
+        </span>
+      </span>
+    </span>
+    <span className="ds-footer__block">
+      <span className="ds-footer__label">Services:</span>
+      <span className="ds-footer__cols">
+        <span className="ds-footer__col">
+          <span className="ds-footer__link">Product design for B2C</span>
+          <span className="ds-footer__link">Human and agent experience design</span>
+          <span className="ds-footer__link">Inbound AI traffic</span>
+          <span className="ds-footer__link">Storytelling websites</span>
+          <span className="ds-footer__link">Digital transformation services</span>
+          <span className="ds-footer__link">AI chatbot development service</span>
+        </span>
+        <span className="ds-footer__col">
+          <span className="ds-footer__link">Product design for B2B</span>
+          <span className="ds-footer__link">Continuous demand generation from SEO and AI</span>
+          <span className="ds-footer__link">Agentic website</span>
+          <span className="ds-footer__link">AEO discovery</span>
+          <span className="ds-footer__link">UI UX consulting</span>
+          <span className="ds-footer__link">UX research</span>
+        </span>
+        <span className="ds-footer__col">
+          <span className="ds-footer__link">Web development</span>
+          <span className="ds-footer__link">AI visibility audit</span>
+          <span className="ds-footer__link">AEO strategy</span>
+          <span className="ds-footer__link">Product redesign</span>
+          <span className="ds-footer__link">Generative AI consulting</span>
+          <span className="ds-footer__link">Agentic AI services</span>
+        </span>
+        <span className="ds-footer__col">
+          <span className="ds-footer__link">Web design</span>
+          <span className="ds-footer__link">Our approach to SEO and AEO</span>
+          <span className="ds-footer__link">Legacy migration</span>
+          <span className="ds-footer__link">B2B web design agency</span>
+          <span className="ds-footer__link">AI consulting services</span>
+          <span className="ds-footer__link">UI UX design services</span>
+        </span>
+      </span>
+    </span>
+    <span className="ds-footer__block ds-footer__bottom">
+      <span>©2026 Lazarev | All rights reserved</span>
+      <span>Cookie Settings | Privacy Policy | Terms of use</span>
+    </span>
+  </span>
+</div>
+
+Приклад показано в проєктній ширині **1342px** — у вужчій колонці документації він прокручується вбік.
+
+## Структура
+
+<div className="ds-table">
+
+| Блок | Склад |
+| --- | --- |
+| Верхній | Дві рівні частини: ліворуч адреса, праворуч кнопки й соцмережі |
+| Середній | Перелік послуг у чотирьох колонках однакової ширини |
+| Нижній | Копірайт ліворуч, правові посилання праворуч |
+
+</div>
+
+## Спільне для блоків
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `footer/bg` | — |
+| Заокруглення | `footer/radius` | 8px |
+| Внутрішній відступ | `footer/padding` | 24px |
+| Проміжок між блоками | `footer/gap` | 8px |
+| Ширина | [уточнити] | 1342px |
+
+</div>
+
+<Warning>
+  `footer/padding` в експорті дорівнює **16px**, а підтверджене значення — 24px. У прикладі використано 24px. Оновіть токен у Figma.
+</Warning>
+
+<Warning>
+  `footer/radius` посилається на `primitives.spacing.8px` замість `primitives.radius.8px`. Це та сама помилка прив'язки, що вже є в кнопках, пагінації та зображеннях.
+</Warning>
+
+## Лейбли
+
+Усі лейбли в футері однакові — «Our location:», «Let's connect:», «Join us on social media», «Services:».
+
+<div className="ds-table">
+
+| Властивість | Значення |
+| --- | --- |
+| Стиль | `font.caption.c1-16` — Pragati Narrow 16 / 16 |
+| Накреслення | великі літери |
+| Колір | <span className="ds-sw ds-sw--text-secondary" /> `footer/text-secondary` |
+
+</div>
+
+Великі літери задає сам стиль: у `font.caption.c1-16` властивість `textCase` дорівнює `uppercase`.
+
+## Верхній блок
+
+Ділиться на дві рівні частини. Ліворуч лейбл і адреса, праворуч дві групи з кнопками.
+
+<div className="ds-table">
+
+| Елемент | Стиль або компонент | Колір |
+| --- | --- | --- |
+| Адреса | `font.heading.h2-56` — Pragati Narrow 56 / 48 | <span className="ds-sw ds-sw--text-primary" /> `footer/text` |
+| «Check our latest deck» | Primary button з [Button](/components/button) | — |
+| Соцмережі | Icon-secondary button | — |
+| «Prefer us on Google» | Secondary button | — |
+
+</div>
+
+<Warning>
+  Іконок соцмереж — Instagram, LinkedIn, Dribbble, Facebook — і логотипа Google в наборі [Icons](/foundations/icons) немає. У прикладі вони замінені на `placeholder`, а кнопка Google показана зі стандартною трейлінг-стрілкою замість логотипа. Дайте SVG — підставлю.
+</Warning>
+
+## Середній блок
+
+<div className="ds-table">
+
+| Властивість | Значення |
+| --- | --- |
+| Кількість колонок | 4, однакової ширини |
+| Проміжок між колонками | 56px |
+| Стиль посилання | `font.paragraph.p4-14` — Archivo 14 / 16 |
+| Колір посилання | <span className="ds-sw ds-sw--text-primary" /> `footer/text` |
+| Проміжок між посиланнями | 12px |
+
+</div>
+
+<Warning>
+  Ви записали стиль посилань як «p14-16». Я зрозумів це як `font.paragraph.p4-14`, тобто 14 / 16 — інших стилів із такими числами в системі немає. Якщо малось на увазі щось інше, скажіть.
+</Warning>
+
+## Нижній блок
+
+<div className="ds-table">
+
+| Властивість | Значення |
+| --- | --- |
+| Стиль | `font.caption.c2-12` — Archivo 12 / 12 |
+| Колір | <span className="ds-sw ds-sw--text-primary" /> `footer/text` |
+| Розкладка | копірайт ліворуч, правові посилання праворуч |
+
+</div>
+
+## Токени
+
+<div className="ds-table">
+
+| Властивість | Токен |
+| --- | --- |
+| Фон блоку | `footer/bg` |
+| Основний текст | `footer/text` |
+| Другорядний текст | `footer/text-secondary` |
+| Заокруглення | `footer/radius` |
+| Внутрішній відступ | `footer/padding` |
+| Проміжок | `footer/gap` |
+
+</div>
+
+<Warning>
+  Група `component.footer` містить лише шість токенів. Ширина футера, проміжок між колонками, проміжок між посиланнями й відступ під лейблом імен не мають — усі ці значення живуть тільки в цій документації.
+</Warning>
+
+## Правила
+
+<Check>
+  Тримайте колонки послуг однакової ширини незалежно від кількості посилань у них.
+</Check>
+
+<Check>
+  Використовуйте той самий стиль лейбла в усіх блоках. Це єдиний елемент, що зв'язує три блоки візуально.
+</Check>
+
+<Warning>
+  Не додавайте п'яту колонку послуг. При ширині 1342px і проміжку 56px колонка стане завузькою для двослівних назв.
+</Warning>

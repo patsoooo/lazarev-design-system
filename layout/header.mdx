@@ -1,0 +1,164 @@
+---
+title: "Header"
+description: "Хедер: меню, підменю, мобільне меню, токени."
+---
+
+Хедер — верхня частина сторінки з навігацією. Присутній на всіх сторінках сайту.
+
+Складається з трьох частин: логотип зліва, [Header links](/layout/header-links) посередині, кнопка заклику справа. Кнопка — це Primary button з [Button](/components/button), логотип — з [Logo](/foundations/logo).
+
+## Збірка
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-header">
+    <img className="ds-header__logo" src="/logo/lazarev-logo.svg" alt="LAZAREV.AGENCY" />
+    <span className="ds-header-menu">
+      <span className="ds-link is-default">Product design</span>
+      <span className="ds-link is-default">Agentic websites</span>
+      <span className="ds-link is-default">AI visibility</span>
+      <span className="ds-link ds-link--plain is-default">Outcomes</span>
+      <span className="ds-link ds-link--plain is-default">Cases studies</span>
+      <span className="ds-link is-default">About us</span>
+    </span>
+    <span className="ds-btn ds-btn--primary is-default">Let's talk</span>
+  </span>
+</div>
+
+Приклад показано в проєктній ширині 1360px — у вужчій колонці документації він прокручується вбік.
+
+<div className="ds-table">
+
+| Елемент | Компонент | Розмір |
+| --- | --- | --- |
+| Логотип | [Logo](/foundations/logo) | 32px заввишки |
+| Ряд посилань | [Header links](/layout/header-links) | за вмістом |
+| Кнопка | Primary button | 40px заввишки |
+| Ширина хедера | — | 1360px, адаптується |
+
+</div>
+
+<Warning>
+  Зовнішній контейнер хедера не має жодного токена: ні ширини, ні відступів, ні проміжків між трьома частинами. Ширина 1360px підтверджена з дизайном, решта в прикладі виведена на око — [уточнити].
+</Warning>
+
+<Warning>
+  На вужчих екранах ряд посилань згортається спершу в кнопку «Menu», а потім в іконку — дивіться [Header links](/layout/header-links). Брейкпоінтів для цього в токенах немає.
+</Warning>
+
+## Токени
+
+У Figma компонент лежить у групі `heading-menu` і розділений на п'ять підгруп: контейнер, пункт меню, підменю, кнопка підменю та пункт мобільного меню.
+
+### Контейнер
+
+Обгортка всього хедера.
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `heading-menu/header-menu/bg-default` | — |
+| Межа | <span className="ds-sw ds-sw--border-subtle" /> `heading-menu/header-menu/border` | — |
+| Товщина межі | `heading-menu/header-menu/border-width` | 1px |
+| Заокруглення | `heading-menu/header-menu/radius` | 4px |
+| Внутрішні відступи | `heading-menu/header-menu/padding-x`, `heading-menu/header-menu/padding-y` | 16px / 12px |
+| Проміжок | `heading-menu/header-menu/gap` | 16px |
+
+</div>
+
+### Пункт меню
+
+Найдетальніше описана частина: п'ять станів із власними токенами тексту та іконки.
+
+<div className="ds-table">
+
+| Стан | Текст | Іконка |
+| --- | --- | --- |
+| Default | <span className="ds-sw ds-sw--action-primary" /> `heading-menu/menu-item/text-default` | <span className="ds-sw ds-sw--action-primary" /> `heading-menu/menu-item/icon-default` |
+| Hover | <span className="ds-sw ds-sw--action-brand-hover" /> `heading-menu/menu-item/text-hover` | <span className="ds-sw ds-sw--action-brand-hover" /> `heading-menu/menu-item/icon-hover` |
+| Pressed | <span className="ds-sw ds-sw--action-brand-pressed" /> `heading-menu/menu-item/text-pressed` | <span className="ds-sw ds-sw--action-brand-pressed" /> `heading-menu/menu-item/icon-pressed` |
+| Active | <span className="ds-sw ds-sw--action-brand-hover" /> `heading-menu/menu-item/text-active` | <span className="ds-sw ds-sw--action-brand-hover" /> `heading-menu/menu-item/icon-active` |
+| Inactive | <span className="ds-sw ds-sw--action-inactive" /> `heading-menu/menu-item/text-inactive` | <span className="ds-sw ds-sw--action-inactive" /> `heading-menu/menu-item/icon-inactive` |
+
+</div>
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Висота | `heading-menu/menu-item/height` | 16px |
+| Внутрішні відступи | `heading-menu/menu-item/padding-x`, `heading-menu/menu-item/padding-y` | 0 |
+| Проміжок | `heading-menu/menu-item/gap` | 0 |
+| Розмір тексту | [уточнити] | — |
+
+</div>
+
+<Warning>
+  Відступи й проміжок пункту меню дорівнюють нулю, а висота — 16px, тобто рівно висоті рядка тексту. Клікабельна зона виходить без запасу. Перевірте, чи так задумано: 16px замало для впевненого влучання, особливо на дотику.
+</Warning>
+
+<Warning>
+  Hover і Active використовують той самий токен-джерело, тому обидва зелені й візуально нерозрізненні.
+</Warning>
+
+### Підменю
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `heading-menu/submenu/bg` | — |
+| Текст | <span className="ds-sw ds-sw--text-primary" /> `heading-menu/submenu/text` | — |
+| Межа | <span className="ds-sw ds-sw--border-subtle" /> `heading-menu/submenu/border` | — |
+| Товщина межі | `heading-menu/submenu/border-width` | 1px |
+| Заокруглення | `heading-menu/submenu/radius` | 8px |
+| Внутрішній відступ | `heading-menu/submenu/padding` | 12px |
+| Проміжок між пунктами | `heading-menu/submenu/menu-item-gap` | 16px |
+| Проміжок у статті | `heading-menu/submenu/article-gap` | 8px |
+
+</div>
+
+### Кнопка підменю
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Текст | <span className="ds-sw ds-sw--text-primary" /> `heading-menu/submenu-button/text-default` | — |
+| Текст на Hover | <span className="ds-sw ds-sw--action-primary-hover" /> `heading-menu/submenu-button/text-hover` | — |
+| Межа | <span className="ds-sw ds-sw--border-default" /> `heading-menu/submenu-button/border-default` | — |
+| Межа на Hover | <span className="ds-sw ds-sw--action-primary" /> `heading-menu/submenu-button/border-hover` | — |
+| Неактивний | <span className="ds-sw ds-sw--action-inactive" /> `heading-menu/submenu-button/inactive` | — |
+| Заокруглення | `heading-menu/submenu-button/radius` | 4px |
+| Внутрішні відступи | `heading-menu/submenu-button/padding-x`, `heading-menu/submenu-button/padding-y` | 16px / 12px |
+
+</div>
+
+### Пункт мобільного меню
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Текст | <span className="ds-sw ds-sw--action-primary" /> `heading-menu/mobile-menu-item/text-default` | — |
+| Текст після натискання | <span className="ds-sw ds-sw--action-primary-hover" /> `heading-menu/mobile-menu-item/text-clicked` | — |
+| Іконка | <span className="ds-sw ds-sw--action-primary" /> `heading-menu/mobile-menu-item/icon-default` | — |
+| Іконка після натискання | <span className="ds-sw ds-sw--action-primary-hover" /> `heading-menu/mobile-menu-item/icon-clicked` | — |
+| Неактивний | <span className="ds-sw ds-sw--action-inactive" /> `heading-menu/mobile-menu-item/inactive` | — |
+| Проміжок | `heading-menu/mobile-menu-item/gap` | 12px |
+
+</div>
+
+<Warning>
+  Це єдина згадка мобільної версії в усьому експорті. Брейкпоінта, на якому меню перемикається на мобільне, у токенах немає — [уточнити].
+</Warning>
+
+## Що варто виправити в токенах
+
+<Warning>
+  Група названа `heading-menu`, хоча підгрупа всередині — `header-menu`. Одна з двох назв помилкова.
+</Warning>
+
+<Warning>
+  Токен `heading-menu/color` містить сире значення `#ffffff` замість посилання на семантичний токен, і з назви незрозуміло, що саме він фарбує. Схоже на залишок — [уточнити].
+</Warning>

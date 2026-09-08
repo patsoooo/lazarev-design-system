@@ -1,0 +1,132 @@
+---
+title: "Icons"
+description: "Іконки системи: перегляд і код."
+icon: "shapes"
+---
+
+Іконки системи в форматі SVG, 16 × 16. Кожну можна скопіювати кнопкою в куті блоку коду.
+
+Іконки не мають власного кольору: у розмітці вони фарбуються кольором тексту, тому один файл працює в усіх станах компонента. У коді нижче `fill` та `stroke` виставлені в `black` або `white` — це значення за замовчуванням, яке замінюється при вставці.
+
+## caret
+
+Каретка. Показує напрямок розкриття меню. Використовується в [Links](/components/links) та [Dropdown](/components/dropdown). У відкритому стані повертається на 180°, окремого файла для цього не потрібно.
+
+<div className="ds-icon-grid">
+  <span className="ds-icon-card"><span className="ds-icon ds-icon--caret" />caret</span>
+  <span className="ds-icon-card"><span className="ds-icon ds-icon--caret ds-icon--rotate-180" />caret, 180°</span>
+</div>
+
+```html caret.svg
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <path d="M8.00373 10L5 6H11L8.00373 10Z" fill="black"/>
+</svg>
+```
+
+## arrow-side
+
+Стрілка вбік. Роздільник рівнів у [Breadcrumbs](/components/breadcrumbs), де малюється розміром 12px.
+
+<div className="ds-icon-grid">
+  <span className="ds-icon-card"><span className="ds-icon ds-icon--arrow-side" />arrow-side</span>
+</div>
+
+```html arrow-side.svg
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <path d="M10 8.00373L6 5L6 11L10 8.00373Z" fill="black"/>
+</svg>
+```
+
+## arrow-up-right
+
+Трейлінг-стрілка. Спільна ознака текстових кнопок: [Button](/components/button) і [Chips](/components/chips).
+
+<div className="ds-icon-grid">
+  <span className="ds-icon-card"><span className="ds-icon ds-icon--arrow-up-right" />arrow-up-right</span>
+</div>
+
+```html arrow-up-right.svg
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <path d="M4 12L12 4" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M4 4H12V12" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+```
+
+## placeholder
+
+Заглушка на місці іконки, яка ще не визначена. Використовується в Industry button, Icon-secondary button і [Tab](/components/tab).
+
+<div className="ds-icon-grid">
+  <span className="ds-icon-card"><span className="ds-icon ds-icon--placeholder" />placeholder</span>
+</div>
+
+```html placeholder.svg
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <path d="M2 14L14 2" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M14 14L2 2" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="1.5" y="1.5" width="13" height="13" stroke="black"/>
+</svg>
+```
+
+## close
+
+Закрити або скинути. Використовується в Plus button і в тригері [Dropdown](/components/dropdown) з лічильником.
+
+<div className="ds-icon-grid">
+  <span className="ds-icon-card"><span className="ds-icon ds-icon--close" />close</span>
+</div>
+
+```html close.svg
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <path d="M4 11.6569L12 3.65686" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M4 3.65685L12 11.6569" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+```
+
+## check
+
+Галочка обраного пункту в [Checkbox](/components/checkbox) і в меню [Dropdown](/components/dropdown).
+
+<div className="ds-icon-grid">
+  <span className="ds-icon-card"><span className="ds-icon ds-icon--check" />check</span>
+</div>
+
+```html check.svg
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <path d="M4 8L6.78261 11L12 5" stroke="black" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+```
+
+## burger-menu
+
+Виклик мобільного меню. Компонента мобільного меню поки немає — токени під нього є в [Header](/layout/header).
+
+<div className="ds-icon-grid">
+  <span className="ds-icon-card"><span className="ds-icon ds-icon--burger" />burger-menu</span>
+</div>
+
+```html burger-menu.svg
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <path d="M2 3H14" stroke="black" stroke-linecap="round"/>
+  <path d="M2 8H14" stroke="black" stroke-linecap="round"/>
+  <path d="M2 13H14" stroke="black" stroke-linecap="round"/>
+</svg>
+```
+
+## Правила
+
+<Check>
+  Фарбуйте іконку кольором тексту поруч. Тоді вона автоматично підхоплює стан компонента.
+</Check>
+
+<Check>
+  Повертайте наявну іконку замість того, щоб додавати новий файл під кожен напрямок.
+</Check>
+
+<Warning>
+  Не змінюйте розмір іконки довільно. У всіх компонентах системи вона 16px, крім роздільника в крихтах, де 12px.
+</Warning>
+
+<Warning>
+  Трьох іконок ще бракує: **plus** для Plus button, а також **стрілки вліво та вправо** для [Pagination](/components/pagination) і **play** для Play button. Зараз вони намальовані текстовими символами. У Plus button це особливо помітно: стан Close уже використовує SVG, а Default — символ `+`, і товщина ліній у них різна.
+</Warning>
