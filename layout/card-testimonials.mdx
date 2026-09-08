@@ -1,0 +1,102 @@
+---
+title: "Testimonials"
+description: "Картка відгуку: склад, розміри, токени."
+---
+
+Картка відгуку клієнта. Містить лапку, оцінку зовнішнього сервісу, текст відгуку, автора та кнопку переходу на кейс.
+
+## Збірка
+
+<div className="ds-btn-row">
+  <span className="ds-testimonial">
+    <span className="ds-testimonial__top">
+      <span className="ds-testimonial__quote">“</span>
+      <span className="ds-testimonial__rating" />
+    </span>
+    <span className="ds-testimonial__text">Thanks to Grand Founders and its unique community of Ambassadors, I've gained access to opportunities for expanding my business in Ukraine and have also grown my capital raising capabilities.</span>
+    <span className="ds-testimonial__bottom">
+      <span className="ds-avatar-info">
+        <span className="ds-avatar-info__photos"><span className="ds-avatar ds-avatar--m" /><span className="ds-avatar ds-avatar--m" /></span>
+        <span className="ds-avatar-info__text"><span className="ds-avatar-info__name">Name</span><span className="ds-avatar-info__job">Job title</span></span>
+      </span>
+      <span className="ds-btn ds-btn--primary is-default">View Case Study</span>
+    </span>
+  </span>
+</div>
+
+## Розміри
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Ширина | [уточнити] | 664px, адаптується |
+| Висота | [уточнити] | 604px |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `card/testimonials/bg` | — |
+| Заокруглення | `card/testimonials/radius` | 8px |
+| Відступ по боках | [уточнити] | 24px |
+| Відступ згори й знизу | `card/testimonials/padding` | 16px |
+
+</div>
+
+<Warning>
+  Відступи по боках — 24px, підтверджено з дизайном. Токена під них немає: `card/testimonials/padding` дорівнює 16px і в документації лишається лише як вертикальний відступ.
+
+  Тобто відступи зараз несиметричні — 16px згори й знизу проти 24px по боках. Якщо вертикальні теж мають бути 24px, скажіть.
+</Warning>
+
+<Warning>
+  `card/testimonials/radius` посилається на `primitives.spacing.8px` замість `primitives.radius.8px`. Шосте місце з цією помилкою прив'язки.
+</Warning>
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль або компонент | Колір |
+| --- | --- | --- |
+| Лапка | `font.heading.h1-80` — Pragati Narrow 80 / 72 | <span className="ds-sw ds-sw--text-primary" /> `card/testimonials/text` |
+| Рейтинг | заглушка 165 × 72px | — |
+| Текст відгуку | `font.heading.h5-24` — Archivo 24 / 24 | <span className="ds-sw ds-sw--text-primary" /> `card/testimonials/text` |
+| Автор | [Avatar](/components/avatar), розмір M | — |
+| Кнопка | Primary button з [Button](/components/button) | — |
+
+</div>
+
+Відступ від верхнього ряду до тексту відгуку — **64px**. Нижній ряд притиснутий до низу картки: за фіксованої висоти 604px простір між текстом і автором розтягується сам.
+
+<Warning>
+  Ви назвали колір `color/testimonials/text`. Такого семантичного токена не існує — правильна назва **`card/testimonials/text`**, у групі `component.card.testimonials`. Він розкручується в `text.primary`, тобто чорний.
+</Warning>
+
+<Warning>
+  Блок рейтингу поки порожній: у ньому логотип Clutch, п'ять зірок і число. Ні токенів, ні іконок під це в системі немає — потрібні SVG логотипа та зірки, а також стиль для оцінки.
+</Warning>
+
+<Warning>
+  Токен `card/testimonials/text-secondary` у картці поки не використовується. Імовірно він призначений для посади автора, але та приходить із власним токеном `avatart/text-secondary-default` — [уточнити], який із двох чинний.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Лапка | Декоративний символ угорі ліворуч | Так |
+| Рейтинг | Оцінка зовнішнього сервісу вгорі праворуч | Ні |
+| Текст відгуку | Основний вміст картки | Так |
+| Автор | Avatar з ім'ям і посадою | Так |
+| Кнопка | Перехід на кейс | Ні |
+
+## Правила
+
+<Check>
+  Тримайте текст відгуку в межах картки. За фіксованої висоти 604px довший текст наїде на блок автора.
+</Check>
+
+<Check>
+  Використовуйте розмір M для аватара. Розмір S у картці такого масштабу губиться.
+</Check>
+
+<Warning>
+  Не розтягуйте картку по висоті під довгий відгук. Скорочуйте текст — висота фіксована.
+</Warning>

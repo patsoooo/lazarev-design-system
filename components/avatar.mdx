@@ -1,0 +1,125 @@
+---
+title: "Avatar"
+description: "Аватар і блок avatar-info: розміри, типи, токени."
+icon: "circle-user"
+---
+
+Аватар — кругле фото користувача. Використовується поодинці або в парі всередині блоку **avatar-info**, який додає ім'я та посаду.
+
+Два розміри — M і S — і два типи межі: **Default** для світлого фону, **Inverse** для темного.
+
+## Аватар
+
+<div className="ds-btn-row ds-btn-row--plain">
+    <div className="ds-btn-item"><span className="ds-btn-caption">M · Default</span><span className="ds-avatar ds-avatar--m" /></div>
+    <div className="ds-btn-item"><span className="ds-btn-caption">S · Default</span><span className="ds-avatar ds-avatar--s" /></div>
+</div>
+
+<div className="ds-btn-row ds-btn-row--dark">
+    <div className="ds-btn-item"><span className="ds-btn-caption">M · Inverse</span><span className="ds-avatar ds-avatar--m ds-avatar--inverse" /></div>
+    <div className="ds-btn-item"><span className="ds-btn-caption">S · Inverse</span><span className="ds-avatar ds-avatar--s ds-avatar--inverse" /></div>
+</div>
+
+<div className="ds-table">
+
+| Властивість | M | S |
+| --- | --- | --- |
+| Розмір | 56px | 40px |
+| Заокруглення | 32px | 32px |
+| Межа, Default | <span className="ds-sw ds-sw--border-default" /> `color/border/default` | те саме |
+| Межа, Inverse | <span className="ds-sw ds-sw--border-white" /> `color/border/white` | те саме |
+
+</div>
+
+<Warning>
+  Тип Inverse показано на темному фоні навмисно: його межа біла й на світлій підкладці не видна.
+</Warning>
+
+<Warning>
+  Для інверсної межі в експорті є ще й компонентний токен `avatart/stroke-inverse`, який розкручується в той самий білий. Імовірно, саме він і мав використовуватись замість семантичного `color/border/white` — [уточнити].
+</Warning>
+
+## Avatar-info
+
+Блок із одним або двома фото, ім'ям та посадою.
+
+<div className="ds-btn-row ds-btn-row--plain">
+    <div className="ds-btn-item"><span className="ds-btn-caption">M · Default</span><span className="ds-avatar-info"><span className="ds-avatar-info__photos"><span className="ds-avatar ds-avatar--m" /><span className="ds-avatar ds-avatar--m" /></span><span className="ds-avatar-info__text"><span className="ds-avatar-info__name">Name</span><span className="ds-avatar-info__job">Job title</span></span></span></div>
+    <div className="ds-btn-item"><span className="ds-btn-caption">S · Default</span><span className="ds-avatar-info ds-avatar-info--s"><span className="ds-avatar-info__photos"><span className="ds-avatar ds-avatar--s" /><span className="ds-avatar ds-avatar--s" /></span><span className="ds-avatar-info__text"><span className="ds-avatar-info__name">Name</span><span className="ds-avatar-info__job">Job title</span></span></span></div>
+</div>
+
+<div className="ds-btn-row ds-btn-row--dark">
+    <div className="ds-btn-item"><span className="ds-btn-caption">M · Inverse</span><span className="ds-avatar-info ds-avatar-info--inverse"><span className="ds-avatar-info__photos"><span className="ds-avatar ds-avatar--m ds-avatar--inverse" /><span className="ds-avatar ds-avatar--m ds-avatar--inverse" /></span><span className="ds-avatar-info__text"><span className="ds-avatar-info__name">Name</span><span className="ds-avatar-info__job">Job title</span></span></span></div>
+    <div className="ds-btn-item"><span className="ds-btn-caption">S · Inverse</span><span className="ds-avatar-info ds-avatar-info--s ds-avatar-info--inverse"><span className="ds-avatar-info__photos"><span className="ds-avatar ds-avatar--s ds-avatar--inverse" /><span className="ds-avatar ds-avatar--s ds-avatar--inverse" /></span><span className="ds-avatar-info__text"><span className="ds-avatar-info__name">Name</span><span className="ds-avatar-info__job">Job title</span></span></span></div>
+</div>
+
+### Кольори тексту
+
+<div className="ds-table">
+
+| Елемент | Default | Inverse |
+| --- | --- | --- |
+| Ім'я | <span className="ds-sw ds-sw--text-primary" /> `avatart/text-name-default` | <span className="ds-sw ds-sw--text-inverse" /> `avatart/text-name-inverse` |
+| Посада | <span className="ds-sw ds-sw--text-secondary" /> `avatart/text-secondary-default` | <span className="ds-sw ds-sw--text-tertiary" /> `avatart/text-secondary-inverse` |
+
+</div>
+
+### Відступи
+
+<div className="ds-table">
+
+| Властивість | Токен | M | S |
+| --- | --- | --- | --- |
+| Між двома фото | `avatart/avatars-gap` | 4px | 4px |
+| Між фото і текстом | `avatart/gap`, `avatart/gap-small` | 16px | 12px |
+| Між ім'ям і посадою | `avatart/text-gap`, `avatart/text-gap-small` | 8px | 4px |
+
+</div>
+
+<Warning>
+  Ви назвали відступ між ім'ям і посадою 4px. У токенах 4px — це `avatart/text-gap-small`, тобто значення для розміру **S**. Для M токен `avatart/text-gap` дорівнює **8px**. У прикладах вище кожен розмір використовує свій токен. Якщо 4px мають бути в обох — скажіть, і приберу різницю.
+</Warning>
+
+## Типографіка
+
+<div className="ds-table">
+
+| Елемент | Стиль |
+| --- | --- |
+| Ім'я | `font.paragraph.p3-16` — Archivo 16 / 20 |
+| Посада | [уточнити] |
+
+</div>
+
+<Warning>
+  Стиль посади ви не називали — тільки колір. На макеті текст набраний великими літерами вузькою гарнітурою, що відповідає `font.caption.c1-16` (Pragati Narrow 16 / 16, uppercase). У прикладах використано саме його, але це припущення.
+</Warning>
+
+## Про назву групи
+
+<Warning>
+  У Figma група називається **`avatart`** — з зайвою літерою «т». Ви писали `avatar/text-name-default`, але в експорті це `avatart/text-name-default`. У документації лишив реальні імена, інакше розробник їх не знайде. Виправляти у Figma треба свідомо: перейменування зламає прив'язки.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Фото | Круг із межею | Так |
+| Друге фото | Праворуч від першого | Ні |
+| Ім'я | Рядок над посадою | В avatar-info |
+| Посада | Великими літерами | В avatar-info |
+
+## Правила
+
+<Check>
+  Обирайте тип межі за фоном: Default на світлому, Inverse на темному. На світлому фоні інверсний аватар зливається з підкладкою.
+</Check>
+
+<Check>
+  Тримайте обидва фото одного розміру. Пара з M і S виглядає як помилка.
+</Check>
+
+<Warning>
+  Не ставте більше двох фото в один блок. Компонент розрахований на одне або два.
+</Warning>

@@ -34,6 +34,8 @@
   --color-background-elements: #2a2a2aff;      /* → primitives.color.black.800 */
   --color-border-default: #e9e9e9ff;           /* → primitives.color.gray.100 */
   --color-border-subtle: #d9d9d9ff;            /* → primitives.color.gray.200 */
+  --color-border-white: #ffffffff;             /* → primitives.color.white.1000 */
+  --color-text-tertiary: #bbc2ccff;            /* → primitives.color.gray.400 */
   --color-border-white-30: #ffffff4d;          /* → primitives.color.white.1000-30% */
   --color-background-block: #ffffffff;         /* → primitives.color.white.1000 */
   --color-background-page: #e9e9e9ff;          /* → primitives.color.gray.100 */
@@ -49,6 +51,7 @@
   --spacing-28: 28px;
   --spacing-32: 32px;
   --spacing-56: 56px;
+  --spacing-64: 64px;
   --spacing-48: 48px;
 
   /* --- Радіуси: primitives.radius.* --- */
@@ -204,6 +207,8 @@
 .ds-sw--text-primary { background: var(--color-text-primary); }
 .ds-sw--text-inverse { background: var(--color-text-inverse); }
 .ds-sw--text-secondary { background: var(--color-text-secondary); }
+.ds-sw--text-tertiary { background: var(--color-text-tertiary); }
+.ds-sw--border-white { background: var(--color-border-white); }
 .ds-sw--icon-default { background: var(--color-icon-default); }
 .ds-sw--icon-inverse { background: var(--color-icon-inverse); }
 .ds-sw--border-subtle { background: var(--color-border-subtle); }
@@ -607,6 +612,151 @@
 /* Повороти для прев'ю: та сама іконка в різних напрямках */
 .ds-icon--rotate-180 { transform: rotate(180deg); }
 .ds-icon--rotate-270 { transform: rotate(-90deg); }
+
+/* ==========================================================================
+   Testimonials card — картка відгуку
+   ========================================================================== */
+
+.ds-testimonial {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 664px;
+  max-width: 100%;
+  height: 604px;
+  /* по боках 24px — підтверджено з дизайном; по вертикалі 16px із card/testimonials/padding */
+  padding: var(--spacing-16) var(--spacing-24);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-testimonial__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+}
+
+.ds-testimonial__quote {
+  font-family: var(--font-pragati);
+  /* font.heading.h1-80 — Pragati Narrow 80/72 */
+  font-size: 80px;
+  line-height: 72px;
+  font-weight: 400;
+  letter-spacing: -1.5px;
+  color: var(--color-text-primary);
+}
+
+/* Заглушка блоку рейтингу: розмір відомий, вміст ще ні */
+.ds-testimonial__rating {
+  flex: none;
+  box-sizing: border-box;
+  width: 165px;
+  height: 72px;
+  border: var(--border-width-1) dashed var(--color-border-subtle);
+  border-radius: var(--radius-4);
+}
+
+.ds-testimonial__text {
+  margin-top: var(--spacing-64);
+  font-family: var(--font-archivo);
+  /* font.heading.h5-24 — Archivo 24/24, вага 500 */
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-testimonial__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+  margin-top: auto;
+}
+
+/* ==========================================================================
+   Avatar — фото користувача та блок avatar-info
+   Шахова заливка — заглушка фото, не токен.
+   ========================================================================== */
+
+.ds-avatar {
+  display: block;
+  flex: none;
+  box-sizing: border-box;
+  border-radius: var(--radius-32);
+  border: var(--border-width-1) solid var(--color-border-default);
+  background: repeating-conic-gradient(#f4f4f4 0% 25%, #fbfbfb 0% 50%) 0 0 / 12px 12px;
+}
+
+.ds-avatar--m {
+  width: 56px;
+  height: 56px;
+}
+
+.ds-avatar--s {
+  width: 40px;
+  height: 40px;
+}
+
+.ds-avatar--inverse {
+  border-color: var(--color-border-white);
+}
+
+.ds-avatar-info {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-16);
+}
+
+.ds-avatar-info--s {
+  gap: var(--spacing-12);
+}
+
+.ds-avatar-info__photos {
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+.ds-avatar-info__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  min-width: 0;
+}
+
+.ds-avatar-info--s .ds-avatar-info__text {
+  gap: var(--spacing-4);
+}
+
+.ds-avatar-info__name {
+  font-family: var(--font-archivo);
+  /* font.paragraph.p3-16 — Archivo 16/20 */
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.ds-avatar-info__job {
+  font-family: var(--font-pragati);
+  /* font.caption.c1-16 — Pragati Narrow 16/16, uppercase. TODO: звірити з Figma */
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.ds-avatar-info--inverse .ds-avatar-info__name {
+  color: var(--color-text-inverse);
+}
+
+.ds-avatar-info--inverse .ds-avatar-info__job {
+  color: var(--color-text-tertiary);
+}
 
 /* ==========================================================================
    Footer — десктопна розкладка
