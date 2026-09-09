@@ -1,0 +1,101 @@
+---
+title: "Tag"
+description: "Мітка: стани, роздільники, токени."
+icon: "tag"
+---
+
+Мітка позначає категорію або рубрику. Складається з тексту великими літерами та двох вертикальних роздільників по боках.
+
+На відміну від [Chips](/components/chips), мітка не є елементом керування: вона нічого не вмикає й не фільтрує, а лише підписує вміст.
+
+## Коли використовувати
+
+- Для категорії статті, кейсу чи картки.
+- Коли підпис має бути помітним, але не претендувати на натискання.
+
+## Коли не використовувати
+
+- Для фільтрів. Використовуйте [Chips](/components/chips).
+- Для дії. Використовуйте [Button](/components/button).
+
+## Стани
+
+<div className="ds-btn-row ds-btn-row--plain">
+  <div className="ds-btn-item"><span className="ds-btn-caption">Default</span><span className="ds-card-meta"><span className="ds-tag is-default">Tag</span></span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Hover</span><span className="ds-card-meta"><span className="ds-tag is-hover">Tag</span></span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Pressed</span><span className="ds-card-meta"><span className="ds-tag is-pressed">Tag</span></span></div>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Default | Hover | Pressed |
+| --- | --- | --- | --- |
+| Колір тексту | <span className="ds-sw ds-sw--action-inactive" /> `color/action/inactive` | <span className="ds-sw ds-sw--action-primary" /> `color/action/primary` | <span className="ds-sw ds-sw--action-primary" /> `color/action/primary` |
+| Колір роздільника | <span className="ds-sw ds-sw--text-secondary" /> `blocks/case/separator` | те саме | те саме |
+| Розмір тексту | `font.caption.c1-16` — 16 / 16 | те саме | те саме |
+| Проміжок | 16px | 16px | 16px |
+
+</div>
+
+<Warning>
+  Hover і Pressed мають однаковий колір — обидва `color/action/primary`. Візуально стани нерозрізненні.
+</Warning>
+
+<Warning>
+  У стані Default текст і роздільники **одного кольору**: `color/action/inactive` та `blocks/case/separator` обидва розкручуються в `gray.600`. На макеті текст виглядає світлішим за роздільники, тож або так і задумано, або для тексту мав бути інший токен — [уточнити].
+</Warning>
+
+## Роздільники
+
+Роздільники розділяють мітки між собою й відділяють їх від сусіднього тексту. Тому **перша мітка в ряду лівого роздільника не має** — інакше ряд починався б із висячої риски.
+
+<div className="ds-btn-row ds-btn-row--plain">
+  <div className="ds-btn-item"><span className="ds-btn-caption">Одна мітка</span><span className="ds-card-meta"><span className="ds-tag is-default">Tag</span></span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Кілька міток</span><span className="ds-card-meta"><span className="ds-tag is-default">Design</span><span className="ds-tag is-default">Research</span><span className="ds-tag is-default">Strategy</span></span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Мітка й текст</span><span className="ds-card-meta"><span className="ds-tag is-default">Tag</span><span className="ds-card-date">04 May 2026</span></span></div>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Значення |
+| --- | --- |
+| Ширина | 1px |
+| Висота | 11px |
+| Колір | <span className="ds-sw ds-sw--text-secondary" /> `blocks/case/separator` |
+| Розташування | праворуч завжди, ліворуч — крім першої мітки в ряду |
+
+</div>
+
+<Warning>
+  Колір роздільника взято з групи блока кейсу — `blocks/case/separator`. Власної групи `tag` в експорті немає, тому мітка позичає токен у сусіднього компонента. Зміна кольору роздільників у блоці кейсу мовчки зачепить і мітку.
+</Warning>
+
+## Типографіка
+
+Великі літери задає сам стиль: у `font.caption.c1-16` властивість `textCase` дорівнює `uppercase`. Окремо переводити текст у капс не потрібно.
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Роздільник зліва | Вертикальна риска 1 × 11px | Так |
+| Текст | Назва категорії великими літерами | Так |
+| Роздільник справа | Вертикальна риска 1 × 11px | Так |
+
+## Правила
+
+<Check>
+  Пишіть одну-два слова. Довга назва з роздільниками по боках читається як обірваний рядок.
+</Check>
+
+<Warning>
+  Не використовуйте мітку як клікабельний фільтр. Для цього є [Chips](/components/chips) із власними станами й формою.
+</Warning>
+
+<Warning>
+  Не прибирайте роздільники. Без них мітка втрачає відмінність від звичайного підпису.
+</Warning>
+
+<Warning>
+  Коли дві мітки стоять поруч, між ними лишається **одна** риска, а не дві. Лівий роздільник другої мітки прибирається, інакше він подвоївся б із правим роздільником першої. Це рішення виведене з правила про першу мітку — [уточнити], чи так і задумано.
+</Warning>

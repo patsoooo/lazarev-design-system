@@ -1,0 +1,115 @@
+---
+title: "CTA"
+description: "Блок заклику до дії: градієнт, заголовок, кнопки."
+---
+
+Секція заклику до дії з градієнтним фоном. Стоїть унизу сторінки перед футером.
+
+## Збірка
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-cta-block">
+    <span className="ds-cta-block__desc">Let's talk about your AI adoption challenge</span>
+    <span className="ds-cta-block__title">Tell us where adoption stalls. You'll hear back from a senior product and UX lead with a practical action plan.</span>
+    <span className="ds-cta-block__actions">
+      <span className="ds-btn-block">
+        <span className="ds-btn-block__text"><span className="ds-icon ds-icon--placeholder" />Response within one business day</span>
+        <span className="ds-btn-block__actions">
+          <span className="ds-btn ds-btn--primary is-default">Talk to us</span>
+          <span className="ds-btn ds-btn--secondary is-default">Explore our services</span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+
+## Розміщення на сторінці
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Ширина | 1344px, розтягується | — |
+| Відступ від країв екрана | 48px з кожного боку | `primitives.spacing.48px` |
+| Відступ згори | 220px | `primitives.spacing.220px` |
+
+</div>
+
+Ширина 1344px — це не фіксоване число, а наслідок: на екрані 1440px відступи по 48px з кожного боку лишають рівно **1440 − 96 = 1344**. На ширших екранах блок розтягується, тримаючи ті самі 48px від країв.
+
+Приклад показано в проєктній ширині 1344px — у вужчій колонці документації він прокручується вбік.
+
+<Warning>
+  У прикладі вище зовнішні відступи не застосовані: 220px згори лишили б у документації порожню смугу. Вони описують розміщення блока на сторінці, а не сам блок.
+</Warning>
+
+## Контейнер
+
+<div className="ds-table">
+
+| Властивість | Значення | Найближчий токен |
+| --- | --- | --- |
+| Фон | `gradient/horizontal-dark` | — |
+| Внутрішній відступ | 64px згори й знизу, 0 по боках | `blocks/block-cta/padding` — 24px |
+| Заокруглення | 8px | `blocks/block-cta/radius` — 8px |
+
+</div>
+
+Градієнт `horizontal-dark` іде згори вниз: синьо-сірий `#3e4f7f` угорі, чорний `#0c0f19` у середині, зелений `#0f9549` унизу. Дивіться [Colors](/foundations/colors).
+
+<Warning>
+  `blocks/block-cta/padding` в експорті дорівнює **24px**, а підтверджене значення — 64px по вертикалі й 0 по боках. Один токен не може описати обидва напрямки — потрібні окремі `padding-x` і `padding-y`.
+</Warning>
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль | Колір |
+| --- | --- | --- |
+| Опис | `font.heading.h6-20` — 20 / 24 | <span className="ds-sw ds-sw--text-inverse" /> `blocks/block-cta/text` |
+| Заголовок | `font.heading.h1-80` — 80 / 72, максимальна ширина 1008px | <span className="ds-sw ds-sw--text-inverse" /> `blocks/block-cta/text` |
+| Кнопки | Block buttons з [Button](/components/button) | — |
+
+</div>
+
+### Відступи
+
+<div className="ds-table">
+
+| Між чим | Значення | Найближчий токен |
+| --- | --- | --- |
+| Описом і заголовком | 128px | `blocks/block-cta/text-gap` — 128px |
+| Заголовком і кнопками | 40px | `blocks/block-cta/gap` — 20px |
+
+</div>
+
+<Warning>
+  Ви написали `blocks/block-CTA/text`. У Figma група названа малими літерами — `blocks/block-cta/text`. Токен існує й розкручується в `text.inverse`, тобто білий.
+</Warning>
+
+<Warning>
+  `blocks/block-cta/gap` дорівнює **20px**, а підтверджене значення — 40px. Проміжок 128px між описом і заголовком збігається з токеном точно.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Опис | Короткий рядок угорі | Так |
+| Заголовок | Основне повідомлення | Так |
+| Block buttons | Підпис та дві кнопки | Так |
+
+## Правила
+
+<Check>
+  Ставте блок один раз на сторінку. Два заклики до дії поспіль знецінюють обидва.
+</Check>
+
+<Warning>
+  Не вирівнюйте вміст ліворуч. Блок центрований, а градієнт побудований під симетричну композицію.
+</Warning>
+
+<Warning>
+  Не змінюйте градієнт на світлий. Текст у блоці білий, і на світлому фоні він зникне.
+</Warning>

@@ -1,0 +1,138 @@
+---
+title: "Outcomes"
+description: "Блок результатів: заголовок, картки показників, кнопки."
+---
+
+Секція з показниками роботи. Три картки результатів на градієнтному фоні.
+
+Ділить оболонку з блоком [CTA](/blocks/block-cta): та сама ширина, ті самі зовнішні відступи, той самий градієнт.
+
+## Збірка
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-outcomes-block">
+    <span className="ds-outcomes-block__title">Success stories shaped by our user experience design agency</span>
+    <span className="ds-outcomes-block__cards">
+      <span className="ds-outcomes-card">
+        <span className="ds-outcomes-card__logo" />
+        <span className="ds-outcomes-card__text">Boosted community engagement and increased traffic by 120%.</span>
+        <span className="ds-outcomes-card__number">+120%</span>
+        <span className="ds-outcomes-card__period">in 4 months</span>
+      </span>
+      <span className="ds-outcomes-card">
+        <span className="ds-outcomes-card__logo" />
+        <span className="ds-outcomes-card__text">Improved UX for Peel, an e-commerce analytics app, leading to $5M in funding and acquisition by Shopify.</span>
+        <span className="ds-outcomes-card__number">5M</span>
+        <span className="ds-outcomes-card__period">in 7 months</span>
+      </span>
+      <span className="ds-outcomes-card">
+        <span className="ds-outcomes-card__logo" />
+        <span className="ds-outcomes-card__text">Increased site conversions by 30% and average donations by 18% for one of Ukraine's largest charities.</span>
+        <span className="ds-outcomes-card__number">+30%</span>
+        <span className="ds-outcomes-card__period">in 4 months</span>
+      </span>
+    </span>
+    <span className="ds-outcomes-block__actions">
+      <span className="ds-btn-block">
+        <span className="ds-btn-block__text">Real outcomes from complex product challenges</span>
+        <span className="ds-btn-block__actions">
+          <span className="ds-btn ds-btn--primary is-default">Outcomes</span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+
+Приклад показано в проєктній ширині 1344px — у вужчій колонці документації він прокручується вбік.
+
+## Розміщення на сторінці
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Ширина | 1344px, розтягується | — |
+| Відступ від країв екрана | 48px з кожного боку | `primitives.spacing.48px` |
+| Відступ згори | 220px | `primitives.spacing.220px` |
+
+</div>
+
+Як і в [CTA](/blocks/block-cta), ширина 1344px — наслідок правила «48px від країв» на екрані 1440px, а не самостійне значення.
+
+<Warning>
+  У прикладі вище зовнішні відступи не застосовані: 220px згори лишили б у документації порожню смугу.
+</Warning>
+
+## Контейнер
+
+<div className="ds-table">
+
+| Властивість | Значення | Найближчий токен |
+| --- | --- | --- |
+| Фон | `gradient/horizontal-dark` | — |
+| Внутрішній відступ | 64px згори й знизу, 0 по боках | `blocks/outcomes/padding-y` — 48px |
+| Заокруглення | 8px | `blocks/outcomes/radius` — 8px |
+
+</div>
+
+<Warning>
+  `blocks/outcomes/padding-y` в експорті дорівнює **48px**, а підтверджене значення — 64px.
+</Warning>
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль або компонент | Колір |
+| --- | --- | --- |
+| Заголовок | `font.heading.h1-80` — 80 / 72 | <span className="ds-sw ds-sw--text-inverse" /> `blocks/outcomes/text` |
+| Картки | [Outcomes](/layout/card-outcomes), розмір S, три штуки | — |
+| Кнопки | Block buttons з [Button](/components/button) | — |
+
+</div>
+
+### Відступи
+
+<div className="ds-table">
+
+| Між чим | Значення | Токен |
+| --- | --- | --- |
+| Між картками | 12px | `blocks/outcomes/card-gap` — 12px |
+| Заголовком і картками | [уточнити] | — |
+| Картками і кнопками | [уточнити] | — |
+
+</div>
+
+<Warning>
+  Два відступи ви не називали — між заголовком і картками та між картками й кнопками. У прикладі стоїть 64px для обох, це припущення на основі макета.
+</Warning>
+
+<Warning>
+  Максимальну ширину заголовка ви теж не називали. У прикладі 1008px, як у [CTA](/blocks/block-cta), бо на макеті заголовок ламається на три рядки схожої довжини.
+</Warning>
+
+<Warning>
+  У групі є токен `blocks/outcomes/card-padding-x` зі значенням 20px, який у розкладці не знадобився. Незрозуміло, що саме він описує — [уточнити].
+</Warning>
+
+## Чому картки темні
+
+Картки [Outcomes](/layout/card-outcomes) мають напівпрозорий фон — білий із 10% непрозорості. Саме тому вони працюють лише всередині цього блоку: темний градієнт проступає крізь них і дає той приглушений відтінок, що на макеті. Поза блоком картка виглядатиме інакше.
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Заголовок | Основне повідомлення секції | Так |
+| Картки | Три показники в ряд | Так |
+| Block buttons | Підпис і кнопка переходу | Так |
+
+## Правила
+
+<Check>
+  Ставте рівно три картки. Розкладка розрахована на три однакові колонки.
+</Check>
+
+<Warning>
+  Не змінюйте градієнт на світлий. І текст блока, і фон карток розраховані на темну підкладку.
+</Warning>

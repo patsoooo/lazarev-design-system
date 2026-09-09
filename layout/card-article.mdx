@@ -1,0 +1,235 @@
+---
+title: "Article"
+description: "Картка статті: розмір S, склад, токени."
+---
+
+Картка статті. Три розміри — **S**, **M** і **L**. Поки описаний лише S.
+
+Не плутайте з [Article (menu)](/layout/card-article-menu) — тією, що показується в підменю хедера. Це різні компоненти.
+
+## Small
+
+<div className="ds-btn-row">
+  <span className="ds-article-card">
+    <span className="ds-card-meta">
+      <span className="ds-tag is-default">Tag</span>
+      <span className="ds-card-date">04 May 2026</span>
+    </span>
+    <span className="ds-article-card__title">MVP landing page: how to build one to validate your business idea successfully</span>
+    <span className="ds-article-card__desc">AI roadmap is real, adoption isn't. Demos must land this year.</span>
+    <span className="ds-article-card__action"><span className="ds-btn ds-btn--secondary is-default">Button label</span></span>
+    <span className="ds-article-card__img" />
+  </span>
+</div>
+
+### Контейнер
+
+<div className="ds-table">
+
+| Властивість | Значення | Найближчий токен |
+| --- | --- | --- |
+| Ширина | 312px | [уточнити] |
+| Внутрішній відступ | 16px | `card/s/padding` — 12px |
+| Заокруглення | 8px | `card/s/radius` — 8px |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `card/s/bg` | — |
+
+</div>
+
+### Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль або компонент | Колір |
+| --- | --- | --- |
+| Мітки | [Tag](/components/tag), може бути кілька | — |
+| Дата | `font.caption.c1-16` — 16 / 16 | <span className="ds-sw ds-sw--text-tertiary" /> `card/s/text-tertiary` |
+| Заголовок | `font.heading.h6-20` — 20 / 24, максимум 3 рядки | <span className="ds-sw ds-sw--text-primary" /> `card/s/text` |
+| Опис | `font.paragraph.p3-16` — 16 / 20 | [уточнити] |
+| Кнопка | Secondary button з [Button](/components/button) | — |
+| Зображення | на всю ширину, висота 176px | — |
+
+</div>
+
+### Відступи
+
+<div className="ds-table">
+
+| Між чим | Значення | Найближчий токен |
+| --- | --- | --- |
+| Мітками і датою | 16px | `card/s/tag-text-button-gap` — 16px |
+| Даними і заголовком | 25px | — |
+| Заголовком і описом | 12px | `card/s/text-gap` — 8px |
+| Описом і кнопкою | 16px | `card/s/text-button-gap` — 12px |
+| Кнопкою і зображенням | 32px | — |
+
+</div>
+
+<Warning>
+  Відступ **25px не належить до шкали** `primitives.spacing`: там є 24 і 32, а 25 немає. Це третє таке значення після 10px у дропдауні й 28px у меню. Або додайте 25px у шкалу, або вирівняйте до 24px.
+</Warning>
+
+<Warning>
+  Картка ділить групу токенів `card/s` із [Case](/layout/card-case). Це два різні компоненти на одному наборі значень: у Case немає опису, а зображення стоїть угорі, не внизу. Зміна в групі зачепить обидва — [уточнити], чи не потрібна окрема група.
+</Warning>
+
+<Warning>
+  Колір опису ви не називали. У прикладі використано той самий `card/s/text`, що й для заголовка. У групі є ще `card/s/text-secondary` — можливо, чинний саме він.
+</Warning>
+
+### Зображення
+
+<div className="ds-table">
+
+| Властивість | Значення |
+| --- | --- |
+| Ширина | на всю корисну ширину, 280px |
+| Висота | 176px |
+| Співвідношення | 1.59 |
+| Заокруглення | `card/s/img-radius` — 4px |
+| Розташування | внизу картки |
+
+</div>
+
+<Warning>
+  Розмір 280 × 176 такий самий, як у [Case](/layout/card-case) розміру S, і не збігається з [Media](/components/media), де за шкалою висота мала б бути 186px.
+
+  Разом із розміром M картина прояснилась: **зображення в картках послідовно тримають співвідношення 1.59**, а не 1.504 як у Media. Зведення нижче.
+</Warning>
+
+### Співвідношення зображень у системі
+
+<div className="ds-table">
+
+| Де | Розмір | Співвідношення |
+| --- | --- | --- |
+| Article (menu) | 159 × 100 | 1.590 |
+| Article S, Case S | 280 × 176 | 1.591 |
+| Article M | 388 × 244 | 1.590 |
+| Article L | 616 × 387 | 1.592 |
+| **Case L** | **388 × 258** | **1.504** |
+| **Media S / M / L** | 280 × 186, 388 × 258, 616 × 410 | **1.504** |
+
+</div>
+
+У системі співіснують дві шкали, і обидві внутрішньо бездоганні:
+
+<div className="ds-table">
+
+| Ширина | Висота в картках, ÷ 1.59 | Висота в Media, ÷ 1.504 |
+| --- | --- | --- |
+| 280px | 176 | 186 |
+| 388px | 244 | 258 |
+| 616px | 387 | 410 |
+
+</div>
+
+<Warning>
+  **П'ять карток із шести використовують 1.59.** Виняток один — [Case](/layout/card-case) розміру L, і саме він збігається з Media.
+
+  Найпоказовіше: Article M і Case L мають **однакову ширину 388px, але різну висоту** — 244 проти 258. Так само Article L і Media Size L: обидва 616px завширшки, але 387 проти 410.
+
+  Оскільки картки послідовно тримають 1.59 у трьох незалежних ширинах, імовірніше, що неточні саме розміри в [Media](/components/media) та Case L, а не навпаки.
+</Warning>
+
+## Medium
+
+Той самий склад і ті самі стилі, що в S. Відмінності — ширина, відступи, кегль заголовка й висота зображення.
+
+<div className="ds-btn-row">
+  <span className="ds-article-card ds-article-card--m">
+    <span className="ds-card-meta">
+      <span className="ds-tag is-default">Tag</span>
+      <span className="ds-card-date">04 May 2026</span>
+    </span>
+    <span className="ds-article-card__title">MVP landing page: how to build one to validate your business idea successfully</span>
+    <span className="ds-article-card__desc">AI roadmap is real, adoption isn't. Demos must land this year.</span>
+    <span className="ds-article-card__action"><span className="ds-btn ds-btn--secondary is-default">Button label</span></span>
+    <span className="ds-article-card__img" />
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Властивість | S | M | Найближчий токен для M |
+| --- | --- | --- | --- |
+| Ширина | 312px | 436px | [уточнити] |
+| Внутрішній відступ | 16px | 24px | `card/m/padding` — 12px |
+| Заокруглення | 8px | 8px | `card/m/radius` — 8px |
+| Заголовок | `h6-20` | `h4-36` | — |
+| Заголовком і описом | 12px | 16px | `card/m/title-text-gap` — 12px |
+| Описом і кнопкою | 16px | 20px | `card/m/text-button-gap` — 12px |
+| Кнопкою і зображенням | 32px | 32px | — |
+| Висота зображення | 176px | 244px | — |
+
+</div>
+
+Ширина 436 мінус відступи 24 × 2 дає **388** — та сама корисна ширина, що в [Case](/layout/card-case) розміру L.
+
+<Warning>
+  Відступи 16px і 20px не збігаються з групою `card/m`, де обидва дорівнюють 12px. Зате вони точно збігаються з групою **`card/l`**: `title-text-gap` — 16px, `text-button-gap` — 20px. Схоже, розміри в токенах зсунуті на одну позицію відносно дизайну — [уточнити].
+</Warning>
+
+<Warning>
+  Проміжок між даними і заголовком для M ви не називали. У прикладі він лишається 25px, як у S.
+</Warning>
+
+## Large
+
+Найбільший розмір. Опис і кнопка стоять **в один ряд**, а не один під одним.
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-article-card ds-article-card--l">
+    <span className="ds-article-card__title">Real estate. Designed to convert</span>
+    <span className="ds-article-card__row">
+      <span className="ds-article-card__desc">We holistically advocate for a convenient user experience and design digital real estate websites to convey physical world.</span>
+      <span className="ds-article-card__action"><span className="ds-btn ds-btn--secondary is-default">Button label</span></span>
+    </span>
+    <span className="ds-article-card__img" />
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Властивість | S | M | L |
+| --- | --- | --- | --- |
+| Ширина | 312px | 436px | 664px |
+| Внутрішній відступ | 16px | 24px | 24px |
+| Заокруглення | 8px | 8px | 8px |
+| Заголовок | `h6-20` | `h4-36` | `h3-46` |
+| Заголовком і описом | 12px | 16px | 25px |
+| Описом і кнопкою | 16px | 20px | 32px, в один ряд |
+| Кнопкою і зображенням | 32px | 32px | 32px |
+| Висота зображення | 176px | 244px | 387px |
+
+</div>
+
+Ширина 664 мінус відступи 24 × 2 дає **616** — та сама корисна ширина, що в Media Size L. І та сама ширина картки, що в [Testimonials](/layout/card-testimonials).
+
+<Warning>
+  На макеті розміру L **немає рядка з міткою й датою**, хоча в S і M він є. У прикладі вище я його не додавав, слідом за макетом. Якщо мітки мають бути й тут — скажіть.
+</Warning>
+
+<Warning>
+  Опис і кнопка в L стоять в один ряд: опис ліворуч, кнопка праворуч, проміжок 32px. Це єдиний розмір із такою розкладкою.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Мітки | Одна або кілька категорій | Так |
+| Дата | Великими літерами | Так |
+| Заголовок | До трьох рядків | Так |
+| Опис | Короткий підсумок | Так |
+| Кнопка | Перехід на статтю | Так |
+| Зображення | Прев'ю внизу картки | Так |
+
+## Правила
+
+<Check>
+  Тримайте заголовок у межах трьох рядків. Довший обріжеться трикрапкою.
+</Check>
+
+<Warning>
+  Не міняйте порядок елементів. Зображення стоїть унизу — це відрізняє картку статті від [Case](/layout/card-case), де воно вгорі.
+</Warning>

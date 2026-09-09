@@ -237,12 +237,22 @@ icon: "hand-pointer"
 
 <div className="ds-btn-row">
   <span className="ds-btn-block">
-    <span className="ds-btn-block__text">◷ text</span>
+    <span className="ds-btn-block__text"><span className="ds-icon ds-icon--placeholder" />text</span>
     <span className="ds-btn-block__actions">
       <span className="ds-btn ds-btn--primary is-default">Button label</span>
       <span className="ds-btn ds-btn--secondary is-default">Button label</span>
     </span>
   </span>
+</div>
+
+### Варіанти
+
+Іконка перед текстом необов'язкова, кнопок може бути одна або дві.
+
+<div className="ds-btn-row">
+  <div className="ds-btn-item"><span className="ds-btn-caption">Без іконки</span><span className="ds-btn-block"><span className="ds-btn-block__text">text</span><span className="ds-btn-block__actions"><span className="ds-btn ds-btn--primary is-default">Button label</span><span className="ds-btn ds-btn--secondary is-default">Button label</span></span></span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Одна кнопка</span><span className="ds-btn-block"><span className="ds-btn-block__text"><span className="ds-icon ds-icon--placeholder" />text</span><span className="ds-btn-block__actions"><span className="ds-btn ds-btn--primary is-default">Button label</span></span></span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Мінімальний</span><span className="ds-btn-block"><span className="ds-btn-block__text">text</span><span className="ds-btn-block__actions"><span className="ds-btn ds-btn--primary is-default">Button label</span></span></span></div>
 </div>
 
 <div className="ds-table">

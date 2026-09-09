@@ -1,0 +1,217 @@
+---
+title: "Case"
+description: "Картка кейсу: розмір S, склад, токени."
+---
+
+Картка кейсу. Два розміри — **S** і **L**. Поки описаний лише S.
+
+Використовується в блоці `block-case-outcomes`, який буде описаний окремо.
+
+## Small
+
+<div className="ds-btn-row">
+  <span className="ds-case-card">
+    <span className="ds-case-card__img" />
+    <span>
+      <span className="ds-card-meta">
+        <span className="ds-tag is-default">Tag</span>
+        <span className="ds-card-date">04 May 2026</span>
+      </span>
+      <span className="ds-case-card__title">Project name</span>
+      <span className="ds-case-card__action"><span className="ds-btn ds-btn--secondary is-default">Button label</span></span>
+    </span>
+  </span>
+</div>
+
+### Контейнер
+
+<div className="ds-table">
+
+| Властивість | Значення | Найближчий токен |
+| --- | --- | --- |
+| Ширина | 312px | [уточнити] |
+| Внутрішній відступ | 16px | `card/s/padding` — 12px |
+| Заокруглення | 8px | `card/s/radius` — 8px |
+| Межа | <span className="ds-sw ds-sw--border-default" /> `card/card-article/border-color` | `card/s/border` — той самий колір |
+| Товщина межі | 1px | — |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `card/s/bg` | — |
+
+</div>
+
+Ширина 312 мінус відступи 16 × 2 дає рівно **280** — ширину зображення. Арифметика сходиться.
+
+<Warning>
+  Ви назвали межу `card/card-article/border-color`, але в групі цієї картки є власний токен `card/s/border`, який розкручується в той самий `border.default`. Імовірно чинний саме він — інакше картка кейсу залежатиме від картки статті.
+</Warning>
+
+### Зображення
+
+<div className="ds-table">
+
+| Властивість | Значення |
+| --- | --- |
+| Розмір | 280 × 176px |
+| Співвідношення | 1.59 |
+| Заокруглення | `card/s/img-radius` — 4px |
+
+</div>
+
+<Warning>
+  Зображення **не збігається** з розмірами [Media](/components/media). Ширина 280 така сама, як у Size S, а висота 176 замість 186. Співвідношення тут 1.59, а в Media — 1.505.
+
+  При цьому зображення в розмірі **L дорівнює Media Size M точно** — 388 × 258, співвідношення 1.504.
+
+  Але L тут виняток, а не зразок. Чотири інші картки — [Article (menu)](/layout/card-article-menu), Case S, [Article](/layout/card-article) S і M — послідовно тримають **1.59**. Особливо показово, що Article M має ту саму ширину 388px, що й Case L, але висоту 244 замість 258. Зведення всіх співвідношень дивіться в [Article](/layout/card-article) — [уточнити], яке з двох значень чинне.
+</Warning>
+
+### Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль або компонент | Колір |
+| --- | --- | --- |
+| Мітки | [Tag](/components/tag), може бути кілька | — |
+| Дата | `font.caption.c1-16` — 16 / 16 | <span className="ds-sw ds-sw--text-tertiary" /> `card/s/text-tertiary` |
+| Заголовок | `font.heading.h6-20` — 20 / 24, максимум 1 рядок | <span className="ds-sw ds-sw--text-primary" /> `card/s/text` |
+| Кнопка | Secondary button з [Button](/components/button) | — |
+
+</div>
+
+### Відступи
+
+<div className="ds-table">
+
+| Між чим | Значення | Найближчий токен |
+| --- | --- | --- |
+| Зображення і текстом | 12px | `card/s/gap` — 20px |
+| Мітками і датою | 16px | `card/s/tag-text-button-gap` — 16px |
+| Даними і заголовком | 12px | `card/s/text-gap` — 8px |
+| Заголовком і кнопкою | 16px | `card/s/text-button-gap` — 12px |
+
+</div>
+
+<Warning>
+  Три з чотирьох відступів не збігаються з токенами: 12 проти 20, 12 проти 8, 16 проти 12. Збігається лише проміжок між мітками й датою. Або токени застаріли, або картка відійшла від них — оновіть групу `card/s` у Figma.
+</Warning>
+
+## Large
+
+Той самий склад, що й у S, з двома відмінностями: додається опис під заголовком, а зображення переїжджає **вниз** картки.
+
+<div className="ds-btn-row">
+  <span className="ds-case-card ds-case-card--l">
+    <span>
+      <span className="ds-card-meta">
+        <span className="ds-tag is-default">Tag</span>
+        <span className="ds-card-date">10 Aug 26</span>
+      </span>
+      <span className="ds-case-card__title">Title</span>
+      <span className="ds-case-card__desc">text</span>
+      <span className="ds-case-card__action"><span className="ds-btn ds-btn--secondary is-default">View case</span></span>
+    </span>
+    <span className="ds-case-card__img" />
+  </span>
+</div>
+
+### Контейнер
+
+<div className="ds-table">
+
+| Властивість | Значення | Найближчий токен |
+| --- | --- | --- |
+| Ширина | 436px | [уточнити] |
+| Висота | 693px | [уточнити] |
+| Внутрішній відступ | 24px | `card/l/padding` — 12px |
+| Заокруглення | 8px | `card/l/radius` — 8px |
+| Межа | <span className="ds-sw ds-sw--border-default" /> `card/l/border` | — |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `card/l/bg` | — |
+
+</div>
+
+### Зображення
+
+<div className="ds-table">
+
+| Властивість | Значення |
+| --- | --- |
+| Розмір | 388 × 258px |
+| Співвідношення | 1.504 |
+| Заокруглення | `card/l/img-radius` — 4px |
+| Розташування | внизу картки |
+
+</div>
+
+Ширина 436 мінус відступи 24 × 2 дає рівно **388** — і разом із висотою 258 це **точно Media Size M**.
+
+### Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль або компонент | Колір |
+| --- | --- | --- |
+| Мітки | [Tag](/components/tag), може бути кілька | — |
+| Дата | `font.caption.c1-16` — 16 / 16 | <span className="ds-sw ds-sw--text-tertiary" /> `card/s/text-tertiary` |
+| Заголовок | `font.heading.h4-36` — 36 / 32 | <span className="ds-sw ds-sw--text-primary" /> `card/l/text` |
+| Опис | [уточнити] | <span className="ds-sw ds-sw--text-primary" /> `card/l/text` |
+| Кнопка | Secondary button з [Button](/components/button) | — |
+
+</div>
+
+Заголовок у розмірі L набирається `h4-36`, а не `h6-20`, як у S. Це єдина відмінність у типографіці між розмірами.
+
+### Відступи
+
+<div className="ds-table">
+
+| Між чим | Значення | Найближчий токен |
+| --- | --- | --- |
+| Даними і заголовком | 12px | — |
+| Заголовком і описом | 16px | `card/l/title-text-gap` — 16px |
+| Описом і кнопкою | 20px | `card/l/text-button-gap` — 20px |
+| Кнопкою і зображенням | автоматично | — |
+
+</div>
+
+Зображення притиснуте до низу картки: за фіксованої висоти 693px простір між кнопкою і зображенням розтягується сам.
+
+<Warning>
+  Стиль опису ви не називали. У прикладі використано `font.paragraph.p3-16` — 16 / 20, це припущення на основі макета.
+</Warning>
+
+<Warning>
+  Обмеження заголовка в один рядок задано на базовій картці й діє і в L. Для розміру L ви цього не підтверджували — [уточнити], чи не має заголовок `h4-36` займати два рядки.
+</Warning>
+
+<Warning>
+  `card/l/padding` в експорті дорівнює **12px**, а підтверджене значення — 24px. Два інші відступи, `title-text-gap` і `text-button-gap`, збігаються точно.
+</Warning>
+
+## Де використовується
+
+<Warning>
+  Картка входить у блок `block-case-outcomes`. Його токени в експорті вже є — фон, відступ 16px, проміжок 16px, заокруглення 8px, проміжок заголовок-текст 20px — але сам блок ще не задокументований.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Зображення | Прев'ю кейсу 280 × 176 | Так |
+| Мітки | Одна або кілька категорій | Так |
+| Дата | Великими літерами | Так |
+| Заголовок | Назва проєкту, один рядок | Так |
+| Кнопка | Перехід на кейс | Так |
+
+## Правила
+
+<Check>
+  Тримайте заголовок в один рядок. Довша назва обріжеться трикрапкою.
+</Check>
+
+<Check>
+  Ставте мітки й дату в один ряд. Якщо міток багато, скорочуйте їх кількість, а не переносьте на другий рядок.
+</Check>
+
+<Warning>
+  Не замінюйте зображення на розмір із [Media](/components/media). Пропорції різні, і кадр обріжеться.
+</Warning>

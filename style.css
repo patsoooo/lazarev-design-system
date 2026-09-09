@@ -36,6 +36,8 @@
   --color-border-subtle: #d9d9d9ff;            /* → primitives.color.gray.200 */
   --color-border-white: #ffffffff;             /* → primitives.color.white.1000 */
   --color-text-tertiary: #bbc2ccff;            /* → primitives.color.gray.400 */
+  --color-text-attention: #0f9549ff;           /* → primitives.color.green.500 */
+  --color-background-white-10: #ffffff1a;      /* → primitives.color.white.1000-10% */
   --color-border-white-30: #ffffff4d;          /* → primitives.color.white.1000-30% */
   --color-background-block: #ffffffff;         /* → primitives.color.white.1000 */
   --color-background-page: #e9e9e9ff;          /* → primitives.color.gray.100 */
@@ -47,16 +49,20 @@
   --spacing-12: 12px;
   --spacing-16: 16px;
   --spacing-20: 20px;
+  --spacing-25: 25px; /* поза шкалою primitives.spacing */
   --spacing-24: 24px;
   --spacing-28: 28px;
   --spacing-32: 32px;
+  --spacing-40: 40px;
   --spacing-56: 56px;
   --spacing-64: 64px;
+  --spacing-128: 128px;
   --spacing-48: 48px;
 
   /* --- Радіуси: primitives.radius.* --- */
   --radius-4: 4px;
   --radius-8: 8px;
+  --radius-12: 12px;
   --radius-32: 32px;
   --radius-80: 80px;
 
@@ -97,6 +103,10 @@
   /* --- Розмір іконок --- */
   /* Підтверджено з дизайном; окремого токена в експорті немає */
   --icon-size: 16px;
+
+  /* --- Градієнти --- */
+  --gradient-horizontal-dark: linear-gradient(180deg, #3e4f7fff 0%, #0c0f19ff 30%, #0c0f19ff 65%, #0f9549ff 94%);
+  --gradient-vertical-3: linear-gradient(314.967deg, #1e1e1eff 0%, #0da34eff 54%, #0a783aff 60%, #1e1e1eff 65%, #c2cddeff 68%, #0da34eff 74%, #c2cddeff 84%, #1e1e1eff 100%);
 
   /* --- Іконки (SVG з Figma), описані на сторінці Foundations → Icons --- */
   --icon-caret: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M8.00373 10L5 6H11L8.00373 10Z' fill='black'/%3E%3C/svg%3E");
@@ -221,6 +231,14 @@
 .ds-sw--action-brand-hover { background: var(--color-action-brand-hover); }
 
 /* Напівпрозорий токен — шахова підкладка, щоб було видно прозорість */
+.ds-sw--background-white-10 {
+  background:
+    linear-gradient(var(--color-background-white-10), var(--color-background-white-10)),
+    repeating-conic-gradient(#d8d8d8 0% 25%, #ffffff 0% 50%) 0 0 / 8px 8px;
+}
+
+.ds-sw--text-attention { background: var(--color-text-attention); }
+
 .ds-sw--border-white-30 {
   background:
     linear-gradient(var(--color-border-white-30), var(--color-border-white-30)),
@@ -612,6 +630,678 @@
 /* Повороти для прев'ю: та сама іконка в різних напрямках */
 .ds-icon--rotate-180 { transform: rotate(180deg); }
 .ds-icon--rotate-270 { transform: rotate(-90deg); }
+
+/* ==========================================================================
+   Case outcomes block — секція з добіркою кейсів
+   Верхні два ряди діляться навпіл; картки — рівно чотири по 312px.
+   ========================================================================== */
+
+.ds-case-outcomes-block {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 1344px;
+  padding: var(--spacing-24);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-case-outcomes-block__head,
+.ds-case-outcomes-block__controls {
+  display: flex;
+  align-items: flex-start;
+}
+
+.ds-case-outcomes-block__controls {
+  align-items: center;
+  margin-top: var(--spacing-32);
+}
+
+.ds-case-outcomes-block__half {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.ds-case-outcomes-block__title {
+  font-family: var(--font-pragati);
+  /* font.heading.h3-46 — Pragati Narrow 46/40, вага 400 */
+  font-size: 46px;
+  line-height: 40px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-case-outcomes-block__paragraph {
+  font-family: var(--font-archivo);
+  /* font.paragraph.p3-16 — Archivo 16/20 */
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.ds-case-outcomes-block__actions {
+  display: flex;
+  gap: var(--spacing-8);
+}
+
+.ds-case-outcomes-block__cards {
+  display: flex;
+  gap: var(--spacing-16);
+  margin-top: var(--spacing-32); /* TODO: звірити з Figma */
+}
+
+/* ==========================================================================
+   Outcomes block — секція результатів
+   Спільна оболонка з CTA-блоком: та сама ширина, відступи й градієнт.
+   ========================================================================== */
+
+.ds-outcomes-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 1344px;
+  padding: var(--spacing-64) 0;
+  border-radius: var(--radius-8);
+  background: var(--gradient-horizontal-dark);
+  text-align: center;
+}
+
+.ds-outcomes-block__title {
+  max-width: 1008px; /* TODO: звірити з Figma */
+  font-family: var(--font-pragati);
+  /* font.heading.h1-80 — Pragati Narrow 80/72, вага 400 */
+  font-size: 80px;
+  line-height: 72px;
+  font-weight: 400;
+  letter-spacing: -1.5px;
+  color: var(--color-text-inverse);
+}
+
+.ds-outcomes-block__cards {
+  display: flex;
+  gap: var(--spacing-12);
+  margin-top: var(--spacing-64); /* TODO: звірити з Figma */
+}
+
+.ds-outcomes-block__actions {
+  margin-top: var(--spacing-64); /* TODO: звірити з Figma */
+}
+
+/* ==========================================================================
+   Outcomes card — картка результату, розмір S
+   Фон напівпрозорий, тому картка розрахована лише на темну підкладку.
+   ========================================================================== */
+
+.ds-outcomes-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  /* вирівнювання задаємо явно: батьківський блок центрований */
+  text-align: left;
+  width: 272px;
+  max-width: 100%;
+  height: 272px;
+  padding: var(--spacing-16);
+  border-radius: var(--radius-8);
+  background: var(--color-background-white-10);
+}
+
+/* Заглушка логотипа: висота відома, ширина ще ні */
+.ds-outcomes-card__logo {
+  flex: none;
+  box-sizing: border-box;
+  width: 120px; /* TODO: звірити з Figma */
+  height: 32px;
+  border: var(--border-width-1) dashed var(--color-border-white-30);
+  border-radius: var(--radius-4);
+}
+
+.ds-outcomes-card__text {
+  margin-top: var(--spacing-12);
+  font-family: var(--font-archivo);
+  /* font.paragraph.p3-16 — Archivo 16/20 */
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-inverse);
+}
+
+.ds-outcomes-card__number {
+  margin-top: auto;
+  font-family: var(--font-pragati);
+  /* font.heading.h2-56 — Pragati Narrow 56/48, вага 400 */
+  font-size: 56px;
+  line-height: 48px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: var(--color-text-inverse);
+}
+
+.ds-outcomes-card__period {
+  margin-top: var(--spacing-4);
+  font-family: var(--font-archivo);
+  /* font.paragraph.p3-16 — Archivo 16/20 */
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-attention);
+}
+
+/* ==========================================================================
+   CTA block — секція заклику до дії
+   Зовнішні відступи (220px згори, 48px по боках) — це розміщення на
+   сторінці, у прикладі документації вони не застосовані.
+   ========================================================================== */
+
+.ds-cta-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  /* Проєктна ширина 1344px. У вужчій колонці документації приклад
+     не стискається, а прокручується всередині блоку. */
+  min-width: 1344px;
+  padding: var(--spacing-64) 0;
+  border-radius: var(--radius-8);
+  background: var(--gradient-horizontal-dark);
+  text-align: center;
+}
+
+.ds-cta-block__desc {
+  font-family: var(--font-archivo);
+  /* font.heading.h6-20 — Archivo 20/24, вага 500 */
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--color-text-inverse);
+}
+
+.ds-cta-block__title {
+  margin-top: var(--spacing-128);
+  max-width: 1008px;
+  font-family: var(--font-pragati);
+  /* font.heading.h1-80 — Pragati Narrow 80/72, вага 400 */
+  font-size: 80px;
+  line-height: 72px;
+  font-weight: 400;
+  letter-spacing: -1.5px;
+  color: var(--color-text-inverse);
+}
+
+.ds-cta-block__actions {
+  margin-top: var(--spacing-40);
+}
+
+/* ==========================================================================
+   Title block — заголовок секції з описом і кнопкою
+   Центрований; кнопка необов'язкова.
+   ========================================================================== */
+
+.ds-title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ds-title-block__title {
+  max-width: 672px;
+  font-family: var(--font-pragati);
+  /* font.heading.h2-56 — Pragati Narrow 56/48, вага 400 */
+  font-size: 56px;
+  line-height: 48px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ds-title-block__desc {
+  max-width: 640px;
+  margin-top: var(--spacing-24);
+  font-family: var(--font-archivo);
+  /* font.heading.h6-20 — Archivo 20/24, вага 500 */
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ds-title-block__action {
+  display: block;
+  margin-top: var(--spacing-24);
+}
+
+/* ==========================================================================
+   Article card — картка статті, розмір S
+   Ділить групу токенів card/s із карткою кейсу.
+   ========================================================================== */
+
+.ds-article-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 312px;
+  max-width: 100%;
+  padding: var(--spacing-16);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-article-card__title {
+  margin-top: var(--spacing-25);
+  font-family: var(--font-archivo);
+  /* font.heading.h6-20 — Archivo 20/24, вага 500 */
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ds-article-card__desc {
+  display: block;
+  margin-top: var(--spacing-12);
+  font-family: var(--font-archivo);
+  /* font.paragraph.p3-16 — Archivo 16/20 */
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.ds-article-card__action {
+  display: block;
+  margin-top: var(--spacing-16);
+}
+
+.ds-article-card__img {
+  display: block;
+  margin-top: var(--spacing-32);
+  width: 100%;
+  height: 176px;
+  border-radius: var(--radius-4);
+  background: repeating-conic-gradient(#f4f4f4 0% 25%, #fbfbfb 0% 50%) 0 0 / 46px 46px;
+}
+
+/* --- Розмір M: ширший, більший заголовок, вищі відступи --- */
+
+.ds-article-card--m {
+  width: 436px;
+  padding: var(--spacing-24);
+}
+
+.ds-article-card--m .ds-article-card__title {
+  font-family: var(--font-pragati);
+  /* font.heading.h4-36 — Pragati Narrow 36/32, вага 400 */
+  font-size: 36px;
+  line-height: 32px;
+  font-weight: 400;
+}
+
+.ds-article-card--m .ds-article-card__desc {
+  margin-top: var(--spacing-16);
+}
+
+.ds-article-card--m .ds-article-card__action {
+  margin-top: var(--spacing-20);
+}
+
+.ds-article-card--m .ds-article-card__img {
+  height: 244px;
+}
+
+/* --- Розмір L: опис і кнопка в один ряд --- */
+
+.ds-article-card--l {
+  width: 664px;
+  padding: var(--spacing-24);
+}
+
+.ds-article-card--l .ds-article-card__title {
+  margin-top: 0;
+  font-family: var(--font-pragati);
+  /* font.heading.h3-46 — Pragati Narrow 46/40, вага 400 */
+  font-size: 46px;
+  line-height: 40px;
+  font-weight: 400;
+}
+
+.ds-article-card__row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-32);
+  margin-top: var(--spacing-25);
+}
+
+.ds-article-card__row .ds-article-card__desc {
+  flex: 1;
+  min-width: 0;
+  margin-top: 0;
+}
+
+.ds-article-card__row .ds-article-card__action {
+  flex: none;
+  margin-top: 0;
+}
+
+.ds-article-card--l .ds-article-card__img {
+  height: 387px;
+}
+
+/* ==========================================================================
+   Number card — картка з номером кроку
+   ========================================================================== */
+
+.ds-number-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+  width: 332px;
+  max-width: 100%;
+  padding: var(--spacing-24);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-number-card__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  border: var(--border-width-1) solid var(--color-border-subtle);
+  border-radius: var(--radius-12);
+  font-family: var(--font-pragati);
+  /* font.caption.c1-16 — Pragati Narrow 16/16, uppercase */
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+.ds-number-card__title {
+  margin-top: var(--spacing-32);
+  font-family: var(--font-pragati);
+  /* font.heading.h1-80 — Pragati Narrow 80/72, вага 400 */
+  font-size: 80px;
+  line-height: 72px;
+  font-weight: 400;
+  letter-spacing: -1.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-number-card__text {
+  margin-top: var(--spacing-20);
+  font-family: var(--font-archivo);
+  /* font.heading.h6-20 — Archivo 20/24, вага 500 */
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+/* ==========================================================================
+   Text card — картка з заголовком, градієнтом і текстом
+   Заголовок угорі, текст унизу, градієнт розділяє їх.
+   ========================================================================== */
+
+.ds-text-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 332px;
+  max-width: 100%;
+  height: 416px;
+  padding: var(--spacing-16);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+/* Висота фіксована: градієнт стоїть під блоком заголовка,
+   а не під його останнім рядком */
+.ds-text-card__title {
+  height: 136px;
+  overflow: hidden;
+  font-family: var(--font-pragati);
+  /* font.heading.h4-36 — Pragati Narrow 36/32, вага 400 */
+  font-size: 36px;
+  line-height: 32px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-text-card__rule {
+  flex: none;
+  margin-top: var(--spacing-8);
+  height: 8px;
+  border-radius: 2px;
+  background: var(--gradient-vertical-3);
+}
+
+/* Текст притиснутий до низу картки */
+.ds-text-card__text {
+  margin-top: auto;
+  max-height: 215px;
+  overflow: hidden;
+  font-family: var(--font-archivo);
+  /* font.paragraph.p3-16 — Archivo 16/20 */
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+/* ==========================================================================
+   Award card — картка нагороди
+   ========================================================================== */
+
+.ds-award-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: var(--spacing-40);
+  width: 324px;
+  max-width: 100%;
+  padding: var(--spacing-16);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+/* Заглушка логотипа: розмір відомий, файл ще ні */
+.ds-award-card__logo {
+  flex: none;
+  box-sizing: border-box;
+  width: 160px;
+  height: 60px;
+  border: var(--border-width-1) dashed var(--color-border-subtle);
+  border-radius: var(--radius-4);
+}
+
+.ds-award-card__title {
+  font-family: var(--font-archivo);
+  /* font.heading.h6-20 — Archivo 20/24, вага 500 */
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+/* ==========================================================================
+   Case card — картка кейсу, розмір S
+   Ширина 312 мінус відступи 16×2 дає рівно 280 — ширину зображення.
+   ========================================================================== */
+
+.ds-case-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: var(--spacing-12);
+  width: 312px;
+  max-width: 100%;
+  padding: var(--spacing-16);
+  border: var(--border-width-1) solid var(--color-border-default);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-case-card__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 280 / 176;
+  border-radius: var(--radius-4);
+  background: repeating-conic-gradient(#f4f4f4 0% 25%, #fbfbfb 0% 50%) 0 0 / 46px 46px;
+}
+
+.ds-card-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16);
+}
+
+.ds-card-date {
+  font-family: var(--font-pragati);
+  /* font.caption.c1-16 — Pragati Narrow 16/16, uppercase */
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.ds-case-card__title {
+  margin-top: var(--spacing-12);
+  font-family: var(--font-archivo);
+  /* font.heading.h6-20 — Archivo 20/24, вага 500 */
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ds-case-card__action {
+  display: block;
+  margin-top: var(--spacing-16);
+}
+
+/* --- Розмір L: опис під заголовком, зображення притиснуте до низу --- */
+
+.ds-case-card--l {
+  gap: 0;
+  width: 436px;
+  height: 693px;
+  padding: var(--spacing-24);
+}
+
+.ds-case-card--l .ds-case-card__img {
+  margin-top: auto;
+  aspect-ratio: 388 / 258;
+}
+
+.ds-case-card__desc {
+  display: block;
+  margin-top: var(--spacing-16);
+  font-family: var(--font-archivo);
+  /* font.paragraph.p3-16 — Archivo 16/20. TODO: звірити з Figma */
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.ds-case-card--l .ds-case-card__action {
+  margin-top: var(--spacing-20);
+}
+
+/* У розмірі L заголовок більший: h4-36 замість h6-20 */
+.ds-case-card--l .ds-case-card__title {
+  font-family: var(--font-pragati);
+  /* font.heading.h4-36 — Pragati Narrow 36/32, вага 400 */
+  font-size: 36px;
+  line-height: 32px;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   Tag — мітка з роздільниками по боках
+   ========================================================================== */
+
+.ds-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-16);
+  font-family: var(--font-pragati);
+  /* font.caption.c1-16 — Pragati Narrow 16/16, uppercase */
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.ds-tag::before,
+.ds-tag::after {
+  content: "";
+  flex: none;
+  width: 1px;
+  height: 11px;
+  background: var(--color-text-secondary);
+}
+
+/* Перший тег у ряду не має лівого роздільника */
+.ds-tag:first-child::before {
+  content: none;
+}
+
+/* Два теги поруч: лівий роздільник другого прибираємо,
+   інакше він подвоївся б із правим роздільником першого */
+.ds-tag + .ds-tag::before {
+  content: none;
+}
+
+.ds-tag.is-default {
+  color: var(--color-action-inactive);
+}
+
+.ds-tag.is-hover,
+.ds-tag.is-pressed {
+  color: var(--color-action-primary);
+}
 
 /* ==========================================================================
    Testimonials card — картка відгуку
@@ -1519,6 +2209,11 @@
   mask: var(--icon-placeholder) no-repeat center / contain;
 }
 
+/* Провідна іконка необов'язкова */
+.ds-tab--plain::before {
+  content: none;
+}
+
 .ds-tab.is-default {
   background: var(--color-action-primary-invers);
   color: var(--color-action-primary);
@@ -1608,6 +2303,12 @@
   font-family: var(--button-font-family);
   font-size: var(--button-font-size);
   line-height: 1;
+}
+
+/* Іконка перед текстом — рівно 16 × 16 */
+.ds-btn-block__text .ds-icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
 }
 
 /* ==========================================================================

@@ -1,0 +1,93 @@
+---
+title: "Number"
+description: "Картка з номером кроку: склад, токени."
+---
+
+Картка з порядковим номером, великою цифрою та підписом. Використовується в переліках кроків і показників.
+
+## Збірка
+
+<div className="ds-btn-row">
+  <span className="ds-number-card">
+    <span className="ds-number-card__badge">01</span>
+    <span className="ds-number-card__title">00</span>
+    <span className="ds-number-card__text">text</span>
+  </span>
+</div>
+
+## Контейнер
+
+<div className="ds-table">
+
+| Властивість | Значення | Найближчий токен |
+| --- | --- | --- |
+| Внутрішній відступ | 24px | `card/card-number/padding` — 12px |
+| Заокруглення | 8px | `card/card-number/radius` — 8px |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `card/card-number/bg` | — |
+| Ширина | 332px | [уточнити] |
+| Висота | [уточнити] | — |
+
+</div>
+
+<Warning>
+  `card/card-number/padding` в експорті дорівнює **12px**, а підтверджене значення — 24px.
+</Warning>
+
+<Warning>
+  У групі є токен `card/card-number/border` зі значенням `border.subtle`, але на макеті межі в картки немає, і ви її не називали. Токен не використовується — [уточнити]. Так само й у [Award](/layout/card-award).
+</Warning>
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Розмір або стиль | Колір |
+| --- | --- | --- |
+| Номер | 48 × 48px, `font.caption.c1-16` | <span className="ds-sw ds-sw--text-primary" /> `blocks/process/text` |
+| Межа номера | `blocks/block-icon/border-icon` — 1px | <span className="ds-sw ds-sw--border-subtle" /> `blocks/block-icon/border` |
+| Заокруглення номера | `blocks/block-icon/radius-icon` — 12px | — |
+| Цифра | `font.heading.h1-80` — 80 / 72 | <span className="ds-sw ds-sw--text-primary" /> `card/card-number/text` |
+| Підпис | `font.heading.h6-20` — 20 / 24 | <span className="ds-sw ds-sw--text-primary" /> `card/card-number/text` |
+
+</div>
+
+### Відступи
+
+<div className="ds-table">
+
+| Між чим | Значення | Найближчий токен |
+| --- | --- | --- |
+| Номером і цифрою | 32px | [уточнити] |
+| Цифрою і підписом | 20px | `card/card-number/number-text-gap` — 20px |
+
+</div>
+
+<Warning>
+  Проміжок 32px між номером і цифрою власного токена не має. Найближчий за змістом `blocks/block-icon/text-gap` дорівнює 20px, тобто не підходить.
+</Warning>
+
+<Warning>
+  Ви написали `block/process/text`. У Figma група називається `blocks` у множині — правильна назва `blocks/process/text`. Токен існує й розкручується в `text.primary`.
+</Warning>
+
+<Warning>
+  Картка позичає три токени в сусідніх груп: колір цифри номера з `blocks/process`, а межу й заокруглення номера з `blocks/block-icon`. Власна група `card/card-number` описує лише контейнер і текст. Зміна в тих блоках мовчки зачепить і цю картку.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Номер | Квадрат 48 × 48 з порядковим номером | Так |
+| Цифра | Основне значення, великим кеглем | Так |
+| Підпис | Пояснення до цифри | Так |
+
+## Правила
+
+<Check>
+  Тримайте номер у два знаки — «01», «02». Так усі картки в переліку матимуть однакову ширину номера.
+</Check>
+
+<Warning>
+  Не використовуйте цифру як заголовок. Вона показує значення, а сенс задає підпис під нею.
+</Warning>

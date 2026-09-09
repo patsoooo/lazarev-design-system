@@ -1,0 +1,90 @@
+---
+title: "Title block"
+description: "Заголовок секції: заголовок, опис, кнопка."
+---
+
+Центрований заголовок секції з описом і необов'язковою кнопкою. Стоїть над переліками карток та іншими блоками.
+
+У Figma компонент називається `title-block`.
+
+## Збірка
+
+<div className="ds-btn-row ds-btn-row--plain">
+  <span className="ds-title-block">
+    <span className="ds-title-block__title">Title</span>
+    <span className="ds-title-block__desc">Description</span>
+    <span className="ds-title-block__action"><span className="ds-btn ds-btn--primary is-default">All case studies</span></span>
+  </span>
+</div>
+
+### Без кнопки
+
+Кнопка вимикається в тих секціях, де переходу немає.
+
+<div className="ds-btn-row ds-btn-row--plain">
+  <span className="ds-title-block">
+    <span className="ds-title-block__title">Title</span>
+    <span className="ds-title-block__desc">Description</span>
+  </span>
+</div>
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль | Колір | Максимальна ширина | Максимум рядків |
+| --- | --- | --- | --- | --- |
+| Заголовок | `font.heading.h2-56` — 56 / 48 | <span className="ds-sw ds-sw--text-primary" /> `color/text/primary` | 672px | 2 |
+| Опис | `font.heading.h6-20` — 20 / 24 | <span className="ds-sw ds-sw--text-primary" /> `color/text/primary` | 640px | 6 |
+| Кнопка | Primary button з [Button](/components/button) | — | — | — |
+
+</div>
+
+Проміжки — по **24px**: між заголовком і описом, між описом і кнопкою.
+
+## Орієнтовні ліміти тексту
+
+<div className="ds-table">
+
+| Елемент | Розрахунок | Приблизно символів |
+| --- | --- | --- |
+| Заголовок | 672px ÷ ~18,5px на гліф × 2 рядки | 70 |
+| Опис | 640px ÷ ~10px на гліф × 6 рядків | 380 |
+
+</div>
+
+Заголовок набирається Pragati Narrow — вузькою гарнітурою, її середній гліф займає близько 0,33em, тобто ≈18,5px при кеглі 56. Опис набирається Archivo, там середній гліф ≈0,5em, тобто ≈10px при кеглі 20.
+
+<Warning>
+  Ліміти орієнтовні. Надійне правило — рядки: два на заголовок, шість на опис. Кількість символів залежить від конкретного тексту.
+</Warning>
+
+## Токени
+
+<Warning>
+  Власної групи `title-block` в експорті немає. Назва трапляється лише всередині `blocks/block-text` як імена відступів — `title-block-bullet-points-gap` і `title-block-button-gap`. Тобто блок уже використовується іншими блоками, але власних токенів не має: ні проміжків 24px, ні максимальних ширин.
+
+  Заведіть групу у Figma, інакше ці значення житимуть тільки в документації.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Заголовок | До двох рядків, по центру | Так |
+| Опис | До шести рядків, по центру | Так |
+| Кнопка | Перехід до повного переліку | Ні |
+
+## Правила
+
+<Check>
+  Вимикайте кнопку, коли переходити нікуди. Кнопка, що веде на ту саму сторінку, збиває.
+</Check>
+
+<Check>
+  Тримайте заголовок у двох рядках. Опис ширший за заголовок не буває — 640px проти 672px.
+</Check>
+
+<Warning>
+  Не вирівнюйте вміст ліворуч. Блок центрований, і зміщення зламає ритм секції під ним.
+</Warning>

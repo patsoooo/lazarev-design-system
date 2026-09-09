@@ -1,0 +1,102 @@
+---
+title: "Outcomes"
+description: "Картка результату: розмір S, склад, токени."
+---
+
+Картка показника з логотипом клієнта, підписом, числом і періодом. Два розміри — **S** і **L**. Поки описаний лише S.
+
+Використовується тільки всередині блоку результатів, який буде описаний окремо. Самостійно не застосовується.
+
+## Small
+
+<div className="ds-btn-row ds-btn-row--dark">
+  <span className="ds-outcomes-card">
+    <span className="ds-outcomes-card__logo" />
+    <span className="ds-outcomes-card__text">text</span>
+    <span className="ds-outcomes-card__number">number</span>
+    <span className="ds-outcomes-card__period">period</span>
+  </span>
+</div>
+
+<Warning>
+  Приклад показано на темному фоні навмисно. Фон картки — `background.white-opacity-10%`, тобто **білий із 10% непрозорості**, а не суцільний колір. На світлій підкладці картка стане ледь помітною світло-сірою.
+
+  Це означає, що картка не самостійна: вона розрахована на темний батьківський блок і без нього виглядатиме інакше.
+</Warning>
+
+### Контейнер
+
+<div className="ds-table">
+
+| Властивість | Значення | Найближчий токен |
+| --- | --- | --- |
+| Розмір | 272 × 272px | [уточнити] |
+| Внутрішній відступ | 16px | `card/card-outcomes-s/padding` — 12px |
+| Заокруглення | 8px | `card/card-outcomes-s/radius` — 8px |
+| Фон | <span className="ds-sw ds-sw--background-white-10" /> `card/card-outcomes-s/bg` | — |
+
+</div>
+
+<Warning>
+  `card/card-outcomes-s/padding` в експорті дорівнює **12px**, а підтверджене значення — 16px.
+</Warning>
+
+### Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль або розмір | Колір |
+| --- | --- | --- |
+| Логотип | висота 32px | — |
+| Підпис | `font.paragraph.p3-16` — 16 / 20 | <span className="ds-sw ds-sw--text-inverse" /> `card/card-outcomes-s/text` |
+| Число | `font.heading.h2-56` — 56 / 48 | <span className="ds-sw ds-sw--text-inverse" /> `card/card-outcomes-s/text` |
+| Період | `font.paragraph.p3-16` — 16 / 20 | <span className="ds-sw ds-sw--text-attention" /> `card/card-outcomes-s/text-green` |
+
+</div>
+
+### Відступи
+
+<div className="ds-table">
+
+| Між чим | Значення |
+| --- | --- |
+| Логотипом і підписом | 12px |
+| Підписом і числом | автоматично |
+| Числом і періодом | 4px |
+
+</div>
+
+Число з періодом притиснуті до низу картки: за фіксованої висоти 272px простір між підписом і числом розтягується сам.
+
+<Warning>
+  Ширину логотипа ви не називали — у прикладі це заглушка 120px завширшки. Логотипи клієнтів різної форми, тож потрібне правило вписування, як в [Award](/layout/card-award).
+</Warning>
+
+<Warning>
+  Токен `card/card-outcomes-s/text-secondary` зі значенням `text.tertiary` у картці не використовується — [уточнити], чи він потрібен.
+</Warning>
+
+## Large
+
+<Warning>
+  Розмір L ще не описаний. Його токени в експорті інші за призначенням: фон **білий**, текст чорний, є межа `border.subtle` і власний `number-text-gap` — 20px. Тобто L світлий, а S темний.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Логотип | Знак клієнта, висота 32px | Так |
+| Підпис | Короткий опис показника | Так |
+| Число | Основне значення | Так |
+| Період | За який час досягнуто | Так |
+
+## Правила
+
+<Check>
+  Ставте картку лише на темний фон. Її власний фон напівпрозорий і на світлому не працює.
+</Check>
+
+<Warning>
+  Не використовуйте картку поза блоком результатів. Вона розрахована на роботу в наборі, а не самостійно.
+</Warning>

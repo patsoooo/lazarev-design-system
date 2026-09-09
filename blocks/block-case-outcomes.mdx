@@ -1,0 +1,171 @@
+---
+title: "Case outcomes"
+description: "Блок добірки кейсів: заголовок, фільтри, картки."
+---
+
+Секція з добіркою кейсів. Угорі заголовок і опис, під ними фільтри й кнопки, далі чотири картки кейсів.
+
+## Збірка
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-case-outcomes-block">
+    <span className="ds-case-outcomes-block__head">
+      <span className="ds-case-outcomes-block__half"><span className="ds-case-outcomes-block__title">Title</span></span>
+      <span className="ds-case-outcomes-block__half"><span className="ds-case-outcomes-block__paragraph">Paragraph</span></span>
+    </span>
+    <span className="ds-case-outcomes-block__controls">
+      <span className="ds-case-outcomes-block__half">
+        <span className="ds-tabs">
+          <span className="ds-tab ds-tab--plain is-active">Acquired</span>
+          <span className="ds-tab ds-tab--plain is-default">Unicorns</span>
+          <span className="ds-tab ds-tab--plain is-default">Growth</span>
+        </span>
+      </span>
+      <span className="ds-case-outcomes-block__half">
+        <span className="ds-case-outcomes-block__actions">
+          <span className="ds-btn ds-btn--primary is-default">Read more</span>
+          <span className="ds-btn ds-btn--secondary is-default">Button label</span>
+        </span>
+      </span>
+    </span>
+    <span className="ds-case-outcomes-block__cards">
+      <span className="ds-case-card">
+        <span className="ds-case-card__img" />
+        <span>
+          <span className="ds-card-meta">
+            <span className="ds-tag is-default">Tag</span>
+            <span className="ds-card-date">04 May 2026</span>
+          </span>
+          <span className="ds-case-card__title">Project name</span>
+          <span className="ds-case-card__action"><span className="ds-btn ds-btn--secondary is-default">Button label</span></span>
+        </span>
+      </span>
+      <span className="ds-case-card">
+        <span className="ds-case-card__img" />
+        <span>
+          <span className="ds-card-meta">
+            <span className="ds-tag is-default">Tag</span>
+            <span className="ds-card-date">04 May 2026</span>
+          </span>
+          <span className="ds-case-card__title">Project name</span>
+          <span className="ds-case-card__action"><span className="ds-btn ds-btn--secondary is-default">Button label</span></span>
+        </span>
+      </span>
+      <span className="ds-case-card">
+        <span className="ds-case-card__img" />
+        <span>
+          <span className="ds-card-meta">
+            <span className="ds-tag is-default">Tag</span>
+            <span className="ds-card-date">04 May 2026</span>
+          </span>
+          <span className="ds-case-card__title">Project name</span>
+          <span className="ds-case-card__action"><span className="ds-btn ds-btn--secondary is-default">Button label</span></span>
+        </span>
+      </span>
+      <span className="ds-case-card">
+        <span className="ds-case-card__img" />
+        <span>
+          <span className="ds-card-meta">
+            <span className="ds-tag is-default">Tag</span>
+            <span className="ds-card-date">04 May 2026</span>
+          </span>
+          <span className="ds-case-card__title">Project name</span>
+          <span className="ds-case-card__action"><span className="ds-btn ds-btn--secondary is-default">Button label</span></span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+
+Приклад показано в проєктній ширині 1344px — у вужчій колонці документації він прокручується вбік.
+
+## Розміщення на сторінці
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Ширина | 1344px, розтягується | — |
+| Відступ від країв екрана | 48px з кожного боку | `primitives.spacing.48px` |
+
+</div>
+
+## Контейнер
+
+<div className="ds-table">
+
+| Властивість | Значення | Найближчий токен |
+| --- | --- | --- |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `blocks/block-case-outcomes/bg` | — |
+| Внутрішній відступ | 24px | `blocks/block-case-outcomes/padding` — 16px |
+| Заокруглення | 8px | `blocks/block-case-outcomes/radius-block` — 8px |
+
+</div>
+
+<Warning>
+  Ви написали `blocks/block-case-outcome/text-primary` в однині. У Figma група названа в множині — **`blocks/block-case-outcomes`**. Токен існує й розкручується в `text.primary`.
+</Warning>
+
+<Warning>
+  `blocks/block-case-outcomes/padding` в експорті дорівнює **16px**, а підтверджене значення — 24px.
+</Warning>
+
+## Склад
+
+<div className="ds-table">
+
+| Ряд | Ліва половина | Права половина |
+| --- | --- | --- |
+| Перший | Заголовок, `font.heading.h3-46` — 46 / 40 | Опис, `font.paragraph.p3-16` — 16 / 20 |
+| Другий | Tabs group із [Tab](/components/tab) | Дві кнопки з [Button](/components/button) |
+| Третій | Чотири картки [Case](/layout/card-case) розміру S | |
+
+</div>
+
+Обидві половини верхніх рядів мають однакову ширину — рівно по 50% блоку. Колір заголовка й опису — <span className="ds-sw ds-sw--text-primary" /> `blocks/block-case-outcomes/text-primary`.
+
+### Відступи
+
+<div className="ds-table">
+
+| Між чим | Значення | Найближчий токен |
+| --- | --- | --- |
+| Верхнім рядом і фільтрами | 32px | `blocks/block-case-outcomes/title-text-gap` — 20px |
+| Фільтрами і картками | 32px | — |
+| Між картками | 16px | `blocks/block-case-outcomes/gap` — 16px |
+
+</div>
+
+## Арифметика сходиться
+
+Чотири картки по **312px** плюс три проміжки по **16px** дають 1296px. Це рівно 1344 мінус внутрішні відступи 24 × 2.
+
+Тобто ширина картки [Case](/layout/card-case) розміру S та проміжок між картками задані під цей блок і сходяться до пікселя.
+
+<Warning>
+  Відступ між фільтрами і картками ви не називали — у прикладі 32px, це припущення на основі макета.
+</Warning>
+
+## Таби тут без іконок
+
+На макеті фільтри «Acquired», «Unicorns», «Growth» показані **без провідних іконок**, хоча на сторінці [Tab](/components/tab) вони є. Отже іконка необов'язкова — додав цей варіант і в опис компонента.
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Заголовок | Ліва половина верхнього ряду | Так |
+| Опис | Права половина верхнього ряду | Так |
+| Фільтри | Tabs group ліворуч | Так |
+| Кнопки | Дві кнопки праворуч | Так |
+| Картки | Рівно чотири Case S | Так |
+
+## Правила
+
+<Check>
+  Ставте рівно чотири картки. Розкладка розрахована на цю кількість, і при іншій арифметика ширин не зійдеться.
+</Check>
+
+<Warning>
+  Не робіть половини різними за шириною. Заголовок і опис ділять ряд навпіл незалежно від довжини тексту.
+</Warning>
