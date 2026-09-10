@@ -7,11 +7,13 @@ description: "Картка результату: розмір S, склад, т�
   <span className="ds-preview__stage"><span className="ds-outcomes-card"><span className="ds-outcomes-card__logo" /><span className="ds-outcomes-card__text">Boosted community engagement and increased traffic by 120%.</span><span className="ds-outcomes-card__number">+120%</span><span className="ds-outcomes-card__period">in 4 months</span></span></span>
 </div>
 
-Картка показника з логотипом клієнта, підписом, числом і періодом. Два розміри — **S** і **L**. Поки описаний лише S.
+Картка показника з логотипом клієнта, підписом, числом і періодом.
+
+Розмір **L** — окремий компонент на власній сторінці: [Outcomes L](/cards/outcomes-l). Спільної в них лише назва, все інше різне — фон, кольори, шрифти й порядок елементів.
 
 Використовується тільки всередині блоку результатів, який буде описаний окремо. Самостійно не застосовується.
 
-## Small
+## Збірка
 
 <div className="ds-btn-row ds-btn-row--dark">
   <span className="ds-outcomes-card">
@@ -28,7 +30,7 @@ description: "Картка результату: розмір S, склад, т�
   Це означає, що картка не самостійна: вона розрахована на темний батьківський блок і без нього виглядатиме інакше.
 </Warning>
 
-### Контейнер
+## Контейнер
 
 <div className="ds-table">
 
@@ -45,7 +47,7 @@ description: "Картка результату: розмір S, склад, т�
   `card/card-outcomes-s/padding` в експорті дорівнює **12px**, а підтверджене значення — 16px.
 </Warning>
 
-### Склад
+## Склад
 
 <div className="ds-table">
 
@@ -58,7 +60,7 @@ description: "Картка результату: розмір S, склад, т�
 
 </div>
 
-### Відступи
+## Відступи
 
 <div className="ds-table">
 
@@ -80,12 +82,6 @@ description: "Картка результату: розмір S, склад, т�
   Токен `card/card-outcomes-s/text-secondary` зі значенням `text.tertiary` у картці не використовується — [уточнити], чи він потрібен.
 </Warning>
 
-## Large
-
-<Warning>
-  Розмір L ще не описаний. Його токени в експорті інші за призначенням: фон **білий**, текст чорний, є межа `border.subtle` і власний `number-text-gap` — 20px. Тобто L світлий, а S темний.
-</Warning>
-
 ## Анатомія
 
 | Елемент | Опис | Обов'язковий |
@@ -100,6 +96,10 @@ description: "Картка результату: розмір S, склад, т�
 <Check>
   Ставте картку лише на темний фон. Її власний фон напівпрозорий і на світлому не працює.
 </Check>
+
+<Warning>
+  Не змішуйте цю картку з [Outcomes L](/cards/outcomes-l) в одному наборі. У них різний порядок елементів, тож поруч вони читатимуться як два різні компоненти.
+</Warning>
 
 <Warning>
   Не використовуйте картку поза блоком результатів. Вона розрахована на роботу в наборі, а не самостійно.

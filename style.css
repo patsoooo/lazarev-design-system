@@ -289,11 +289,13 @@
   color: var(--color-text-inverse);
 }
 
-.ds-btn--primary.is-hover {
+.ds-btn--primary.is-hover,
+.ds-preview .ds-btn--primary:hover {
   background: var(--color-action-primary-hover);
 }
 
-.ds-btn--primary.is-pressed {
+.ds-btn--primary.is-pressed,
+.ds-preview .ds-btn--primary:active {
   background: var(--color-action-brand-pressed);
 }
 
@@ -312,12 +314,14 @@
   color: var(--color-text-primary);
 }
 
-.ds-btn--secondary.is-hover {
+.ds-btn--secondary.is-hover,
+.ds-preview .ds-btn--secondary:hover {
   border-color: var(--color-action-primary);
 }
 
 /* Pressed використовує той самий border-hover, що й Hover */
-.ds-btn--secondary.is-pressed {
+.ds-btn--secondary.is-pressed,
+.ds-preview .ds-btn--secondary:active {
   border-color: var(--color-action-primary);
 }
 
@@ -351,13 +355,15 @@
   mask: var(--icon-placeholder) no-repeat center / contain;
 }
 
-.ds-btn--industry.is-hover {
+.ds-btn--industry.is-hover,
+.ds-preview .ds-btn--industry:hover {
   background: var(--color-action-primary-hover);
   color: var(--color-action-primary-invers);
 }
 
 /* Pressed повторює кольори Hover */
-.ds-btn--industry.is-pressed {
+.ds-btn--industry.is-pressed,
+.ds-preview .ds-btn--industry:active {
   background: var(--color-action-brand-pressed);
   color: var(--color-action-primary-invers);
 }
@@ -380,7 +386,8 @@
   text-transform: uppercase; /* TODO: звірити з Figma — стиль тексту не визначений */
 }
 
-.ds-btn--link.is-hover {
+.ds-btn--link.is-hover,
+.ds-preview .ds-btn--link:hover {
   color: var(--color-action-primary-hover);
 }
 
@@ -409,13 +416,15 @@
   content: none;
 }
 
-.ds-btn--play.is-hover {
+.ds-btn--play.is-hover,
+.ds-preview .ds-btn--play:hover {
   background: var(--color-action-primary-invers);
   color: var(--color-action-primary);
 }
 
 /* Pressed повторює Hover */
-.ds-btn--play.is-pressed {
+.ds-btn--play.is-pressed,
+.ds-preview .ds-btn--play:active {
   background: var(--color-action-primary-invers);
   color: var(--color-action-primary);
 }
@@ -446,11 +455,13 @@
   color: var(--color-icon-inverse);
 }
 
-.ds-btn--icon.is-hover {
+.ds-btn--icon.is-hover,
+.ds-preview .ds-btn--icon:hover {
   background: var(--color-action-primary-hover);
 }
 
-.ds-btn--icon.is-pressed {
+.ds-btn--icon.is-pressed,
+.ds-preview .ds-btn--icon:active {
   background: var(--color-action-brand-pressed);
 }
 
@@ -465,12 +476,14 @@
   color: var(--color-icon-default);
 }
 
-.ds-btn--icon-outline.is-hover {
+.ds-btn--icon-outline.is-hover,
+.ds-preview .ds-btn--icon-outline:hover {
   border-color: var(--color-action-primary);
 }
 
 /* Pressed повторює Hover */
-.ds-btn--icon-outline.is-pressed {
+.ds-btn--icon-outline.is-pressed,
+.ds-preview .ds-btn--icon-outline:active {
   border-color: var(--color-action-primary);
 }
 
@@ -504,7 +517,9 @@
 }
 
 .ds-btn--plus.is-hover,
-.ds-btn--plus.is-pressed {
+.ds-btn--plus.is-pressed,
+.ds-preview .ds-btn--plus:hover,
+.ds-preview .ds-btn--plus:active {
   border-color: var(--color-action-primary); /* TODO: звірити з Figma */
 }
 
@@ -750,6 +765,8 @@
   align-items: flex-start;
   box-sizing: border-box;
   gap: var(--spacing-8);
+  width: 400px;
+  max-width: 100%;
   padding: var(--spacing-24);
   border-radius: var(--radius-8);
   background: var(--color-background-block);
@@ -1066,6 +1083,7 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin-bottom: var(--spacing-24);
 }
 
 .ds-process-block__text {
@@ -1366,6 +1384,55 @@
   font-weight: 400;
   letter-spacing: -0.5px;
   color: var(--color-text-inverse);
+}
+
+/* Розмір L: світла картка з іншим порядком елементів — число вгорі, а логотип
+   і абзац притиснуті вниз двома однаковими проміжками (space-between). */
+.ds-outcomes-card--l {
+  width: 332px;
+  height: 400px;
+  padding: var(--spacing-24);
+  border: var(--border-width-1) solid var(--color-border-subtle);
+  background: var(--color-background-block);
+}
+
+.ds-outcomes-card--l .ds-outcomes-card__number {
+  margin-top: 0;
+  /* font.heading.h1-80 — Pragati Narrow 80/72, вага 400 */
+  font-size: 80px;
+  line-height: 72px;
+  letter-spacing: -1.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-outcomes-card--l .ds-outcomes-card__text {
+  margin-top: var(--spacing-16);
+  /* font.heading.h6-20 — Archivo 20/24, вага 500 */
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-outcomes-card--l .ds-outcomes-card__logo {
+  margin-top: auto;
+  width: 156px;
+  height: 44px;
+  border-color: var(--color-border-subtle);
+}
+
+.ds-outcomes-card__paragraph {
+  display: block;
+  margin-top: auto;
+  height: 48px;
+  overflow: hidden;
+  font-family: var(--font-archivo);
+  /* font.paragraph.p4-14 — Archivo 14/16, вага 500 */
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--color-text-primary);
 }
 
 .ds-outcomes-card__period {
@@ -1888,7 +1955,9 @@
 }
 
 .ds-tag.is-hover,
-.ds-tag.is-pressed {
+.ds-tag.is-pressed,
+.ds-preview .ds-tag:hover,
+.ds-preview .ds-tag:active {
   color: var(--color-action-primary);
 }
 
@@ -2439,11 +2508,13 @@
 }
 
 .ds-link.is-hover,
-.ds-link.is-active {
+.ds-link.is-active,
+.ds-preview .ds-link:hover {
   color: var(--color-action-brand-hover);
 }
 
-.ds-link.is-pressed {
+.ds-link.is-pressed,
+.ds-preview .ds-link:active {
   color: var(--color-action-brand-pressed);
 }
 
@@ -2485,7 +2556,8 @@
 }
 
 .ds-bc-item.is-active,
-.ds-bc-item.is-hover {
+.ds-bc-item.is-hover,
+.ds-preview .ds-bc-item:hover {
   color: var(--color-action-primary);
 }
 
@@ -2536,7 +2608,8 @@
 }
 
 /* У варіанті з лічильником Hover замінює каретку на × — це гліф, не маска */
-.ds-dd--count.is-hover::after {
+.ds-dd--count.is-hover::after,
+.ds-preview .ds-dd--count:hover::after {
   -webkit-mask-image: var(--icon-close);
   mask-image: var(--icon-close);
 }
@@ -2547,7 +2620,8 @@
 }
 
 .ds-dd.is-hover,
-.ds-dd.is-open {
+.ds-dd.is-open,
+.ds-preview .ds-dd:hover {
   background: var(--color-action-primary); /* TODO: звірити з Figma */
   color: var(--color-text-inverse);
 }
@@ -2573,7 +2647,8 @@
 
 .ds-dd.is-hover .ds-dd__count,
 .ds-dd.is-open .ds-dd__count,
-.ds-dd.is-disabled .ds-dd__count {
+.ds-dd.is-disabled .ds-dd__count,
+.ds-preview .ds-dd:hover .ds-dd__count {
   background: var(--color-action-primary-invers);
   color: var(--color-action-primary);
 }
@@ -2610,7 +2685,8 @@
   color: var(--color-text-primary);
 }
 
-.ds-dd-item.is-hover {
+.ds-dd-item.is-hover,
+.ds-preview .ds-dd-item:hover {
   background: var(--color-action-bg-hover); /* TODO: звірити з Figma */
 }
 
@@ -2633,7 +2709,9 @@
 }
 
 .ds-cb.is-hover,
-.ds-dd-item.is-hover .ds-cb {
+.ds-dd-item.is-hover .ds-cb,
+.ds-preview .ds-cb:hover,
+.ds-preview .ds-dd-item:hover .ds-cb {
   border-color: var(--color-action-primary);
 }
 
@@ -2700,7 +2778,8 @@
 }
 
 .ds-chip.is-hover,
-.ds-chip.is-active {
+.ds-chip.is-active,
+.ds-preview .ds-chip:hover {
   background: var(--color-action-primary);
   border-color: var(--color-action-primary);
   color: var(--color-text-inverse);
@@ -2734,7 +2813,8 @@
 }
 
 .ds-pagi.is-active,
-.ds-pagi.is-hover {
+.ds-pagi.is-hover,
+.ds-preview .ds-pagi:hover {
   background: var(--color-action-primary);
   color: var(--color-action-primary-invers);
 }
@@ -2811,7 +2891,8 @@
 
 /* Hover і Active мають однакові кольори */
 .ds-tab.is-hover,
-.ds-tab.is-active {
+.ds-tab.is-active,
+.ds-preview .ds-tab:hover {
   background: var(--color-action-primary);
   color: var(--color-action-primary-invers);
 }
@@ -2919,4 +3000,48 @@
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-8);
+}
+
+/* У прев'ю хедер не розтягується на проєктні 1360px: три частини стоять
+   поруч із власним проміжком, тож елементи видно в реальному розмірі. */
+.ds-preview .ds-header {
+  width: auto;
+  min-width: 0;
+  gap: var(--spacing-16);
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Інтерактивність у прев'ю
+   Стани Hover і Pressed підключені до справжніх :hover та :active — правила
+   ті самі, що й для класів .is-hover / .is-pressed, лише з іншим тригером.
+   Демонстрації станів на сторінках лишаються статичними навмисно.
+   ========================================================================== */
+
+.ds-preview .ds-btn,
+.ds-preview .ds-chip,
+.ds-preview .ds-tag,
+.ds-preview .ds-tab,
+.ds-preview .ds-link,
+.ds-preview .ds-pagi,
+.ds-preview .ds-cb,
+.ds-preview .ds-dd,
+.ds-preview .ds-dd-item {
+  cursor: pointer;
+}
+
+/* Плавний перехід лише в прев'ю: у таблицях станів анімація зайва */
+.ds-preview .ds-btn,
+.ds-preview .ds-btn::after,
+.ds-preview .ds-chip,
+.ds-preview .ds-tag,
+.ds-preview .ds-tab,
+.ds-preview .ds-link,
+.ds-preview .ds-pagi,
+.ds-preview .ds-bc-item,
+.ds-preview .ds-cb,
+.ds-preview .ds-dd,
+.ds-preview .ds-dd__count,
+.ds-preview .ds-dd-item {
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }

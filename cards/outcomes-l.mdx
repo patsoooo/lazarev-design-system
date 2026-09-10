@@ -1,0 +1,110 @@
+---
+title: "Outcomes L"
+description: "Велика картка результату: число, підпис, логотип, абзац."
+---
+
+<div className="ds-preview ds-preview--s1">
+  <span className="ds-preview__stage"><span className="ds-outcomes-card ds-outcomes-card--l"><span className="ds-outcomes-card__number">00</span><span className="ds-outcomes-card__text">text</span><span className="ds-outcomes-card__logo" /><span className="ds-outcomes-card__paragraph">paragraph</span></span></span>
+</div>
+
+Велика картка показника: число вгорі, логотип клієнта посередині, короткий абзац унизу.
+
+Це не [Outcomes](/cards/outcomes) у більшому масштабі, а окремий компонент. Там картка темна й напівпрозора, тут — світла з межею, і порядок елементів зворотний.
+
+## Збірка
+
+<div className="ds-btn-row">
+  <span className="ds-outcomes-card ds-outcomes-card--l">
+    <span className="ds-outcomes-card__number">00</span>
+    <span className="ds-outcomes-card__text">text</span>
+    <span className="ds-outcomes-card__logo" />
+    <span className="ds-outcomes-card__paragraph">paragraph</span>
+  </span>
+</div>
+
+Число стоїть **угорі**, а логотип і абзац притиснуті донизу — у [Outcomes](/cards/outcomes) навпаки.
+
+## Контейнер
+
+<div className="ds-table">
+
+| Властивість | Значення | Найближчий токен |
+| --- | --- | --- |
+| Розмір | 332 × 400px | немає |
+| Внутрішній відступ | 24px | `card/card-outcomes-l/padding` — 12px |
+| Заокруглення | 8px | `card/card-outcomes-l/radius` — 8px |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `card/card-outcomes-l/bg` | — |
+| Межа | <span className="ds-sw ds-sw--border-subtle" /> `card/card-outcomes-l/border` | — |
+| Товщина межі | 1px | немає |
+
+</div>
+
+<Warning>
+  `card/card-outcomes-l/padding` в експорті дорівнює **12px**, а підтверджене значення — 24px. Той самий розрив, що і в S.
+</Warning>
+
+<Warning>
+  Колір межі `border.subtle` — `#d9d9d9`, тобто той самий сірий, що й полотно макета. На макеті межу через це не видно, і підтвердити її можна тільки в Figma — [уточнити], чи вона справді є.
+</Warning>
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль або розмір | Колір |
+| --- | --- | --- |
+| Число | `font.heading.h1-80` — 80 / 72 | <span className="ds-sw ds-sw--text-primary" /> `card/card-outcomes-l/text` |
+| Підпис | `font.heading.h6-20` — 20 / 24, вага 500 | <span className="ds-sw ds-sw--text-primary" /> `card/card-outcomes-l/text` |
+| Логотип | 156 × 44px | — |
+| Абзац | `font.paragraph.p4-14` — 14 / 16, висота 48px | <span className="ds-sw ds-sw--text-primary" /> `card/card-outcomes-l/text` |
+
+</div>
+
+## Відступи
+
+<div className="ds-table">
+
+| Між чим | Значення |
+| --- | --- |
+| Числом і підписом | 16px |
+| Підписом і логотипом | автоматично |
+| Логотипом і абзацом | автоматично |
+
+</div>
+
+Фіксовані лише число з підписом угорі. Решту висоти ділять два однакові проміжки, тож логотип стоїть посередині, а абзац — унизу картки. За висоти 400px це дає по 74px у кожному проміжку.
+
+<Warning>
+  `card/card-outcomes-l/number-text-gap` в експорті дорівнює **20px**, а підтверджене значення — 16px.
+</Warning>
+
+<Warning>
+  Ширини й висоти картки, розміру логотипа та висоти абзацу в експорті немає — жодного розмірного токена, крім `padding` і `radius`, група `card/card-outcomes-l` не містить. Значення живуть тільки в цій документації.
+</Warning>
+
+<Warning>
+  Логотип у прикладі — заглушка 156 × 44px. Логотипи клієнтів різної форми, тож потрібне правило вписування, як в [Award](/cards/award).
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Число | Основне значення, h1-80 | Так |
+| Підпис | Короткий опис показника, h6-20 | Так |
+| Логотип | Знак клієнта, 156 × 44px | Так |
+| Абзац | Пояснення внизу картки, p4-14 | Так |
+
+## Правила
+
+<Check>
+  Ставте картку на світлий фон. У неї суцільний білий фон і межа — на темному вона працює інакше, ніж [Outcomes](/cards/outcomes).
+</Check>
+
+<Check>
+  Тримайте абзац у межах 48px, тобто трьох рядків. Висота картки фіксована, і довший текст обріжеться.
+</Check>
+
+<Warning>
+  Не змішуйте цю картку з [Outcomes](/cards/outcomes) в одному наборі. У них різний порядок елементів, тож поруч вони читатимуться як два різні компоненти.
+</Warning>
