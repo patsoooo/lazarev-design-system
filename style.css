@@ -56,6 +56,7 @@
   --spacing-40: 40px;
   --spacing-56: 56px;
   --spacing-64: 64px;
+  --spacing-72: 72px;
   --spacing-128: 128px;
   --spacing-48: 48px;
 
@@ -105,6 +106,7 @@
   --icon-size: 16px;
 
   /* --- Градієнти --- */
+  --gradient-horizontal-2: linear-gradient(180deg, #1e1e1eff 0%, #0f9549ff 45%, #c2cddeff 100%);
   --gradient-horizontal-dark: linear-gradient(180deg, #3e4f7fff 0%, #0c0f19ff 30%, #0c0f19ff 65%, #0f9549ff 94%);
   --gradient-vertical-3: linear-gradient(314.967deg, #1e1e1eff 0%, #0da34eff 54%, #0a783aff 60%, #1e1e1eff 65%, #c2cddeff 68%, #0da34eff 74%, #c2cddeff 84%, #1e1e1eff 100%);
 
@@ -632,6 +634,590 @@
 .ds-icon--rotate-270 { transform: rotate(-90deg); }
 
 /* ==========================================================================
+   Preview — оглядовий блок під заголовком сторінки
+   Один екземпляр компонента, масштабований так, щоб вписатись у 500px.
+   Масштаб задає модифікатор: transform, а не адаптація, тож пропорції
+   й усі внутрішні розміри лишаються справжніми.
+   ========================================================================== */
+
+.ds-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 500px;
+  margin: var(--spacing-24) 0;
+  border-radius: var(--radius-8);
+  background: var(--color-background-page);
+  overflow: hidden;
+}
+
+.ds-preview--dark {
+  background: var(--color-action-primary);
+}
+
+.ds-preview--light {
+  background: var(--color-background-block);
+}
+
+.ds-preview__stage {
+  /* flex обов'язковий: інакше вкладені span лишаються рядковими
+     і не приймають width та padding */
+  display: flex;
+  flex: none;
+  transform-origin: center center;
+}
+
+/* Для елементів із width:100% сцені потрібна власна ширина */
+.ds-preview__stage--w664 { width: 664px; }
+.ds-preview__stage--w900 { width: 900px; }
+
+/* Замість масштабу — розтягнути на доступну ширину, зберігши справжні розміри */
+.ds-preview--fit {
+  padding: 0 28px;
+}
+
+.ds-preview--fit .ds-preview__stage {
+  width: 100%;
+  transform: none;
+}
+
+.ds-preview--fit .ds-preview__stage > * {
+  width: 100%;
+  min-width: 0;
+}
+
+.ds-preview--s025 .ds-preview__stage { transform: scale(0.25); }
+.ds-preview--s03  .ds-preview__stage { transform: scale(0.3); }
+.ds-preview--s035 .ds-preview__stage { transform: scale(0.35); }
+.ds-preview--s04  .ds-preview__stage { transform: scale(0.4); }
+.ds-preview--s045 .ds-preview__stage { transform: scale(0.45); }
+.ds-preview--s05  .ds-preview__stage { transform: scale(0.5); }
+.ds-preview--s06  .ds-preview__stage { transform: scale(0.6); }
+.ds-preview--s07  .ds-preview__stage { transform: scale(0.7); }
+.ds-preview--s08  .ds-preview__stage { transform: scale(0.8); }
+.ds-preview--s09  .ds-preview__stage { transform: scale(0.9); }
+.ds-preview--s1   .ds-preview__stage { transform: scale(1); }
+.ds-preview--s12  .ds-preview__stage { transform: scale(1.2); }
+.ds-preview--s15  .ds-preview__stage { transform: scale(1.5); }
+.ds-preview--s2   .ds-preview__stage { transform: scale(2); }
+.ds-preview--s25  .ds-preview__stage { transform: scale(2.5); }
+.ds-preview--s3   .ds-preview__stage { transform: scale(3); }
+.ds-preview--s4   .ds-preview__stage { transform: scale(4); }
+.ds-preview--s6   .ds-preview__stage { transform: scale(6); }
+
+/* ==========================================================================
+   Point — двоколірна іконка
+   Маска тут не підходить: вона фарбує все одним кольором, а тут два токени.
+   Тому іконка зібрана фігурами CSS — обидва кольори лишаються живими.
+   ========================================================================== */
+
+.ds-point {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 32px;
+  height: 32px;
+}
+
+.ds-point::before {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: var(--border-width-1) dashed var(--color-icon-secondary);
+  border-radius: 50%;
+}
+
+.ds-point::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-icon-default);
+}
+
+/* ==========================================================================
+   Bullet point card — картка пункту переліку
+   ========================================================================== */
+
+.ds-bullet-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+  gap: var(--spacing-8);
+  padding: var(--spacing-24);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-bullet-card__text {
+  font-family: var(--font-archivo);
+  /* font.paragraph.p3-16 — Archivo 16/20 */
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+/* ==========================================================================
+   Text block, варіант 2 — градієнтна секція з переліком блоків Icon
+   ========================================================================== */
+
+.ds-text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 1344px;
+  padding: var(--spacing-48);
+  border-radius: var(--radius-8);
+  background: var(--gradient-horizontal-2);
+  text-align: center;
+}
+
+.ds-text-block__title {
+  font-family: var(--font-pragati);
+  /* font.heading.h2-56 — Pragati Narrow 56/48, вага 400 */
+  font-size: 56px;
+  line-height: 48px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: var(--color-text-inverse);
+}
+
+.ds-text-block__desc {
+  display: block;
+  margin-top: var(--spacing-24);
+  font-family: var(--font-archivo);
+  /* font.paragraph.p2-18 — Archivo 18/20 */
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-inverse);
+}
+
+.ds-text-block__action {
+  display: block;
+  margin-top: var(--spacing-24);
+}
+
+.ds-text-block__cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  width: 100%;
+  margin-top: var(--spacing-72);
+}
+
+/* Усередині секції картка займає доступну ширину, а не проєктну */
+.ds-text-block .ds-icon-block {
+  min-width: 0;
+}
+
+/* ==========================================================================
+   Icon block — блок із бейджами та текстом
+   Бейджі використовують той самий клас, що й картка Number.
+   ========================================================================== */
+
+.ds-icon-block {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  box-sizing: border-box;
+  gap: var(--spacing-24);
+  width: 100%;
+  min-width: 1344px;
+  padding: var(--spacing-24);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-icon-block__badges {
+  display: flex;
+  flex: none;
+  gap: var(--spacing-8);
+}
+
+.ds-icon-block__main {
+  flex: 0 1 816px;
+  min-width: 0;
+}
+
+.ds-icon-block__title {
+  font-family: var(--font-pragati);
+  /* font.heading.h4-36 — Pragati Narrow 36/32, вага 400 */
+  font-size: 36px;
+  line-height: 32px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-icon-block__text {
+  display: block;
+  margin-top: var(--spacing-24);
+  font-family: var(--font-archivo);
+  /* font.paragraph.p3-16 — Archivo 16/20 */
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+/* Кнопка необов'язкова */
+.ds-icon-block__action {
+  display: block;
+  margin-top: var(--spacing-24);
+}
+
+/* --- Адаптивна розкладка: бейджі згори, текст під ними --- */
+
+.ds-icon-block--responsive {
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ds-icon-block--responsive .ds-icon-block__main {
+  flex: none;
+  margin-top: var(--spacing-24);
+}
+
+/* ==========================================================================
+   Accordion — розкривний блок
+   Ділить токени з групою dropdown.
+   ========================================================================== */
+
+.ds-accordion {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 1344px;
+  padding: var(--spacing-24);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-accordion__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-24);
+}
+
+.ds-accordion__title {
+  font-family: var(--font-archivo);
+  /* font.heading.h5-24 — Archivo 24/24, вага 500 */
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-accordion__body {
+  display: block;
+  margin-top: var(--spacing-24);
+  font-family: var(--font-archivo);
+  /* font.paragraph.p3-16 — Archivo 16/20 */
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+/* ==========================================================================
+   Case block — блок кейсу
+   На desktop медіа праворуч, на tablet і mobile — під текстом.
+   ========================================================================== */
+
+.ds-case-block {
+  display: flex;
+  box-sizing: border-box;
+  gap: var(--spacing-40);
+  width: 100%;
+  min-width: 1344px;
+  padding: var(--spacing-24);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-case-block__main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.ds-case-block__title {
+  margin-top: var(--spacing-12);
+  font-family: var(--font-pragati);
+  /* font.heading.h3-46 — Pragati Narrow 46/40, вага 400 */
+  font-size: 46px;
+  line-height: 40px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-case-block__paragraph {
+  display: block;
+  margin-top: var(--spacing-24);
+  font-family: var(--font-archivo);
+  /* font.paragraph.p3-16 — Archivo 16/20 */
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+/* Кнопка притиснута до низу текстової колонки */
+.ds-case-block__action {
+  display: block;
+  margin-top: auto;
+  padding-top: var(--spacing-24);
+}
+
+.ds-case-block__media {
+  flex: none;
+  width: 672px;
+  aspect-ratio: 672 / 432;
+  border-radius: var(--radius-4);
+  background: repeating-conic-gradient(#f4f4f4 0% 25%, #fbfbfb 0% 50%) 0 0 / 46px 46px;
+}
+
+/* --- Tablet і mobile: медіа під текстом --- */
+
+.ds-case-block--tablet,
+.ds-case-block--mobile {
+  flex-direction: column;
+}
+
+.ds-case-block--tablet .ds-case-block__media,
+.ds-case-block--mobile .ds-case-block__media {
+  width: 100%;
+}
+
+.ds-case-block--tablet .ds-case-block__action,
+.ds-case-block--mobile .ds-case-block__action {
+  margin-top: var(--spacing-24);
+  padding-top: 0;
+}
+
+.ds-case-block--tablet {
+  width: 796px;
+  min-width: 796px;
+  gap: var(--spacing-40);
+  padding: var(--spacing-16);
+}
+
+.ds-case-block--mobile {
+  width: 382px;
+  min-width: 382px;
+  gap: var(--spacing-24);
+  padding: var(--spacing-12);
+}
+
+/* ==========================================================================
+   Process block — крок процесу
+   Медіа зліва фіксована, права колонка стискається від 648px.
+   ========================================================================== */
+
+.ds-process-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-sizing: border-box;
+  gap: var(--spacing-40);
+  width: 100%;
+  min-width: 1344px;
+  padding: var(--spacing-24);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-process-block__media {
+  flex: none;
+  width: 312px;
+  height: 175px;
+  border-radius: var(--radius-4);
+  background: repeating-conic-gradient(#f4f4f4 0% 25%, #fbfbfb 0% 50%) 0 0 / 46px 46px;
+}
+
+.ds-process-block__main {
+  flex: 0 1 648px;
+  min-width: 0;
+}
+
+.ds-process-block__title {
+  font-family: var(--font-pragati);
+  /* font.heading.h4-36 — Pragati Narrow 36/32, вага 400 */
+  font-size: 36px;
+  line-height: 32px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ds-process-block__text {
+  display: block;
+  height: 80px;
+  overflow: hidden;
+  font-family: var(--font-archivo);
+  /* font.paragraph.p3-16 — Archivo 16/20 */
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.ds-process-block__action {
+  display: block;
+}
+
+/* --- Розміри --- */
+
+.ds-process-block--tab {
+  width: 984px;
+  min-width: 984px;
+}
+
+.ds-process-block--mobile {
+  width: 736px;
+  min-width: 736px;
+}
+
+/* На мобільному медіа не показується */
+.ds-process-block--mobile .ds-process-block__media {
+  display: none;
+}
+
+/* ==========================================================================
+   Service block — секція послуги
+   Ліва колонка фіксованої ширини, медіа займає решту.
+   ========================================================================== */
+
+.ds-service-block {
+  display: flex;
+  gap: var(--spacing-64);
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 1344px;
+  padding: var(--spacing-24);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-service-block__main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 0 1 592px;
+  min-width: 448px;
+}
+
+.ds-service-block__title {
+  font-family: var(--font-pragati);
+  /* font.heading.h3-46 — Pragati Narrow 46/40, вага 400 */
+  font-size: 46px;
+  line-height: 40px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-service-block__subtitle {
+  display: block;
+  margin-top: var(--spacing-24);
+  font-family: var(--font-archivo);
+  /* font.heading.h6-20 — Archivo 20/24, вага 500 */
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-service-block__action {
+  display: block;
+  margin-top: var(--spacing-16);
+}
+
+.ds-service-block__facts {
+  display: flex;
+  gap: var(--spacing-40);
+}
+
+.ds-service-block__fact {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.ds-service-block__fact-label {
+  display: block;
+  font-family: var(--font-pragati);
+  /* font.caption.c1-16 — Pragati Narrow 16/16, uppercase */
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.ds-service-block__fact-text {
+  display: block;
+  margin-top: var(--spacing-8);
+  font-family: var(--font-archivo);
+  /* font.paragraph.p2-18 — Archivo 18/20 */
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.ds-service-block__media {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 360px;
+  border-radius: var(--radius-4);
+  background: repeating-conic-gradient(#f4f4f4 0% 25%, #fbfbfb 0% 50%) 0 0 / 46px 46px;
+}
+
+/* --- Вузька розкладка: колонки стають рядами --- */
+
+.ds-service-block--narrow {
+  flex-direction: column;
+  width: 480px;
+  min-width: 480px;
+}
+
+.ds-service-block--narrow .ds-service-block__main {
+  flex: none;
+  height: 380px;
+  min-width: 0;
+}
+
+.ds-service-block--narrow .ds-service-block__facts {
+  flex-direction: column;
+  gap: var(--spacing-40);
+}
+
+.ds-service-block--narrow .ds-service-block__media {
+  flex: none;
+  height: 243px;
+}
+
+/* ==========================================================================
    Case outcomes block — секція з добіркою кейсів
    Верхні два ряди діляться навпіл; картки — рівно чотири по 312px.
    ========================================================================== */
@@ -814,6 +1400,7 @@
 }
 
 .ds-cta-block__desc {
+  display: block;
   font-family: var(--font-archivo);
   /* font.heading.h6-20 — Archivo 20/24, вага 500 */
   font-size: 20px;
@@ -824,6 +1411,7 @@
 }
 
 .ds-cta-block__title {
+  display: block;
   margin-top: var(--spacing-128);
   max-width: 1008px;
   font-family: var(--font-pragati);
@@ -836,6 +1424,7 @@
 }
 
 .ds-cta-block__actions {
+  display: block;
   margin-top: var(--spacing-40);
 }
 
@@ -1024,7 +1613,7 @@
   background: var(--color-background-block);
 }
 
-.ds-number-card__badge {
+.ds-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1992,6 +2581,7 @@
 /* --- Панель меню: тут токени справжні --- */
 
 .ds-dd-menu {
+  display: block;
   box-sizing: border-box;
   width: 280px; /* TODO: звірити з Figma */
   padding: var(--spacing-16);

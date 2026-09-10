@@ -1,0 +1,180 @@
+---
+title: "Case"
+description: "Блок кейсу: три розміри, медіа, текст."
+---
+
+<div className="ds-preview ds-preview--s05">
+  <span className="ds-preview__stage"><span className="ds-case-block"><span className="ds-case-block__main"><span className="ds-card-meta"><span className="ds-tag is-default">Tag</span><span className="ds-card-date">04 May 2026</span></span><span className="ds-case-block__title">Title</span><span className="ds-case-block__paragraph">paragraph</span><span className="ds-case-block__action"><span className="ds-btn ds-btn--primary is-default">View case</span></span></span><span className="ds-case-block__media" /></span></span>
+</div>
+
+Блок окремого кейсу. Має три розміри: **desktop**, **tablet** і **mobile**.
+
+На desktop зображення стоїть праворуч, на менших розмірах переїжджає під текст.
+
+## Desktop
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-case-block">
+    <span className="ds-case-block__main">
+      <span className="ds-card-meta">
+        <span className="ds-tag is-default">Tag</span>
+        <span className="ds-card-date">10 Aug 26</span>
+      </span>
+      <span className="ds-case-block__title">Title</span>
+      <span className="ds-case-block__paragraph">paragraph</span>
+      <span className="ds-case-block__action"><span className="ds-btn ds-btn--primary is-default">View case</span></span>
+    </span>
+    <span className="ds-case-block__media" />
+  </span>
+</div>
+
+Приклад показано в проєктній ширині 1344px — у вужчій колонці документації він прокручується вбік.
+
+## Tablet
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-case-block ds-case-block--tablet">
+    <span className="ds-case-block__main">
+      <span className="ds-card-meta">
+        <span className="ds-tag is-default">Tag</span>
+        <span className="ds-card-date">10 Aug 26</span>
+      </span>
+      <span className="ds-case-block__title">Title</span>
+      <span className="ds-case-block__paragraph">paragraph</span>
+      <span className="ds-case-block__action"><span className="ds-btn ds-btn--primary is-default">View case</span></span>
+    </span>
+    <span className="ds-case-block__media" />
+  </span>
+</div>
+
+## Mobile
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-case-block ds-case-block--mobile">
+    <span className="ds-case-block__main">
+      <span className="ds-card-meta">
+        <span className="ds-tag is-default">Tag</span>
+        <span className="ds-card-date">10 Aug 26</span>
+      </span>
+      <span className="ds-case-block__title">Title</span>
+      <span className="ds-case-block__paragraph">paragraph</span>
+      <span className="ds-case-block__action"><span className="ds-btn ds-btn--primary is-default">View case</span></span>
+    </span>
+    <span className="ds-case-block__media" />
+  </span>
+</div>
+
+## Розміри
+
+<div className="ds-table">
+
+| Розмір | Ширина блока | Ширина медіа | Проміжок до тексту | Внутрішній відступ |
+| --- | --- | --- | --- | --- |
+| Desktop | розтягується, 1344px | 672px | 40px | 24px |
+| Tablet | 796px | 764px | 40px | 16px |
+| Mobile | 382px | 358px | 24px | 12px |
+
+</div>
+
+<Warning>
+  Внутрішні відступи для tablet і mobile ви не називали — вони виводяться з ширин. На tablet 796 мінус медіа 764 лишає 32px, тобто по **16px** з кожного боку. На mobile 382 мінус 358 лишає 24px, тобто по **12px**. Отже відступ змінюється разом із розміром: 24 → 16 → 12.
+</Warning>
+
+<Warning>
+  Проміжок від тексту до медіа на desktop ви теж не називали — у прикладі 40px, як на tablet. На desktop він горизонтальний, на менших розмірах вертикальний.
+</Warning>
+
+## Контейнер
+
+<div className="ds-table">
+
+| Властивість | Значення | Найближчий токен |
+| --- | --- | --- |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `blocks/case/bg` | — |
+| Внутрішній відступ | 24px на desktop | `blocks/case/padding` — 12px |
+| Заокруглення | 8px | `blocks/case/radius` — 8px |
+
+</div>
+
+Цікаво, що `blocks/case/padding` дорівнює саме **12px** — це відступ mobile-розміру. Схоже, токен описує найменший варіант, а не desktop.
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль або компонент | Колір |
+| --- | --- | --- |
+| Мітка | [Tag](/components/tag) | — |
+| Дата | `font.caption.c1-16` — 16 / 16 | <span className="ds-sw ds-sw--text-tertiary" /> `card/s/text-tertiary` |
+| Заголовок | `font.heading.h3-46` — 46 / 40 | <span className="ds-sw ds-sw--text-primary" /> `blocks/case/text` |
+| Опис | `font.paragraph.p3-16` — 16 / 20 | <span className="ds-sw ds-sw--text-primary" /> `blocks/case/text` |
+| Кнопка | Primary button з [Button](/components/button) | — |
+
+</div>
+
+### Відступи
+
+<div className="ds-table">
+
+| Між чим | Значення | Найближчий токен |
+| --- | --- | --- |
+| Даними і заголовком | 12px | `blocks/case/title-text-gap` — 12px |
+| Заголовком і описом | 24px | `blocks/case/gap` — 24px |
+| Описом і кнопкою | автоматично на desktop | `blocks/case/text-button-gap` — 20px |
+
+</div>
+
+Обидва названі вами відступи збіглися з токенами точно.
+
+<Warning>
+  Колір дати береться з групи картки — `card/s/text-tertiary`, хоча це блок, а не картка. У групі `blocks/case` є власний `text-secondary`, але він темніший. Блок позичає токен у сусіда — [уточнити].
+</Warning>
+
+## Медіа
+
+<div className="ds-table">
+
+| Розмір | Ширина | Висота | Співвідношення |
+| --- | --- | --- | --- |
+| Desktop | 672px | 432px | 1.556 |
+| Tablet | 764px | 491px | 1.556 |
+| Mobile | 358px | 230px | 1.556 |
+
+</div>
+
+Висоти для tablet і mobile ви не називали — вони пораховані за співвідношенням desktop-розміру.
+
+<Warning>
+  672 / 432 дорівнює **1,556**, тобто рівно 14:9. Це **четверте співвідношення зображень** у системі:
+
+  — картки тримають 1,59
+  — [Media](/components/media) — 1,504
+  — [Service](/blocks/block-service) і [Process](/blocks/block-process) — 1,778, тобто 16:9
+  — цей блок — 1,556, тобто 14:9
+
+  Чотири різні формати кадру — це багато. Варто перевірити, чи всі вони справді потрібні.
+</Warning>
+
+<Warning>
+  Брейкпоінтів, на яких блок перемикається між розмірами, у токенах немає.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Мітка й дата | Категорія та дата кейсу | Так |
+| Заголовок | Назва кейсу | Так |
+| Опис | Коротке пояснення | Так |
+| Кнопка | Перехід на кейс | Так |
+| Медіа | Зображення кейсу | Так |
+
+## Правила
+
+<Check>
+  Тримайте медіа праворуч лише на desktop. На менших розмірах воно завжди під текстом.
+</Check>
+
+<Warning>
+  Не змінюйте співвідношення зображення між розмірами. Воно лишається 14:9 в усіх трьох.
+</Warning>

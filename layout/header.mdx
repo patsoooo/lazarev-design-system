@@ -1,11 +1,16 @@
 ---
 title: "Header"
 description: "Хедер: меню, підменю, мобільне меню, токени."
+icon: "window-maximize"
 ---
+
+<div className="ds-preview ds-preview--s05">
+  <span className="ds-preview__stage"><span className="ds-header"><img className="ds-header__logo" src="/logo/lazarev-logo.svg" alt="LAZAREV.AGENCY" /><span className="ds-header-menu"><span className="ds-link is-default">Product design</span><span className="ds-link is-default">AI visibility</span><span className="ds-link ds-link--plain is-default">Outcomes</span><span className="ds-link is-default">About us</span></span><span className="ds-btn ds-btn--primary is-default">Let's talk</span></span></span>
+</div>
 
 Хедер — верхня частина сторінки з навігацією. Присутній на всіх сторінках сайту.
 
-Складається з трьох частин: логотип зліва, [Header links](/layout/header-links) посередині, кнопка заклику справа. Кнопка — це Primary button з [Button](/components/button), логотип — з [Logo](/foundations/logo).
+Складається з трьох частин: логотип зліва, [Header links](/components/links-group) посередині, кнопка заклику справа. Кнопка — це Primary button з [Button](/components/button), логотип — з [Logo](/foundations/logo).
 
 ## Збірка
 
@@ -31,7 +36,7 @@ description: "Хедер: меню, підменю, мобільне меню, �
 | Елемент | Компонент | Розмір |
 | --- | --- | --- |
 | Логотип | [Logo](/foundations/logo) | 32px заввишки |
-| Ряд посилань | [Header links](/layout/header-links) | за вмістом |
+| Ряд посилань | [Header links](/components/links-group) | за вмістом |
 | Кнопка | Primary button | 40px заввишки |
 | Ширина хедера | — | 1360px, адаптується |
 
@@ -42,7 +47,7 @@ description: "Хедер: меню, підменю, мобільне меню, �
 </Warning>
 
 <Warning>
-  На вужчих екранах ряд посилань згортається спершу в кнопку «Menu», а потім в іконку — дивіться [Header links](/layout/header-links). Брейкпоінтів для цього в токенах немає.
+  На вужчих екранах ряд посилань згортається спершу в кнопку «Menu», а потім в іконку — дивіться [Header links](/components/links-group). Брейкпоінтів для цього в токенах немає.
 </Warning>
 
 ## Токени

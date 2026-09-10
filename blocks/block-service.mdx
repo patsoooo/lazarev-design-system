@@ -1,0 +1,207 @@
+---
+title: "Service"
+description: "Секція послуги: текстова колонка й медіа."
+---
+
+<div className="ds-preview ds-preview--s05">
+  <span className="ds-preview__stage"><span className="ds-service-block"><span className="ds-service-block__main"><span><span className="ds-service-block__title">Title</span><span className="ds-service-block__subtitle">subtitle</span><span className="ds-service-block__action"><span className="ds-btn ds-btn--primary is-default">Explore service</span></span></span><span className="ds-service-block__facts"><span className="ds-service-block__fact"><span className="ds-service-block__fact-label">Outcomes</span><span className="ds-service-block__fact-text">outcomes</span></span><span className="ds-service-block__fact"><span className="ds-service-block__fact-label">Deliverables</span><span className="ds-service-block__fact-text">Deliverables</span></span></span></span><span className="ds-service-block__media" /></span></span>
+</div>
+
+Секція окремої послуги. Ліворуч текст із кнопкою та переліком результатів, праворуч зображення.
+
+## Збірка
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-service-block">
+    <span className="ds-service-block__main">
+      <span>
+        <span className="ds-service-block__title">Title</span>
+        <span className="ds-service-block__subtitle">subtitle</span>
+        <span className="ds-service-block__action"><span className="ds-btn ds-btn--primary is-default">Explore service</span></span>
+      </span>
+      <span className="ds-service-block__facts">
+        <span className="ds-service-block__fact">
+          <span className="ds-service-block__fact-label">Outcomes</span>
+          <span className="ds-service-block__fact-text">outcomes</span>
+        </span>
+        <span className="ds-service-block__fact">
+          <span className="ds-service-block__fact-label">Deliverables</span>
+          <span className="ds-service-block__fact-text">Deliverables</span>
+        </span>
+      </span>
+    </span>
+    <span className="ds-service-block__media" />
+  </span>
+</div>
+
+Приклад показано в проєктній ширині 1344px — у вужчій колонці документації він прокручується вбік.
+
+## Вузька розкладка
+
+На вужчих екранах колонки стають рядами: текст угорі, медіа під ним.
+
+<div className="ds-btn-row">
+  <span className="ds-service-block ds-service-block--narrow">
+    <span className="ds-service-block__main">
+      <span>
+        <span className="ds-service-block__title">Title</span>
+        <span className="ds-service-block__subtitle">subtitle</span>
+        <span className="ds-service-block__action"><span className="ds-btn ds-btn--primary is-default">Explore service</span></span>
+      </span>
+      <span className="ds-service-block__facts">
+        <span className="ds-service-block__fact">
+          <span className="ds-service-block__fact-label">Outcomes</span>
+          <span className="ds-service-block__fact-text">outcomes</span>
+        </span>
+        <span className="ds-service-block__fact">
+          <span className="ds-service-block__fact-label">Deliverables</span>
+          <span className="ds-service-block__fact-text">Deliverables</span>
+        </span>
+      </span>
+    </span>
+    <span className="ds-service-block__media" />
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Широка | Вузька |
+| --- | --- | --- |
+| Ширина блока | 1344px, розтягується | 480px |
+| Розкладка | дві колонки | два ряди |
+| Текстовий блок | ширина 592px, мін. 448px | висота 380px |
+| Нижні блоки | поруч, проміжок 40px | один під одним, проміжок 40px |
+| Відступ до медіа | 64px по горизонталі | 64px по вертикалі |
+| Медіа | 640 × 360 | 432 × 243 |
+
+</div>
+
+Проміжок 64px однаковий в обох розкладках — у широкій він між колонками, у вузькій між рядами.
+
+Співвідношення медіа теж однакове: 640 / 360 і 432 / 243 обидва дають **1,778**, тобто 16:9. Ширина 432 виводиться з блока: 480 мінус відступи 24 × 2.
+
+<Warning>
+  Брейкпоінта, на якому блок перемикається на вузьку розкладку, у токенах немає — [уточнити]. Це та сама дірка, що й у [Header links](/components/links-group) та [Menu](/blocks/menu): в експорті немає жодного брейкпоінта.
+</Warning>
+
+## Розміщення на сторінці
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Ширина | 1344px, розтягується | — |
+| Відступ від країв екрана | 48px з кожного боку | `primitives.spacing.48px` |
+
+</div>
+
+## Контейнер
+
+<div className="ds-table">
+
+| Властивість | Значення | Найближчий токен |
+| --- | --- | --- |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `blocks/service/bg` | — |
+| Внутрішній відступ | 24px | `blocks/service/padding` — 16px |
+| Заокруглення | 8px | `blocks/service/radius-block` — 8px |
+
+</div>
+
+## Колонки
+
+<div className="ds-table">
+
+| Колонка | Ширина | Мінімальна ширина |
+| --- | --- | --- |
+| Текстова | 592px | 448px |
+| Медіа | решта, 640px при 1344 | — |
+
+</div>
+
+Проміжок між колонками виводиться з арифметики: 1344 мінус відступи 24 × 2 дає 1296px корисної ширини, з якої 592 займає текст і 640 медіа. Лишається рівно **64px**.
+
+<Warning>
+  Проміжок 64px ви не називали — він порахований із решти значень. Якщо в макеті інша цифра, то одна з трьох ширин зазначена неточно.
+</Warning>
+
+## Текстова колонка
+
+<div className="ds-table">
+
+| Елемент | Стиль | Колір |
+| --- | --- | --- |
+| Заголовок | `font.heading.h3-46` — 46 / 40 | <span className="ds-sw ds-sw--text-primary" /> `blocks/service/text-primary` |
+| Підзаголовок | `font.heading.h6-20` — 20 / 24 | <span className="ds-sw ds-sw--text-primary" /> `blocks/service/text-primary` |
+| Кнопка | Primary button з [Button](/components/button) | — |
+
+</div>
+
+Верхня група й нижній перелік розсунуті по краях колонки: за висотою, яку задає медіа, простір між ними розтягується сам.
+
+### Відступи
+
+<div className="ds-table">
+
+| Між чим | Значення | Найближчий токен |
+| --- | --- | --- |
+| Заголовком і підзаголовком | 24px | `blocks/service/gap` — 24px |
+| Підзаголовком і кнопкою | 16px | `blocks/service/title-text-gap` — 16px |
+| Між нижніми блоками | 40px | `blocks/service/gap-innfo-blocks` — 20px |
+
+</div>
+
+## Нижні блоки
+
+Кожен займає рівну частку доступної ширини.
+
+<div className="ds-table">
+
+| Елемент | Стиль | Колір |
+| --- | --- | --- |
+| Заголовок | `font.caption.c1-16` — 16 / 16, великими літерами | <span className="ds-sw ds-sw--text-secondary" /> `blocks/service/text-secondary` |
+| Текст | `font.paragraph.p2-18` — 18 / 20 | <span className="ds-sw ds-sw--text-primary" /> `blocks/service/text-primary` |
+
+</div>
+
+Проміжок між заголовком і текстом — 8px.
+
+<Warning>
+  Токен проміжку між нижніми блоками названий **`gap-innfo-blocks`** — з опечаткою, подвоєна «n». Крім того, його значення 20px не збігається з підтвердженими 40px.
+</Warning>
+
+## Медіа
+
+<div className="ds-table">
+
+| Властивість | Значення |
+| --- | --- |
+| Висота | 360px |
+| Ширина | 640px при ширині блока 1344 |
+| Співвідношення | 1.778, тобто 16:9 |
+| Заокруглення | `blocks/service/radius-img` — 4px |
+
+</div>
+
+<Warning>
+  Це **третє співвідношення зображень** у системі. Картки тримають 1.59, [Media](/components/media) — 1.504, а тут 16:9. Жодне з трьох не зводиться до інших, тож або в системі справді три формати кадру, або десь помилка — [уточнити].
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Заголовок | Назва послуги | Так |
+| Підзаголовок | Коротке пояснення | Так |
+| Кнопка | Перехід на сторінку послуги | Так |
+| Нижні блоки | Результати й склад роботи | Так |
+| Медіа | Зображення праворуч | Так |
+
+## Правила
+
+<Check>
+  Тримайте нижні блоки однакової ширини незалежно від довжини тексту в них.
+</Check>
+
+<Warning>
+  Не звужуйте текстову колонку менше за 448px. Далі заголовок `h3-46` починає ламатися неохайно.
+</Warning>

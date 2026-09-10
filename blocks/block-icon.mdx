@@ -1,0 +1,151 @@
+---
+title: "Icon"
+description: "Блок із бейджами, заголовком і текстом."
+---
+
+<div className="ds-preview ds-preview--s1">
+  <span className="ds-preview__stage ds-preview__stage--w664"><span className="ds-icon-block ds-icon-block--responsive"><span className="ds-icon-block__badges"><span className="ds-badge">00</span><span className="ds-badge"><span className="ds-icon ds-icon--placeholder" /></span></span><span className="ds-icon-block__main"><span className="ds-icon-block__title">Title</span><span className="ds-icon-block__text">text</span></span></span></span>
+</div>
+
+Блок із номером і піктограмою ліворуч та текстом праворуч. Має дві розкладки: **desktop** і **responsive**.
+
+## Desktop
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-icon-block">
+    <span className="ds-icon-block__badges">
+      <span className="ds-badge">00</span>
+      <span className="ds-badge"><span className="ds-icon ds-icon--placeholder" /></span>
+    </span>
+    <span className="ds-icon-block__main">
+      <span className="ds-icon-block__title">Title</span>
+      <span className="ds-icon-block__text">text</span>
+      <span className="ds-icon-block__action"><span className="ds-btn ds-btn--secondary is-default">Button label</span></span>
+    </span>
+  </span>
+</div>
+
+Приклад показано в проєктній ширині 1344px — у вужчій колонці документації він прокручується вбік.
+
+## Responsive
+
+Бейджі переїжджають угору, текст стає під ними й вирівнюється ліворуч.
+
+<div className="ds-btn-row">
+  <span className="ds-icon-block ds-icon-block--responsive">
+    <span className="ds-icon-block__badges">
+      <span className="ds-badge">00</span>
+      <span className="ds-badge"><span className="ds-icon ds-icon--placeholder" /></span>
+    </span>
+    <span className="ds-icon-block__main">
+      <span className="ds-icon-block__title">Title</span>
+      <span className="ds-icon-block__text">text</span>
+      <span className="ds-icon-block__action"><span className="ds-btn ds-btn--secondary is-default">Button label</span></span>
+    </span>
+  </span>
+</div>
+
+<Warning>
+  Ширину responsive-розкладки ви не називали — у прикладі блок займає доступну ширину. Так само невідомий брейкпоінт, на якому відбувається перемикання.
+</Warning>
+
+## Без кнопки
+
+Кнопка необов'язкова. Без неї блок закінчується описом.
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-icon-block">
+    <span className="ds-icon-block__badges">
+      <span className="ds-badge">00</span>
+      <span className="ds-badge"><span className="ds-icon ds-icon--placeholder" /></span>
+    </span>
+    <span className="ds-icon-block__main">
+      <span className="ds-icon-block__title">Title</span>
+      <span className="ds-icon-block__text">text</span>
+    </span>
+  </span>
+</div>
+
+## Розміщення на сторінці
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Ширина | 1344px, розтягується | — |
+| Відступ від країв екрана | 48px з кожного боку | `primitives.spacing.48px` |
+
+</div>
+
+## Контейнер
+
+<div className="ds-table">
+
+| Властивість | Значення | Найближчий токен |
+| --- | --- | --- |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `blocks/block-icon/bg` | — |
+| Внутрішній відступ | 24px | `blocks/block-icon/padding` — 12px |
+| Заокруглення | 8px | `blocks/block-icon/radius` — 8px |
+
+</div>
+
+<Warning>
+  `blocks/block-icon/padding` в експорті дорівнює **12px**, а підтверджене значення — 24px.
+</Warning>
+
+## Бейджі
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Розмір | 48 × 48px | — |
+| Проміжок між ними | 8px | — |
+| Межа | <span className="ds-sw ds-sw--border-subtle" /> `blocks/block-icon/border` | — |
+| Товщина межі | 1px | `blocks/block-icon/border-icon` |
+| Заокруглення | 12px | `blocks/block-icon/radius-icon` |
+
+</div>
+
+Це той самий елемент, що й номер у картці [Number](/cards/number) — і там, і тут він 48 × 48 із заокругленням 12px. Тому в документації він описаний одним спільним класом.
+
+<Warning>
+  Піктограма в другому бейджі показана заглушкою: у наборі [Icons](/foundations/icons) такої немає.
+</Warning>
+
+## Текстовий блок
+
+<div className="ds-table">
+
+| Властивість | Значення | Найближчий токен |
+| --- | --- | --- |
+| Ширина | 816px | — |
+| Заголовок | `font.heading.h4-36` — 36 / 32 | <span className="ds-sw ds-sw--text-primary" /> `blocks/block-icon/text` |
+| Опис | `font.paragraph.p3-16` — 16 / 20 | <span className="ds-sw ds-sw--text-primary" /> `blocks/block-icon/text` |
+| Проміжок заголовок — опис | 24px | `blocks/block-icon/text-gap` — 20px |
+| Кнопка | Secondary button, необов'язкова | — |
+| Проміжок опис — кнопка | 24px | — |
+
+</div>
+
+На desktop бейджі притиснуті ліворуч, а текстовий блок — праворуч. Простір між ними виводиться з решти: 1296px корисної ширини мінус два бейджі по 48px із проміжком 8px мінус 816px тексту лишає **376px**.
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Бейдж із номером | Порядковий номер, 48 × 48 | Так |
+| Бейдж із піктограмою | Знак теми, 48 × 48 | Так |
+| Заголовок | Назва | Так |
+| Опис | Пояснення | Так |
+| Кнопка | Перехід до деталей | Ні |
+
+## Правила
+
+<Check>
+  Тримайте бейджі однакового розміру. Пара з різних розмірів читається як помилка.
+</Check>
+
+<Warning>
+  Не розтягуйте текстовий блок ширше за 816px. На повній ширині рядок стає задовгим для читання.
+</Warning>

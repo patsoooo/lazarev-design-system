@@ -1,0 +1,150 @@
+---
+title: "Process"
+description: "Крок процесу: медіа, заголовок, текст, кнопка."
+---
+
+<div className="ds-preview ds-preview--s08">
+  <span className="ds-preview__stage"><span className="ds-process-block ds-process-block--mobile"><span className="ds-process-block__media" /><span className="ds-process-block__main"><span className="ds-process-block__title">Title</span><span className="ds-process-block__text">text</span><span className="ds-process-block__action"><span className="ds-btn ds-btn--secondary is-default">Button label</span></span></span></span></span>
+</div>
+
+Крок процесу роботи. Ліворуч зображення, праворуч заголовок з описом і кнопкою.
+
+Має три розміри: **desktop**, **tab** і **mobile**.
+
+## Desktop
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-process-block">
+    <span className="ds-process-block__media" />
+    <span className="ds-process-block__main">
+      <span className="ds-process-block__title">Title</span>
+      <span className="ds-process-block__text">text</span>
+      <span className="ds-process-block__action"><span className="ds-btn ds-btn--secondary is-default">Button label</span></span>
+    </span>
+  </span>
+</div>
+
+Приклад показано в проєктній ширині 1344px — у вужчій колонці документації він прокручується вбік.
+
+## Tab
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-process-block ds-process-block--tab">
+    <span className="ds-process-block__media" />
+    <span className="ds-process-block__main">
+      <span className="ds-process-block__title">Title</span>
+      <span className="ds-process-block__text">text</span>
+      <span className="ds-process-block__action"><span className="ds-btn ds-btn--secondary is-default">Button label</span></span>
+    </span>
+  </span>
+</div>
+
+## Mobile
+
+На цьому розмірі зображення не показується.
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-process-block ds-process-block--mobile">
+    <span className="ds-process-block__media" />
+    <span className="ds-process-block__main">
+      <span className="ds-process-block__title">Title</span>
+      <span className="ds-process-block__text">text</span>
+      <span className="ds-process-block__action"><span className="ds-btn ds-btn--secondary is-default">Button label</span></span>
+    </span>
+  </span>
+</div>
+
+## Розміри
+
+<div className="ds-table">
+
+| Розмір | Ширина блока | Корисна ширина | Права колонка |
+| --- | --- | --- | --- |
+| Desktop | розтягується, 1344px | 1296px | 648px |
+| Tab | 984px | 936px | 584px |
+| Mobile | 736px | 688px | на всю ширину |
+
+</div>
+
+Права колонка задана як **648px, але стискається**. На desktop вона вміщається повністю, і зайвий простір іде в проміжок між нею та зображенням. На tab простору бракує, тож колонка звужується до 584px. Це видно й на макеті: у другому блоці текст стоїть помітно ближче до зображення.
+
+<Warning>
+  Ширину правої колонки для tab і mobile ви не називали — вона порахована з решти значень. Якщо в макеті інші числа, то щось із трьох ширин зазначено неточно.
+</Warning>
+
+<Warning>
+  На макеті третій блок показаний **без зображення**. Я зрозумів це як mobile-розмір і сховав медіа там. Якщо зображення має лишатися й на мобільному — скажіть.
+</Warning>
+
+## Розміщення на сторінці
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Ширина | розтягується | — |
+| Відступ від країв екрана | 48px з кожного боку | `primitives.spacing.48px` |
+
+</div>
+
+## Контейнер
+
+<div className="ds-table">
+
+| Властивість | Значення | Найближчий токен |
+| --- | --- | --- |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `blocks/process/bg` | — |
+| Внутрішній відступ | 24px | `blocks/process/padding` — 12px |
+| Заокруглення | 8px | `blocks/process/radius` — 8px |
+
+</div>
+
+<Warning>
+  `blocks/process/padding` в експорті дорівнює **12px**, а підтверджене значення — 24px.
+</Warning>
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль або розмір | Колір |
+| --- | --- | --- |
+| Зображення | 312 × 175px | — |
+| Заголовок | `font.heading.h4-36` — 36 / 32, максимум 1 рядок | <span className="ds-sw ds-sw--text-primary" /> `blocks/process/text` |
+| Текст | `font.paragraph.p3-16` — 16 / 20, висота 80px | <span className="ds-sw ds-sw--text-primary" /> `blocks/process/text` |
+| Кнопка | Secondary button з [Button](/components/button) | — |
+
+</div>
+
+Висота тексту фіксована — **80px**, тобто рівно чотири рядки по 20px. Так кнопка стоїть на однаковій висоті в усіх кроках процесу незалежно від довжини опису.
+
+<Warning>
+  Співвідношення зображення 312 / 175 дорівнює 1,783. Точне 16:9 при ширині 312 дало б висоту 175,5 — тобто це те саме співвідношення, що в [Service](/blocks/block-service), округлене вниз.
+</Warning>
+
+<Warning>
+  Токен `blocks/process/img-text-gap` дорівнює **0**. У розкладці проміжок між зображенням і текстом явно є, тож або токен застарів, або він описує щось інше — [уточнити].
+</Warning>
+
+<Warning>
+  Брейкпоінтів, на яких блок перемикається між трьома розмірами, у токенах немає.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Зображення | Ілюстрація кроку | Крім mobile |
+| Заголовок | Назва кроку, один рядок | Так |
+| Текст | Опис, до чотирьох рядків | Так |
+| Кнопка | Перехід до деталей | Так |
+
+## Правила
+
+<Check>
+  Тримайте заголовок в один рядок. Довший обріжеться трикрапкою.
+</Check>
+
+<Warning>
+  Не змінюйте висоту текстового блоку. Фіксовані 80px вирівнюють кнопки в переліку кроків.
+</Warning>

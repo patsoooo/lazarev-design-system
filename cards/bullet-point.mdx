@@ -1,0 +1,73 @@
+---
+title: "Bullet point"
+description: "Картка пункту переліку: маркер і текст."
+---
+
+<div className="ds-preview ds-preview--s3">
+  <span className="ds-preview__stage"><span className="ds-bullet-card"><span className="ds-point" /><span className="ds-bullet-card__text">text</span></span></span>
+</div>
+
+Картка одного пункту переліку. Складається з маркера-крапки та тексту під ним.
+
+## Збірка
+
+<div className="ds-btn-row">
+  <span className="ds-bullet-card">
+    <span className="ds-point" />
+    <span className="ds-bullet-card__text">text</span>
+  </span>
+</div>
+
+## Контейнер
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Внутрішній відступ | 24px | — |
+| Заокруглення | 8px | [уточнити] |
+| Фон | <span className="ds-sw ds-sw--background-block" /> білий | [уточнити] |
+| Проміжок маркер — текст | 8px | `bullet-point/gap` — 8px |
+| Ширина | [уточнити] | — |
+
+</div>
+
+<Warning>
+  Ви назвали токени `card/bullet-point-card/bg` і `card/bullet-point-card/text`. Такої групи в експорті **немає**. Є група **`bullet-point`** із трьома токенами: `gap` — 8px, `text` — чорний, `text-inverse` — білий.
+
+  Тобто фон картки токена не має взагалі, як і заокруглення та ширина. У прикладі фон білий, заокруглення 8px — це припущення за зразком решти карток.
+</Warning>
+
+Проміжок 8px збігається з `bullet-point/gap` точно.
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль або розмір | Колір |
+| --- | --- | --- |
+| Маркер | [point](/foundations/icons) — 32 × 32px | два токени, дивіться Icons |
+| Текст | `font.paragraph.p3-16` — 16 / 20 | <span className="ds-sw ds-sw--text-primary" /> `bullet-point/text` |
+
+</div>
+
+<Warning>
+  У групі є ще `bullet-point/text-inverse` — білий текст для темного фону. У цій картці він не використовується, тож імовірно існує інверсний варіант, якого ми ще не описали — [уточнити].
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Маркер | Пунктирне коло з крапкою | Так |
+| Текст | Зміст пункту | Так |
+
+## Правила
+
+<Check>
+  Ставте картки набором. Один пункт переліку сам по собі не має сенсу.
+</Check>
+
+<Warning>
+  Не замінюйте маркер на іншу іконку. Це не змістовний знак, а маркер списку.
+</Warning>

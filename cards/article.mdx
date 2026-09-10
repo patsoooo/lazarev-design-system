@@ -3,9 +3,13 @@ title: "Article"
 description: "Картка статті: розмір S, склад, токени."
 ---
 
+<div className="ds-preview ds-preview--s08">
+  <span className="ds-preview__stage"><span className="ds-article-card"><span className="ds-card-meta"><span className="ds-tag is-default">Tag</span><span className="ds-card-date">04 May 2026</span></span><span className="ds-article-card__title">MVP landing page: how to build one to validate your business idea</span><span className="ds-article-card__desc">AI roadmap is real, adoption isn't.</span><span className="ds-article-card__action"><span className="ds-btn ds-btn--secondary is-default">Button label</span></span><span className="ds-article-card__img" /></span></span>
+</div>
+
 Картка статті. Три розміри — **S**, **M** і **L**. Поки описаний лише S.
 
-Не плутайте з [Article (menu)](/layout/card-article-menu) — тією, що показується в підменю хедера. Це різні компоненти.
+Не плутайте з [Article (menu)](/cards/article-menu) — тією, що показується в підменю хедера. Це різні компоненти.
 
 ## Small
 
@@ -69,7 +73,7 @@ description: "Картка статті: розмір S, склад, токен�
 </Warning>
 
 <Warning>
-  Картка ділить групу токенів `card/s` із [Case](/layout/card-case). Це два різні компоненти на одному наборі значень: у Case немає опису, а зображення стоїть угорі, не внизу. Зміна в групі зачепить обидва — [уточнити], чи не потрібна окрема група.
+  Картка ділить групу токенів `card/s` із [Case](/cards/case). Це два різні компоненти на одному наборі значень: у Case немає опису, а зображення стоїть угорі, не внизу. Зміна в групі зачепить обидва — [уточнити], чи не потрібна окрема група.
 </Warning>
 
 <Warning>
@@ -91,7 +95,7 @@ description: "Картка статті: розмір S, склад, токен�
 </div>
 
 <Warning>
-  Розмір 280 × 176 такий самий, як у [Case](/layout/card-case) розміру S, і не збігається з [Media](/components/media), де за шкалою висота мала б бути 186px.
+  Розмір 280 × 176 такий самий, як у [Case](/cards/case) розміру S, і не збігається з [Media](/components/media), де за шкалою висота мала б бути 186px.
 
   Разом із розміром M картина прояснилась: **зображення в картках послідовно тримають співвідношення 1.59**, а не 1.504 як у Media. Зведення нижче.
 </Warning>
@@ -124,7 +128,7 @@ description: "Картка статті: розмір S, склад, токен�
 </div>
 
 <Warning>
-  **П'ять карток із шести використовують 1.59.** Виняток один — [Case](/layout/card-case) розміру L, і саме він збігається з Media.
+  **П'ять карток із шести використовують 1.59.** Виняток один — [Case](/cards/case) розміру L, і саме він збігається з Media.
 
   Найпоказовіше: Article M і Case L мають **однакову ширину 388px, але різну висоту** — 244 проти 258. Так само Article L і Media Size L: обидва 616px завширшки, але 387 проти 410.
 
@@ -163,7 +167,7 @@ description: "Картка статті: розмір S, склад, токен�
 
 </div>
 
-Ширина 436 мінус відступи 24 × 2 дає **388** — та сама корисна ширина, що в [Case](/layout/card-case) розміру L.
+Ширина 436 мінус відступи 24 × 2 дає **388** — та сама корисна ширина, що в [Case](/cards/case) розміру L.
 
 <Warning>
   Відступи 16px і 20px не збігаються з групою `card/m`, де обидва дорівнюють 12px. Зате вони точно збігаються з групою **`card/l`**: `title-text-gap` — 16px, `text-button-gap` — 20px. Схоже, розміри в токенах зсунуті на одну позицію відносно дизайну — [уточнити].
@@ -203,7 +207,7 @@ description: "Картка статті: розмір S, склад, токен�
 
 </div>
 
-Ширина 664 мінус відступи 24 × 2 дає **616** — та сама корисна ширина, що в Media Size L. І та сама ширина картки, що в [Testimonials](/layout/card-testimonials).
+Ширина 664 мінус відступи 24 × 2 дає **616** — та сама корисна ширина, що в Media Size L. І та сама ширина картки, що в [Testimonials](/cards/testimonials).
 
 <Warning>
   На макеті розміру L **немає рядка з міткою й датою**, хоча в S і M він є. У прикладі вище я його не додавав, слідом за макетом. Якщо мітки мають бути й тут — скажіть.
@@ -231,5 +235,5 @@ description: "Картка статті: розмір S, склад, токен�
 </Check>
 
 <Warning>
-  Не міняйте порядок елементів. Зображення стоїть унизу — це відрізняє картку статті від [Case](/layout/card-case), де воно вгорі.
+  Не міняйте порядок елементів. Зображення стоїть унизу — це відрізняє картку статті від [Case](/cards/case), де воно вгорі.
 </Warning>

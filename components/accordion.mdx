@@ -1,0 +1,112 @@
+---
+title: "Accordion"
+description: "Акордеон: закритий і відкритий стан, токени."
+icon: "chevron-down"
+---
+
+<div className="ds-preview ds-preview--fit">
+  <span className="ds-preview__stage"><span className="ds-accordion"><span className="ds-accordion__head"><span className="ds-accordion__title">Title</span><span className="ds-btn ds-btn--plus is-default">+</span></span><span className="ds-accordion__body">text</span></span></span>
+</div>
+
+Розкривний блок із заголовком і прихованим текстом. Використовується в переліках питань і відповідей.
+
+Два стани: **Closed** і **Open**. Перемикає їх кнопка Plus із [Button](/components/button): у закритому стані вона показує **+**, у відкритому **×**.
+
+## Стани
+
+### Closed
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-accordion">
+    <span className="ds-accordion__head">
+      <span className="ds-accordion__title">Title</span>
+      <span className="ds-btn ds-btn--plus is-default">+</span>
+    </span>
+  </span>
+</div>
+
+### Open
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-accordion">
+    <span className="ds-accordion__head">
+      <span className="ds-accordion__title">Title</span>
+      <span className="ds-btn ds-btn--plus is-close">×</span>
+    </span>
+    <span className="ds-accordion__body">text</span>
+  </span>
+</div>
+
+Приклади показано в проєктній ширині 1344px — у вужчій колонці документації вони прокручуються вбік.
+
+## Розміщення на сторінці
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Ширина | 1344px, розтягується | — |
+| Відступ від країв екрана | 48px з кожного боку | `primitives.spacing.48px` |
+
+</div>
+
+## Контейнер
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `dropdown/bg` | — |
+| Колір тексту | <span className="ds-sw ds-sw--text-primary" /> `dropdown/text` | — |
+| Внутрішній відступ | 24px | `dropdown/padding` — 16px |
+| Заокруглення | 8px | `dropdown/radius` — 8px |
+
+</div>
+
+<Warning>
+  Акордеон ділить токени з групою `dropdown`, власної групи в експорті немає. Зміна кольорів чи відступів у [Dropdown](/components/dropdown) мовчки зачепить і акордеон — [уточнити], чи не потрібна окрема група.
+</Warning>
+
+<Warning>
+  `dropdown/padding` в експорті дорівнює **16px**, а підтверджене значення — 24px.
+</Warning>
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль або компонент | Колір |
+| --- | --- | --- |
+| Заголовок | `font.heading.h5-24` — 24 / 24 | <span className="ds-sw ds-sw--text-primary" /> `dropdown/text` |
+| Кнопка | Plus button з [Button](/components/button) | — |
+| Текст | `font.paragraph.p3-16` — 16 / 20 | <span className="ds-sw ds-sw--text-primary" /> `dropdown/text` |
+
+</div>
+
+Відступ від заголовка до тексту у відкритому стані — **24px**.
+
+<Warning>
+  Заокруглення ви не називали — узято `dropdown/radius`, тобто 8px. На макеті кути виглядають скругленішими, ближче до 12px — [уточнити].
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Заголовок | Питання або назва розділу | Так |
+| Кнопка | Plus у закритому стані, × у відкритому | Так |
+| Текст | З'являється у відкритому стані | Лише коли відкрито |
+
+## Правила
+
+<Check>
+  Тримайте заголовок в один рядок. Довге питання краще скоротити, ніж переносити.
+</Check>
+
+<Check>
+  Змінюйте іконку разом зі станом: + коли закрито, × коли відкрито. Це єдина ознака стану, крім наявності тексту.
+</Check>
+
+<Warning>
+  Не залишайте акордеон без тексту. Порожній відкритий стан виглядає як помилка завантаження.
+</Warning>

@@ -97,6 +97,30 @@ icon: "shapes"
 </svg>
 ```
 
+## point
+
+Маркер пункту переліку. Використовується в картці [Bullet point](/cards/bullet-point).
+
+<div className="ds-icon-grid">
+  <span className="ds-icon-card"><span className="ds-point" />point</span>
+</div>
+
+<div className="ds-table">
+
+| Частина | Розмір | Колір |
+| --- | --- | --- |
+| Зовнішнє коло | 28px, пунктирне | <span className="ds-sw ds-sw--icon-secondary" /> `color/icon/secondary` |
+| Крапка | 6px | <span className="ds-sw ds-sw--icon-default" /> `color/icon/default` |
+| Поле іконки | 32 × 32px | — |
+
+</div>
+
+<Warning>
+  Ця іконка **двоколірна**, тому зібрана фігурами CSS, а не маскою як решта. Маска фарбує все одним кольором — для пунктирного кола й крапки різних відтінків вона не годиться.
+
+  Наслідок: іконка не успадковує колір тексту навколо, а бере обидва свої кольори з токенів безпосередньо. Файла SVG у неї немає.
+</Warning>
+
 ## burger-menu
 
 Виклик мобільного меню. Компонента мобільного меню поки немає — токени під нього є в [Header](/layout/header).
