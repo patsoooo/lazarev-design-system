@@ -1,5 +1,160 @@
 ---
 title: "Input"
-description: "Поля вводу: варіанти, стани, правила."
+description: "Поле контактної форми: стани, токени, правила."
 icon: "i-cursor"
 ---
+
+<div className="ds-preview ds-preview--s1">
+  <span className="ds-preview__stage ds-preview__stage--w640"><span className="ds-input"><span className="ds-input__label">Label</span><span className="ds-input__field is-default"><span className="ds-input__text">Placeholder</span></span></span></span>
+</div>
+
+Поле вводу контактної форми. Складається з лейбла над полем і самого поля з кареткою біля лівого краю.
+
+Це варіант **`input-contact`** — без межі й заокруглення, на сірому фоні. У системі є друга група токенів, `input`, із білим фоном, межею й заокругленням 32px: вона під інший компонент, який буде описаний окремо.
+
+## Коли використовувати
+
+- У контактній формі та формі заявки.
+- Для короткої відповіді в один рядок.
+
+## Коли не використовувати
+
+- Поза контактною формою — там буде інший Input.
+- Для вибору з готових варіантів. Використовуйте [Dropdown](/components/dropdown).
+- Для згоди з умовою. Використовуйте [Checkbox](/components/checkbox).
+
+## Стани
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-input">
+    <span className="ds-input__label">Label</span>
+    <span className="ds-input__field is-default"><span className="ds-input__text">Placeholder</span></span>
+  </span>
+  <span className="ds-input">
+    <span className="ds-input__label">Label</span>
+    <span className="ds-input__field is-hover"><span className="ds-input__text">Placeholder</span></span>
+  </span>
+  <span className="ds-input">
+    <span className="ds-input__label">Label</span>
+    <span className="ds-input__field is-active"><span className="ds-input__text" /></span>
+  </span>
+  <span className="ds-input">
+    <span className="ds-input__label">Label</span>
+    <span className="ds-input__field is-filled"><span className="ds-input__text">Placeholder</span></span>
+  </span>
+  <span className="ds-input">
+    <span className="ds-input__label">Label</span>
+    <span className="ds-input__field is-inactive"><span className="ds-input__text">Placeholder</span></span>
+  </span>
+  <span className="ds-input">
+    <span className="ds-input__label">Label</span>
+    <span className="ds-input__field is-error"><span className="ds-input__text">Placeholder</span><span className="ds-input__message">Label message</span></span>
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Default | Hover | Active | Filled | Inactive | Error |
+| --- | --- | --- | --- | --- | --- | --- |
+| Фон | <span className="ds-sw ds-sw--background-gray-block" /> `input-contact/bg` | <span className="ds-sw ds-sw--background-gray-block" /> `input-contact/bg` | <span className="ds-sw ds-sw--background-gray-block" /> `input-contact/bg` | <span className="ds-sw ds-sw--background-gray-block" /> `input-contact/bg` | <span className="ds-sw ds-sw--background-gray-block" /> `input-contact/bg` | <span className="ds-sw ds-sw--background-gray-block" /> `input-contact/bg` |
+| Колір тексту | <span className="ds-sw ds-sw--text-placeholder" /> `input-contact/placeholder` | <span className="ds-sw ds-sw--text-placeholder" /> `input-contact/placeholder` | <span className="ds-sw ds-sw--text-primary" /> `input-contact/text` | <span className="ds-sw ds-sw--text-primary" /> `input-contact/text` | <span className="ds-sw ds-sw--action-inactive-content" /> `input-contact/inactive` | <span className="ds-sw ds-sw--action-danger" /> `input-contact/border-error` |
+| Каретка | <span className="ds-sw ds-sw--icon-brand" /> `input-contact/caret-active` | <span className="ds-sw ds-sw--icon-brand" /> `input-contact/caret-active` | <span className="ds-sw ds-sw--icon-brand" /> `input-contact/caret-active` | <span className="ds-sw ds-sw--icon-brand" /> `input-contact/caret-active` | <span className="ds-sw ds-sw--action-inactive-content" /> `input-contact/inactive` | <span className="ds-sw ds-sw--icon-brand" /> `input-contact/caret-active` |
+| Позиція каретки | ліворуч | ліворуч | ліворуч | після тексту | ліворуч | ліворуч |
+| Повідомлення | немає | немає | немає | немає | немає | `font.caption.c2-12` |
+
+</div>
+
+Hover від Default не відрізняється нічим. У макеті обидва рядки однакові.
+
+## Розміри
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Висота поля | 60px | немає |
+| Внутрішній відступ згори, справа, знизу | 20px | `input-contact/padding` |
+| Внутрішній відступ зліва | 8px | `input-contact/padding-left` |
+| Проміжок лейбл — поле | 2px | немає |
+| Каретка | 1px × 44px | немає |
+| Заокруглення | немає | — |
+| Межа | немає | — |
+
+</div>
+
+Висота 60px не задана окремо, вона складається сама: **20 + 20 + 20**, тобто відступ, рядок `p1-20` і відступ. Каретка на 44px менша за поле і стоїть по центру вертикалі.
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль | Колір |
+| --- | --- | --- |
+| Лейбл | `font.paragraph.p2-18` — 18 / 20 | <span className="ds-sw ds-sw--text-primary" /> `input-contact/text` |
+| Плейсхолдер | `font.paragraph.p1-20` — 20 / 20 | <span className="ds-sw ds-sw--text-placeholder" /> `input-contact/placeholder` |
+| Повідомлення про помилку | `font.caption.c2-12` — 12 / 12 | <span className="ds-sw ds-sw--action-danger" /> `input-contact/border-error` |
+
+</div>
+
+У стані Error плейсхолдер лишається **по центру поля**, а повідомлення стоїть одразу під ним і заходить у нижній відступ. Тому висота поля з помилкою така сама, як без неї, і форма не стрибає.
+
+## Токени
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Фон | `input-contact/bg` | `background.gray-block` — #f4f4f4 |
+| Текст | `input-contact/text` | `text.primary` — #000000 |
+| Плейсхолдер | `input-contact/placeholder` | `text.placeholder` — #697382 |
+| Неактивний стан | `input-contact/inactive` | `action.inactive-content` — #cdd4de |
+| Каретка | `input-contact/caret-active` | `icon.brand` — #0f9549 |
+| Помилка | `input-contact/border-error` | `action.danger` — #dc2626 |
+| Відступи | `input-contact/padding`, `input-contact/padding-left` | 20px, 8px |
+
+</div>
+
+Відступи — один із рідкісних випадків, коли експорт **збігається** з підтвердженими значеннями: `padding` дорівнює 20px, `padding-left` — 8px.
+
+<Warning>
+  Ви назвали `input/text` для лейбла — я поставив `input-contact/text`. Значення однакове, `text.primary`, але воно з групи цього компонента, а не сусіднього.
+</Warning>
+
+<Warning>
+  У групі є `caret-filled` зі значенням `icon.default`, тобто **чорний**. У макеті ж каретка в стані Filled зелена, така сама, як у решті станів. Або токен не використовується, або макет розходиться з ним — [уточнити].
+</Warning>
+
+<Warning>
+  Три токени меж — `border-active`, `border-hover`, `border-focus` — у цьому варіанті не використовуються: межі в полі немає взагалі. `border-error` використовується не як межа, а як колір тексту помилки. Імена варто перейменувати.
+</Warning>
+
+<Warning>
+  Проміжок між текстом і кареткою в стані Filled ви не називали. У прикладі стоїть 8px, те саме значення, що й `padding-left`. У CSS позначено `TODO`.
+</Warning>
+
+<Warning>
+  Ні висоти каретки 44px, ні проміжку 2px між лейблом і полем в експорті немає.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Лейбл | Назва поля над ним | Так |
+| Поле | Сірий прямокутник із текстом | Так |
+| Каретка | Вертикальна риска, позначає місце вводу | Так |
+| Повідомлення | Пояснення помилки | Лише в стані Error |
+
+## Правила
+
+<Check>
+  Ставте лейбл завжди. Плейсхолдер зникає при вводі, і без лейбла користувач забуває, що це за поле.
+</Check>
+
+<Check>
+  Пишіть повідомлення про помилку так, щоб воно казало, що зробити, а не лише що не так.
+</Check>
+
+<Warning>
+  Не покладайтесь на самий колір у стані Error. Червоний плейсхолдер без тексту повідомлення нічого не пояснює.
+</Warning>

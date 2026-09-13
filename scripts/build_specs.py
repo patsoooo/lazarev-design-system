@@ -33,7 +33,12 @@ def expand(value, variables):
         used.append(var)
         return variables[var]
 
-    out = re.sub(r"var\((--[a-z0-9-]+)\)", swap, value)
+    out = value
+    for _ in range(5):
+        nxt = re.sub(r"var\((--[a-z0-9-]+)\)", swap, out)
+        if nxt == out:
+            break
+        out = nxt
     return out, list(dict.fromkeys(used))
 
 
@@ -105,15 +110,46 @@ def structure(page):
     if not path.exists():
         return None
     text = path.read_text(encoding="utf-8")
-    block = re.search(r"## Збірка\n\n<div className=\"ds-btn-row[^\"]*\">\n(.*?)\n</div>", text, re.S)
-    if not block:
-        block = re.search(r"<span className=\"ds-preview__stage[^\"]*\">(.*?)</span>\n</div>", text, re.S)
-    if not block:
-        return None
-    markup = block.group(1)
+    # Найбільший демо-блок — це майже завжди повна збірка компонента
+    demos = re.findall(r"<div className=\"ds-btn-row[^\"]*\">\n(.*?)\n</div>", text, re.S)
+    if demos:
+        markup = max(demos, key=len)
+    else:
+        preview = re.search(r"<span className=\"ds-preview__stage[^\"]*\">(.*?)</span>\n</div>", text, re.S)
+        if not preview:
+            return None
+        markup = preview.group(1)
     markup = re.sub(r"^ {2}", "", markup, flags=re.M)
     markup = markup.replace("className=", "class=")
     return markup.strip()
+
+
+def icon_sources():
+    """SVG-код іконок із foundations/icons.mdx.
+
+    У CSS іконки — це mask із data-URI, і такі правила переживають не кожен
+    інструмент. Тому в специфікацію кладемо ще й вихідний SVG, щоб генератор
+    міг вставити його інлайном.
+    """
+    path = ROOT / "foundations" / "icons.mdx"
+    if not path.exists():
+        return ""
+    text = path.read_text(encoding="utf-8")
+    blocks = re.findall(r"```html (\S+\.svg)\n(.*?)\n```", text, re.S)
+    if not blocks:
+        return ""
+    out = ["\n### Icons — SVG source\n"]
+    out.append(
+        "In CSS these are drawn as `mask` with a data URI so they inherit `currentColor`.\n"
+        "If masks do not survive your tool, inline the SVG below instead and set `fill`\n"
+        "to the icon colour. Default size is 16px; breadcrumbs draw arrow-side at 12px.\n"
+    )
+    out.append("```html")
+    for name, svg in blocks:
+        out.append(f"<!-- {name} -->")
+        out.append(svg.strip())
+    out.append("```\n")
+    return "\n".join(out)
 
 
 def build():
@@ -152,6 +188,8 @@ def build():
                 out.append(format_rule(selector, rule_body, variables))
             out.append("```\n")
             buckets[key] = []
+
+    out.append(icon_sources())
 
     at = at_rules(css)
     if at:

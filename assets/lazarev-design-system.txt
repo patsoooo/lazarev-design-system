@@ -49,6 +49,14 @@ description, optional button. It is the single most repeated element on any page
 
 Known page types, from breadcrumbs: Home, Industries > [industry], Case studies, Article.
 
+Two elements are mandatory on every page:
+
+- **Header** at the top, fixed, leaving 88px for the first block.
+- **Footer** at the bottom. Never omit it, whatever the page is.
+
+Breadcrumbs, when present, sit above the first block and are **always centred**
+in the container — never flush left.
+
 There is no rule for when a block is dark — it is art direction per page.
 There are no character limits on titles or descriptions.
 
@@ -166,7 +174,7 @@ Quick index. Full markup and every style for each component is in section 9.
 | Checkbox | `.ds-cb` | 24px · h 24px | Square check, also used as dropdown list item |
 | Chips | `.ds-chip` | h 40px | Outlined filter pill with trailing arrow |
 | Dropdown | `.ds-dd` | h 40px | Trigger plus menu of checkbox items |
-| Input | — | — | NOT DOCUMENTED — 9 token groups exist, page is empty |
+| Input | `.ds-input` | fluid | Contact-form field: label, grey box, caret at the left edge. States: default, hover, active, filled, inactive, error |
 | Links | `.ds-link` | h 16px | Navigation link, plain variant has no arrow |
 | Links group | `.ds-header-menu` | fluid | Bordered row of header links |
 | Media | `.ds-media` | fluid | Image placeholder, sizes S/M/L, ratio 1.504 |
@@ -276,6 +284,8 @@ Every value below is resolved inline in the rules that follow. This block is the
   --color-border-white-30: #ffffff4d;          /* → primitives.color.white.1000-30% */
   --color-background-block: #ffffffff;         /* → primitives.color.white.1000 */
   --color-background-page: #e9e9e9ff;          /* → primitives.color.gray.100 */
+  --color-background-gray-block: #f4f4f4ff;    /* → primitives.color.gray.50 */
+  --color-action-danger: #dc2626ff;            /* → primitives.color.red.500 */
   --color-background-inverse: #000000ff;       /* → primitives.color.black.1000 */
   --color-text-placeholder: #697382ff;         /* → primitives.color.gray.600 */
   /* Стаття прив'язана до примітивів напряму, повз семантику */
@@ -492,7 +502,13 @@ FAQ list, one row open at a time
 Markup:
 
 ```html
-<span class="ds-accordion"><span class="ds-accordion__head"><span class="ds-accordion__title">Title</span><span class="ds-btn ds-btn--plus is-default">+</span></span><span class="ds-accordion__body">text</span></span>
+<span class="ds-accordion">
+  <span class="ds-accordion__head">
+    <span class="ds-accordion__title">Title</span>
+    <span class="ds-btn ds-btn--plus is-close">×</span>
+  </span>
+  <span class="ds-accordion__body">text</span>
+</span>
 ```
 
 Styles:
@@ -542,7 +558,8 @@ Photo with name and job title; sizes S 40 / M 56
 Markup:
 
 ```html
-<span class="ds-avatar-info"><span class="ds-avatar-info__photos"><span class="ds-avatar ds-avatar--m" /><span class="ds-avatar ds-avatar--m" /></span><span class="ds-avatar-info__text"><span class="ds-avatar-info__name">Name</span><span class="ds-avatar-info__job">Job title</span></span></span>
+<div class="ds-btn-item"><span class="ds-btn-caption">M · Inverse</span><span class="ds-avatar-info ds-avatar-info--inverse"><span class="ds-avatar-info__photos"><span class="ds-avatar ds-avatar--m ds-avatar--inverse" /><span class="ds-avatar ds-avatar--m ds-avatar--inverse" /></span><span class="ds-avatar-info__text"><span class="ds-avatar-info__name">Name</span><span class="ds-avatar-info__job">Job title</span></span></span></div>
+  <div class="ds-btn-item"><span class="ds-btn-caption">S · Inverse</span><span class="ds-avatar-info ds-avatar-info--s ds-avatar-info--inverse"><span class="ds-avatar-info__photos"><span class="ds-avatar ds-avatar--s ds-avatar--inverse" /><span class="ds-avatar ds-avatar--s ds-avatar--inverse" /></span><span class="ds-avatar-info__text"><span class="ds-avatar-info__name">Name</span><span class="ds-avatar-info__job">Job title</span></span></span></div>
 ```
 
 Styles:
@@ -622,7 +639,9 @@ Page path, current item last
 Markup:
 
 ```html
-<span class="ds-bc"><span class="ds-bc-item is-inactive">label</span><span class="ds-bc-item is-inactive">label</span><span class="ds-bc-item is-active">label</span></span>
+<div class="ds-btn-item"><span class="ds-btn-caption">Inactive</span><span class="ds-bc-item is-inactive">label</span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Active</span><span class="ds-bc-item is-active">label</span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Hover</span><span class="ds-bc-item is-hover">label</span></div>
 ```
 
 Styles:
@@ -654,9 +673,13 @@ Styles:
   color: #697382ff; /* --color-action-inactive */
 }
 .ds-bc {
-  display: inline-flex;
+  /* Хлібні крихти на сайті завжди по центру контейнера */
+  display: flex;
   align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   gap: 8px; /* --spacing-8 */
+  width: 100%;
   padding: 8px; /* --spacing-8 */
 }
 ```
@@ -669,7 +692,9 @@ Styles:
 Markup:
 
 ```html
-<span class="ds-btn ds-btn--primary is-default">Button label</span>
+<div class="ds-btn-item"><span class="ds-btn-caption">Без іконки</span><span class="ds-btn-block"><span class="ds-btn-block__text">text</span><span class="ds-btn-block__actions"><span class="ds-btn ds-btn--primary is-default">Button label</span><span class="ds-btn ds-btn--secondary is-default">Button label</span></span></span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Одна кнопка</span><span class="ds-btn-block"><span class="ds-btn-block__text"><span class="ds-icon ds-icon--placeholder" />text</span><span class="ds-btn-block__actions"><span class="ds-btn ds-btn--primary is-default">Button label</span></span></span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Мінімальний</span><span class="ds-btn-block"><span class="ds-btn-block__text">text</span><span class="ds-btn-block__actions"><span class="ds-btn ds-btn--primary is-default">Button label</span></span></span></div>
 ```
 
 Styles:
@@ -685,7 +710,7 @@ Styles:
   padding: 0 16px; /* --spacing-16 */
   border: 1px solid transparent; /* --border-width-1 */
   border-radius: 32px; /* --radius-32 */
-  font-family: var(--font-archivo); /* --button-font-family */
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --button-font-family, --font-archivo */
   font-size: 14px; /* --button-font-size */
   font-weight: 500; /* --button-font-weight */
   line-height: 16px; /* --button-line-height */
@@ -846,7 +871,7 @@ Styles:
   display: inline-flex;
   align-items: center;
   gap: 8px; /* --spacing-8 */
-  font-family: var(--font-archivo); /* --button-font-family */
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --button-font-family, --font-archivo */
   font-size: 14px; /* --button-font-size */
   line-height: 1;
 }
@@ -865,7 +890,10 @@ Square check, also used as dropdown list item
 Markup:
 
 ```html
-<span class="ds-cb is-checked" />
+<div class="ds-btn-item"><span class="ds-btn-caption">Unchecked</span><span class="ds-cb" /></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Checked</span><span class="ds-cb is-checked" /></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Unchecked · Hover</span><span class="ds-cb is-hover" /></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Checked · Hover</span><span class="ds-cb is-hover is-checked" /></div>
 ```
 
 Styles:
@@ -905,7 +933,10 @@ Outlined filter pill with trailing arrow
 Markup:
 
 ```html
-<span class="ds-chip is-default">Chip label</span>
+<div class="ds-btn-item"><span class="ds-btn-caption">Default</span><span class="ds-chip is-default">Chip label</span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Hover</span><span class="ds-chip is-hover">Chip label</span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Active</span><span class="ds-chip is-active">Chip label</span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Inactive</span><span class="ds-chip is-inactive">Chip label</span></div>
 ```
 
 Styles:
@@ -921,7 +952,7 @@ Styles:
   padding: 0 16px; /* --spacing-16 */
   border: 1px solid transparent; /* --border-width-1 */
   border-radius: 32px; /* --radius-32 */
-  font-family: var(--font-archivo); /* --button-font-family */
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --button-font-family, --font-archivo */
   font-size: 14px; /* --button-font-size */
   font-weight: 500; /* --button-font-weight */
   line-height: 16px; /* --button-line-height */
@@ -957,7 +988,10 @@ Trigger plus menu of checkbox items
 Markup:
 
 ```html
-<span class="ds-dd-menu"><span class="ds-dd-menu__list"><span class="ds-dd-item"><span class="ds-cb" />Item label</span><span class="ds-dd-item is-selected"><span class="ds-cb" />Item label</span><span class="ds-dd-item"><span class="ds-cb" />Item label</span></span></span>
+<div class="ds-btn-item"><span class="ds-btn-caption">Default</span><span class="ds-dd ds-dd--count is-default"><span class="ds-dd__count">3</span>Tab label</span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Hover</span><span class="ds-dd ds-dd--count is-hover"><span class="ds-dd__count">3</span>Tab label</span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Open</span><span class="ds-dd ds-dd--count is-open"><span class="ds-dd__count">3</span>Tab label</span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Disabled</span><span class="ds-dd ds-dd--count is-disabled"><span class="ds-dd__count">3</span>Tab label</span></div>
 ```
 
 Styles:
@@ -973,7 +1007,7 @@ Styles:
   /* 12 / 12 / 12 / 10 — лівий відступ 10px поза шкалою primitives.spacing */
   padding: 12px 12px 12px 10px; /* --spacing-12 */
   border-radius: 32px; /* --radius-32 */
-  font-family: var(--font-archivo); /* --button-font-family */
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --button-font-family, --font-archivo */
   font-size: 14px; /* --button-font-size */
   font-weight: 500; /* --button-font-weight */
   line-height: 16px; /* --button-line-height */
@@ -1032,7 +1066,7 @@ Styles:
   gap: 12px; /* TODO: звірити з Figma */
   padding: 8px; /* --spacing-8 */
   border-radius: 8px; /* --radius-8 */
-  font-family: var(--font-archivo); /* --button-font-family */
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --button-font-family, --font-archivo */
   font-size: 14px; /* --button-font-size */
   line-height: 16px; /* --button-line-height */
   color: #000000ff; /* --color-text-primary */
@@ -1048,6 +1082,126 @@ Styles:
 ```
 
 
+### Components — Input
+
+Contact-form field: label, grey box, caret at the left edge. States: default, hover, active, filled, inactive, error
+
+Markup:
+
+```html
+<span class="ds-input">
+  <span class="ds-input__label">Label</span>
+  <span class="ds-input__field is-default"><span class="ds-input__text">Placeholder</span></span>
+</span>
+<span class="ds-input">
+  <span class="ds-input__label">Label</span>
+  <span class="ds-input__field is-hover"><span class="ds-input__text">Placeholder</span></span>
+</span>
+<span class="ds-input">
+  <span class="ds-input__label">Label</span>
+  <span class="ds-input__field is-active"><span class="ds-input__text" /></span>
+</span>
+<span class="ds-input">
+  <span class="ds-input__label">Label</span>
+  <span class="ds-input__field is-filled"><span class="ds-input__text">Placeholder</span></span>
+</span>
+<span class="ds-input">
+  <span class="ds-input__label">Label</span>
+  <span class="ds-input__field is-inactive"><span class="ds-input__text">Placeholder</span></span>
+</span>
+<span class="ds-input">
+  <span class="ds-input__label">Label</span>
+  <span class="ds-input__field is-error"><span class="ds-input__text">Placeholder</span><span class="ds-input__message">Label message</span></span>
+</span>
+```
+
+Styles:
+
+```css
+.ds-input {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 2px; /* --spacing-2 */
+  width: 100%;
+}
+.ds-input__label {
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  /* font.paragraph.p2-18 — Archivo 18/20 */
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #000000ff; /* --color-text-primary */
+}
+.ds-input__field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  /* input-contact/padding 20px, input-contact/padding-left 8px */
+  padding: 20px 20px 20px 8px; /* --spacing-20, --spacing-8 */
+  background: #f4f4f4ff; /* --color-background-gray-block */
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  /* font.paragraph.p1-20 — Archivo 20/20 */
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #697382ff; /* --color-text-placeholder */
+}
+.ds-input__field::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1px;
+  height: 44px;
+  margin-top: -22px;
+  background: #0f9549ff; /* --color-icon-brand */
+}
+.ds-input__text {
+  display: block;
+}
+.ds-input__field.is-active,
+.ds-input__field.is-filled {
+  color: #000000ff; /* --color-text-primary */
+}
+.ds-input__field.is-filled::before {
+  content: none;
+}
+.ds-input__field.is-filled .ds-input__text::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 44px;
+  margin-left: 8px; /* TODO: звірити з Figma — проміжок не названо */
+  vertical-align: middle;
+  background: #0f9549ff; /* --color-icon-brand */
+}
+.ds-input__field.is-inactive {
+  color: #cdd4deff; /* --color-action-inactive-content */
+}
+.ds-input__field.is-inactive::before {
+  background: #cdd4deff; /* --color-action-inactive-content */
+}
+.ds-input__field.is-error {
+  color: #dc2626ff; /* --color-action-danger */
+}
+.ds-input__message {
+  position: absolute;
+  left: 8px; /* --spacing-8 */
+  top: 50%;
+  margin-top: 12px; /* --spacing-12 */
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  /* font.caption.c2-12 — Archivo 12/12 */
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  color: #dc2626ff; /* --color-action-danger */
+}
+```
+
+
 ### Components — Links
 
 Navigation link, plain variant has no arrow
@@ -1055,7 +1209,11 @@ Navigation link, plain variant has no arrow
 Markup:
 
 ```html
-<span class="ds-link is-default">Label</span>
+<div class="ds-btn-item"><span class="ds-btn-caption">Default</span><span class="ds-link is-default">Label</span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Hover</span><span class="ds-link is-hover">Label</span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Pressed</span><span class="ds-link is-pressed">Label</span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Active</span><span class="ds-link is-active">Label</span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Inactive</span><span class="ds-link is-inactive">Label</span></div>
 ```
 
 Styles:
@@ -1106,7 +1264,14 @@ Bordered row of header links
 Markup:
 
 ```html
-<span class="ds-header-menu"><span class="ds-link is-default">Product design</span><span class="ds-link is-default">AI visibility</span><span class="ds-link ds-link--plain is-default">Outcomes</span><span class="ds-link is-default">About us</span></span>
+<span class="ds-header-menu">
+  <span class="ds-link is-default">Product design</span>
+  <span class="ds-link is-default">Agentic websites</span>
+  <span class="ds-link is-default">AI visibility</span>
+  <span class="ds-link ds-link--plain is-default">Outcomes</span>
+  <span class="ds-link ds-link--plain is-default">Cases studies</span>
+  <span class="ds-link is-default">About us</span>
+</span>
 ```
 
 Styles:
@@ -1137,7 +1302,9 @@ Image placeholder, sizes S/M/L, ratio 1.504
 Markup:
 
 ```html
-<span class="ds-media ds-media--m" />
+<div class="ds-btn-item"><span class="ds-btn-caption">Size S</span><span class="ds-media ds-media--s" /></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Size M</span><span class="ds-media ds-media--m" /></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Size L</span><span class="ds-media ds-media--l" /></div>
 ```
 
 Styles:
@@ -1171,7 +1338,19 @@ Page numbers in a pill with arrow buttons
 Markup:
 
 ```html
-<span class="ds-pagination"><span class="ds-btn ds-btn--icon is-default">←</span><span class="ds-pagination__numbers"><span class="ds-pagi is-active">1</span><span class="ds-pagi is-inactive">2</span><span class="ds-pagi is-inactive">3</span><span class="ds-pagi ds-pagi--dots">…</span><span class="ds-pagi is-inactive">7</span></span><span class="ds-btn ds-btn--icon is-default">→</span></span>
+<span class="ds-pagination">
+  <span class="ds-btn ds-btn--icon is-default">←</span>
+  <span class="ds-pagination__numbers">
+    <span class="ds-pagi is-active">1</span>
+    <span class="ds-pagi is-inactive">2</span>
+    <span class="ds-pagi is-inactive">3</span>
+    <span class="ds-pagi is-inactive">4</span>
+    <span class="ds-pagi is-inactive">5</span>
+    <span class="ds-pagi ds-pagi--dots">…</span>
+    <span class="ds-pagi is-inactive">7</span>
+  </span>
+  <span class="ds-btn ds-btn--icon is-default">→</span>
+</span>
 ```
 
 Styles:
@@ -1185,7 +1364,7 @@ Styles:
   width: 40px; /* --button-height */
   height: 40px; /* --button-height */
   border-radius: 32px; /* --radius-32 */
-  font-family: var(--font-archivo); /* --button-font-family */
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --button-font-family, --font-archivo */
   font-size: 14px; /* --button-font-size */
   font-weight: 500; /* --button-font-weight */
   line-height: 16px; /* --button-line-height */
@@ -1222,7 +1401,10 @@ Segmented control, one active
 Markup:
 
 ```html
-<span class="ds-tabs"><span class="ds-tab ds-tab--plain is-active">Acquired</span><span class="ds-tab ds-tab--plain is-default">Unicorns</span><span class="ds-tab ds-tab--plain is-default">Growth</span></span>
+<div class="ds-btn-item"><span class="ds-btn-caption">Active</span><span class="ds-tab is-active">Tab label</span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Default</span><span class="ds-tab is-default">Tab label</span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Hover</span><span class="ds-tab is-hover">Tab label</span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Inactive</span><span class="ds-tab is-inactive">Tab label</span></div>
 ```
 
 Styles:
@@ -1238,7 +1420,7 @@ Styles:
   padding: 0 12px; /* --spacing-12 */
   border: none;
   border-radius: 32px; /* --radius-32 */
-  font-family: var(--font-archivo); /* --button-font-family */
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --button-font-family, --font-archivo */
   font-size: 14px; /* --button-font-size */
   font-weight: 500; /* --button-font-weight */
   line-height: 16px; /* --button-line-height */
@@ -1283,7 +1465,9 @@ Uppercase label with hairline separator
 Markup:
 
 ```html
-<span class="ds-card-meta"><span class="ds-tag is-default">Tag</span></span>
+<div class="ds-btn-item"><span class="ds-btn-caption">Одна мітка</span><span class="ds-card-meta"><span class="ds-tag is-default">Tag</span></span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Кілька міток</span><span class="ds-card-meta"><span class="ds-tag is-default">Design</span><span class="ds-tag is-default">Research</span><span class="ds-tag is-default">Strategy</span></span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Мітка й текст</span><span class="ds-card-meta"><span class="ds-tag is-default">Tag</span><span class="ds-card-date">04 May 2026</span></span></div>
 ```
 
 Styles:
@@ -1330,7 +1514,8 @@ Binary switch, applies immediately
 Markup:
 
 ```html
-<span class="ds-toggle is-active"><span class="ds-toggle__knob" /></span>
+<div class="ds-btn-item"><span class="ds-btn-caption">Default</span><span class="ds-toggle is-default"><span class="ds-toggle__knob" /></span></div>
+<div class="ds-btn-item"><span class="ds-btn-caption">Active</span><span class="ds-toggle is-active"><span class="ds-toggle__knob" /></span></div>
 ```
 
 Styles:
@@ -1370,7 +1555,16 @@ Article teaser; S 312 / M 388 / L 616
 Markup:
 
 ```html
-<span class="ds-article-card"><span class="ds-card-meta"><span class="ds-tag is-default">Tag</span><span class="ds-card-date">04 May 2026</span></span><span class="ds-article-card__title">MVP landing page: how to build one to validate your business idea</span><span class="ds-article-card__desc">AI roadmap is real, adoption isn't.</span><span class="ds-article-card__action"><span class="ds-btn ds-btn--secondary is-default">Button label</span></span><span class="ds-article-card__img" /></span>
+<span class="ds-article-card ds-article-card--m">
+  <span class="ds-card-meta">
+    <span class="ds-tag is-default">Tag</span>
+    <span class="ds-card-date">04 May 2026</span>
+  </span>
+  <span class="ds-article-card__title">MVP landing page: how to build one to validate your business idea successfully</span>
+  <span class="ds-article-card__desc">AI roadmap is real, adoption isn't. Demos must land this year.</span>
+  <span class="ds-article-card__action"><span class="ds-btn ds-btn--secondary is-default">Button label</span></span>
+  <span class="ds-article-card__img" />
+</span>
 ```
 
 Styles:
@@ -1484,7 +1678,7 @@ Markup:
 ```html
 <span class="ds-card-am">
   <span class="ds-media ds-media--s" />
-  <span class="ds-card-am__title">Title</span>
+  <span class="ds-card-am__title">Як дизайн-система скорочує шлях від макета до продакшену і чому інвентаризація токенів має передувати першому написаному рядку коду в проєкті</span>
   <span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--arrow-up-right" /></span>
 </span>
 ```
@@ -1619,7 +1813,18 @@ Case teaser; S 312 / L 616
 Markup:
 
 ```html
-<span class="ds-case-card"><span class="ds-case-card__img" /><span><span class="ds-card-meta"><span class="ds-tag is-default">Tag</span><span class="ds-card-date">04 May 2026</span></span><span class="ds-case-card__title">Project name</span><span class="ds-case-card__action"><span class="ds-btn ds-btn--secondary is-default">Button label</span></span></span></span>
+<span class="ds-case-card ds-case-card--l">
+  <span>
+    <span class="ds-card-meta">
+      <span class="ds-tag is-default">Tag</span>
+      <span class="ds-card-date">10 Aug 26</span>
+    </span>
+    <span class="ds-case-card__title">Title</span>
+    <span class="ds-case-card__desc">text</span>
+    <span class="ds-case-card__action"><span class="ds-btn ds-btn--secondary is-default">View case</span></span>
+  </span>
+  <span class="ds-case-card__img" />
+</span>
 ```
 
 Styles:
@@ -2065,7 +2270,18 @@ Case study block; desktop / tablet / mobile
 Markup:
 
 ```html
-<span class="ds-case-block"><span class="ds-case-block__main"><span class="ds-card-meta"><span class="ds-tag is-default">Tag</span><span class="ds-card-date">04 May 2026</span></span><span class="ds-case-block__title">Title</span><span class="ds-case-block__paragraph">paragraph</span><span class="ds-case-block__action"><span class="ds-btn ds-btn--primary is-default">View case</span></span></span><span class="ds-case-block__media" /></span>
+<span class="ds-case-block ds-case-block--tablet">
+  <span class="ds-case-block__main">
+    <span class="ds-card-meta">
+      <span class="ds-tag is-default">Tag</span>
+      <span class="ds-card-date">10 Aug 26</span>
+    </span>
+    <span class="ds-case-block__title">Title</span>
+    <span class="ds-case-block__paragraph">paragraph</span>
+    <span class="ds-case-block__action"><span class="ds-btn ds-btn--primary is-default">View case</span></span>
+  </span>
+  <span class="ds-case-block__media" />
+</span>
 ```
 
 Styles:
@@ -2353,7 +2569,17 @@ Icon, text and optional button; desktop and responsive
 Markup:
 
 ```html
-<span class="ds-icon-block ds-icon-block--responsive"><span class="ds-icon-block__badges"><span class="ds-badge">00</span><span class="ds-badge"><span class="ds-icon ds-icon--placeholder" /></span></span><span class="ds-icon-block__main"><span class="ds-icon-block__title">Title</span><span class="ds-icon-block__text">text</span></span></span>
+<span class="ds-icon-block ds-icon-block--responsive">
+  <span class="ds-icon-block__badges">
+    <span class="ds-badge">00</span>
+    <span class="ds-badge"><span class="ds-icon ds-icon--placeholder" /></span>
+  </span>
+  <span class="ds-icon-block__main">
+    <span class="ds-icon-block__title">Title</span>
+    <span class="ds-icon-block__text">text</span>
+    <span class="ds-icon-block__action"><span class="ds-btn ds-btn--secondary is-default">Button label</span></span>
+  </span>
+</span>
 ```
 
 Styles:
@@ -2497,7 +2723,14 @@ One process step: image, title, text, button
 Markup:
 
 ```html
-<span class="ds-process-block ds-process-block--mobile"><span class="ds-process-block__media" /><span class="ds-process-block__main"><span class="ds-process-block__title">Title</span><span class="ds-process-block__text">text</span><span class="ds-process-block__action"><span class="ds-btn ds-btn--secondary is-default">Button label</span></span></span></span>
+<span class="ds-process-block ds-process-block--mobile">
+  <span class="ds-process-block__media" />
+  <span class="ds-process-block__main">
+    <span class="ds-process-block__title">Title</span>
+    <span class="ds-process-block__text">text</span>
+    <span class="ds-process-block__action"><span class="ds-btn ds-btn--secondary is-default">Button label</span></span>
+  </span>
+</span>
 ```
 
 Styles:
@@ -2575,7 +2808,7 @@ Service offering; wide and narrow layouts
 Markup:
 
 ```html
-<span class="ds-service-block">
+<span class="ds-service-block ds-service-block--narrow">
   <span class="ds-service-block__main">
     <span>
       <span class="ds-service-block__title">Title</span>
@@ -2822,7 +3055,68 @@ Full header menu panel
 Markup:
 
 ```html
-<span class="ds-menu"><span class="ds-menu__main"><span class="ds-menu__title">Product design for the AI era: launch new products and build interfaces.</span><span class="ds-menu__columns"><span class="ds-menu__col"><span><span class="ds-menu__caption">Programs</span><span class="ds-menu__links"><span><span class="ds-menu__link-title">Product design and redesign</span><span class="ds-menu__link-desc">Redesign a live product.</span></span><span><span class="ds-menu__link-title">AI product launch</span><span class="ds-menu__link-desc">From stalled pilot to launch.</span></span></span></span></span><span class="ds-menu__col"><span><span class="ds-menu__caption">Programs</span><span class="ds-menu__links"><span><span class="ds-menu__link-title">Product design and redesign</span><span class="ds-menu__link-desc">Redesign a live product.</span></span><span><span class="ds-menu__link-title">AI product launch</span><span class="ds-menu__link-desc">From stalled pilot to launch.</span></span></span></span></span><span class="ds-menu__col"><span><span class="ds-menu__caption">Programs</span><span class="ds-menu__links"><span><span class="ds-menu__link-title">Product design and redesign</span><span class="ds-menu__link-desc">Redesign a live product.</span></span><span><span class="ds-menu__link-title">AI product launch</span><span class="ds-menu__link-desc">From stalled pilot to launch.</span></span></span></span></span></span></span><span class="ds-menu__aside"><span class="ds-menu__aside-title">Latest articles</span><span class="ds-menu__articles"><span class="ds-card-am"><span class="ds-media" /><span class="ds-card-am__title">New Milestone: Our Financial Fund Achieves Growth and Stability</span><span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--arrow-up-right" /></span></span><span class="ds-card-am"><span class="ds-media" /><span class="ds-card-am__title">New Milestone: Our Financial Fund Achieves Growth and Stability</span><span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--arrow-up-right" /></span></span><span class="ds-card-am"><span class="ds-media" /><span class="ds-card-am__title">New Milestone: Our Financial Fund Achieves Growth and Stability</span><span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--arrow-up-right" /></span></span></span></span></span>
+<span class="ds-menu">
+  <span class="ds-menu__main">
+    <span class="ds-menu__title">Product design for the AI era: launch new products, redesign live ones, and build interfaces that both people and AI agents can use.</span>
+    <span class="ds-menu__columns">
+      <span class="ds-menu__col">
+        <span>
+          <span class="ds-menu__caption">Programs</span>
+          <span class="ds-menu__links">
+            <span><span class="ds-menu__link-title">Product design and redesign</span><span class="ds-menu__link-desc">Redesign a live product without breaking revenue.</span></span>
+            <span><span class="ds-menu__link-title">AI product launch</span><span class="ds-menu__link-desc">From stalled pilot to a launch people adopt.</span></span>
+          </span>
+        </span>
+      </span>
+      <span class="ds-menu__col">
+        <span>
+          <span class="ds-menu__caption">Craft</span>
+          <span class="ds-menu__links">
+            <span><span class="ds-menu__link-title">Human and agent experience</span><span class="ds-menu__link-desc">Interfaces for people and AI agents.</span></span>
+            <span><span class="ds-menu__link-title">UI/UX design</span><span class="ds-menu__link-desc">Interface craft for complex products.</span></span>
+            <span><span class="ds-menu__link-title">AI UX patterns</span><span class="ds-menu__link-desc">AI patterns without a full redesign.</span></span>
+            <span><span class="ds-menu__link-title">Mobile app design</span><span class="ds-menu__link-desc">Apps designed for daily use.</span></span>
+          </span>
+        </span>
+      </span>
+      <span class="ds-menu__col">
+        <span>
+          <span class="ds-menu__caption">By business model</span>
+          <span class="ds-menu__links">
+            <span><span class="ds-menu__link-title">Product design for B2B</span><span class="ds-menu__link-desc">Stages, approach and products for B2B.</span></span>
+            <span><span class="ds-menu__link-title">Product design for B2C</span><span class="ds-menu__link-desc">Stages, approach and products for B2C.</span></span>
+          </span>
+        </span>
+        <span>
+          <span class="ds-menu__caption">Who we work with</span>
+          <span class="ds-menu__links">
+            <span><span class="ds-menu__link-title">Heads of AI product innovation</span><span class="ds-menu__link-desc">For the person whose AI bets must ship.</span></span>
+          </span>
+        </span>
+      </span>
+    </span>
+  </span>
+  <span class="ds-menu__aside">
+    <span class="ds-menu__aside-title">Latest articles</span>
+    <span class="ds-menu__articles">
+      <span class="ds-card-am">
+        <span class="ds-media" />
+        <span class="ds-card-am__title">New Milestone: Our Financial Fund Achieves Growth and Stability</span>
+        <span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--arrow-up-right" /></span>
+      </span>
+      <span class="ds-card-am">
+        <span class="ds-media" />
+        <span class="ds-card-am__title">Empowering Communities: Impact Stories from Grand Founders</span>
+        <span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--arrow-up-right" /></span>
+      </span>
+      <span class="ds-card-am">
+        <span class="ds-media" />
+        <span class="ds-card-am__title">New Milestone: Our Financial Fund Achieves Growth and Stability</span>
+        <span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--arrow-up-right" /></span>
+      </span>
+    </span>
+  </span>
+</span>
 ```
 
 Styles:
@@ -2992,7 +3286,73 @@ Three stacked blocks: contacts, services, legal
 Markup:
 
 ```html
-<span class="ds-footer"><span class="ds-footer__block ds-footer__top"><span class="ds-footer__half"><span class="ds-footer__group"><span class="ds-footer__label">Our location:</span><span class="ds-footer__address">1300 W El Camino Real #100, Mountain View, CA 94040</span></span></span><span class="ds-footer__half"><span class="ds-footer__group"><span class="ds-footer__label">Let's connect:</span><span class="ds-btn ds-btn--primary is-default">Check our latest deck</span></span></span></span><span class="ds-footer__block"><span class="ds-footer__label">Services:</span><span class="ds-footer__cols"><span class="ds-footer__col"><span class="ds-footer__link">Product design for B2C</span><span class="ds-footer__link">Human and agent experience design</span><span class="ds-footer__link">Inbound AI traffic</span><span class="ds-footer__link">Storytelling websites</span><span class="ds-footer__link">Digital transformation services</span><span class="ds-footer__link">AI chatbot development service</span></span><span class="ds-footer__col"><span class="ds-footer__link">Product design for B2B</span><span class="ds-footer__link">Continuous demand generation from SEO and AI</span><span class="ds-footer__link">Agentic website</span><span class="ds-footer__link">AEO discovery</span><span class="ds-footer__link">UI UX consulting</span><span class="ds-footer__link">UX research</span></span><span class="ds-footer__col"><span class="ds-footer__link">Web development</span><span class="ds-footer__link">AI visibility audit</span><span class="ds-footer__link">AEO strategy</span><span class="ds-footer__link">Product redesign</span><span class="ds-footer__link">Generative AI consulting</span><span class="ds-footer__link">Agentic AI services</span></span><span class="ds-footer__col"><span class="ds-footer__link">Web design</span><span class="ds-footer__link">Our approach to SEO and AEO</span><span class="ds-footer__link">Legacy migration</span><span class="ds-footer__link">B2B web design agency</span><span class="ds-footer__link">AI consulting services</span><span class="ds-footer__link">UI UX design services</span></span></span></span><span class="ds-footer__block ds-footer__bottom"><span>©2026 Lazarev | All rights reserved</span><span>Cookie Settings | Privacy Policy</span></span></span>
+<span class="ds-footer">
+  <span class="ds-footer__block ds-footer__top">
+    <span class="ds-footer__half">
+      <span class="ds-footer__group">
+        <span class="ds-footer__label">Our location:</span>
+        <span class="ds-footer__address">1300 W El Camino Real #100, Mountain View, CA 94040</span>
+      </span>
+    </span>
+    <span class="ds-footer__half">
+      <span class="ds-footer__group">
+        <span class="ds-footer__label">Let's connect:</span>
+        <span class="ds-btn ds-btn--primary is-default">Check our latest deck</span>
+      </span>
+      <span class="ds-footer__group">
+        <span class="ds-footer__label">Join us on social media</span>
+        <span class="ds-footer__socials">
+          <span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--placeholder" /></span>
+          <span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--placeholder" /></span>
+          <span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--placeholder" /></span>
+          <span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--placeholder" /></span>
+          <span class="ds-btn ds-btn--secondary is-default">Prefer us on Google</span>
+        </span>
+      </span>
+    </span>
+  </span>
+  <span class="ds-footer__block">
+    <span class="ds-footer__label">Services:</span>
+    <span class="ds-footer__cols">
+      <span class="ds-footer__col">
+        <span class="ds-footer__link">Product design for B2C</span>
+        <span class="ds-footer__link">Human and agent experience design</span>
+        <span class="ds-footer__link">Inbound AI traffic</span>
+        <span class="ds-footer__link">Storytelling websites</span>
+        <span class="ds-footer__link">Digital transformation services</span>
+        <span class="ds-footer__link">AI chatbot development service</span>
+      </span>
+      <span class="ds-footer__col">
+        <span class="ds-footer__link">Product design for B2B</span>
+        <span class="ds-footer__link">Continuous demand generation from SEO and AI</span>
+        <span class="ds-footer__link">Agentic website</span>
+        <span class="ds-footer__link">AEO discovery</span>
+        <span class="ds-footer__link">UI UX consulting</span>
+        <span class="ds-footer__link">UX research</span>
+      </span>
+      <span class="ds-footer__col">
+        <span class="ds-footer__link">Web development</span>
+        <span class="ds-footer__link">AI visibility audit</span>
+        <span class="ds-footer__link">AEO strategy</span>
+        <span class="ds-footer__link">Product redesign</span>
+        <span class="ds-footer__link">Generative AI consulting</span>
+        <span class="ds-footer__link">Agentic AI services</span>
+      </span>
+      <span class="ds-footer__col">
+        <span class="ds-footer__link">Web design</span>
+        <span class="ds-footer__link">Our approach to SEO and AEO</span>
+        <span class="ds-footer__link">Legacy migration</span>
+        <span class="ds-footer__link">B2B web design agency</span>
+        <span class="ds-footer__link">AI consulting services</span>
+        <span class="ds-footer__link">UI UX design services</span>
+      </span>
+    </span>
+  </span>
+  <span class="ds-footer__block ds-footer__bottom">
+    <span>©2026 Lazarev | All rights reserved</span>
+    <span>Cookie Settings | Privacy Policy | Terms of use</span>
+  </span>
+</span>
 ```
 
 Styles:
@@ -3093,7 +3453,13 @@ Two columns: 992 body, 336 aside, gap 16
 Markup:
 
 ```html
-<span class="ds-article-grid"><span class="ds-article-grid__main"><span class="ds-article-grid__label">Текст статті</span></span><span class="ds-article-grid__aside"><span class="ds-article-grid__block"><span class="ds-article-grid__label">Зміст</span></span><span class="ds-article-grid__block"><span class="ds-article-grid__label">Поділитися</span></span></span></span>
+<span class="ds-article-grid">
+  <span class="ds-article-grid__main"><span class="ds-article-grid__label">Текст статті · 992px</span></span>
+  <span class="ds-article-grid__aside">
+    <span class="ds-article-grid__block"><span class="ds-article-grid__label">Зміст · 336px</span></span>
+    <span class="ds-article-grid__block"><span class="ds-article-grid__label">Поділитися · 336px</span></span>
+  </span>
+</span>
 ```
 
 Styles:
@@ -3174,7 +3540,17 @@ h2/h3/h4, lead, body, bullet, number list — each carries its own padding
 Markup:
 
 ```html
-<span class="ds-art-flow"><span class="ds-art-h2">Placeholder title H2</span><span class="ds-art-b1">Placeholder body text</span><span class="ds-art-h3">Placeholder title H3</span><span class="ds-art-b1">Placeholder body text</span></span>
+<span class="ds-art-flow">
+  <span class="ds-art-h2">Placeholder title H2</span>
+  <span class="ds-art-b1">Placeholder body text</span>
+  <span class="ds-art-h3">Placeholder title H3</span>
+  <span class="ds-art-b1">Placeholder body text</span>
+  <span class="ds-art-h4">Placeholder title H4</span>
+  <span class="ds-art-lead">Placeholder lead text</span>
+  <span class="ds-art-b1">Placeholder body text</span>
+  <span class="ds-art-bullet"><span class="ds-point ds-point--green" />Text</span>
+  <span class="ds-art-num"><span class="ds-art-num__index">1.</span>Text</span>
+</span>
 ```
 
 Styles:
@@ -3647,6 +4023,50 @@ Styles:
   border-radius: 50%;
   background: #000000ff; /* --color-text-primary */
 }
+```
+
+
+### Icons — SVG source
+
+In CSS these are drawn as `mask` with a data URI so they inherit `currentColor`.
+If masks do not survive your tool, inline the SVG below instead and set `fill`
+to the icon colour. Default size is 16px; breadcrumbs draw arrow-side at 12px.
+
+```html
+<!-- caret.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <path d="M8.00373 10L5 6H11L8.00373 10Z" fill="black"/>
+</svg>
+<!-- arrow-side.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <path d="M10 8.00373L6 5L6 11L10 8.00373Z" fill="black"/>
+</svg>
+<!-- arrow-up-right.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <path d="M4 12L12 4" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M4 4H12V12" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<!-- placeholder.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <path d="M2 14L14 2" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M14 14L2 2" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="1.5" y="1.5" width="13" height="13" stroke="black"/>
+</svg>
+<!-- close.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <path d="M4 11.6569L12 3.65686" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M4 3.65685L12 11.6569" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<!-- check.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <path d="M4 8L6.78261 11L12 5" stroke="black" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<!-- burger-menu.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <path d="M2 3H14" stroke="black" stroke-linecap="round"/>
+  <path d="M2 8H14" stroke="black" stroke-linecap="round"/>
+  <path d="M2 13H14" stroke="black" stroke-linecap="round"/>
+</svg>
 ```
 
 

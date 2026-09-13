@@ -60,8 +60,8 @@
         {
           "page": "components/input",
           "title": "Input",
-          "class": "",
-          "purpose": "NOT DOCUMENTED — 9 token groups exist, page is empty"
+          "class": "ds-input",
+          "purpose": "Contact-form field: label, grey box, caret at the left edge. States: default, hover, active, filled, inactive, error"
         },
         {
           "page": "components/links",

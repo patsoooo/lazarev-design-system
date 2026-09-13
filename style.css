@@ -42,6 +42,8 @@
   --color-border-white-30: #ffffff4d;          /* → primitives.color.white.1000-30% */
   --color-background-block: #ffffffff;         /* → primitives.color.white.1000 */
   --color-background-page: #e9e9e9ff;          /* → primitives.color.gray.100 */
+  --color-background-gray-block: #f4f4f4ff;    /* → primitives.color.gray.50 */
+  --color-action-danger: #dc2626ff;            /* → primitives.color.red.500 */
   --color-background-inverse: #000000ff;       /* → primitives.color.black.1000 */
   --color-text-placeholder: #697382ff;         /* → primitives.color.gray.600 */
   /* Стаття прив'язана до примітивів напряму, повз семантику */
@@ -241,6 +243,9 @@
 .ds-sw--gray-50 { background: var(--color-gray-50); }
 .ds-sw--gray-100 { background: var(--color-gray-100); }
 .ds-sw--icon-brand { background: var(--color-icon-brand); }
+.ds-sw--background-gray-block { background: var(--color-background-gray-block); }
+.ds-sw--action-danger { background: var(--color-action-danger); }
+.ds-sw--text-placeholder { background: var(--color-text-placeholder); }
 .ds-sw--gray-300 { background: var(--color-gray-300); }
 .ds-sw--background-inverse { background: var(--color-background-inverse); }
 .ds-sw--text-placeholder { background: var(--color-text-placeholder); }
@@ -2582,9 +2587,13 @@
 }
 
 .ds-bc {
-  display: inline-flex;
+  /* Хлібні крихти на сайті завжди по центру контейнера */
+  display: flex;
   align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   gap: var(--spacing-8);
+  width: 100%;
   padding: var(--spacing-8);
 }
 
@@ -3733,4 +3742,107 @@
   line-height: 20px;
   font-weight: 400;
   color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   Input — поле контактної форми
+   Варіант input-contact: без межі й заокруглення, сірий фон, каретка ліворуч.
+   Висота поля 60px = 20 + 20 (рядок p1-20) + 20.
+   ========================================================================== */
+
+.ds-input {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: var(--spacing-2);
+  width: 100%;
+}
+
+.ds-input__label {
+  font-family: var(--font-archivo);
+  /* font.paragraph.p2-18 — Archivo 18/20 */
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.ds-input__field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  /* input-contact/padding 20px, input-contact/padding-left 8px */
+  padding: var(--spacing-20) var(--spacing-20) var(--spacing-20) var(--spacing-8);
+  background: var(--color-background-gray-block);
+  font-family: var(--font-archivo);
+  /* font.paragraph.p1-20 — Archivo 20/20 */
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-placeholder);
+}
+
+/* Каретка приклеєна до лівого краю поля, по центру вертикалі */
+.ds-input__field::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1px;
+  height: 44px;
+  margin-top: -22px;
+  background: var(--color-icon-brand);
+}
+
+.ds-input__text {
+  display: block;
+}
+
+/* Active і Filled: текст уже введений, тож він основного кольору */
+.ds-input__field.is-active,
+.ds-input__field.is-filled {
+  color: var(--color-text-primary);
+}
+
+/* У заповненому полі каретка стоїть після тексту, а не біля краю */
+.ds-input__field.is-filled::before {
+  content: none;
+}
+
+.ds-input__field.is-filled .ds-input__text::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 44px;
+  margin-left: var(--spacing-8); /* TODO: звірити з Figma — проміжок не названо */
+  vertical-align: middle;
+  background: var(--color-icon-brand);
+}
+
+.ds-input__field.is-inactive {
+  color: var(--color-action-inactive-content);
+}
+
+.ds-input__field.is-inactive::before {
+  background: var(--color-action-inactive-content);
+}
+
+.ds-input__field.is-error {
+  color: var(--color-action-danger);
+}
+
+/* Повідомлення лежить у нижньому відступі: висота поля не змінюється */
+.ds-input__message {
+  position: absolute;
+  left: var(--spacing-8);
+  top: 50%;
+  margin-top: var(--spacing-12);
+  font-family: var(--font-archivo);
+  /* font.caption.c2-12 — Archivo 12/12 */
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  color: var(--color-action-danger);
 }

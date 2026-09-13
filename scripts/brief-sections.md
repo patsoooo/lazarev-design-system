@@ -49,6 +49,14 @@ description, optional button. It is the single most repeated element on any page
 
 Known page types, from breadcrumbs: Home, Industries > [industry], Case studies, Article.
 
+Two elements are mandatory on every page:
+
+- **Header** at the top, fixed, leaving 88px for the first block.
+- **Footer** at the bottom. Never omit it, whatever the page is.
+
+Breadcrumbs, when present, sit above the first block and are **always centred**
+in the container — never flush left.
+
 There is no rule for when a block is dark — it is art direction per page.
 There are no character limits on titles or descriptions.
 

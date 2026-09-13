@@ -6,15 +6,15 @@ icon: "wand-magic-sparkles"
 
 Claude Design може збирати макети з цієї дизайн-системи — але тільки якщо дати йому систему у зрозумілому вигляді. Ця сторінка пояснює, як саме.
 
-Уся документація — це майже 60 сторінок. Віддавати їх генератору цілком немає сенсу: він у них потоне. Натомість є **один компактний файл**, зібраний із `tokens.json`, `style.css` і самих сторінок.
+Уся документація — це майже 60 сторінок української прози з поясненнями й прикладами. Генератору потрібне інше: **точні значення й розмітка**, без пояснень. Для цього є окремий файл, зібраний скриптом із `tokens.json`, `style.css` і самих сторінок.
 
 ## Крок 1. Завантажте файл
 
 <a className="ds-download" href="/assets/lazarev-design-system.txt" download="lazarev-design-system.txt">Завантажити lazarev-design-system.txt</a>
 
-<span className="ds-download__note">12 КБ · сітка, палітра, типографіка, 45 компонентів</span>
+<span className="ds-download__note">130 КБ · сітка, палітра, типографіка, розмітка й усі стилі 43 компонентів</span>
 
-Усередині десять розділів:
+Усередині одинадцять розділів:
 
 <div className="ds-table">
 
@@ -27,13 +27,22 @@ Claude Design може збирати макети з цієї дизайн-си
 | Spacing scale | Уся шкала відступів |
 | Colour tokens | Семантична палітра з hex-значеннями |
 | Type scale | Шкала сайту і окрема шкала статті |
-| Component inventory | 45 компонентів: імʼя, CSS-клас, розмір, призначення |
+| Component index | Швидкий перелік: імʼя, CSS-клас, розмір, призначення |
+| **Full component specifications** | **Розмітка й кожне правило кожного компонента** |
 | Known gaps | Чого в системі немає — щоб генератор не вигадував |
 | Token file warning | Чому не можна читати `tokens.json` напряму |
 
 </div>
 
-Два останні розділи не менш важливі за перші вісім. Без них модель вигадає брейкпоінти й анімації, яких у системі не існує, або візьме зіпсовані значення з експорту Figma.
+Найбільший розділ — дев'ятий, він займає майже весь файл. Для кожного компонента там **точна розмітка** і **всі CSS-правила**, причому змінні розгорнуті в реальні значення: не `var(--color-action-primary)`, а `#000000ff` з іменем змінної в коментарі.
+
+Саме цього бракувало раніше. Без розділу 9 генератор знав, що хедер існує, але не знав, що в ньому всередині — і малював власний.
+
+Два останні розділи не менш важливі. Без них модель вигадає брейкпоінти й анімації, яких у системі не існує, або візьме зіпсовані значення з експорту Figma.
+
+<Warning>
+  Файл великий — приблизно 38 тисяч токенів. Це свідомий вибір: стислий переказ дає стислий результат. Якщо ваш інструмент не приймає такий обсяг, скажіть — зробимо версію без розділу 9, але тоді точність впаде до рівня «схоже на ваш дизайн».
+</Warning>
 
 ## Крок 2. Додайте його в Claude Design
 
@@ -52,15 +61,17 @@ You are designing a page for Lazarev.agency using their design system.
 The complete system specification is above. Follow it exactly.
 
 Rules:
-- Use only components from the inventory. Reference them by CSS class.
+- Use only components from section 9. Reproduce their markup and styles exactly.
 - Use only colours and type styles listed in the specification.
 - Desktop canvas 1440px, container 1344px, 48px side padding.
 - Every block carries 220px top padding. No bottom padding.
 - Section title to content: 56px.
 - First block leaves 88px for the fixed header.
 - Every section starts with a Title block (title, description, optional button).
+- Every page ends with the Footer. Never omit it.
+- Breadcrumbs are always centred in the container, never flush left.
 - If a value you need is not in the specification, say so instead of inventing it.
-  Section 9 lists what genuinely does not exist in this system.
+  Section 10 lists what genuinely does not exist in this system.
 
 Task:
 ```
@@ -84,6 +95,8 @@ Task:
 | Ширина картки кейсу | 312px |
 
 </div>
+
+Далі порівняйте розмітку з розділом 9. Якщо класи збігаються — генератор читає специфікацію, а не вигадує свою структуру.
 
 Якщо всі три збіглися — система читається, можна просити цілу сторінку. Якщо ні, буде видно, чого саме бракує.
 
