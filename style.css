@@ -27,6 +27,7 @@
   --color-text-secondary: #697382ff;           /* → primitives.color.gray.600 */
   --color-icon-default: #000000ff;             /* → primitives.color.black.1000 */
   --color-icon-inverse: #ffffffff;             /* → primitives.color.white.1000 */
+  --color-icon-brand: #0f9549ff;               /* → primitives.color.green.500 */
 
   --color-action-brand-hover: #0da34eff;        /* → primitives.color.green.400 */
 
@@ -41,6 +42,12 @@
   --color-border-white-30: #ffffff4d;          /* → primitives.color.white.1000-30% */
   --color-background-block: #ffffffff;         /* → primitives.color.white.1000 */
   --color-background-page: #e9e9e9ff;          /* → primitives.color.gray.100 */
+  --color-background-inverse: #000000ff;       /* → primitives.color.black.1000 */
+  --color-text-placeholder: #697382ff;         /* → primitives.color.gray.600 */
+  /* Стаття прив'язана до примітивів напряму, повз семантику */
+  --color-gray-50: #f4f4f4ff;                  /* → primitives.color.gray.50 */
+  --color-gray-100: #e9e9e9ff;                 /* → primitives.color.gray.100 */
+  --color-gray-300: #cdd4deff;                 /* → primitives.color.gray.300 */
 
   /* --- Розміри: primitives.spacing.* --- */
   --spacing-2: 2px;
@@ -231,6 +238,12 @@
 .ds-sw--border-default { background: var(--color-border-default); }
 .ds-sw--icon-secondary { background: var(--color-icon-secondary); }
 .ds-sw--action-brand-hover { background: var(--color-action-brand-hover); }
+.ds-sw--gray-50 { background: var(--color-gray-50); }
+.ds-sw--gray-100 { background: var(--color-gray-100); }
+.ds-sw--icon-brand { background: var(--color-icon-brand); }
+.ds-sw--gray-300 { background: var(--color-gray-300); }
+.ds-sw--background-inverse { background: var(--color-background-inverse); }
+.ds-sw--text-placeholder { background: var(--color-text-placeholder); }
 
 /* Напівпрозорий токен — шахова підкладка, щоб було видно прозорість */
 .ds-sw--background-white-10 {
@@ -686,7 +699,9 @@
 
 /* Для елементів із width:100% сцені потрібна власна ширина */
 .ds-preview__stage--w664 { width: 664px; }
+.ds-preview__stage--w640 { width: 640px; }
 .ds-preview__stage--w900 { width: 900px; }
+.ds-preview__stage--w992 { width: 992px; }
 
 /* Замість масштабу — розтягнути на доступну ширину, зберігши справжні розміри */
 .ds-preview--fit {
@@ -745,6 +760,11 @@
   height: 28px;
   border: var(--border-width-1) dashed var(--color-icon-secondary);
   border-radius: 50%;
+}
+
+/* point-icon-green: та сама геометрія, крапка всередині — брендова */
+.ds-point--green::after {
+  background: var(--color-icon-brand);
 }
 
 .ds-point::after {
@@ -2424,9 +2444,9 @@
   justify-content: space-between;
   gap: var(--spacing-24);
   width: 100%;
-  /* Проєктна ширина 1360px. У документації колонка вужча, тому приклад
-     не стискається, а прокручується всередині блоку. */
-  min-width: 1360px; /* TODO: звірити з Figma — токена ширини немає */
+  /* 1344px = 1440 − 48 × 2, тобто хедер має ту саму ширину, що й контейнер
+     сторінки. У документації колонка вужча, тому приклад прокручується. */
+  min-width: 1344px;
 }
 
 .ds-header__logo {
@@ -3044,4 +3064,673 @@
 .ds-preview .ds-dd__count,
 .ds-preview .ds-dd-item {
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+/* ==========================================================================
+   Article — сітка сторінки
+   Схема розкладки, а не готовий компонент: блоки показані заглушками, щоб
+   було видно пропорції колонок і проміжок між ними.
+   ========================================================================== */
+
+.ds-article-grid {
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+  gap: var(--spacing-16);
+  width: 100%;
+  min-width: 1344px;
+}
+
+.ds-article-grid__main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  /* 1344 − 16 − 336 = 992: ширина виведена, у макеті її не названо */
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 320px;
+  padding: var(--spacing-16);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-article-grid__aside {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  flex: none;
+  gap: var(--spacing-16);
+  width: 336px;
+}
+
+.ds-article-grid__block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 152px;
+  padding: var(--spacing-16);
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-article-grid__label {
+  display: block;
+  font-family: var(--font-archivo);
+  /* font.paragraph.p4-14 — Archivo 14/16 */
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+/* Мобільна розкладка: одна колонка, бічні блоки йдуть під текстом */
+.ds-article-grid--mobile {
+  flex-direction: column;
+  /* Mob-sm: 430 − 24 × 2 */
+  width: 382px;
+  min-width: 382px;
+}
+
+.ds-article-grid--mobile .ds-article-grid__main {
+  width: 100%;
+  height: 240px;
+}
+
+.ds-article-grid--mobile .ds-article-grid__aside {
+  width: 100%;
+}
+
+.ds-article-grid--mobile .ds-article-grid__block {
+  height: 96px;
+}
+
+/* ==========================================================================
+   Article — типографіка
+   Власна шкала статті з колекції typography.article.*, окрема від font.*
+   ========================================================================== */
+
+.ds-art-type {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: var(--spacing-24);
+  width: 100%;
+  color: var(--color-text-primary);
+}
+
+.ds-art-h1 {
+  display: block;
+  font-family: var(--font-instrument);
+  /* article.heading.h1-64 — Instrument Serif 64/64, вага 400 */
+  font-size: 64px;
+  line-height: 64px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+}
+
+.ds-art-lead {
+  display: block;
+  padding-top: var(--spacing-24);
+  padding-bottom: var(--spacing-8);
+  font-family: var(--font-archivo);
+  /* article.lead.lead-24 — Archivo 24/32, вага 500 */
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+}
+
+.ds-art-b1 {
+  display: block;
+  font-family: var(--font-archivo);
+  /* article.body.b1-regular-20 — Archivo 20/28, вага 400 */
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+.ds-art-b1--bold {
+  /* article.body.b1-bold-20 — та сама шкала, вага 700 */
+  font-weight: 700;
+}
+
+.ds-art-b2 {
+  display: block;
+  font-family: var(--font-archivo);
+  /* article.body.b2-regular-16 — Archivo 16/20, вага 400 */
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.ds-art-b2--bold {
+  /* article.body.b2-bold-16 — та сама шкала, вага 700 */
+  font-weight: 700;
+}
+
+.ds-art-link {
+  display: block;
+  font-family: var(--font-archivo);
+  /* article.link.link p3 — Archivo 20/28, вага 400, підкреслений */
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+  text-decoration: underline;
+  color: var(--color-action-primary);
+}
+
+.ds-art-quote {
+  display: block;
+  font-family: var(--font-instrument);
+  /* article.quote.quote-40 — Instrument Serif 36/36, вага 400 */
+  font-size: 36px;
+  line-height: 36px;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   Article — title block
+   Шапка статті: тег із датою, заголовок, автор і час читання.
+   Ширина дорівнює лівій колонці сітки статті — 992px.
+   ========================================================================== */
+
+.ds-article-title {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 992px;
+}
+
+.ds-article-title__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16);
+}
+
+.ds-article-title__date {
+  font-family: var(--font-pragati);
+  /* font.caption.c1-16 — Pragati Narrow 16/16, uppercase */
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-text-tertiary);
+}
+
+.ds-article-title__heading {
+  margin-top: var(--spacing-16);
+  font-family: var(--font-instrument);
+  /* article.heading.h1-64 — Instrument Serif 64/64, вага 400 */
+  font-size: 64px;
+  line-height: 64px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-article-title__author {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--spacing-24);
+  margin-top: var(--spacing-40);
+}
+
+.ds-article-title__time {
+  flex: none;
+  /* 4px знизу: час вирівняний по нижньому краю, але трохи піднятий */
+  margin-bottom: var(--spacing-4);
+  font-family: var(--font-archivo);
+  /* font.paragraph.p3-16 — Archivo 16/20 */
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  white-space: nowrap;
+  color: var(--color-text-primary);
+}
+
+/* --- Article: заголовки й списки тексту ---------------------------------- */
+
+/* Мірка тексту статті: заголовки й абзаци не ширші за 640px, навіть якщо
+   колонка 992px. Винятки — title block і table, вони йдуть на всю ширину. */
+.ds-art-h2,
+.ds-art-h3,
+.ds-art-h4,
+.ds-art-lead,
+.ds-art-b1,
+.ds-art-b2,
+.ds-art-link,
+.ds-art-bullet,
+.ds-art-num {
+  max-width: 640px;
+}
+
+/* Потік без проміжків: відступи задають самі елементи своїми padding */
+.ds-art-flow {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  color: var(--color-text-primary);
+}
+
+.ds-art-h2,
+.ds-art-h3,
+.ds-art-h4 {
+  display: block;
+  font-family: var(--font-pragati);
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-art-h2 {
+  /* font.heading.h2-56 — Pragati Narrow 56/48 */
+  padding-top: var(--spacing-64);
+  padding-bottom: var(--spacing-12);
+  font-size: 56px;
+  line-height: 48px;
+}
+
+.ds-art-h3 {
+  /* font.heading.h3-46 — Pragati Narrow 46/40 */
+  padding-top: var(--spacing-48);
+  padding-bottom: var(--spacing-8);
+  font-size: 46px;
+  line-height: 40px;
+}
+
+.ds-art-h4 {
+  /* font.heading.h4-36 — Pragati Narrow 36/32 */
+  padding-top: var(--spacing-24);
+  padding-bottom: var(--spacing-8);
+  font-size: 36px;
+  line-height: 32px;
+}
+
+.ds-art-bullet,
+.ds-art-num {
+  display: flex;
+  /* flex-start, а не center: текст може бути в кілька рядків */
+  align-items: flex-start;
+  box-sizing: border-box;
+  gap: var(--spacing-8);
+  font-family: var(--font-archivo);
+  /* article.body.b1-regular-20 — Archivo 20/28, вага 400 */
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.ds-art-num__index {
+  flex: none;
+  color: var(--color-icon-brand);
+}
+
+/* --- Article: attention block -------------------------------------------- */
+
+.ds-attention-block {
+  display: flex;
+  /* stretch (типове значення) розтягує лінію рівно на висоту тексту */
+  align-items: stretch;
+  box-sizing: border-box;
+  gap: var(--spacing-16);
+  width: 100%;
+  /* мірка тексту статті */
+  max-width: 640px;
+  padding: var(--spacing-16);
+}
+
+.ds-attention-block__line {
+  flex: none;
+  width: 1px;
+  background: var(--color-icon-brand);
+}
+
+.ds-attention-block__text {
+  font-family: var(--font-archivo);
+  /* article.body.b1-regular-20 — Archivo 20/28, вага 400 */
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+/* --- Article: quote block ------------------------------------------------ */
+
+.ds-art-quote-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+  gap: var(--spacing-32);
+  width: 100%;
+  /* мірка тексту статті */
+  max-width: 640px;
+  padding-top: var(--spacing-32);
+  padding-bottom: var(--spacing-32);
+}
+
+/* --- Article: table ------------------------------------------------------ */
+
+.ds-art-table {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: var(--spacing-2);
+  width: 100%;
+  /* таблиця йде на всю ширину блоку, без обмеження 640px */
+  min-width: 992px;
+  margin: var(--spacing-12) 0;
+}
+
+.ds-art-table__row {
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
+  /* TODO: звірити з Figma — заокруглення не названо */
+  border-radius: var(--radius-8);
+  font-family: var(--font-archivo);
+  color: var(--color-text-primary);
+}
+
+.ds-art-table__row--head {
+  background: var(--color-gray-100);
+  /* article.body.b2-bold-16 — Archivo 16/20, вага 700 */
+  font-weight: 700;
+}
+
+.ds-art-table__row--body {
+  background: var(--color-gray-50);
+  /* article.body.b2-regular-16 — Archivo 16/20, вага 400 */
+  font-weight: 400;
+}
+
+.ds-art-table__cell {
+  /* fill: усі колонки ділять ширину порівну, поки не впруться в min або max */
+  flex: 1 1 0;
+  box-sizing: border-box;
+  min-width: 120px;
+  padding: var(--spacing-16);
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.ds-art-table__cell:first-child {
+  min-width: 80px;
+  max-width: 208px;
+}
+
+/* --- Article: navigation (table of contents) ------------------------------
+   Ширина картки 336px = 24 + 240 + 24, де 240 — внутрішня рамка з власними
+   відступами 16px. Рамка вужча за вміст картки, тож праворуч лишається
+   вільних 48px — саме так, як у макеті.
+   -------------------------------------------------------------------------- */
+
+.ds-toc {
+  display: flex;
+  box-sizing: border-box;
+  width: 336px;
+  padding: var(--spacing-32) var(--spacing-24);
+  /* TODO: звірити з Figma — фон і заокруглення не названо */
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-toc__inner {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: var(--spacing-16);
+  width: 240px;
+  padding: 0 var(--spacing-16);
+}
+
+.ds-toc__title {
+  font-family: var(--font-pragati);
+  /* font.caption.c1-16 — Pragati Narrow 16/16, uppercase */
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.ds-toc__progress {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--color-gray-300);
+}
+
+.ds-toc__progress-bar {
+  display: block;
+  height: 1px;
+  background: var(--color-background-inverse);
+}
+
+.ds-toc__progress-bar--p25 { width: 25%; }
+.ds-toc__progress-bar--p60 { width: 60%; }
+
+.ds-toc__links {
+  display: flex;
+  flex-direction: column;
+}
+
+.ds-toc__link {
+  position: relative;
+  display: block;
+  padding: var(--spacing-4) 0;
+  font-family: var(--font-archivo);
+  /* font.paragraph.p4-14 — Archivo 14/16 */
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--color-text-placeholder);
+}
+
+.ds-toc__link.is-active {
+  color: var(--color-text-primary);
+}
+
+/* Крапка звисає ліворуч від колонки тексту: 4px кола + 8px проміжку */
+.ds-toc__link.is-active::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 10px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-text-primary);
+}
+
+/* ==========================================================================
+   Сітка сторінки
+   Схема вертикального ритму, а не готовий компонент: блоки — заглушки,
+   щоб було видно відступи між ними й позицію фіксованого хедера.
+   ========================================================================== */
+
+.ds-page {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 1440px;
+  min-width: 1440px;
+  padding: 0 var(--spacing-48);
+  background: var(--color-background-page);
+}
+
+.ds-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex: none;
+  height: 40px;
+  margin-top: var(--spacing-24);
+  border-radius: var(--radius-4);
+  background: var(--color-action-primary);
+  color: var(--color-text-inverse);
+}
+
+.ds-page__block {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  flex: none;
+  /* кожен блок несе власний відступ згори */
+  padding-top: 220px;
+}
+
+/* Перший блок стоїть не на 220px, а одразу під хедером */
+.ds-page__block--hero {
+  padding-top: var(--spacing-24);
+}
+
+.ds-page__title,
+.ds-page__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: var(--radius-8);
+  background: var(--color-background-block);
+}
+
+.ds-page__title {
+  height: 48px;
+}
+
+.ds-page__content {
+  height: 120px;
+  margin-top: var(--spacing-56);
+}
+
+.ds-page__block--hero .ds-page__content {
+  height: 160px;
+  margin-top: 0;
+}
+
+.ds-page__label {
+  display: block;
+  font-family: var(--font-archivo);
+  /* font.paragraph.p4-14 — Archivo 14/16 */
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+.ds-page__header .ds-page__label {
+  color: var(--color-text-inverse);
+}
+
+/* --- Сітка: три розміри полотна поруч, у масштабі ----------------------- */
+
+.ds-bp-row {
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+  gap: var(--spacing-24);
+}
+
+.ds-bp {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  flex: none;
+  gap: var(--spacing-8);
+}
+
+.ds-bp__canvas {
+  display: flex;
+  box-sizing: border-box;
+  background: var(--color-background-page);
+  border-radius: var(--radius-8);
+}
+
+.ds-bp--desktop .ds-bp__canvas {
+  width: 1440px;
+  padding: var(--spacing-24) var(--spacing-48);
+}
+
+.ds-bp--tab .ds-bp__canvas {
+  width: 844px;
+  padding: var(--spacing-24);
+}
+
+.ds-bp--mob .ds-bp__canvas {
+  width: 430px;
+  padding: var(--spacing-24);
+}
+
+.ds-bp__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius-4);
+  background: var(--color-background-block);
+}
+
+.ds-bp__name,
+.ds-bp__label {
+  display: block;
+  font-family: var(--font-archivo);
+  /* font.paragraph.p4-14 — Archivo 14/16 */
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.ds-bp__name {
+  color: var(--color-text-primary);
+}
+
+/* --- Кнопка завантаження на сторінці Claude Design ----------------------- */
+
+.ds-download {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  gap: var(--spacing-8);
+  height: 40px;
+  margin: var(--spacing-16) 0;
+  padding: 0 var(--spacing-24);
+  border-radius: var(--radius-32);
+  background: var(--color-action-primary);
+  font-family: var(--font-archivo);
+  /* font.paragraph.p4-14 — Archivo 14/16 */
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.ds-download:hover {
+  background: var(--color-action-primary-hover);
+  color: var(--color-text-inverse);
+}
+
+.ds-download__note {
+  display: block;
+  font-family: var(--font-archivo);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
 }

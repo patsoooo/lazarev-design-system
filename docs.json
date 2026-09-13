@@ -13,12 +13,14 @@
       {
         "tab": "Design System",
         "groups": [
-          { "group": "Overview", "pages": ["index"] },
+          { "group": "Overview", "pages": ["claude-design"] },
           { "group": "Foundations", "pages": ["foundations/colors", "foundations/typography", "foundations/spacing", "foundations/icons", "foundations/logo"] },
           { "group": "Components", "pages": ["components/accordion", "components/avatar", "components/breadcrumbs", "components/button", "components/checkbox", "components/chips", "components/dropdown", "components/input", "components/links", "components/links-group", "components/media", "components/pagination", "components/tab", "components/tag", "components/toggle"] },
           { "group": "Cards", "icon": "clone", "pages": ["cards/article", "cards/article-menu", "cards/award", "cards/bullet-point", "cards/case", "cards/number", "cards/outcomes", "cards/outcomes-l", "cards/testimonials", "cards/text"] },
           { "group": "Blocks", "icon": "layer-group", "pages": ["blocks/block-case", "blocks/block-case-outcomes", "blocks/block-cta", "blocks/block-icon", "blocks/block-outcomes", "blocks/block-process", "blocks/block-service", "blocks/block-text", "blocks/menu", "blocks/title-block"] },
-          { "group": "Layout", "pages": ["layout/header", "layout/footer"] }
+          { "group": "Layout", "pages": ["layout/header", "layout/footer"] },
+          { "group": "Pages", "icon": "file-lines", "pages": ["pages/grid"] },
+          { "group": "Article", "icon": "newspaper", "pages": ["article/layout", "article/typography", "article/title-block", "article/attention-block", "article/quote", "article/table", "article/navigation"] }
         ]
       }
     ]

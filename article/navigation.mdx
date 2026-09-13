@@ -1,0 +1,137 @@
+---
+title: "Navigation"
+description: "Зміст статті: заголовок, смуга прогресу, список посилань."
+---
+
+<div className="ds-preview ds-preview--s1">
+  <span className="ds-preview__stage"><span className="ds-toc"><span className="ds-toc__inner"><span className="ds-toc__title">Table of contents</span><span className="ds-toc__progress"><span className="ds-toc__progress-bar ds-toc__progress-bar--p25" /></span><span className="ds-toc__links"><span className="ds-toc__link is-active">Key takeaways</span><span className="ds-toc__link">What chatbot design means now that the AI does the talking</span><span className="ds-toc__link">5 principles of effective chatbot design for AI-native products</span><span className="ds-toc__link">11 chatbot design best practices for AI-native products</span><span className="ds-toc__link">6 chatbot design mistakes to avoid</span></span></span></span></span>
+</div>
+
+Зміст статті. Єдиний компонент, що живе в **правій колонці** [сітки](/article/layout), а не в лівій.
+
+Показує дві речі одночасно: список розділів і те, як далеко читач просунувся. Поточний розділ підсвічений і позначений крапкою, а тонка смуга під заголовком відмірює прогрес по всій статті.
+
+## Збірка
+
+<div className="ds-btn-row">
+  <span className="ds-toc">
+    <span className="ds-toc__inner">
+      <span className="ds-toc__title">Table of contents</span>
+      <span className="ds-toc__progress"><span className="ds-toc__progress-bar ds-toc__progress-bar--p25" /></span>
+      <span className="ds-toc__links">
+        <span className="ds-toc__link is-active">Key takeaways</span>
+        <span className="ds-toc__link">What chatbot design means now that the AI does the talking</span>
+        <span className="ds-toc__link">5 principles of effective chatbot design for AI-native products</span>
+        <span className="ds-toc__link">11 chatbot design best practices for AI-native products</span>
+        <span className="ds-toc__link">6 chatbot design mistakes to avoid</span>
+        <span className="ds-toc__link">How we design AI-native chatbots at Lazarev.agency</span>
+        <span className="ds-toc__link">Build AI chatbots people return to</span>
+      </span>
+    </span>
+  </span>
+</div>
+
+## Контейнер
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Ширина | 336px | немає |
+| Внутрішній відступ, з боків | 24px | `primitives.spacing.24px` |
+| Внутрішній відступ, згори і знизу | 32px | `primitives.spacing.32px` |
+| Ширина внутрішньої рамки | 240px | немає |
+| Відступ рамки, з боків | 16px | `primitives.spacing.16px` |
+| Заокруглення | 8px | немає |
+| Фон | <span className="ds-sw ds-sw--background-block" /> білий | немає |
+
+</div>
+
+Ширина картки збігається з правою колонкою сітки: **24 + 240 + 24 = 336**. Внутрішня рамка на 240px **вужча за вміст картки** — після відступів картки лишається 288px, тож праворуч від тексту залишаються вільні 48px. Текст читається в мірці 208px, це 240 мінус два відступи по 16.
+
+<Warning>
+  Фон і заокруглення ви не називали. У прикладі стоїть білий і 8px — за зразком решти блоків. Токенів під них немає, у CSS вони позначені `TODO`.
+</Warning>
+
+## Заголовок і прогрес
+
+<div className="ds-table">
+
+| Елемент | Стиль або розмір | Колір |
+| --- | --- | --- |
+| Заголовок | `font.caption.c1-16` — 16 / 16, uppercase | <span className="ds-sw ds-sw--text-secondary" /> `color/text/secondary` |
+| Смуга, фон | 208px завширшки, 1px заввишки | <span className="ds-sw ds-sw--gray-300" /> `color/gray/300` |
+| Смуга, заповнення | частка від ширини | <span className="ds-sw ds-sw--background-inverse" /> `color/background/inverse` |
+
+</div>
+
+Смуга — це не роздільник, а індикатор. Ширина заповненої частини дорівнює частці прочитаної статті.
+
+<div className="ds-btn-row">
+  <span className="ds-toc">
+    <span className="ds-toc__inner">
+      <span className="ds-toc__title">Table of contents</span>
+      <span className="ds-toc__progress"><span className="ds-toc__progress-bar ds-toc__progress-bar--p60" /></span>
+      <span className="ds-toc__links">
+        <span className="ds-toc__link">Key takeaways</span>
+        <span className="ds-toc__link is-active">What chatbot design means now that the AI does the talking</span>
+        <span className="ds-toc__link">5 principles of effective chatbot design for AI-native products</span>
+      </span>
+    </span>
+  </span>
+</div>
+
+<Warning>
+  Прогрес рахується від прокручування сторінки, тож обчислює його код, а не дизайн. У прикладах ширина задана класами `--p25` і `--p60` просто щоб показати два стани.
+</Warning>
+
+## Посилання
+
+<div className="ds-table">
+
+| Властивість | Активне | Звичайне |
+| --- | --- | --- |
+| Текст | `font.paragraph.p4-14` — 14 / 16 | `font.paragraph.p4-14` — 14 / 16 |
+| Колір | <span className="ds-sw ds-sw--text-primary" /> `color/text/primary` | <span className="ds-sw ds-sw--text-placeholder" /> `color/text/placeholder` |
+| Крапка | 4px, <span className="ds-sw ds-sw--text-primary" /> `color/text/primary` | немає |
+| Проміжок крапка — текст | 8px | — |
+| Внутрішній відступ, згори і знизу | 4px | 4px |
+
+</div>
+
+Крапка **звисає ліворуч** від колонки тексту: 4px кола плюс 8px проміжку дають 12px, на які вона виходить за межі. Через це активний і звичайний рядки починаються з однієї лінії, і поява крапки не зсуває текст.
+
+<Warning>
+  Окремого проміжку між посиланнями немає — відстань створюють тільки їхні власні відступи по 4px, тобто 24px від рядка до рядка. У макеті ця відстань виглядає трохи більшою, ближче до 28px — [уточнити].
+</Warning>
+
+<Warning>
+  `color/text/placeholder` і `color/text/secondary` — це **один і той самий колір**, `gray.600` — #697382. Тобто заголовок «Table of contents» і неактивні посилання пофарбовані однаково, просто різними іменами. [Уточнити], чи це навмисно.
+</Warning>
+
+<Warning>
+  Стану Hover у посилань не описано. Зміст — це навігація, і посилання в ньому натискають, тож наведення потрібне — [уточнити].
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Заголовок | Підпис «Table of contents» | Так |
+| Смуга прогресу | Індикатор прочитаного | Так |
+| Посилання | Розділ статті | Так, одне або більше |
+| Крапка | Позначка поточного розділу | Лише в активного |
+
+## Правила
+
+<Check>
+  Тримайте рівно одне активне посилання. Прогрес і крапка мають показувати одне й те саме місце.
+</Check>
+
+<Check>
+  Не скорочуйте назви розділів трикрапкою. Рядок переноситься, і в мірці 208px це нормально — довгі назви тут очікувані.
+</Check>
+
+<Warning>
+  Не ставте зміст у ліву колонку. Він розрахований на ширину 336px і на те, що лишається на місці, поки читач гортає статтю.
+</Warning>

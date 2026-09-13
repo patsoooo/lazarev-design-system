@@ -1,0 +1,131 @@
+---
+title: "Table"
+description: "Таблиця в статті: шапка, рядки, ширини колонок, токени."
+---
+
+<div className="ds-preview ds-preview--s07">
+  <span className="ds-preview__stage ds-preview__stage--w992"><span className="ds-art-table"><span className="ds-art-table__row ds-art-table__row--head"><span className="ds-art-table__cell">Column title</span><span className="ds-art-table__cell">Column title</span><span className="ds-art-table__cell">Column title</span></span><span className="ds-art-table__row ds-art-table__row--body"><span className="ds-art-table__cell">Column text</span><span className="ds-art-table__cell">Column text</span><span className="ds-art-table__cell">Column text</span></span></span></span>
+</div>
+
+Таблиця всередині статті. Шапка й рядки — окремі блоки з власним фоном і заокругленням, розділені проміжком у 2px: це не суцільна сітка з лініями, а стос смуг.
+
+Таблиця — один із двох елементів статті, які йдуть на **всю ширину** блоку, тобто 992px. Решта тексту обмежена міркою 640px, див. [Layout](/article/layout).
+
+## Збірка
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-art-table">
+    <span className="ds-art-table__row ds-art-table__row--head">
+      <span className="ds-art-table__cell">Column title</span>
+      <span className="ds-art-table__cell">Column title</span>
+      <span className="ds-art-table__cell">Column title</span>
+    </span>
+    <span className="ds-art-table__row ds-art-table__row--body">
+      <span className="ds-art-table__cell">Column text</span>
+      <span className="ds-art-table__cell">Column text</span>
+      <span className="ds-art-table__cell">Column text</span>
+    </span>
+    <span className="ds-art-table__row ds-art-table__row--body">
+      <span className="ds-art-table__cell">Column text</span>
+      <span className="ds-art-table__cell">Column text</span>
+      <span className="ds-art-table__cell">Column text</span>
+    </span>
+  </span>
+</div>
+
+## Рядки
+
+Шапка й рядок відрізняються **лише двома речами** — фоном і вагою тексту. Відступи, ширини колонок і заокруглення в них однакові.
+
+<div className="ds-table">
+
+| Властивість | Шапка | Рядок |
+| --- | --- | --- |
+| Фон | <span className="ds-sw ds-sw--gray-100" /> `blocks/article/table-header-bg` | <span className="ds-sw ds-sw--gray-50" /> `blocks/article/table-row-bg` |
+| Текст | `article/body/b2-bold-16` — 16 / 20, вага 700 | `article/body/b2-regular-16` — 16 / 20, вага 400 |
+| Колір тексту | <span className="ds-sw ds-sw--text-primary" /> `color/text/primary` | <span className="ds-sw ds-sw--text-primary" /> `color/text/primary` |
+| Внутрішній відступ | 16px | 16px |
+
+</div>
+
+<div className="ds-table">
+
+| Властивість | Значення |
+| --- | --- |
+| Ширина | 992px, на всю ширину блоку |
+| Проміжок між рядками | 2px |
+| Зовнішній відступ згори і знизу | 12px |
+
+</div>
+
+Це єдине місце в статті, де використовується шкала **b2-16**. Увесь інший текст набраний b1-20.
+
+## Колонки
+
+Усі три колонки **заповнюють** ширину, тобто ділять її порівну, поки не впруться в обмеження.
+
+<div className="ds-table">
+
+| Колонка | Ширина | Мінімум | Максимум |
+| --- | --- | --- | --- |
+| Перша | fill | 80px | 208px |
+| Друга | fill | 120px | — |
+| Третя | fill | 120px | — |
+
+</div>
+
+Максимум у першої колонки міняє розкладку на практиці: рівні третини від 992px — це по 330px, тож перша впирається в стелю 208px, а решта 784px діляться між другою й третьою по 392px. Перша колонка виходить помітно вужчою — вона розрахована на короткі підписи, а не на текст.
+
+<Warning>
+  Що буде за чотирьох і більше колонок, зі специфікації не випливає. За п'яти колонок мінімуми 120px дадуть 80 + 120 × 4 = 560px, тобто таблиця ще вміститься, але за восьми вже ні — [уточнити], чи з'являється горизонтальний скрол.
+</Warning>
+
+## Токени
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Фон шапки | `blocks/article/table-header-bg` | `gray.100` — #e9e9e9 |
+| Фон рядка | `blocks/article/table-row-bg` | `gray.50` — #f4f4f4 |
+| Внутрішній відступ | `blocks/article/padding-table` | 16px |
+| Колір тексту | `color/text/primary` | #000000ff |
+| Стиль шапки | `article/body/b2-bold-16` | Archivo 16 / 20, вага 700 |
+| Стиль рядка | `article/body/b2-regular-16` | Archivo 16 / 20, вага 400 |
+| Проміжок між рядками | немає | 2px |
+| Зовнішній відступ | немає | 12px згори і знизу |
+| Заокруглення | немає | 8px |
+
+</div>
+
+Відступ 16px — це рідкісний випадок, коли токен в експорті **збігається** з підтвердженим значенням. `blocks/article/padding-table` теж дорівнює 16px.
+
+<Warning>
+  Заокруглення ви не називали — у прикладі стоїть 8px, за зразком решти блоків статті. Токена під нього теж немає, у CSS воно позначене `TODO`.
+</Warning>
+
+<Warning>
+  Ширин колонок (80, 120, 208), проміжку 2px і зовнішніх відступів 12px в експорті немає. Значення живуть тільки в цій документації.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Шапка | Рядок із назвами колонок | Так |
+| Рядок | Рядок даних | Так, один або більше |
+| Комірка | Комірка з відступом 16px | Так |
+
+## Правила
+
+<Check>
+  Тримайте в першій колонці короткі підписи. Вона обмежена 208px і на довгому тексті переноситиметься, поки решта колонок стоятимуть напівпорожні.
+</Check>
+
+<Check>
+  Ставте шапку завжди. Без неї рядки з фоном `gray.50` читаються як список, а не як таблиця.
+</Check>
+
+<Warning>
+  Не використовуйте таблицю для розкладки. Три колонки з фоном — це дані, а не сітка сторінки.
+</Warning>

@@ -1,0 +1,137 @@
+---
+title: "Layout"
+description: "Сітка сторінки статті: дві колонки, ширини, проміжки, адаптація."
+---
+
+<div className="ds-preview ds-preview--s05">
+  <span className="ds-preview__stage"><span className="ds-article-grid"><span className="ds-article-grid__main"><span className="ds-article-grid__label">Текст статті</span></span><span className="ds-article-grid__aside"><span className="ds-article-grid__block"><span className="ds-article-grid__label">Зміст</span></span><span className="ds-article-grid__block"><span className="ds-article-grid__label">Поділитися</span></span></span></span></span>
+</div>
+
+Стаття — окремий тип сторінки з власною сіткою, власною типографікою й власним набором компонентів. Нічого з цього не застосовується поза статтею.
+
+Сторінка ділиться на **дві колонки**: широка ліва з текстом статті та вузька права з допоміжними блоками — змістом і кнопками поділитися.
+
+## Сітка
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-article-grid">
+    <span className="ds-article-grid__main"><span className="ds-article-grid__label">Текст статті · 992px</span></span>
+    <span className="ds-article-grid__aside">
+      <span className="ds-article-grid__block"><span className="ds-article-grid__label">Зміст · 336px</span></span>
+      <span className="ds-article-grid__block"><span className="ds-article-grid__label">Поділитися · 336px</span></span>
+    </span>
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Значення | Найближчий токен |
+| --- | --- | --- |
+| Ширина екрана | 1440px | немає |
+| Відступ від країв екрана | 48px з кожного боку | `primitives.spacing.48px` |
+| Ширина контейнера | 1344px | немає |
+| Ліва колонка | 992px | немає |
+| Проміжок між колонками | 16px | `primitives.spacing.16px` |
+| Права колонка | 336px | немає |
+| Проміжок між блоками правої колонки | 16px | `primitives.spacing.16px` |
+
+</div>
+
+Ширина лівої колонки **виведена, а не задана**: 1344 − 16 − 336 = 992. Контейнер 1344px — той самий, що і в решті блоків сайту, наприклад у [Process](/blocks/block-process) та [Case](/blocks/block-case).
+
+<Warning>
+  Жодної з цих ширин в експорті немає. `1344`, `992` і `336` не мають токенів — ані в `component.blocks.article`, ані деінде. Значення живуть тільки в цій документації.
+</Warning>
+
+<Warning>
+  Права колонка вища за екран не буває, але чи вона **липка** при прокручуванні — з макета не видно. У Figma це статичний кадр. [Уточнити] у розробників, як блок поводиться при скролі.
+</Warning>
+
+## Мірка тексту
+
+Колонка має ширину 992px, але текст у ній **не розтягується на всю ширину**. Заголовки й абзаци обмежені міркою **640px**, а праворуч лишається порожнє поле у 352px.
+
+<div className="ds-table">
+
+| Елемент | Ширина |
+| --- | --- |
+| [Title block](/article/title-block) | 992px, на всю ширину |
+| [Table](/article/table) | 992px, на всю ширину |
+| Заголовки h2, h3, h4 | 640px |
+| Lead, body, списки | 640px |
+| [Quote](/article/quote) | 640px |
+| [Attention block](/article/attention-block) | 640px |
+
+</div>
+
+Виняток мають рівно два елементи — шапка статті й таблиця. Обидва не є суцільним текстом: заголовок статті читається рядками по кілька слів, а таблиця має власні колонки з мінімальними ширинами.
+
+Мірка 640px на 20 / 28 дає приблизно 80–90 символів у рядку. Усі 992px дали б близько 130 — надто довгий рядок, око губить початок наступного.
+
+<Warning>
+  Токена під 640px немає. Як і під 992, 1344 та 336 — жодної ширини в експорті не існує.
+</Warning>
+
+## Адаптація
+
+На вузькому екрані колонки складаються в одну: спершу текст статті, під ним — блоки правої колонки в тому самому порядку.
+
+<div className="ds-btn-row">
+  <span className="ds-article-grid ds-article-grid--mobile">
+    <span className="ds-article-grid__main"><span className="ds-article-grid__label">Текст статті</span></span>
+    <span className="ds-article-grid__aside">
+      <span className="ds-article-grid__block"><span className="ds-article-grid__label">Зміст</span></span>
+      <span className="ds-article-grid__block"><span className="ds-article-grid__label">Поділитися</span></span>
+    </span>
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Значення | Найближчий токен |
+| --- | --- | --- |
+| Ширина екрана | 430px | немає |
+| Відступ від країв екрана | 24px з кожного боку | `primitives.spacing.24px` |
+| Ширина контейнера | 382px | немає |
+
+</div>
+
+<Warning>
+  Розмір Mob-sm — 430px із полем 24px, тобто контейнер 382px. Ті самі значення, що і в решти сторінок, див. [Grid](/pages/grid).
+</Warning>
+
+<Warning>
+  Брейкпоінта, на якому дві колонки стають однією, у токенах немає. Відомі лише три розміри полотна — 1440, 844 і 430, — але не пороги між ними.
+</Warning>
+
+## Що не входить у сітку
+
+Сітка з двох колонок покриває **лише саму статтю**. Усе, що нижче, розкладається на повну ширину контейнера:
+
+| Блок | Розкладка |
+| --- | --- |
+| Хлібні крихти | Повна ширина, над статтею |
+| Стаття + бічна колонка | Дві колонки |
+| Frequently asked questions | Повна ширина |
+| Keep reading | Повна ширина, сітка карток |
+| [Footer](/layout/footer) | Повна ширина |
+
+Хлібні крихти будує [Breadcrumbs](/components/breadcrumbs), список питань — [Accordion](/components/accordion), картки внизу — [Article](/cards/article).
+
+<Warning>
+  Блок Keep reading має власну групу токенів `blocks/articles-listing`: `padding-y` — 64px, `section-gap` — 32px, `title-gap` — 24px, `cards-gap` — 8px. Він буде описаний окремою сторінкою.
+</Warning>
+
+## Правила
+
+<Check>
+  Тримайте ширину лівої колонки незмінною. Довжина рядка в 992px розрахована під розмір тексту статті, і звуження колонки зламає ритм.
+</Check>
+
+<Check>
+  Ставте в праву колонку тільки допоміжне — зміст і поділитися. Усе, що є частиною матеріалу, належить лівій колонці.
+</Check>
+
+<Warning>
+  Не переносьте компоненти статті на інші типи сторінок. У статті власна типографіка, яка не збігається із загальною — див. [Typography](/article/typography).
+</Warning>

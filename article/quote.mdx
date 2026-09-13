@@ -1,0 +1,113 @@
+---
+title: "Quote"
+description: "Цитата в статті: серифний текст і підпис автора."
+---
+
+<div className="ds-preview ds-preview--s1">
+  <span className="ds-preview__stage ds-preview__stage--w640"><span className="ds-art-quote-block"><span className="ds-art-quote">Don't fall into the trap of perspective taking when developing accessible UX solutions.</span><span className="ds-avatar-info"><span className="ds-avatar ds-avatar--m" /><span className="ds-avatar-info__text"><span className="ds-avatar-info__name">Kyrylo Lazarev</span><span className="ds-avatar-info__job">CEO, Lazarev agency</span></span></span></span></span>
+</div>
+
+Цитата всередині статті з підписом автора. Виділяє репліку, а не думку: на відміну від [Attention block](/article/attention-block), у неї є конкретний носій.
+
+Обмежена міркою тексту статті — **640px**, хоча колонка має 992px, див. [Layout](/article/layout). Власного фону й межі не має.
+
+## Збірка
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-art-quote-block">
+    <span className="ds-art-quote">Don't fall into the trap of perspective taking when developing accessible UX solutions. While helpful at first glance, imagining yourself in someone else's shoes leaves too much room for bias.</span>
+    <span className="ds-avatar-info">
+      <span className="ds-avatar ds-avatar--m" />
+      <span className="ds-avatar-info__text">
+        <span className="ds-avatar-info__name">Kyrylo Lazarev</span>
+        <span className="ds-avatar-info__job">CEO, Lazarev agency</span>
+      </span>
+    </span>
+  </span>
+</div>
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль або розмір | Колір |
+| --- | --- | --- |
+| Текст цитати | `article/quote/quote-40` — Instrument Serif 36 / 36 | <span className="ds-sw ds-sw--text-primary" /> `color/text/primary` |
+| Автор | [Avatar](/components/avatar), розмір M | — |
+
+</div>
+
+Цитата набрана **Instrument Serif**. У статті це єдині два місця з серифом — тут і заголовок h1 у [Title block](/article/title-block). Решта тексту, включно з іменем автора під цитатою, лишається на Archivo.
+
+## Відступи
+
+<div className="ds-table">
+
+| Між чим | Значення |
+| --- | --- |
+| Відступ згори | 32px |
+| Цитатою і автором | 32px |
+| Відступ знизу | 32px |
+
+</div>
+
+<div className="ds-table">
+
+| Властивість | Значення |
+| --- | --- |
+| Максимальна ширина | 640px |
+
+</div>
+
+Відступи задані **паддінгами**, як і в решти [текстових елементів статті](/article/typography). Тому цитата не схлопується з сусідами: після абзаца вона дасть рівно 32px.
+
+## Токени
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Стиль цитати | `article/quote/quote-40` | Instrument Serif 36 / 36 |
+| Колір цитати | `color/text/primary` | #000000ff |
+| Відступ згори | `blocks/article/quote-top` | 12px в експорті |
+| Відступ знизу | немає | — |
+| Проміжок цитата — автор | немає | — |
+
+</div>
+
+<Warning>
+  `blocks/article/quote-top` в експорті дорівнює **12px**, а підтверджене значення — **32px**. Це та сама системна розбіжність, що і в заголовків: експортні відступи статті вдвічі-втричі менші за реальні, див. [Typography](/article/typography).
+</Warning>
+
+<Warning>
+  Парного `quote-bottom` в експорті **немає** — як немає і `lead-bottom`. Відступ знизу довелось узяти з макета.
+</Warning>
+
+<Warning>
+  `article/quote/quote-40` насправді дорівнює **36px**, а не 40. Ім'я токена не збігається зі значенням.
+</Warning>
+
+<Warning>
+  Розміру аватара ви не називали. У прикладі стоїть **M** — той самий, що в [Title block](/article/title-block), щоб автор виглядав однаково на початку статті й у цитаті. [Уточнити].
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Текст цитати | Сама репліка | Так |
+| Автор | Фото, ім'я, посада | [уточнити] |
+
+## Правила
+
+<Check>
+  Ставте цитату тільки з підписом. Без автора вона нічим не відрізняється від [Attention block](/article/attention-block), який для цього і призначений.
+</Check>
+
+<Check>
+  Тримайте цитату короткою. На 36 / 36 і мірці 640px чотири рядки займають уже пів екрана.
+</Check>
+
+<Warning>
+  Не набирайте цитату Archivo. Сериф — єдине, що відрізняє її від звичайного абзаца.
+</Warning>

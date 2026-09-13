@@ -1,0 +1,116 @@
+---
+title: "Title block"
+description: "Шапка статті: тег із датою, заголовок, автор і час читання."
+---
+
+<div className="ds-preview ds-preview--s07">
+  <span className="ds-preview__stage ds-preview__stage--w992"><span className="ds-article-title"><span className="ds-article-title__meta"><span className="ds-tag is-default">AI product design</span><span className="ds-article-title__date">04 May 2026</span></span><span className="ds-article-title__heading">AI product roadmap 2026: how to build one with a training-loop method</span><span className="ds-article-title__author"><span className="ds-avatar-info"><span className="ds-avatar ds-avatar--m" /><span className="ds-avatar-info__text"><span className="ds-avatar-info__name">Kyrylo Lazarev</span><span className="ds-avatar-info__job">CEO, Lazarev agency</span></span></span><span className="ds-article-title__time">12 min read</span></span></span></span>
+</div>
+
+Перший блок сторінки статті. Відкриває матеріал: до якої рубрики він належить, коли вийшов, як називається, хто написав і скільки читати.
+
+Один із двох елементів статті, які йдуть на **всю ширину** колонки — 992px. Решта тексту обмежена міркою 640px, див. [Layout](/article/layout). Власного фону не має: лежить просто на фоні сторінки.
+
+## Збірка
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-article-title">
+    <span className="ds-article-title__meta">
+      <span className="ds-tag is-default">AI product design</span>
+      <span className="ds-article-title__date">04 May 2026</span>
+    </span>
+    <span className="ds-article-title__heading">AI product roadmap 2026: how to build one with a training-loop method</span>
+    <span className="ds-article-title__author">
+      <span className="ds-avatar-info">
+        <span className="ds-avatar ds-avatar--m" />
+        <span className="ds-avatar-info__text">
+          <span className="ds-avatar-info__name">Kyrylo Lazarev</span>
+          <span className="ds-avatar-info__job">CEO, Lazarev agency</span>
+        </span>
+      </span>
+      <span className="ds-article-title__time">12 min read</span>
+    </span>
+  </span>
+</div>
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль або розмір | Колір |
+| --- | --- | --- |
+| Рубрика | [Tag](/components/tag) | <span className="ds-sw ds-sw--action-inactive" /> `color/action/inactive` |
+| Дата | `font.caption.c1-16` — 16 / 16, uppercase | <span className="ds-sw ds-sw--text-tertiary" /> `card/card-article-full/text-tertiary` |
+| Заголовок | `article/heading/h1-64` — 64 / 64, Instrument Serif | <span className="ds-sw ds-sw--text-primary" /> `color/text/primary` |
+| Автор | [Avatar](/components/avatar), розмір M | — |
+| Час читання | `font.paragraph.p3-16` — 16 / 20 | <span className="ds-sw ds-sw--text-primary" /> `color/text/primary` |
+
+</div>
+
+## Відступи
+
+<div className="ds-table">
+
+| Між чим | Значення |
+| --- | --- |
+| Рубрикою і датою | 16px |
+| Рядком рубрики і заголовком | 16px |
+| Заголовком і автором | 40px |
+| Часом читання і низом блоку | 4px |
+
+</div>
+
+Рядок автора вирівняний **по нижньому краю**: аватар вищий за текст, тож час читання стоїть на одній лінії з посадою, а не з іменем. Ті самі 4px піднімають його так, щоб базові лінії збіглися.
+
+Роздільник «|» між рубрикою і датою — це власний елемент [Tag](/components/tag), не окремий символ. Тег малює його сам, коли після нього щось іде.
+
+## Токени
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Колір дати | `card/card-article-full/text-tertiary` | `text.tertiary` — #bbc2ccff |
+| Колір заголовка | `color/text/primary` | #000000ff |
+| Колір часу читання | `color/text/primary` | #000000ff |
+| Стиль дати | `font.caption.c1-16` | Pragati Narrow 16 / 16, uppercase |
+| Стиль заголовка | `article/heading/h1-64` | Instrument Serif 64 / 64 |
+| Стиль часу читання | `font.paragraph.p3-16` | Archivo 16 / 20 |
+
+</div>
+
+<Warning>
+  Власної групи токенів у блоку **немає**. Колір дати доводиться брати з `card/card-article-full/text-tertiary`, тобто з групи **картки**, а не блока. Заведіть групу `blocks/article-title` — інакше зміна кольору в картці мовчки змінить шапку статті.
+</Warning>
+
+<Warning>
+  Ні ширини 992px, ні трьох відступів (16, 16, 40) і 4px під часом читання в експорті немає. Значення живуть тільки в цій документації.
+</Warning>
+
+<Warning>
+  Дата набрана `c1-16`, тобто Pragati Narrow **uppercase**. У прикладі написано «04 May 2026», а виглядає як «04 MAY 2026» — регістр робить стиль, не текст. Не пишіть дату великими літерами вручну.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Рубрика | Тег розділу, до якого належить стаття | Так |
+| Дата | Дата публікації | Так |
+| Заголовок | Назва статті | Так |
+| Автор | Фото, ім'я, посада | Так |
+| Час читання | Оцінка тривалості читання | [уточнити] |
+
+## Правила
+
+<Check>
+  Тримайте заголовок у межах двох-трьох рядків. На 64 / 64 і ширині 992px це приблизно 90 символів.
+</Check>
+
+<Check>
+  Ставте рівно один тег рубрики. Роздільник малює сам тег, тож другий тег зламає рядок із датою.
+</Check>
+
+<Warning>
+  Не замінюйте Instrument Serif на Pragati Narrow. Серифний заголовок — єдине, що відрізняє статтю від решти сторінок сайту, див. [Typography](/article/typography).
+</Warning>

@@ -1,0 +1,96 @@
+---
+title: "Attention block"
+description: "Виноска в тексті статті: вертикальна лінія і абзац."
+---
+
+<div className="ds-preview ds-preview--s1">
+  <span className="ds-preview__stage ds-preview__stage--w640"><span className="ds-attention-block"><span className="ds-attention-block__line" /><span className="ds-attention-block__text">Insight for consumer mobile AI apps: the activation funnel, in-app agent, retention loop, and storefront belong under one roadmap owner. Teams that split them across separate workstreams ship a product where the onboarding promises things the agent can't deliver.</span></span></span>
+</div>
+
+Виноска всередині статті. Виділяє думку, не перериваючи читання: текст лишається тим самим, що й навколо, а акцент дає тільки тонка вертикальна лінія зліва.
+
+Обмежений міркою тексту статті — **640px**, хоча колонка має 992px, див. [Layout](/article/layout). Власного фону не має.
+
+## Збірка
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-attention-block">
+    <span className="ds-attention-block__line" />
+    <span className="ds-attention-block__text">Insight for consumer mobile AI apps: the activation funnel, in-app agent, retention loop, and storefront belong under one roadmap owner. Teams that split them across separate workstreams ship a product where the onboarding promises things the agent can't deliver, and the storefront surfaces upgrades at the wrong moments.</span>
+  </span>
+</div>
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль або розмір | Колір |
+| --- | --- | --- |
+| Лінія | 1px завширшки, висота дорівнює висоті тексту | <span className="ds-sw ds-sw--icon-brand" /> `color/icon/brand` |
+| Текст | `article/body/b1-regular-20` — 20 / 28 | <span className="ds-sw ds-sw--text-primary" /> `color/text/primary` |
+
+</div>
+
+## Відступи
+
+<div className="ds-table">
+
+| Властивість | Значення |
+| --- | --- |
+| Внутрішній відступ | 16px з усіх боків |
+| Проміжок лінія — текст | 16px |
+| Максимальна ширина | 640px |
+
+</div>
+
+Лінія **не фіксованої висоти**: вона розтягується рівно на висоту тексту. Відступи 16px лежать зовні неї, тож лінія коротша за блок на 32px.
+
+## Токени
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Колір лінії | `color/icon/brand` | `green.500` — #0f9549 |
+| Товщина лінії | `primitives.border-width.1px` | 1px |
+| Колір тексту | `color/text/primary` | #000000ff |
+| Стиль тексту | `article/body/b1-regular-20` | Archivo 20 / 28 |
+| Внутрішній відступ | `primitives.spacing.16px` | 16px |
+| Проміжок | `primitives.spacing.16px` | 16px |
+
+</div>
+
+<Warning>
+  Ви назвали `color/action/primary-hover`, і я поставив `color/icon/brand`. Це **той самий колір** — обидва вказують на `primitives.color.green.500`, тобто візуально нічого не змінюється.
+
+  Причина заміни: `action/primary-hover` означає «колір кнопки при наведенні», а лінія тут статична і не є дією. `icon/brand` — це вже акцентний колір статті: ним пофарбовані крапка в [bullet point](/article/typography) і номер у списку. Так у статті лишається один акцент, а не два імені під один колір.
+</Warning>
+
+<Warning>
+  Власної групи токенів у блоку **немає**. Правильно було б завести `blocks/article-attention` з власним `line`, `padding` і `gap` — тоді колір виноски можна буде змінити, не чіпаючи ні кнопок, ні іконок.
+</Warning>
+
+<Warning>
+  Ні мірки 640px, ні відступу 16px, ні проміжку 16px в експорті немає. Значення живуть тільки в цій документації.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Лінія | Вертикальна риска зліва, висотою в текст | Так |
+| Текст | Абзац виноски | Так |
+
+## Правила
+
+<Check>
+  Тримайте виноску в один абзац. Лінія тягнеться на всю висоту, і на кількох абзацах акцент розмивається.
+</Check>
+
+<Check>
+  Набирайте виноску тим самим `b1-regular-20`, що й основний текст. Виділяє її лінія, а не інший розмір чи вага.
+</Check>
+
+<Warning>
+  Не ставте виноски підряд. Дві поспіль читаються як список, а не як акцент.
+</Warning>

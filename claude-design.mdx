@@ -1,0 +1,138 @@
+---
+title: "Claude Design"
+description: "Як генерувати дизайн у Claude Design на основі цієї системи."
+icon: "wand-magic-sparkles"
+---
+
+Claude Design може збирати макети з цієї дизайн-системи — але тільки якщо дати йому систему у зрозумілому вигляді. Ця сторінка пояснює, як саме.
+
+Уся документація — це майже 60 сторінок. Віддавати їх генератору цілком немає сенсу: він у них потоне. Натомість є **один компактний файл**, зібраний із `tokens.json`, `style.css` і самих сторінок.
+
+## Крок 1. Завантажте файл
+
+<a className="ds-download" href="/assets/lazarev-design-system.txt" download="lazarev-design-system.txt">Завантажити lazarev-design-system.txt</a>
+
+<span className="ds-download__note">12 КБ · сітка, палітра, типографіка, 45 компонентів</span>
+
+Усередині десять розділів:
+
+<div className="ds-table">
+
+| Розділ | Що містить |
+| --- | --- |
+| Canvas and grid | Три розміри полотна, поля, ширини контейнера |
+| Header | Фіксований хедер і 88px, які він займає |
+| Vertical rhythm | 220px між блоками, 56px від заголовка до контенту |
+| Page composition | Як збираються сторінки |
+| Spacing scale | Уся шкала відступів |
+| Colour tokens | Семантична палітра з hex-значеннями |
+| Type scale | Шкала сайту і окрема шкала статті |
+| Component inventory | 45 компонентів: імʼя, CSS-клас, розмір, призначення |
+| Known gaps | Чого в системі немає — щоб генератор не вигадував |
+| Token file warning | Чому не можна читати `tokens.json` напряму |
+
+</div>
+
+Два останні розділи не менш важливі за перші вісім. Без них модель вигадає брейкпоінти й анімації, яких у системі не існує, або візьме зіпсовані значення з експорту Figma.
+
+## Крок 2. Додайте його в Claude Design
+
+Покладіть файл у контекст проєкту — туди, звідки Claude Design читає матеріали. Він має бути доступний у кожному запиті, а не тільки в першому.
+
+<Warning>
+  Точне місце в інтерфейсі залежить від версії Claude Design. Якщо там є окреме поле для дизайн-системи — файл туди; якщо ні, вставте його текстом на початку промпту.
+</Warning>
+
+## Крок 3. Напишіть промпт
+
+Після файлу додайте це:
+
+```text
+You are designing a page for Lazarev.agency using their design system.
+The complete system specification is above. Follow it exactly.
+
+Rules:
+- Use only components from the inventory. Reference them by CSS class.
+- Use only colours and type styles listed in the specification.
+- Desktop canvas 1440px, container 1344px, 48px side padding.
+- Every block carries 220px top padding. No bottom padding.
+- Section title to content: 56px.
+- First block leaves 88px for the fixed header.
+- Every section starts with a Title block (title, description, optional button).
+- If a value you need is not in the specification, say so instead of inventing it.
+  Section 9 lists what genuinely does not exist in this system.
+
+Task:
+```
+
+Далі опишіть сторінку звичайною мовою. Українською теж можна — назви компонентів у файлі англійські, і модель їх упізнає.
+
+> Сторінка послуги: герой із заголовком і кнопкою, три кейси, блок процесу на сім кроків, FAQ, CTA.
+
+## Крок 4. Перевірте на одній секції
+
+Не починайте з цілої сторінки. Попросіть **одну секцію** — наприклад, блок із трьома кейс-картками під заголовком.
+
+Далі перевірте три числа:
+
+<div className="ds-table">
+
+| Що | Має бути |
+| --- | --- |
+| Відступ згори в блоку | 220px |
+| Від заголовка до карток | 56px |
+| Ширина картки кейсу | 312px |
+
+</div>
+
+Якщо всі три збіглися — система читається, можна просити цілу сторінку. Якщо ні, буде видно, чого саме бракує.
+
+## Як просити зміни
+
+Посилайтесь на компоненти їхніми іменами з інвентарю — так само, як вони називаються в цій документації.
+
+<Check>
+  «Заміни Secondary button на Primary», «постав Case card розміру L замість S», «додай Title block над цією секцією».
+</Check>
+
+<Warning>
+  Не описуйте компонент словами, якщо він є в системі. «Зроби картку з картинкою і заголовком» дасть вигадану картку замість [Case](/cards/case).
+</Warning>
+
+## Чого система поки не знає
+
+Це перелічено і в самому файлі, але варто знати заздалегідь — просити це марно:
+
+<div className="ds-table">
+
+| Чого немає | Наслідок |
+| --- | --- |
+| Порогові значення брейкпоінтів | Відомі три розміри полотна, але не межі між ними |
+| Вертикальний ритм на планшеті й мобільному | 220px і 56px підтверджені тільки для десктопа |
+| Анімації | Ні тривалості, ні кривих — жодного токена |
+| Тіні | Одна-єдина, `effect.shadow.modal` |
+| Теми | Світлої й темної теми в токенах немає |
+| Стани | Описані в 11 компонентів із 44 |
+| [Input](/components/input) | Сторінка порожня, хоча токени є |
+
+</div>
+
+## Як оновити файл
+
+Файл не пишеться руками — його збирає скрипт із репозиторію:
+
+```bash
+python3 scripts/build-brief.py
+```
+
+Він читає `tokens.json`, `style.css`, `docs.json` і `scripts/brief-inventory.json`, а на виході дає два однакові файли: `system-brief.md` для читання в репозиторії та `assets/lazarev-design-system.txt` для завантаження з цієї сторінки.
+
+Коли ви описуєте новий компонент, допишіть йому один рядок у `scripts/brief-inventory.json`:
+
+```json
+{ "page": "blocks/hero", "title": "Hero", "class": "ds-hero", "purpose": "Home page hero with stats and illustration" }
+```
+
+<Check>
+  Скрипт звіряє навігацію з інвентарем. Якщо сторінка є в документації, але її забули додати в мапу, він про це скаже і назве її. Загубити компонент неможливо.
+</Check>

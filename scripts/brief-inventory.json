@@ -1,0 +1,316 @@
+{
+  "groups": [
+    {
+      "name": "Components",
+      "items": [
+        {
+          "page": "foundations/icons",
+          "title": "Icons",
+          "class": "ds-icon",
+          "purpose": "CSS-mask icons; colour comes from currentColor. Sizes 16px in buttons, 24px elsewhere"
+        },
+        {
+          "page": "cards/bullet-point",
+          "title": "Point marker",
+          "class": "ds-point",
+          "purpose": "32px ring with a 6px dot; --green variant uses the brand colour"
+        },
+        {
+          "page": "components/accordion",
+          "title": "Accordion",
+          "class": "ds-accordion",
+          "purpose": "FAQ list, one row open at a time"
+        },
+        {
+          "page": "components/avatar",
+          "title": "Avatar",
+          "class": "ds-avatar",
+          "purpose": "Photo with name and job title; sizes S 40 / M 56"
+        },
+        {
+          "page": "components/breadcrumbs",
+          "title": "Breadcrumbs",
+          "class": "ds-bc",
+          "purpose": "Page path, current item last"
+        },
+        {
+          "page": "components/button",
+          "title": "Button",
+          "class": "ds-btn",
+          "purpose": "9 variants: primary, secondary, industry, link, play, icon-primary, icon-secondary, plus, block"
+        },
+        {
+          "page": "components/checkbox",
+          "title": "Checkbox",
+          "class": "ds-cb",
+          "purpose": "Square check, also used as dropdown list item"
+        },
+        {
+          "page": "components/chips",
+          "title": "Chips",
+          "class": "ds-chip",
+          "purpose": "Outlined filter pill with trailing arrow"
+        },
+        {
+          "page": "components/dropdown",
+          "title": "Dropdown",
+          "class": "ds-dd",
+          "purpose": "Trigger plus menu of checkbox items"
+        },
+        {
+          "page": "components/input",
+          "title": "Input",
+          "class": "",
+          "purpose": "NOT DOCUMENTED — 9 token groups exist, page is empty"
+        },
+        {
+          "page": "components/links",
+          "title": "Links",
+          "class": "ds-link",
+          "purpose": "Navigation link, plain variant has no arrow"
+        },
+        {
+          "page": "components/links-group",
+          "title": "Links group",
+          "class": "ds-header-menu",
+          "purpose": "Bordered row of header links"
+        },
+        {
+          "page": "components/media",
+          "title": "Media",
+          "class": "ds-media",
+          "purpose": "Image placeholder, sizes S/M/L, ratio 1.504"
+        },
+        {
+          "page": "components/pagination",
+          "title": "Pagination",
+          "class": "ds-pagi",
+          "purpose": "Page numbers in a pill with arrow buttons"
+        },
+        {
+          "page": "components/tab",
+          "title": "Tab",
+          "class": "ds-tab",
+          "purpose": "Segmented control, one active"
+        },
+        {
+          "page": "components/tag",
+          "title": "Tag",
+          "class": "ds-tag",
+          "purpose": "Uppercase label with hairline separator"
+        },
+        {
+          "page": "components/toggle",
+          "title": "Toggle",
+          "class": "ds-toggle",
+          "purpose": "Binary switch, applies immediately"
+        }
+      ]
+    },
+    {
+      "name": "Cards",
+      "items": [
+        {
+          "page": "cards/article",
+          "title": "Article",
+          "class": "ds-article-card",
+          "purpose": "Article teaser; S 312 / M 388 / L 616"
+        },
+        {
+          "page": "cards/article-menu",
+          "title": "Article menu",
+          "class": "ds-card-am",
+          "purpose": "Article teaser inside the header menu"
+        },
+        {
+          "page": "cards/award",
+          "title": "Award",
+          "class": "ds-award-card",
+          "purpose": "Award name, year, project"
+        },
+        {
+          "page": "cards/bullet-point",
+          "title": "Bullet point",
+          "class": "ds-bullet-card",
+          "purpose": "Green dot marker plus one paragraph"
+        },
+        {
+          "page": "cards/case",
+          "title": "Case",
+          "class": "ds-case-card",
+          "purpose": "Case teaser; S 312 / L 616"
+        },
+        {
+          "page": "cards/number",
+          "title": "Number",
+          "class": "ds-number-card",
+          "purpose": "Numbered step with badge"
+        },
+        {
+          "page": "cards/outcomes",
+          "title": "Outcomes",
+          "class": "ds-outcomes-card",
+          "purpose": "Metric card, dark, translucent; needs a dark parent"
+        },
+        {
+          "page": "cards/outcomes-l",
+          "title": "Outcomes L",
+          "class": "ds-outcomes-card--l",
+          "purpose": "Large metric card, light, with client logo"
+        },
+        {
+          "page": "cards/testimonials",
+          "title": "Testimonials",
+          "class": "ds-testimonial",
+          "purpose": "Quote with author and rating"
+        },
+        {
+          "page": "cards/text",
+          "title": "Text",
+          "class": "ds-text-card",
+          "purpose": "Title over gradient plus body"
+        }
+      ]
+    },
+    {
+      "name": "Blocks",
+      "items": [
+        {
+          "page": "blocks/title-block",
+          "title": "Title block",
+          "class": "ds-title-block",
+          "purpose": "Section header: title, description, optional button. Starts nearly every section"
+        },
+        {
+          "page": "blocks/block-case",
+          "title": "Case",
+          "class": "ds-case-block",
+          "purpose": "Case study block; desktop / tablet / mobile"
+        },
+        {
+          "page": "blocks/block-case-outcomes",
+          "title": "Case outcomes",
+          "class": "ds-case-outcomes-block",
+          "purpose": "Case metrics row"
+        },
+        {
+          "page": "blocks/block-cta",
+          "title": "CTA",
+          "class": "ds-cta-block",
+          "purpose": "Closing call to action with two buttons"
+        },
+        {
+          "page": "blocks/block-icon",
+          "title": "Icon",
+          "class": "ds-icon-block",
+          "purpose": "Icon, text and optional button; desktop and responsive"
+        },
+        {
+          "page": "blocks/block-outcomes",
+          "title": "Outcomes",
+          "class": "ds-outcomes-block",
+          "purpose": "Dark block holding Outcomes cards"
+        },
+        {
+          "page": "blocks/block-process",
+          "title": "Process",
+          "class": "ds-process-block",
+          "purpose": "One process step: image, title, text, button"
+        },
+        {
+          "page": "blocks/block-service",
+          "title": "Service",
+          "class": "ds-service-block",
+          "purpose": "Service offering; wide and narrow layouts"
+        },
+        {
+          "page": "blocks/block-text",
+          "title": "Text",
+          "class": "ds-text-block",
+          "purpose": "Grid of Text cards"
+        },
+        {
+          "page": "blocks/menu",
+          "title": "Menu",
+          "class": "ds-menu",
+          "purpose": "Full header menu panel"
+        }
+      ]
+    },
+    {
+      "name": "Layout",
+      "items": [
+        {
+          "page": "layout/header",
+          "title": "Header",
+          "class": "ds-header",
+          "purpose": "Fixed top bar: logo, links, button"
+        },
+        {
+          "page": "layout/footer",
+          "title": "Footer",
+          "class": "ds-footer",
+          "purpose": "Three stacked blocks: contacts, services, legal"
+        }
+      ]
+    },
+    {
+      "name": "Pages",
+      "items": [
+        {
+          "page": "pages/grid",
+          "title": "Grid",
+          "class": "ds-page",
+          "purpose": "Page layout schematic: canvas, container, block rhythm"
+        }
+      ]
+    },
+    {
+      "name": "Article",
+      "items": [
+        {
+          "page": "article/layout",
+          "title": "Layout",
+          "class": "ds-article-grid",
+          "purpose": "Two columns: 992 body, 336 aside, gap 16"
+        },
+        {
+          "page": "article/typography",
+          "title": "Typography",
+          "class": "ds-art-",
+          "purpose": "h2/h3/h4, lead, body, bullet, number list — each carries its own padding"
+        },
+        {
+          "page": "article/title-block",
+          "title": "Title block",
+          "class": "ds-article-title",
+          "purpose": "Article header: tag, date, h1, author, reading time"
+        },
+        {
+          "page": "article/attention-block",
+          "title": "Attention block",
+          "class": "ds-attention-block",
+          "purpose": "Callout with a green hairline on the left"
+        },
+        {
+          "page": "article/quote",
+          "title": "Quote",
+          "class": "ds-art-quote-block",
+          "purpose": "Serif quote with author"
+        },
+        {
+          "page": "article/table",
+          "title": "Table",
+          "class": "ds-art-table",
+          "purpose": "Header row plus data rows, 2px apart"
+        },
+        {
+          "page": "article/navigation",
+          "title": "Navigation",
+          "class": "ds-toc",
+          "purpose": "Table of contents with reading progress"
+        }
+      ]
+    }
+  ]
+}

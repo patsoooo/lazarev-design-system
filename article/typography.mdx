@@ -1,0 +1,267 @@
+---
+title: "Typography"
+description: "Текстові елементи статті: заголовки, lead, body, списки, ритм."
+---
+
+<div className="ds-preview ds-preview--s1">
+  <span className="ds-preview__stage ds-preview__stage--w640"><span className="ds-art-flow"><span className="ds-art-h2">Placeholder title H2</span><span className="ds-art-b1">Placeholder body text</span><span className="ds-art-h3">Placeholder title H3</span><span className="ds-art-b1">Placeholder body text</span></span></span>
+</div>
+
+Текст статті складається із семи елементів. Кожен — окремий компонент у Figma, і кожен несе **власні вертикальні відступи**, тож ритм сторінки не треба задавати руками: елементи ставляться підряд.
+
+Усі вони обмежені міркою **640px**, хоча колонка статті має 992px — див. [Layout](/article/layout).
+
+Заголовок h1 і цитата набрані **Instrument Serif** — це власна шкала статті. Заголовки h2–h4 беруться із загальної шкали `font.heading.*`, а основний текст — `article/body/b1-regular-20`, тобто 20 / 28 замість звичайних 16 / 20.
+
+## Ритм
+
+Усі елементи в потоці, з реальними відступами. Проміжків між ними немає — відстань створюють самі компоненти.
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-art-flow">
+    <span className="ds-art-h2">Placeholder title H2</span>
+    <span className="ds-art-b1">Placeholder body text</span>
+    <span className="ds-art-h3">Placeholder title H3</span>
+    <span className="ds-art-b1">Placeholder body text</span>
+    <span className="ds-art-h4">Placeholder title H4</span>
+    <span className="ds-art-lead">Placeholder lead text</span>
+    <span className="ds-art-b1">Placeholder body text</span>
+    <span className="ds-art-bullet"><span className="ds-point ds-point--green" />Text</span>
+    <span className="ds-art-num"><span className="ds-art-num__index">1.</span>Text</span>
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Компонент | Стиль | Відступ згори | Відступ знизу |
+| --- | --- | --- | --- |
+| `blocks/article/title h2` | `font.heading.h2-56` — 56 / 48 | 64px | 12px |
+| `blocks/article/title h3` | `font.heading.h3-46` — 46 / 40 | 48px | 8px |
+| `blocks/article/title h4` | `font.heading.h4-36` — 36 / 32 | 24px | 8px |
+| `blocks/article/lead` | `article/lead/lead-24` — 24 / 32 | 24px | 8px |
+| `blocks/article/body` | `article/body/b1-regular-20` — 20 / 28 | — | — |
+| `blocks/article/bullet point` | `article/body/b1-regular-20` — 20 / 28 | — | — |
+| `blocks/article/number-list` | `article/body/b1-regular-20` — 20 / 28 | — | — |
+
+</div>
+
+Колір тексту в усіх семи однаковий — <span className="ds-sw ds-sw--text-primary" /> `color/text/primary`.
+
+Відступи задані **паддінгами, а не марджинами**. Тому вони не схлопуються: заголовок h3 одразу після тексту дасть рівно 48px, а не змішані значення сусідів.
+
+<Warning>
+  Відступи в експорті **не збігаються з підтвердженими** — розходяться п'ять із семи значень.
+
+  | Токен | В експорті | Підтверджено |
+  | --- | --- | --- |
+  | `blocks/article/h2-top` | 32px | **64px** |
+  | `blocks/article/h2-bottom` | 8px | **12px** |
+  | `blocks/article/h3-top` | 16px | **48px** |
+  | `blocks/article/h3-bottom` | 8px | 8px |
+  | `blocks/article/h4-top` | 16px | **24px** |
+  | `blocks/article/h4-bottom` | 8px | 8px |
+  | `blocks/article/lead-top` | 16px | **24px** |
+
+  Відступу під lead в експорті немає взагалі — парного `lead-bottom` до `lead-top` не завели.
+
+  Те саме з цитатою, яку описано окремо: `quote-top` дорівнює 12px замість підтверджених 32px, а `quote-bottom` немає — див. [Quote](/article/quote).
+</Warning>
+
+<Warning>
+  У групі `blocks/article` є ще `section-gap` — 24px і `content-gap` — 12px. Куди саме вони застосовуються, з макета не видно: усі відстані між елементами вже покриті паддінгами самих компонентів. [Уточнити], чи вони ще потрібні.
+</Warning>
+
+## Заголовки
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-art-flow">
+    <span className="ds-art-h2">Placeholder title H2</span>
+    <span className="ds-art-h3">Placeholder title H3</span>
+    <span className="ds-art-h4">Placeholder title H4</span>
+  </span>
+</div>
+
+Три рівні заголовків беруться із **загальної** шкали, тієї самої, якою набрано решту сайту. Власний у статті лише h1 — див. [Title block](/article/title-block).
+
+Через це в статті співіснують дві гарнітури заголовків: h1 — Instrument Serif, h2–h4 — Pragati Narrow.
+
+<Warning>
+  У макеті заголовки h2–h4 виглядають ширшими, ніж дає Pragati Narrow — більше схоже на Archivo. Токени `h2-56`, `h3-46`, `h4-36` однозначно вказують на Pragati Narrow, тож у прикладі вище вона. [Уточнити], яка гарнітура правильна.
+</Warning>
+
+## Lead
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-art-flow"><span className="ds-art-lead">Placeholder lead text</span></span>
+</div>
+
+Вступний абзац: Archivo 24 / 32, вага 500. Відрізняється від основного тексту розміром і вагою, а не кольором.
+
+## Body
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-art-flow"><span className="ds-art-b1">Placeholder body text</span></span>
+</div>
+
+Основний текст статті — Archivo 20 / 28. Власних відступів не має: відстань до сусідів задають вони самі.
+
+Для напівжирного всередині абзацу є парний стиль `article/body/b1-bold-20` — та сама шкала, вага 700.
+
+## Bullet point
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-art-flow">
+    <span className="ds-art-bullet"><span className="ds-point ds-point--green" />Text</span>
+    <span className="ds-art-bullet"><span className="ds-point ds-point--green" />Text</span>
+  </span>
+</div>
+
+Пункт переліку з маркером-крапкою.
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Ширина іконки | 32px | немає |
+| Діаметр кола | 28px | немає |
+| Заокруглення кола | 100% | немає |
+| Товщина межі | 1px | `primitives.border-width.1px` |
+| Колір межі | <span className="ds-sw ds-sw--icon-secondary" /> `color/icon/secondary` | — |
+| Діаметр крапки | 6px | немає |
+| Колір крапки | <span className="ds-sw ds-sw--icon-brand" /> `color/icon/brand` | — |
+| Проміжок іконка — текст | 8px | немає |
+| Текст | `article/body/b1-regular-20` — 20 / 28 | — |
+
+</div>
+
+Це та сама іконка `point`, що і в [Bullet point](/cards/bullet-point) картці, але з брендовою крапкою замість чорної. У [Icons](/foundations/icons) вона зветься `point-icon-green`.
+
+<Warning>
+  Іконка вирівняна по **верху** тексту, а не по центру. На одному рядку різниця непомітна — 32px іконки проти 28px рядка. Але на кількох рядках центрування зсунуло б маркер до середини абзацу.
+</Warning>
+
+## Number list
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-art-flow">
+    <span className="ds-art-num"><span className="ds-art-num__index">1.</span>Text</span>
+    <span className="ds-art-num"><span className="ds-art-num__index">2.</span>Text</span>
+  </span>
+</div>
+
+Нумерований пункт. Номер і текст набрані однаково — `article/body/b1-regular-20` — і різняться лише кольором.
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Номер | `article/body/b1-regular-20` — 20 / 28 | <span className="ds-sw ds-sw--icon-brand" /> `color/icon/brand` |
+| Текст | `article/body/b1-regular-20` — 20 / 28 | <span className="ds-sw ds-sw--text-primary" /> `color/text/primary` |
+| Проміжок номер — текст | 8px | немає |
+
+</div>
+
+<Warning>
+  Номер пофарбований токеном **іконки**, а не тексту: `color/icon/brand`. Семантично це текст, тож або потрібен `color/text/brand`, або треба свідомо погодитись, що номер — це маркер. [Уточнити].
+</Warning>
+
+## Шкала статті
+
+Повна власна шкала з колекції `typography.article.*`.
+
+<div className="ds-btn-row ds-btn-row--plain ds-btn-row--stretch">
+  <span className="ds-art-type">
+    <span className="ds-art-h1">Heading h1</span>
+    <span className="ds-art-b1">Body text, regular</span>
+    <span className="ds-art-b1 ds-art-b1--bold">Body text, bold</span>
+    <span className="ds-art-b2">Small body text, regular</span>
+    <span className="ds-art-b2 ds-art-b2--bold">Small body text, bold</span>
+    <span className="ds-art-link">Link inside article text</span>
+    <span className="ds-art-quote">Quote in Instrument Serif</span>
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Токен | Шрифт | Розмір / інтерліньяж | Вага | Трекінг |
+| --- | --- | --- | --- | --- |
+| `article/heading/h1-64` | Instrument Serif | 64 / 64 | 400 | −0,5 |
+| `article/lead/lead-24` | Archivo | 24 / 32 | 500 | 0 |
+| `article/body/b1-regular-20` | Archivo | 20 / 28 | 400 | 0 |
+| `article/body/b1-bold-20` | Archivo | 20 / 28 | 700 | 0 |
+| `article/body/b2-regular-16` | Archivo | 16 / 20 | 400 | 0 |
+| `article/body/b2-bold-16` | Archivo | 16 / 20 | 700 | 0 |
+| `article/link/link p3` | Archivo | 20 / 28, підкреслений | 400 | 0 |
+| `article/quote/quote-40` | Instrument Serif | 36 / 36 | 400 | 0 |
+
+</div>
+
+Де використовуються `b2-regular-16` і `b2-bold-16`, з наявних макетів не видно — у тексті статті скрізь стоїть b1.
+
+<Warning>
+  `article/quote/quote-40` насправді дорівнює **36px**, а не 40. Ім'я не збігається зі значенням — перейменуйте на `quote-36` або виправте розмір.
+</Warning>
+
+<Warning>
+  В імені `article/link/link p3` є **пробіл**. Решта токенів системи використовує дефіси, тож ця назва зламає автоматичну генерацію коду.
+</Warning>
+
+## Дві шкали, що не збігаються
+
+В експорті є **друга** шкала статті — `semantic.font-article.*`. Вона описує ті самі ролі іншими значеннями.
+
+<div className="ds-table">
+
+| Роль | `typography.article.*` | `semantic.font-article.*` |
+| --- | --- | --- |
+| Заголовок h1 | 64 / 64 | 46 / 48 |
+| Lead | 24 / 32 | 18 / 28 |
+| Body 1 | 20 / 28 | 16 / 24 |
+| Body 2 | 16 / 20 | 14 / 16 |
+| Цитата | 36 / 36 | 28 / 32 |
+| Посилання | 20 / 28 | немає |
+
+</div>
+
+Сім'ї шрифтів і ваги в обох наборах однакові — розходяться тільки розміри, і розходяться **послідовно**: друга шкала менша в кожному рядку приблизно на чверть. Це схоже на мобільну шкалу, яку забули назвати мобільною.
+
+<Warning>
+  Жодна з двох шкал не позначена як desktop чи mobile. Поки це не з'ясовано, розробник не має способу зрозуміти, яку брати. [Уточнити] і перейменувати, наприклад у `article/desktop/*` та `article/mobile/*`.
+</Warning>
+
+## Поверхні
+
+<div className="ds-table">
+
+| Елемент | Токен | Значення |
+| --- | --- | --- |
+| Фон виділеного блоку | <span className="ds-sw ds-sw--gray-50" /> `blocks/article/highlight-bg` | `gray.50` — #f4f4f4 |
+| Фон шапки таблиці | <span className="ds-sw ds-sw--gray-100" /> `blocks/article/table-header-bg` | `gray.100` — #e9e9e9 |
+| Фон рядка таблиці | <span className="ds-sw ds-sw--gray-50" /> `blocks/article/table-row-bg` | `gray.50` — #f4f4f4 |
+| Внутрішній відступ таблиці | `blocks/article/padding-table` | 16px |
+| Заокруглення обкладинки | `blocks/article/radius-cover` | 8px |
+| Заокруглення зображення в тексті | `blocks/article/radius-media` | 4px |
+
+</div>
+
+<Warning>
+  Кольори статті прив'язані до примітивів **напряму**, повз семантичний шар: `highlight-bg` вказує на `primitives.color.gray.50`, а не на семантичний токен фону. Решта системи так не робить, і через це зміна теми до статті не дійде.
+</Warning>
+
+<Warning>
+  `radius-cover` і `radius-media` прив'язані до `primitives.spacing.*`, а не до `primitives.radius.*`. Той самий дефект експорту, що і в десятку інших груп: значення правильні, джерело — ні.
+</Warning>
+
+## Правила
+
+<Check>
+  Ставте елементи підряд і не додавайте відступів зверху. Кожен компонент несе власні паддінги, і зайвий проміжок зламає ритм.
+</Check>
+
+<Check>
+  Тримайте основний текст на 20 / 28 в межах мірки 640px. Це приблизно 80–90 символів у рядку.
+</Check>
+
+<Warning>
+  Не замінюйте h1 статті на `font.heading.h1-80`. Серифний заголовок — єдине, що відрізняє статтю від решти сторінок сайту.
+</Warning>
