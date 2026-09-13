@@ -1,0 +1,113 @@
+---
+title: "Textarea"
+description: "Багаторядкове поле: стани, розміри, токени."
+icon: "align-left"
+---
+
+<div className="ds-preview ds-preview--s1">
+  <span className="ds-preview__stage ds-preview__stage--w640"><span className="ds-textarea"><span className="ds-textarea__label">Label</span><span className="ds-textarea__field is-default">Placeholder</span></span></span>
+</div>
+
+Поле для довгої відповіді. Стани, кольори й токени — **ті самі, що в [Input](/components/input)**, це той самий варіант `input-contact`.
+
+Відрізняється трьома речами: висотою, довжиною каретки і тим, що текст притиснутий догори, а не стоїть по центру.
+
+## Коли використовувати
+
+- Для відповіді, довшої за один рядок: опис проєкту, коментар.
+- В останньому кроці [Contact form](/cards/contact-form).
+
+## Коли не використовувати
+
+- Для короткої відповіді в один рядок. Використовуйте [Input](/components/input).
+
+## Збірка
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-textarea">
+    <span className="ds-textarea__label">Label</span>
+    <span className="ds-textarea__field is-default">Placeholder</span>
+  </span>
+</div>
+
+## Стани
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-textarea">
+    <span className="ds-textarea__label">Default</span>
+    <span className="ds-textarea__field is-default">Placeholder</span>
+  </span>
+  <span className="ds-textarea">
+    <span className="ds-textarea__label">Filled</span>
+    <span className="ds-textarea__field is-filled">Placeholder</span>
+  </span>
+  <span className="ds-textarea">
+    <span className="ds-textarea__label">Inactive</span>
+    <span className="ds-textarea__field is-inactive">Placeholder</span>
+  </span>
+  <span className="ds-textarea">
+    <span className="ds-textarea__label">Error</span>
+    <span className="ds-textarea__field is-error">Placeholder<span className="ds-textarea__message">Label message</span></span>
+  </span>
+</div>
+
+Повний перелік станів і їхніх кольорів — у таблиці на сторінці [Input](/components/input). Тут вони поводяться однаково: Hover не відрізняється від Default, Active і Filled дають основний колір тексту, Inactive світлішає, Error червоніє.
+
+## Розміри
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Висота поля | 144px | немає |
+| Каретка | 1px × 124px | немає |
+| Внутрішній відступ згори | 20px | `input-contact/padding` |
+| Внутрішній відступ справа і знизу | 20px | `input-contact/padding` |
+| Внутрішній відступ зліва | 8px | `input-contact/padding-left` |
+| Проміжок лейбл — поле | 2px | немає |
+
+</div>
+
+Каретка на 124px коротша за поле на 20px, тобто по 10px згори й знизу. В [Input](/components/input) те саме співвідношення: 44px каретки в полі 60px дають по 8px.
+
+Текст починається згори, за 20px від верхнього краю — на відміну від Input, де рядок стоїть по центру.
+
+## Токени
+
+Група та сама, що в [Input](/components/input) — `input-contact`. Власних токенів у Textarea немає жодного.
+
+<div className="ds-table">
+
+| Властивість | Токен | Значення |
+| --- | --- | --- |
+| Фон | `input-contact/bg` | `background.gray-block` — #f4f4f4 |
+| Текст | `input-contact/text` | `text.primary` — #000000 |
+| Плейсхолдер | `input-contact/placeholder` | `text.placeholder` — #697382 |
+| Неактивний стан | `input-contact/inactive` | `action.inactive-content` — #cdd4de |
+| Каретка | `input-contact/caret-active` | `icon.brand` — #0f9549 |
+| Помилка | `input-contact/border-error` | `action.danger` — #dc2626 |
+
+</div>
+
+<Warning>
+  Ні висоти 144px, ні довжини каретки 124px в експорті немає.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Лейбл | Назва поля над ним | Ні |
+| Поле | Сірий прямокутник на 144px | Так |
+| Каретка | Вертикальна риска 124px | Так |
+| Повідомлення | Пояснення помилки | Лише в стані Error |
+
+## Правила
+
+<Check>
+  Тримайте висоту фіксованою. Поле не росте під текст — довга відповідь прокручується всередині.
+</Check>
+
+<Warning>
+  Не використовуйте Textarea там, де відповідь завжди коротка. Порожнє поле на 144px виглядає як вимога написати багато.
+</Warning>

@@ -1,0 +1,66 @@
+---
+title: "Progress"
+description: "Кільце прогресу: крок, заповнення, токени."
+icon: "circle-notch"
+---
+
+<div className="ds-preview ds-preview--s4">
+  <span className="ds-preview__stage"><span className="ds-progress ds-progress--p60"><span className="ds-progress__inner">3|5</span></span></span>
+</div>
+
+Кільце показує, на якому кроці процесу перебуває користувач: номер усередині, заповнена дуга по колу.
+
+Використовується в [Contact form](/cards/contact-form). Самостійно не застосовується.
+
+## Збірка
+
+<div className="ds-btn-row ds-btn-row--plain">
+  <span className="ds-progress ds-progress--p20"><span className="ds-progress__inner">1|5</span></span>
+  <span className="ds-progress ds-progress--p40"><span className="ds-progress__inner">2|5</span></span>
+  <span className="ds-progress ds-progress--p60"><span className="ds-progress__inner">3|5</span></span>
+  <span className="ds-progress ds-progress--p80"><span className="ds-progress__inner">4|5</span></span>
+  <span className="ds-progress ds-progress--p100"><span className="ds-progress__inner">5|5</span></span>
+</div>
+
+## Склад
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Розмір | 40px | немає |
+| Товщина кільця | 2px | немає |
+| Заповнена частина | <span className="ds-sw ds-sw--icon-brand" /> `color/icon/brand` | — |
+| Порожня частина | <span className="ds-sw ds-sw--gray-300" /> `color/gray/300` | — |
+| Текст | `font.paragraph.p4-14` — 14 / 16 | <span className="ds-sw ds-sw--text-primary" /> `color/text/primary` |
+
+</div>
+
+Дуга відповідає частці пройдених кроків: на 1 з 5 це п'ята частина кола, на 5 з 5 — повне коло.
+
+Кільце зібране з **двох вкладених кіл**, а не з CSS-маски: конічний градієнт знизу, суцільний кружечок згори. Маски переживають не кожен інструмент, вкладені кола переживають.
+
+<Warning>
+  Фон внутрішнього кружечка — `background/gray-block`, той самий, що в сірого блоку форми. На іншому фоні кільце доведеться перефарбувати, бо середина перестане зливатися з підкладкою.
+</Warning>
+
+<Warning>
+  Ні розміру 40px, ні товщини кільця 2px в експорті немає. Власної групи токенів у компонента теж немає.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Кільце | Дуга заповнення поверх сірої доріжки | Так |
+| Номер кроку | Поточний і загальний, через роздільник | Так |
+
+## Правила
+
+<Check>
+  Показуйте обидва числа — поточний крок і загальну кількість. Сама дуга не каже, скільки лишилось.
+</Check>
+
+<Warning>
+  Не використовуйте кільце як індикатор завантаження. Воно показує крок у процесі, а не час очікування.
+</Warning>

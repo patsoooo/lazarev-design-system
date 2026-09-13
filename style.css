@@ -73,6 +73,7 @@
   --radius-4: 4px;
   --radius-8: 8px;
   --radius-12: 12px;
+  --radius-16: 16px;
   --radius-32: 32px;
   --radius-80: 80px;
 
@@ -296,6 +297,11 @@
   background-color: currentColor;
   -webkit-mask: var(--icon-arrow-up-right) no-repeat center / contain;
   mask: var(--icon-arrow-up-right) no-repeat center / contain;
+}
+
+/* Іконка необов'язкова: у формі чипи стоять без неї */
+.ds-chip--plain::after {
+  content: none;
 }
 
 /* ==========================================================================
@@ -1493,6 +1499,8 @@
 
 .ds-cta-block__desc {
   display: block;
+  /* +8px, щоб стати на одну вертикаль із текстом Input */
+  padding: 0 var(--spacing-8);
   font-family: var(--font-archivo);
   /* font.heading.h6-20 — Archivo 20/24, вага 500 */
   font-size: 20px;
@@ -2436,6 +2444,12 @@
 .ds-media--l {
   width: 616px;
   aspect-ratio: 616 / 410;
+}
+
+/* Вертикальний формат, використовується тільки в блоці Contact */
+.ds-media--contact {
+  width: 600px;
+  aspect-ratio: 600 / 680;
 }
 
 /* ==========================================================================
@@ -3773,6 +3787,8 @@
   align-items: center;
   box-sizing: border-box;
   width: 100%;
+  /* Висота фіксована: 20 + 20 (рядок p1-20) + 20. Порожнє поле не спадається */
+  height: 60px;
   /* input-contact/padding 20px, input-contact/padding-left 8px */
   padding: var(--spacing-20) var(--spacing-20) var(--spacing-20) var(--spacing-8);
   background: var(--color-background-gray-block);
@@ -3806,21 +3822,6 @@
   color: var(--color-text-primary);
 }
 
-/* У заповненому полі каретка стоїть після тексту, а не біля краю */
-.ds-input__field.is-filled::before {
-  content: none;
-}
-
-.ds-input__field.is-filled .ds-input__text::after {
-  content: "";
-  display: inline-block;
-  width: 1px;
-  height: 44px;
-  margin-left: var(--spacing-8); /* TODO: звірити з Figma — проміжок не названо */
-  vertical-align: middle;
-  background: var(--color-icon-brand);
-}
-
 .ds-input__field.is-inactive {
   color: var(--color-action-inactive-content);
 }
@@ -3845,4 +3846,306 @@
   line-height: 12px;
   font-weight: 400;
   color: var(--color-action-danger);
+}
+
+/* ==========================================================================
+   Contact form — блок покрокової контактної форми
+   Біла картка з заголовком і сірим блоком усередині. Крок за кроком:
+   поля, чипи, наприкінці — текстове поле й згода.
+   ========================================================================== */
+
+.ds-contact-form {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 672px;
+  max-width: 100%;
+  padding: var(--spacing-24) var(--spacing-8) var(--spacing-8);
+  border-radius: var(--radius-16);
+  background: var(--color-background-block);
+}
+
+.ds-contact-form__title {
+  display: block;
+  /* 24 = 16 + 8: вирівняно з текстом Input, у якого свій відступ 8px зліва */
+  padding: 0 var(--spacing-24) var(--spacing-24);
+  font-family: var(--font-pragati);
+  /* font.heading.h4-36 — Pragati Narrow 36/32, вага 400 */
+  font-size: 36px;
+  line-height: 32px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-contact-form__body {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: var(--spacing-24);
+  padding: var(--spacing-16);
+  /* 16 − 8 = 8: вкладений радіус концентричний зовнішньому */
+  border-radius: var(--radius-8);
+  background: var(--color-background-gray-block);
+}
+
+/* Група «заголовок + контент» усередині сірого блоку */
+.ds-contact-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16); /* TODO: звірити з Figma — виміряно з макета */
+}
+
+.ds-contact-form__group-title {
+  display: block;
+  font-family: var(--font-archivo);
+  /* font.heading.h6-20 — Archivo 20/24, вага 500 */
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-contact-form__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-8); /* TODO: звірити з Figma — виміряно з макета */
+  /* +8px, як і в заголовка групи */
+  padding: 0 var(--spacing-8);
+}
+
+/* Кнопки в колонці не розтягуються на всю ширину */
+.ds-contact-form__body > .ds-btn {
+  align-self: flex-start;
+  margin-left: var(--spacing-8);
+}
+
+/* Нижній рядок притиснутий до низу сірого блоку */
+.ds-contact-form__footer {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  gap: var(--spacing-16);
+  /* +8px, щоб кільце стало на одну вертикаль із текстом Input */
+  padding: 0 var(--spacing-8);
+  margin-top: auto;
+}
+
+.ds-contact-form__consent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  /* ширина підібрана так, щоб рядок ламався після «agree» */
+  max-width: 200px;
+  font-family: var(--font-archivo);
+  /* font.paragraph.p4-14 — Archivo 14/16 */
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--color-text-placeholder);
+}
+
+.ds-contact-form__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  margin-left: auto;
+}
+
+/* --- Кільце прогресу ------------------------------------------------------
+   Два вкладені кола замість маски: конічний градієнт знизу, суцільний
+   кружечок згори. Маски переживають не кожен інструмент, кола — переживають.
+   -------------------------------------------------------------------------- */
+
+.ds-progress {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-gray-300);
+}
+
+.ds-progress--p20 { background: conic-gradient(var(--color-icon-brand) 0 20%, var(--color-gray-300) 0); }
+.ds-progress--p40 { background: conic-gradient(var(--color-icon-brand) 0 40%, var(--color-gray-300) 0); }
+.ds-progress--p60 { background: conic-gradient(var(--color-icon-brand) 0 60%, var(--color-gray-300) 0); }
+.ds-progress--p80 { background: conic-gradient(var(--color-icon-brand) 0 80%, var(--color-gray-300) 0); }
+.ds-progress--p100 { background: var(--color-icon-brand); }
+
+.ds-progress__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  /* 40 − 2 × 2: кільце завтовшки 2px */
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-background-gray-block);
+  font-family: var(--font-archivo);
+  /* font.paragraph.p4-14 — Archivo 14/16 */
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+/* ==========================================================================
+   Textarea — багаторядкове поле
+   Стани ті самі, що в Input. Відрізняється висотою, довжиною каретки
+   й тим, що текст притиснутий догори, а не по центру.
+   ========================================================================== */
+
+.ds-textarea {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: var(--spacing-2);
+  width: 100%;
+}
+
+.ds-textarea__label {
+  font-family: var(--font-archivo);
+  /* font.paragraph.p2-18 — Archivo 18/20 */
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.ds-textarea__field {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 144px;
+  /* input-contact/padding 20px, input-contact/padding-left 8px */
+  padding: var(--spacing-20) var(--spacing-20) var(--spacing-20) var(--spacing-8);
+  background: var(--color-background-gray-block);
+  font-family: var(--font-archivo);
+  /* font.paragraph.p1-20 — Archivo 20/20 */
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-placeholder);
+}
+
+/* Каретка 124px по центру вертикалі: (144 − 124) / 2 = 10 згори і знизу */
+.ds-textarea__field::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1px;
+  height: 124px;
+  margin-top: -62px;
+  background: var(--color-icon-brand);
+}
+
+.ds-textarea__field.is-active,
+.ds-textarea__field.is-filled {
+  color: var(--color-text-primary);
+}
+
+.ds-textarea__field.is-inactive {
+  color: var(--color-action-inactive-content);
+}
+
+.ds-textarea__field.is-inactive::before {
+  background: var(--color-action-inactive-content);
+}
+
+.ds-textarea__field.is-error {
+  color: var(--color-action-danger);
+}
+
+.ds-textarea__message {
+  display: block;
+  margin-top: var(--spacing-2);
+  font-family: var(--font-archivo);
+  /* font.caption.c2-12 — Archivo 12/12 */
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  color: var(--color-action-danger);
+}
+
+/* ==========================================================================
+   Contact — блок контактної форми
+   Зображення ліворуч, форма праворуч. 600 + 72 + 672 = 1344, тобто проміжок
+   між колонками виводиться з ширини контейнера.
+   ========================================================================== */
+
+.ds-contact-block {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  gap: var(--spacing-72);
+  width: 100%;
+  min-width: 1344px;
+}
+
+.ds-contact-block__media {
+  flex: none;
+}
+
+.ds-contact-block__main {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  flex: none;
+  width: 672px;
+}
+
+.ds-contact-block__title {
+  display: block;
+  /* TODO: звірити з Figma — 74px немає у шкалі, найближче 72 */
+  margin-bottom: 74px;
+  font-family: var(--font-archivo);
+  /* font.heading.h6-20 — Archivo 20/24, вага 500 */
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-contact-block__stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  gap: var(--spacing-24);
+  margin-top: var(--spacing-16);
+}
+
+.ds-contact-block__stat {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  gap: var(--spacing-8);
+}
+
+.ds-contact-block__stat-value {
+  flex: none;
+  font-family: var(--font-archivo);
+  /* font.heading.h5-24 — Archivo 24/24, вага 500 */
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: var(--color-text-primary);
+}
+
+.ds-contact-block__stat-label {
+  font-family: var(--font-archivo);
+  /* font.caption.c2-12 — Archivo 12/12 */
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  color: var(--color-text-primary);
 }

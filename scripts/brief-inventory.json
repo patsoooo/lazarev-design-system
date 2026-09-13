@@ -4,12 +4,6 @@
       "name": "Components",
       "items": [
         {
-          "page": "foundations/icons",
-          "title": "Icons",
-          "class": "ds-icon",
-          "purpose": "CSS-mask icons; colour comes from currentColor. Sizes 16px in buttons, 24px elsewhere"
-        },
-        {
           "page": "cards/bullet-point",
           "title": "Point marker",
           "class": "ds-point",
@@ -88,6 +82,12 @@
           "purpose": "Page numbers in a pill with arrow buttons"
         },
         {
+          "page": "components/progress",
+          "title": "Progress",
+          "class": "ds-progress",
+          "purpose": "40px step ring, 2px thick, green arc over a grey track, step number inside"
+        },
+        {
           "page": "components/tab",
           "title": "Tab",
           "class": "ds-tab",
@@ -100,10 +100,22 @@
           "purpose": "Uppercase label with hairline separator"
         },
         {
+          "page": "components/textarea",
+          "title": "Textarea",
+          "class": "ds-textarea",
+          "purpose": "Multiline field, 144px tall, 124px caret, text starts at the top. Same states and tokens as Input"
+        },
+        {
           "page": "components/toggle",
           "title": "Toggle",
           "class": "ds-toggle",
           "purpose": "Binary switch, applies immediately"
+        },
+        {
+          "page": "foundations/icons",
+          "title": "Icons",
+          "class": "ds-icon",
+          "purpose": "CSS-mask icons; colour comes from currentColor. Sizes 16px in buttons, 24px elsewhere"
         }
       ]
     },
@@ -141,6 +153,12 @@
           "purpose": "Case teaser; S 312 / L 616"
         },
         {
+          "page": "cards/contact-form",
+          "title": "Contact form",
+          "class": "ds-contact-form",
+          "purpose": "Stepped contact form: 672px white card, h4-36 question, grey inner block with inputs or plain chips, progress ring and nav buttons at the bottom"
+        },
+        {
           "page": "cards/number",
           "title": "Number",
           "class": "ds-number-card",
@@ -175,12 +193,6 @@
     {
       "name": "Blocks",
       "items": [
-        {
-          "page": "blocks/title-block",
-          "title": "Title block",
-          "class": "ds-title-block",
-          "purpose": "Section header: title, description, optional button. Starts nearly every section"
-        },
         {
           "page": "blocks/block-case",
           "title": "Case",
@@ -230,10 +242,22 @@
           "purpose": "Grid of Text cards"
         },
         {
+          "page": "blocks/contact",
+          "title": "Contact",
+          "class": "ds-contact-block",
+          "purpose": "Contact section: 600x680 image on the left, 72px gap, then title, Contact form and three stats. 600 + 72 + 672 = 1344"
+        },
+        {
           "page": "blocks/menu",
           "title": "Menu",
           "class": "ds-menu",
           "purpose": "Full header menu panel"
+        },
+        {
+          "page": "blocks/title-block",
+          "title": "Title block",
+          "class": "ds-title-block",
+          "purpose": "Section header: title, description, optional button. Starts nearly every section"
         }
       ]
     },

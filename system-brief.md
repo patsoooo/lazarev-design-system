@@ -165,7 +165,6 @@ Quick index. Full markup and every style for each component is in section 9.
 
 | Component | CSS class | Size | Purpose |
 |---|---|---|---|
-| Icons | `.ds-icon` | 16px · h 16px | CSS-mask icons; colour comes from currentColor. Sizes 16px in buttons, 24px elsewhere |
 | Point marker | `.ds-point` | 32px · h 32px | 32px ring with a 6px dot; --green variant uses the brand colour |
 | Accordion | `.ds-accordion` | min 1344px | FAQ list, one row open at a time |
 | Avatar | `.ds-avatar` | fluid | Photo with name and job title; sizes S 40 / M 56 |
@@ -179,9 +178,12 @@ Quick index. Full markup and every style for each component is in section 9.
 | Links group | `.ds-header-menu` | fluid | Bordered row of header links |
 | Media | `.ds-media` | fluid | Image placeholder, sizes S/M/L, ratio 1.504 |
 | Pagination | `.ds-pagi` | 40px · h 40px | Page numbers in a pill with arrow buttons |
+| Progress | `.ds-progress` | 40px · h 40px | 40px step ring, 2px thick, green arc over a grey track, step number inside |
 | Tab | `.ds-tab` | h 40px | Segmented control, one active |
 | Tag | `.ds-tag` | fluid | Uppercase label with hairline separator |
+| Textarea | `.ds-textarea` | fluid | Multiline field, 144px tall, 124px caret, text starts at the top. Same states and tokens as Input |
 | Toggle | `.ds-toggle` | 28px · h 16px | Binary switch, applies immediately |
+| Icons | `.ds-icon` | 16px · h 16px | CSS-mask icons; colour comes from currentColor. Sizes 16px in buttons, 24px elsewhere |
 
 ### Cards
 
@@ -192,6 +194,7 @@ Quick index. Full markup and every style for each component is in section 9.
 | Award | `.ds-award-card` | 324px | Award name, year, project |
 | Bullet point | `.ds-bullet-card` | 400px | Green dot marker plus one paragraph |
 | Case | `.ds-case-card` | 312px | Case teaser; S 312 / L 616 |
+| Contact form | `.ds-contact-form` | 672px | Stepped contact form: 672px white card, h4-36 question, grey inner block with inputs or plain chips, progress ring and nav buttons at the bottom |
 | Number | `.ds-number-card` | 332px | Numbered step with badge |
 | Outcomes | `.ds-outcomes-card` | 272px · h 272px | Metric card, dark, translucent; needs a dark parent |
 | Outcomes L | `.ds-outcomes-card--l` | 332px · h 400px | Large metric card, light, with client logo |
@@ -202,7 +205,6 @@ Quick index. Full markup and every style for each component is in section 9.
 
 | Component | CSS class | Size | Purpose |
 |---|---|---|---|
-| Title block | `.ds-title-block` | fluid | Section header: title, description, optional button. Starts nearly every section |
 | Case | `.ds-case-block` | min 1344px | Case study block; desktop / tablet / mobile |
 | Case outcomes | `.ds-case-outcomes-block` | min 1344px | Case metrics row |
 | CTA | `.ds-cta-block` | min 1344px | Closing call to action with two buttons |
@@ -211,7 +213,9 @@ Quick index. Full markup and every style for each component is in section 9.
 | Process | `.ds-process-block` | min 1344px | One process step: image, title, text, button |
 | Service | `.ds-service-block` | min 1344px | Service offering; wide and narrow layouts |
 | Text | `.ds-text-block` | min 1344px | Grid of Text cards |
+| Contact | `.ds-contact-block` | min 1344px | Contact section: 600x680 image on the left, 72px gap, then title, Contact form and three stats. 600 + 72 + 672 = 1344 |
 | Menu | `.ds-menu` | 1342px | Full header menu panel |
+| Title block | `.ds-title-block` | fluid | Section header: title, description, optional button. Starts nearly every section |
 
 ### Layout
 
@@ -315,6 +319,7 @@ Every value below is resolved inline in the rules that follow. This block is the
   --radius-4: 4px;
   --radius-8: 8px;
   --radius-12: 12px;
+  --radius-16: 16px;
   --radius-32: 32px;
   --radius-80: 80px;
 
@@ -373,78 +378,6 @@ Every value below is resolved inline in the rules that follow. This block is the
   /* --- Висоти кнопок (підтверджено з дизайном) --- */
   --button-height-industry: 44px;
   --button-height-play: 28px;
-}
-```
-
-
-### Components — Icons
-
-CSS-mask icons; colour comes from currentColor. Sizes 16px in buttons, 24px elsewhere
-
-Styles:
-
-```css
-.ds-icon-card {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px; /* --spacing-12 */
-  padding: 12px 16px; /* --spacing-12, --spacing-16 */
-  border: 1px solid #d9d9d9ff; /* --border-width-1, --color-border-subtle */
-  border-radius: 8px; /* --radius-8 */
-  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
-  font-size: 12px;
-  line-height: 16px;
-}
-.ds-icon {
-  display: inline-block;
-  flex: none;
-  width: 16px; /* --icon-size */
-  height: 16px; /* --icon-size */
-  background-color: currentColor;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-.ds-icon--caret {
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M8.00373 10L5 6H11L8.00373 10Z' fill='black'/%3E%3C/svg%3E"); /* --icon-caret */
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M8.00373 10L5 6H11L8.00373 10Z' fill='black'/%3E%3C/svg%3E"); /* --icon-caret */
-}
-.ds-icon--burger {
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M2 3H14' stroke='black' stroke-linecap='round'/%3E%3Cpath d='M2 8H14' stroke='black' stroke-linecap='round'/%3E%3Cpath d='M2 13H14' stroke='black' stroke-linecap='round'/%3E%3C/svg%3E"); /* --icon-burger */
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M2 3H14' stroke='black' stroke-linecap='round'/%3E%3Cpath d='M2 8H14' stroke='black' stroke-linecap='round'/%3E%3Cpath d='M2 13H14' stroke='black' stroke-linecap='round'/%3E%3C/svg%3E"); /* --icon-burger */
-}
-.ds-icon--arrow-side {
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M10 8.00373L6 5L6 11L10 8.00373Z' fill='black'/%3E %3C/svg%3E"); /* --icon-arrow-side */
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M10 8.00373L6 5L6 11L10 8.00373Z' fill='black'/%3E %3C/svg%3E"); /* --icon-arrow-side */
-}
-.ds-icon--placeholder {
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M2 14L14 2' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3Cpath d='M14 14L2 2' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3Crect x='1.5' y='1.5' width='13' height='13' stroke='black'/%3E %3C/svg%3E"); /* --icon-placeholder */
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M2 14L14 2' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3Cpath d='M14 14L2 2' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3Crect x='1.5' y='1.5' width='13' height='13' stroke='black'/%3E %3C/svg%3E"); /* --icon-placeholder */
-}
-.ds-icon--arrow-up-right {
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M4 12L12 4' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E %3Cpath d='M4 4H12V12' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E"); /* --icon-arrow-up-right */
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M4 12L12 4' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E %3Cpath d='M4 4H12V12' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E"); /* --icon-arrow-up-right */
-}
-.ds-icon--close {
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M4 11.6569L12 3.65686' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3Cpath d='M4 3.65685L12 11.6569' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E"); /* --icon-close */
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M4 11.6569L12 3.65686' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3Cpath d='M4 3.65685L12 11.6569' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E"); /* --icon-close */
-}
-.ds-icon--check {
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M4 8L6.78261 11L12 5' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E"); /* --icon-check */
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M4 8L6.78261 11L12 5' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E"); /* --icon-check */
-}
-.ds-icon--rotate-180 {
-  transform: rotate(180deg);
-}
-.ds-icon--rotate-270 {
-  transform: rotate(-90deg);
-}
-.ds-btn-block__text .ds-icon {
-  width: 16px; /* --icon-size */
-  height: 16px; /* --icon-size */
 }
 ```
 
@@ -942,6 +875,9 @@ Markup:
 Styles:
 
 ```css
+.ds-chip--plain::after {
+  content: none;
+}
 .ds-chip {
   display: inline-flex;
   align-items: center;
@@ -1139,6 +1075,8 @@ Styles:
   align-items: center;
   box-sizing: border-box;
   width: 100%;
+  /* Висота фіксована: 20 + 20 (рядок p1-20) + 20. Порожнє поле не спадається */
+  height: 60px;
   /* input-contact/padding 20px, input-contact/padding-left 8px */
   padding: 20px 20px 20px 8px; /* --spacing-20, --spacing-8 */
   background: #f4f4f4ff; /* --color-background-gray-block */
@@ -1165,18 +1103,6 @@ Styles:
 .ds-input__field.is-active,
 .ds-input__field.is-filled {
   color: #000000ff; /* --color-text-primary */
-}
-.ds-input__field.is-filled::before {
-  content: none;
-}
-.ds-input__field.is-filled .ds-input__text::after {
-  content: "";
-  display: inline-block;
-  width: 1px;
-  height: 44px;
-  margin-left: 8px; /* TODO: звірити з Figma — проміжок не названо */
-  vertical-align: middle;
-  background: #0f9549ff; /* --color-icon-brand */
 }
 .ds-input__field.is-inactive {
   color: #cdd4deff; /* --color-action-inactive-content */
@@ -1328,6 +1254,10 @@ Styles:
   width: 616px;
   aspect-ratio: 616 / 410;
 }
+.ds-media--contact {
+  width: 600px;
+  aspect-ratio: 600 / 680;
+}
 ```
 
 
@@ -1390,6 +1320,69 @@ Styles:
   display: inline-flex;
   align-items: center;
   gap: 2px; /* --spacing-2 */
+}
+```
+
+
+### Components — Progress
+
+40px step ring, 2px thick, green arc over a grey track, step number inside
+
+Markup:
+
+```html
+<span class="ds-progress ds-progress--p20"><span class="ds-progress__inner">1|5</span></span>
+<span class="ds-progress ds-progress--p40"><span class="ds-progress__inner">2|5</span></span>
+<span class="ds-progress ds-progress--p60"><span class="ds-progress__inner">3|5</span></span>
+<span class="ds-progress ds-progress--p80"><span class="ds-progress__inner">4|5</span></span>
+<span class="ds-progress ds-progress--p100"><span class="ds-progress__inner">5|5</span></span>
+```
+
+Styles:
+
+```css
+.ds-progress {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #cdd4deff; /* --color-gray-300 */
+}
+.ds-progress--p20 {
+  background: conic-gradient(#0f9549ff 0 20%, #cdd4deff 0); /* --color-icon-brand, --color-gray-300 */
+}
+.ds-progress--p40 {
+  background: conic-gradient(#0f9549ff 0 40%, #cdd4deff 0); /* --color-icon-brand, --color-gray-300 */
+}
+.ds-progress--p60 {
+  background: conic-gradient(#0f9549ff 0 60%, #cdd4deff 0); /* --color-icon-brand, --color-gray-300 */
+}
+.ds-progress--p80 {
+  background: conic-gradient(#0f9549ff 0 80%, #cdd4deff 0); /* --color-icon-brand, --color-gray-300 */
+}
+.ds-progress--p100 {
+  background: #0f9549ff; /* --color-icon-brand */
+}
+.ds-progress__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  /* 40 − 2 × 2: кільце завтовшки 2px */
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f4f4f4ff; /* --color-background-gray-block */
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  /* font.paragraph.p4-14 — Archivo 14/16 */
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  color: #000000ff; /* --color-text-primary */
 }
 ```
 
@@ -1507,6 +1500,101 @@ Styles:
 ```
 
 
+### Components — Textarea
+
+Multiline field, 144px tall, 124px caret, text starts at the top. Same states and tokens as Input
+
+Markup:
+
+```html
+<span class="ds-textarea">
+  <span class="ds-textarea__label">Default</span>
+  <span class="ds-textarea__field is-default">Placeholder</span>
+</span>
+<span class="ds-textarea">
+  <span class="ds-textarea__label">Filled</span>
+  <span class="ds-textarea__field is-filled">Placeholder</span>
+</span>
+<span class="ds-textarea">
+  <span class="ds-textarea__label">Inactive</span>
+  <span class="ds-textarea__field is-inactive">Placeholder</span>
+</span>
+<span class="ds-textarea">
+  <span class="ds-textarea__label">Error</span>
+  <span class="ds-textarea__field is-error">Placeholder<span class="ds-textarea__message">Label message</span></span>
+</span>
+```
+
+Styles:
+
+```css
+.ds-textarea {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 2px; /* --spacing-2 */
+  width: 100%;
+}
+.ds-textarea__label {
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  /* font.paragraph.p2-18 — Archivo 18/20 */
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #000000ff; /* --color-text-primary */
+}
+.ds-textarea__field {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 144px;
+  /* input-contact/padding 20px, input-contact/padding-left 8px */
+  padding: 20px 20px 20px 8px; /* --spacing-20, --spacing-8 */
+  background: #f4f4f4ff; /* --color-background-gray-block */
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  /* font.paragraph.p1-20 — Archivo 20/20 */
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #697382ff; /* --color-text-placeholder */
+}
+.ds-textarea__field::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1px;
+  height: 124px;
+  margin-top: -62px;
+  background: #0f9549ff; /* --color-icon-brand */
+}
+.ds-textarea__field.is-active,
+.ds-textarea__field.is-filled {
+  color: #000000ff; /* --color-text-primary */
+}
+.ds-textarea__field.is-inactive {
+  color: #cdd4deff; /* --color-action-inactive-content */
+}
+.ds-textarea__field.is-inactive::before {
+  background: #cdd4deff; /* --color-action-inactive-content */
+}
+.ds-textarea__field.is-error {
+  color: #dc2626ff; /* --color-action-danger */
+}
+.ds-textarea__message {
+  display: block;
+  margin-top: 2px; /* --spacing-2 */
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  /* font.caption.c2-12 — Archivo 12/12 */
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  color: #dc2626ff; /* --color-action-danger */
+}
+```
+
+
 ### Components — Toggle
 
 Binary switch, applies immediately
@@ -1544,6 +1632,78 @@ Styles:
 }
 .ds-toggle.is-active .ds-toggle__knob {
   background: #0da34eff; /* --color-action-brand-hover */
+}
+```
+
+
+### Components — Icons
+
+CSS-mask icons; colour comes from currentColor. Sizes 16px in buttons, 24px elsewhere
+
+Styles:
+
+```css
+.ds-icon-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px; /* --spacing-12 */
+  padding: 12px 16px; /* --spacing-12, --spacing-16 */
+  border: 1px solid #d9d9d9ff; /* --border-width-1, --color-border-subtle */
+  border-radius: 8px; /* --radius-8 */
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  font-size: 12px;
+  line-height: 16px;
+}
+.ds-icon {
+  display: inline-block;
+  flex: none;
+  width: 16px; /* --icon-size */
+  height: 16px; /* --icon-size */
+  background-color: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+.ds-icon--caret {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M8.00373 10L5 6H11L8.00373 10Z' fill='black'/%3E%3C/svg%3E"); /* --icon-caret */
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M8.00373 10L5 6H11L8.00373 10Z' fill='black'/%3E%3C/svg%3E"); /* --icon-caret */
+}
+.ds-icon--burger {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M2 3H14' stroke='black' stroke-linecap='round'/%3E%3Cpath d='M2 8H14' stroke='black' stroke-linecap='round'/%3E%3Cpath d='M2 13H14' stroke='black' stroke-linecap='round'/%3E%3C/svg%3E"); /* --icon-burger */
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M2 3H14' stroke='black' stroke-linecap='round'/%3E%3Cpath d='M2 8H14' stroke='black' stroke-linecap='round'/%3E%3Cpath d='M2 13H14' stroke='black' stroke-linecap='round'/%3E%3C/svg%3E"); /* --icon-burger */
+}
+.ds-icon--arrow-side {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M10 8.00373L6 5L6 11L10 8.00373Z' fill='black'/%3E %3C/svg%3E"); /* --icon-arrow-side */
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M10 8.00373L6 5L6 11L10 8.00373Z' fill='black'/%3E %3C/svg%3E"); /* --icon-arrow-side */
+}
+.ds-icon--placeholder {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M2 14L14 2' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3Cpath d='M14 14L2 2' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3Crect x='1.5' y='1.5' width='13' height='13' stroke='black'/%3E %3C/svg%3E"); /* --icon-placeholder */
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M2 14L14 2' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3Cpath d='M14 14L2 2' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3Crect x='1.5' y='1.5' width='13' height='13' stroke='black'/%3E %3C/svg%3E"); /* --icon-placeholder */
+}
+.ds-icon--arrow-up-right {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M4 12L12 4' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E %3Cpath d='M4 4H12V12' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E"); /* --icon-arrow-up-right */
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M4 12L12 4' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E %3Cpath d='M4 4H12V12' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E"); /* --icon-arrow-up-right */
+}
+.ds-icon--close {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M4 11.6569L12 3.65686' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3Cpath d='M4 3.65685L12 11.6569' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E"); /* --icon-close */
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M4 11.6569L12 3.65686' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3Cpath d='M4 3.65685L12 11.6569' stroke='black' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E"); /* --icon-close */
+}
+.ds-icon--check {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M4 8L6.78261 11L12 5' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E"); /* --icon-check */
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E %3Cpath d='M4 8L6.78261 11L12 5' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E %3C/svg%3E"); /* --icon-check */
+}
+.ds-icon--rotate-180 {
+  transform: rotate(180deg);
+}
+.ds-icon--rotate-270 {
+  transform: rotate(-90deg);
+}
+.ds-btn-block__text .ds-icon {
+  width: 16px; /* --icon-size */
+  height: 16px; /* --icon-size */
 }
 ```
 
@@ -1900,6 +2060,127 @@ Styles:
 ```
 
 
+### Cards — Contact form
+
+Stepped contact form: 672px white card, h4-36 question, grey inner block with inputs or plain chips, progress ring and nav buttons at the bottom
+
+Markup:
+
+```html
+<span class="ds-contact-form">
+  <span class="ds-contact-form__title">Almost there. Tell us more about your project.</span>
+  <span class="ds-contact-form__body">
+    <span class="ds-contact-form__group">
+      <span class="ds-contact-form__group-title">A few project details go a long way — or just hit send.</span>
+      <span class="ds-textarea">
+        <span class="ds-textarea__field is-default">About your project</span>
+      </span>
+    </span>
+    <span class="ds-btn ds-btn--primary is-default">Attach your file</span>
+    <span class="ds-contact-form__footer">
+      <span class="ds-progress ds-progress--p100"><span class="ds-progress__inner">5|5</span></span>
+      <span class="ds-contact-form__consent"><span class="ds-cb is-checked" />By sending this, you agree to our Privacy Policy.</span>
+      <span class="ds-contact-form__actions">
+        <span class="ds-btn ds-btn--icon-outline is-default">←</span>
+        <span class="ds-btn ds-btn--primary is-default">Send message</span>
+      </span>
+    </span>
+  </span>
+</span>
+```
+
+Styles:
+
+```css
+.ds-contact-form {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 672px;
+  max-width: 100%;
+  padding: 24px 8px 8px; /* --spacing-24, --spacing-8 */
+  border-radius: 16px; /* --radius-16 */
+  background: #ffffffff; /* --color-background-block */
+}
+.ds-contact-form__title {
+  display: block;
+  /* 24 = 16 + 8: вирівняно з текстом Input, у якого свій відступ 8px зліва */
+  padding: 0 24px 24px; /* --spacing-24 */
+  font-family: "Pragati Narrow", "Arial Narrow", Arial, sans-serif; /* --font-pragati */
+  /* font.heading.h4-36 — Pragati Narrow 36/32, вага 400 */
+  font-size: 36px;
+  line-height: 32px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: #000000ff; /* --color-text-primary */
+}
+.ds-contact-form__body {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 24px; /* --spacing-24 */
+  padding: 16px; /* --spacing-16 */
+  /* 16 − 8 = 8: вкладений радіус концентричний зовнішньому */
+  border-radius: 8px; /* --radius-8 */
+  background: #f4f4f4ff; /* --color-background-gray-block */
+}
+.ds-contact-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* TODO: звірити з Figma — виміряно з макета */
+}
+.ds-contact-form__group-title {
+  display: block;
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  /* font.heading.h6-20 — Archivo 20/24, вага 500 */
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: #000000ff; /* --color-text-primary */
+}
+.ds-contact-form__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* TODO: звірити з Figma — виміряно з макета */
+  /* +8px, як і в заголовка групи */
+  padding: 0 8px; /* --spacing-8 */
+}
+.ds-contact-form__body > .ds-btn {
+  align-self: flex-start;
+  margin-left: 8px; /* --spacing-8 */
+}
+.ds-contact-form__footer {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  gap: 16px; /* --spacing-16 */
+  /* +8px, щоб кільце стало на одну вертикаль із текстом Input */
+  padding: 0 8px; /* --spacing-8 */
+  margin-top: auto;
+}
+.ds-contact-form__consent {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* --spacing-12 */
+  /* ширина підібрана так, щоб рядок ламався після «agree» */
+  max-width: 200px;
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  /* font.paragraph.p4-14 — Archivo 14/16 */
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  color: #697382ff; /* --color-text-placeholder */
+}
+.ds-contact-form__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* --spacing-8 */
+  margin-left: auto;
+}
+```
+
+
 ### Cards — Number
 
 Numbered step with badge
@@ -2204,65 +2485,6 @@ Styles:
 ```
 
 
-### Blocks — Title block
-
-Section header: title, description, optional button. Starts nearly every section
-
-Markup:
-
-```html
-<span class="ds-title-block">
-  <span class="ds-title-block__title">Title</span>
-  <span class="ds-title-block__desc">Description</span>
-  <span class="ds-title-block__action"><span class="ds-btn ds-btn--primary is-default">All case studies</span></span>
-</span>
-```
-
-Styles:
-
-```css
-.ds-title-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-.ds-title-block__title {
-  max-width: 672px;
-  font-family: "Pragati Narrow", "Arial Narrow", Arial, sans-serif; /* --font-pragati */
-  /* font.heading.h2-56 — Pragati Narrow 56/48, вага 400 */
-  font-size: 56px;
-  line-height: 48px;
-  font-weight: 400;
-  letter-spacing: -0.5px;
-  color: #000000ff; /* --color-text-primary */
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.ds-title-block__desc {
-  max-width: 640px;
-  margin-top: 24px; /* --spacing-24 */
-  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
-  /* font.heading.h6-20 — Archivo 20/24, вага 500 */
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 500;
-  letter-spacing: -0.5px;
-  color: #000000ff; /* --color-text-primary */
-  display: -webkit-box;
-  -webkit-line-clamp: 6;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.ds-title-block__action {
-  display: block;
-  margin-top: 24px; /* --spacing-24 */
-}
-```
-
-
 ### Blocks — Case
 
 Case study block; desktop / tablet / mobile
@@ -2535,6 +2757,8 @@ Styles:
 }
 .ds-cta-block__desc {
   display: block;
+  /* +8px, щоб стати на одну вертикаль із текстом Input */
+  padding: 0 8px; /* --spacing-8 */
   font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
   /* font.heading.h6-20 — Archivo 20/24, вага 500 */
   font-size: 20px;
@@ -3048,6 +3272,123 @@ Styles:
 ```
 
 
+### Blocks — Contact
+
+Contact section: 600x680 image on the left, 72px gap, then title, Contact form and three stats. 600 + 72 + 672 = 1344
+
+Markup:
+
+```html
+<span class="ds-contact-block">
+  <span class="ds-media ds-media--contact ds-contact-block__media" />
+  <span class="ds-contact-block__main">
+    <span class="ds-contact-block__title">Let's create something epic together.</span>
+    <span class="ds-contact-form">
+      <span class="ds-contact-form__title">Nice to meet you, Ostap Oshurko. Where can we reach you?</span>
+      <span class="ds-contact-form__body">
+        <span class="ds-input">
+          <span class="ds-input__label">Enter your company name *</span>
+          <span class="ds-input__field is-filled"><span class="ds-input__text">Lazarev</span></span>
+        </span>
+        <span class="ds-input">
+          <span class="ds-input__label">Enter your job title</span>
+          <span class="ds-input__field is-filled"><span class="ds-input__text">Lead</span></span>
+        </span>
+        <span class="ds-contact-form__footer">
+          <span class="ds-progress ds-progress--p40"><span class="ds-progress__inner">2|5</span></span>
+          <span class="ds-contact-form__actions">
+            <span class="ds-btn ds-btn--icon-outline is-default">←</span>
+            <span class="ds-btn ds-btn--icon is-default">→</span>
+          </span>
+        </span>
+      </span>
+    </span>
+    <span class="ds-contact-block__stats">
+      <span class="ds-contact-block__stat">
+        <span class="ds-contact-block__stat-value">2015</span>
+        <span class="ds-contact-block__stat-label">founded, 10+ years of experience</span>
+      </span>
+      <span class="ds-contact-block__stat">
+        <span class="ds-contact-block__stat-value">★★★★★</span>
+        <span class="ds-contact-block__stat-label">Trusted by over 600 companies of all sizes</span>
+      </span>
+      <span class="ds-contact-block__stat">
+        <span class="ds-contact-block__stat-value">$500M+</span>
+        <span class="ds-contact-block__stat-label">in funding secured for our clients</span>
+      </span>
+    </span>
+  </span>
+</span>
+```
+
+Styles:
+
+```css
+.ds-contact-block {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  gap: 72px; /* --spacing-72 */
+  width: 100%;
+  min-width: 1344px;
+}
+.ds-contact-block__media {
+  flex: none;
+}
+.ds-contact-block__main {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  flex: none;
+  width: 672px;
+}
+.ds-contact-block__title {
+  display: block;
+  /* TODO: звірити з Figma — 74px немає у шкалі, найближче 72 */
+  margin-bottom: 74px;
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  /* font.heading.h6-20 — Archivo 20/24, вага 500 */
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: #000000ff; /* --color-text-primary */
+}
+.ds-contact-block__stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  gap: 24px; /* --spacing-24 */
+  margin-top: 16px; /* --spacing-16 */
+}
+.ds-contact-block__stat {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  gap: 8px; /* --spacing-8 */
+}
+.ds-contact-block__stat-value {
+  flex: none;
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  /* font.heading.h5-24 — Archivo 24/24, вага 500 */
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: #000000ff; /* --color-text-primary */
+}
+.ds-contact-block__stat-label {
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  /* font.caption.c2-12 — Archivo 12/12 */
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  color: #000000ff; /* --color-text-primary */
+}
+```
+
+
 ### Blocks — Menu
 
 Full header menu panel
@@ -3233,6 +3574,65 @@ Styles:
   display: flex;
   flex-direction: column;
   gap: 16px; /* --spacing-16 */
+}
+```
+
+
+### Blocks — Title block
+
+Section header: title, description, optional button. Starts nearly every section
+
+Markup:
+
+```html
+<span class="ds-title-block">
+  <span class="ds-title-block__title">Title</span>
+  <span class="ds-title-block__desc">Description</span>
+  <span class="ds-title-block__action"><span class="ds-btn ds-btn--primary is-default">All case studies</span></span>
+</span>
+```
+
+Styles:
+
+```css
+.ds-title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.ds-title-block__title {
+  max-width: 672px;
+  font-family: "Pragati Narrow", "Arial Narrow", Arial, sans-serif; /* --font-pragati */
+  /* font.heading.h2-56 — Pragati Narrow 56/48, вага 400 */
+  font-size: 56px;
+  line-height: 48px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: #000000ff; /* --color-text-primary */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.ds-title-block__desc {
+  max-width: 640px;
+  margin-top: 24px; /* --spacing-24 */
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  /* font.heading.h6-20 — Archivo 20/24, вага 500 */
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: #000000ff; /* --color-text-primary */
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.ds-title-block__action {
+  display: block;
+  margin-top: 24px; /* --spacing-24 */
 }
 ```
 

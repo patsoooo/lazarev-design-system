@@ -1,0 +1,149 @@
+---
+title: "Contact"
+description: "Блок контакту: зображення, форма, показники під нею."
+---
+
+<div className="ds-preview ds-preview--s05">
+  <span className="ds-preview__stage"><span className="ds-contact-block"><span className="ds-media ds-media--contact ds-contact-block__media" /><span className="ds-contact-block__main"><span className="ds-contact-block__title">Let's create something epic together.</span><span className="ds-contact-form"><span className="ds-contact-form__title">Nice to meet you, Ostap Oshurko. Where can we reach you?</span><span className="ds-contact-form__body"><span className="ds-input"><span className="ds-input__label">Enter your company name *</span><span className="ds-input__field is-filled"><span className="ds-input__text">Lazarev</span></span></span><span className="ds-input"><span className="ds-input__label">Enter your job title</span><span className="ds-input__field is-filled"><span className="ds-input__text">Lead</span></span></span><span className="ds-contact-form__footer"><span className="ds-progress ds-progress--p40"><span className="ds-progress__inner">2|5</span></span><span className="ds-contact-form__actions"><span className="ds-btn ds-btn--icon-outline is-default">←</span><span className="ds-btn ds-btn--icon is-default">→</span></span></span></span></span><span className="ds-contact-block__stats"><span className="ds-contact-block__stat"><span className="ds-contact-block__stat-value">2015</span><span className="ds-contact-block__stat-label">founded, 10+ years of experience</span></span><span className="ds-contact-block__stat"><span className="ds-contact-block__stat-value">★★★★★</span><span className="ds-contact-block__stat-label">Trusted by over 600 companies of all sizes</span></span><span className="ds-contact-block__stat"><span className="ds-contact-block__stat-value">$500M+</span><span className="ds-contact-block__stat-label">in funding secured for our clients</span></span></span></span></span></span>
+</div>
+
+Блок, у якому живе [Contact form](/cards/contact-form). Ліворуч зображення, праворуч заголовок, форма й ряд показників під нею.
+
+Показники тут не прикраса: вони відповідають на заперечення, яке виникає рівно в момент заповнення форми — чи варто цим людям писати.
+
+## Збірка
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-contact-block">
+    <span className="ds-media ds-media--contact ds-contact-block__media" />
+    <span className="ds-contact-block__main">
+      <span className="ds-contact-block__title">Let's create something epic together.</span>
+      <span className="ds-contact-form">
+        <span className="ds-contact-form__title">Nice to meet you, Ostap Oshurko. Where can we reach you?</span>
+        <span className="ds-contact-form__body">
+          <span className="ds-input">
+            <span className="ds-input__label">Enter your company name *</span>
+            <span className="ds-input__field is-filled"><span className="ds-input__text">Lazarev</span></span>
+          </span>
+          <span className="ds-input">
+            <span className="ds-input__label">Enter your job title</span>
+            <span className="ds-input__field is-filled"><span className="ds-input__text">Lead</span></span>
+          </span>
+          <span className="ds-contact-form__footer">
+            <span className="ds-progress ds-progress--p40"><span className="ds-progress__inner">2|5</span></span>
+            <span className="ds-contact-form__actions">
+              <span className="ds-btn ds-btn--icon-outline is-default">←</span>
+              <span className="ds-btn ds-btn--icon is-default">→</span>
+            </span>
+          </span>
+        </span>
+      </span>
+      <span className="ds-contact-block__stats">
+        <span className="ds-contact-block__stat">
+          <span className="ds-contact-block__stat-value">2015</span>
+          <span className="ds-contact-block__stat-label">founded, 10+ years of experience</span>
+        </span>
+        <span className="ds-contact-block__stat">
+          <span className="ds-contact-block__stat-value">★★★★★</span>
+          <span className="ds-contact-block__stat-label">Trusted by over 600 companies of all sizes</span>
+        </span>
+        <span className="ds-contact-block__stat">
+          <span className="ds-contact-block__stat-value">$500M+</span>
+          <span className="ds-contact-block__stat-label">in funding secured for our clients</span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+
+## Сітка
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Ширина блоку | 1344px | немає |
+| Зображення | 600 × 680px | немає |
+| Проміжок між колонками | 72px | `primitives.spacing.72px` |
+| Права колонка | 672px | немає |
+
+</div>
+
+Проміжок **виведений, а не заданий**: 1344 − 600 − 672 = **72**. Значення є у шкалі `primitives.spacing`, тож сітка закривається без залишку.
+
+Ширина правої колонки дорівнює ширині [Contact form](/cards/contact-form) — форма задає колонку, а не навпаки.
+
+Колонки вирівняні **по центру вертикалі**. Зображення має фіксовану висоту 680px, а права колонка росте разом із кроком форми, тож верхні краї в них не збігаються.
+
+<Warning>
+  Співвідношення зображення 600 / 680 — **вертикальне**, 0,88. Це п'ята пропорція в системі: у [Media](/components/media) вже є 1,504, а по блоках ходять 1,59, 16:9 і 14:9. [Уточнити], чи це справді окремий формат.
+</Warning>
+
+## Відступи
+
+<div className="ds-table">
+
+| Між чим | Значення | Токен |
+| --- | --- | --- |
+| Заголовком і формою | 74px | немає |
+| Формою і показниками | 16px | `primitives.spacing.16px` |
+| Числом і підписом у показнику | 8px | `primitives.spacing.8px` |
+
+</div>
+
+<Warning>
+  74px **немає у шкалі** `primitives.spacing`. Найближче значення — 72px, те саме, що й проміжок між колонками. Або заведіть 74, або замініть на 72 — [уточнити].
+</Warning>
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Стиль або розмір | Колір |
+| --- | --- | --- |
+| Зображення | 600 × 680px | — |
+| Заголовок | `font.heading.h6-20` — 20 / 24 | <span className="ds-sw ds-sw--text-primary" /> `color/text/primary` |
+| Форма | [Contact form](/cards/contact-form), 672px | — |
+| Число показника | `font.heading.h5-24` — 24 / 24 | <span className="ds-sw ds-sw--text-primary" /> `color/text/primary` |
+| Підпис показника | `font.caption.c2-12` — 12 / 12 | <span className="ds-sw ds-sw--text-primary" /> `color/text/primary` |
+
+</div>
+
+Показників три, вони розтягнуті по ширині колонки. Число й підпис стоять поруч, а не один під одним, і вирівняні по центру вертикалі: підпис у два рядки по 12px дає рівно ту саму висоту, що й число на 24px.
+
+<Warning>
+  Другий показник замість числа має п'ять зірок. Іконки зірки в [Icons](/foundations/icons) немає — у прикладі підставлені символи. [Уточнити] і додати SVG.
+</Warning>
+
+## Токени
+
+<Warning>
+  Власної групи токенів у блоку немає. Ні ширин 600 і 672, ні висоти 680, ні відступу 74px в експорті не існує.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Зображення | Візуальна частина ліворуч | Так |
+| Заголовок | Один рядок над формою | Так |
+| Форма | Contact form із поточним кроком | Так |
+| Показники | Три пари «число — підпис» | Так |
+
+## Правила
+
+<Check>
+  Тримайте заголовок коротким. На 20 / 24 і ширині 672px це два рядки максимум.
+</Check>
+
+<Check>
+  Лишайте показники видимими на всіх кроках форми. Вони працюють саме тоді, коли користувач вагається заповнювати.
+</Check>
+
+<Warning>
+  Не замінюйте зображення на щось із текстом. Воно вертикальне й високе, текст у ньому буде нечитабельним поруч із формою.
+</Warning>
+
+<Warning>
+  Адаптація блоку не описана. Зображення «адаптується залежно від пристрою», але як саме — [уточнити].
+</Warning>

@@ -1,0 +1,240 @@
+---
+title: "Contact form"
+description: "Покрокова контактна форма: картка, сірий блок, прогрес, навігація."
+---
+
+<div className="ds-preview ds-preview--s07">
+  <span className="ds-preview__stage"><span className="ds-contact-form"><span className="ds-contact-form__title">Before we start, what's your name?</span><span className="ds-contact-form__body"><span className="ds-input"><span className="ds-input__label">Enter your name *</span><span className="ds-input__field is-default"><span className="ds-input__text">e.g. Alex Morgan</span></span></span><span className="ds-input"><span className="ds-input__label">Enter your email *</span><span className="ds-input__field is-default"><span className="ds-input__text">e.g. alex@company.com</span></span></span><span className="ds-contact-form__footer"><span className="ds-progress ds-progress--p20"><span className="ds-progress__inner">1|5</span></span><span className="ds-contact-form__actions"><span className="ds-btn ds-btn--icon is-inactive">→</span></span></span></span></span></span>
+</div>
+
+Контактна форма, розбита на кроки. На кожному кроці — питання в заголовку, поля або варіанти відповіді в сірому блоці, а внизу кільце прогресу й кнопки навігації.
+
+Форма веде діалог: заголовок наступного кроку підхоплює те, що користувач щойно ввів.
+
+## Збірка
+
+<div className="ds-btn-row">
+  <span className="ds-contact-form">
+    <span className="ds-contact-form__title">Before we start, what's your name?</span>
+    <span className="ds-contact-form__body">
+      <span className="ds-input">
+        <span className="ds-input__label">Enter your name *</span>
+        <span className="ds-input__field is-filled"><span className="ds-input__text">Ostap Oshurko</span></span>
+      </span>
+      <span className="ds-input">
+        <span className="ds-input__label">Enter your email *</span>
+        <span className="ds-input__field is-filled"><span className="ds-input__text">patso1912@gmail.com</span></span>
+      </span>
+      <span className="ds-contact-form__footer">
+        <span className="ds-progress ds-progress--p20"><span className="ds-progress__inner">1|5</span></span>
+        <span className="ds-contact-form__actions">
+          <span className="ds-btn ds-btn--icon is-default">→</span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+
+## Картка
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Ширина | 672px | немає |
+| Фон | <span className="ds-sw ds-sw--background-block" /> `color/background/block` | — |
+| Заокруглення | 16px | немає |
+| Внутрішній відступ | 24px згори, по 8px з боків і знизу | немає |
+
+</div>
+
+Відступи навмисно нерівні: 24px згори відділяють заголовок, а 8px решти — це лише рамка навколо сірого блоку.
+
+## Заголовок
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Стиль | `font.heading.h4-36` — 36 / 32 | — |
+| Колір | <span className="ds-sw ds-sw--text-primary" /> `color/text/primary` | — |
+| Внутрішній відступ | 0 згори, 24px з боків, 24px знизу | немає |
+
+</div>
+
+Усі бічні відступи підігнані під одну вертикаль — під **текст усередині Input**. Поле має власний відступ 8px зліва, тож решта елементів мусить його врахувати:
+
+<div className="ds-table">
+
+| Елемент | Відступ від краю картки | Складається з |
+| --- | --- | --- |
+| Текст [Input](/components/input) | 32px | 8 картка + 16 блок + 8 поле |
+| Заголовок картки | 32px | 8 картка + 24 власний |
+| Заголовок групи, чипи, нижній рядок | 32px | 8 картка + 16 блок + 8 власний |
+
+</div>
+
+Без цих додаткових 8px заголовки й чипи стояли б на 8px лівіше за текст полів.
+
+## Сірий блок
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Фон | <span className="ds-sw ds-sw--background-gray-block" /> `color/background/gray-block` | — |
+| Внутрішній відступ | 16px | немає |
+| Заокруглення | 8px | немає |
+| Проміжок між групами | 24px | немає |
+
+</div>
+
+Заокруглення **виведене, а не задане**: 16px картки мінус 8px її відступу дають 8px. Так вкладений кут концентричний зовнішньому.
+
+<Warning>
+  Фон сірого блоку збігається з фоном [Input](/components/input) — обидва `background.gray-block`, #f4f4f4. Тому поля на ньому не видно як окремих прямокутників: від поля лишається тільки каретка й текст. Це навмисно чи збіг — [уточнити].
+</Warning>
+
+### Заголовок групи
+
+Коли в сірому блоці є власний заголовок, він набирається **20px**.
+
+<div className="ds-btn-row">
+  <span className="ds-contact-form">
+    <span className="ds-contact-form__title">What are you looking for?</span>
+    <span className="ds-contact-form__body">
+      <span className="ds-contact-form__group">
+        <span className="ds-contact-form__group-title">Pick your goal, and let's move on *</span>
+        <span className="ds-contact-form__chips">
+          <span className="ds-chip ds-chip--plain is-default">Start project</span>
+          <span className="ds-chip ds-chip--plain is-default">Need help with my project</span>
+          <span className="ds-chip ds-chip--plain is-active">Just looking around</span>
+          <span className="ds-chip ds-chip--plain is-default">Something else</span>
+        </span>
+      </span>
+      <span className="ds-contact-form__footer">
+        <span className="ds-progress ds-progress--p60"><span className="ds-progress__inner">3|5</span></span>
+        <span className="ds-contact-form__actions">
+          <span className="ds-btn ds-btn--icon-outline is-default">←</span>
+          <span className="ds-btn ds-btn--icon is-default">→</span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+
+Варіанти відповіді — це [Chips](/components/chips) **без іконки**, варіант `--plain`. Обраний чип переходить у стан Active. На кроці з бюджетом і термінами груп дві, кожна зі своїм заголовком і своїм рядом чипів.
+
+## Нижній рядок
+
+Притиснутий до низу сірого блоку. Ліворуч — кільце прогресу, праворуч — навігація.
+
+<div className="ds-table">
+
+| Крок | Кільце | Кнопки |
+| --- | --- | --- |
+| 1 | 1\|5 | лише вперед |
+| 2–4 | 2\|5 … 4\|5 | назад і вперед |
+| 5 | 5\|5, кільце повне | назад і Send message |
+
+</div>
+
+Кнопка вперед неактивна, поки обов'язкові поля кроку не заповнені: це `Icon-primary button` у стані Inactive. Кнопка назад — `Icon-secondary button`, вона активна завжди. Обидві з [Button](/components/button), по 40px.
+
+### Кільце прогресу
+
+Індикатор кроку — окремий компонент [Progress](/components/progress), 40px.
+
+
+## Останній крок
+
+<div className="ds-btn-row">
+  <span className="ds-contact-form">
+    <span className="ds-contact-form__title">Almost there. Tell us more about your project.</span>
+    <span className="ds-contact-form__body">
+      <span className="ds-contact-form__group">
+        <span className="ds-contact-form__group-title">A few project details go a long way — or just hit send.</span>
+        <span className="ds-textarea">
+          <span className="ds-textarea__field is-default">About your project</span>
+        </span>
+      </span>
+      <span className="ds-btn ds-btn--primary is-default">Attach your file</span>
+      <span className="ds-contact-form__footer">
+        <span className="ds-progress ds-progress--p100"><span className="ds-progress__inner">5|5</span></span>
+        <span className="ds-contact-form__consent"><span className="ds-cb is-checked" />By sending this, you agree to our Privacy Policy.</span>
+        <span className="ds-contact-form__actions">
+          <span className="ds-btn ds-btn--icon-outline is-default">←</span>
+          <span className="ds-btn ds-btn--primary is-default">Send message</span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+
+На останньому кроці з'являються три речі, яких немає на попередніх: багаторядкове поле, кнопка приєднання файлу і згода з політикою.
+
+<div className="ds-table">
+
+| Елемент | Компонент | Примітка |
+| --- | --- | --- |
+| Багаторядкове поле | [Textarea](/components/textarea) | Висота 144px, каретка 124px |
+| Attach your file | Primary button | З іконкою файла |
+| Згода | [Checkbox](/components/checkbox) плюс текст | Текст `p4-14`, колір `text/placeholder` |
+| Send message | Primary button | Замість кнопки вперед |
+
+</div>
+
+<Warning>
+  У макеті чекбокс згоди **круглий**, а [Checkbox](/components/checkbox) системи — квадрат із заокругленням 8px. Або це інший компонент, або чекбокс має варіант — [уточнити].
+</Warning>
+
+<Warning>
+  Іконки файла для кнопки «Attach your file» в [Icons](/foundations/icons) немає, як і стрілок ← та → для навігації. У прикладах вони підставлені символами — [уточнити] і додати SVG.
+</Warning>
+
+## Чого бракує
+
+<div className="ds-table">
+
+| Що | Стан |
+| --- | --- |
+| Група токенів форми | немає жодного — ні `contact-form`, ні `form` |
+| Мінімальна висота картки | [уточнити] |
+| Проміжок заголовок групи — контент | 16px, виміряно з макета |
+| Ширина тексту згоди | 200px, підібрано під перенос після «agree» |
+| Проміжок між чипами | 8px, виміряно з макета |
+| Ряд статистики під карткою | у макеті є, але ви його не описували |
+| Адаптація | [уточнити] |
+
+</div>
+
+<Warning>
+  У макеті між заголовком картки і сірим блоком простір більший за 24px, причому різний на різних кроках. Схоже, картка має мінімальну висоту, а сірий блок притиснутий до низу. Значення ви не називали — у прикладах блок іде одразу за заголовком.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Картка | Біла основа з заокругленням 16px | Так |
+| Заголовок | Питання кроку, h4-36 | Так |
+| Сірий блок | Контейнер вмісту кроку | Так |
+| Заголовок групи | Підпис над полями або чипами, 20px | Ні |
+| Поля або чипи | Вміст кроку | Так |
+| Кільце прогресу | Номер кроку і заповнення | Так |
+| Кнопки навігації | Назад і вперед | Вперед — так, назад — з другого кроку |
+| Згода | Чекбокс із політикою | Лише на останньому кроці |
+
+## Правила
+
+<Check>
+  Тримайте кнопку вперед неактивною, поки обов'язкові поля кроку порожні. Це єдиний сигнал, що крок ще не завершений.
+</Check>
+
+<Check>
+  Підхоплюйте відповідь користувача в заголовку наступного кроку. «Nice to meet you, Ostap Oshurko» працює краще за «Step 2 of 5».
+</Check>
+
+<Warning>
+  Не додавайте на крок більше двох груп. На кроці з бюджетом і термінами їх дві, і це вже межа для картки 672px.
+</Warning>
