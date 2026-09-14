@@ -12,12 +12,14 @@ Never invent a value that is not listed here.
 | Size | Canvas | Side padding | Container |
 |---|---|---|---|
 | Desktop | 1440px | 48px | **1344px** |
-| Tab-md | 844px | 24px | **796px** |
-| Mob-sm | 430px | 24px | **382px** |
+| Tablet | 844px | 24px | **796px** |
+| Mobile | 430px | 24px | **382px** |
 
 - Container = canvas minus two side paddings. No token for any of these.
 - There is no horizontal column grid. A page is a stack of blocks, each filling the container.
 - Blocks lay out their own contents.
+- There are FOUR responsive modes in Figma: desktop, tab-large, tab, mob. Canvas widths
+  are known for three of them; `tab-large` is not documented yet.
 - Breakpoint thresholds are UNKNOWN. 1440 / 844 / 430 are canvas widths, not media query values.
 
 ## 2. Header
@@ -26,7 +28,7 @@ Never invent a value that is not listed here.
 - 24px from the top, 48px from the sides, width 1344px, height 40px.
 - Total vertical space it occupies: **88px** = 24 + 40 + 24. Token: `blocks/hero/header-offset`.
 - The first block must leave 88px for it.
-- On Tab-md the link row collapses into a "Menu" button.
+- On Tablet the link row collapses into a "Menu" button.
 
 ## 3. Vertical rhythm
 
@@ -39,7 +41,7 @@ Never invent a value that is not listed here.
 Spacing is carried by the block's own top padding, never by a gap between blocks.
 Blocks have no bottom padding. Block order can change without recalculating distances.
 
-Desktop only — rhythm on Tab-md and Mob-sm is not confirmed.
+Desktop only — rhythm on Tablet and Mobile is not confirmed.
 
 ## 4. Page composition
 
@@ -143,6 +145,18 @@ Site typography. Headings h1–h4 are Pragati Narrow, h5–h6 and body are Archi
 Article typography is a separate scale. Article h1 and quotes are Instrument Serif —
 the only place that face is used. Article body is 20/28, larger than site body 16/20.
 
+The article scale has FOUR responsive modes in Figma. Sizes:
+
+| Role | desktop | tab-large | tab | mob |
+|---|---|---|---|---|
+| h1 | 64 | 64 | 56 | 46 |
+| lead | 24 | 24 | 18 | 18 |
+| body-1 | 20 | 20 | 16 | 16 |
+| body-2 | 16 | 16 | 14 | 14 |
+| quote | 36 | 36 | 32 | 28 |
+
+The table below is the **desktop** mode. Line heights are known for desktop and mob only.
+
 | Token | Family | Size / line-height | Weight |
 |---|---|---|---|
 | `article.body.b1-bold-20` | Archivo | 20 / 28 | 700 |
@@ -190,7 +204,7 @@ Quick index. Full markup and every style for each component is in section 9.
 | Component | CSS class | Size | Purpose |
 |---|---|---|---|
 | Article | `.ds-article-card` | 312px | Article teaser; S 312 / M 388 / L 616 |
-| Article menu | `.ds-card-am` | fluid | Article teaser inside the header menu |
+| Article row | `.ds-article-row` | fluid | Horizontal article card: 159x100 preview, optional tag+date line, title, arrow button. Used in the header submenu and in the Articles block |
 | Award | `.ds-award-card` | 324px | Award name, year, project |
 | Bullet point | `.ds-bullet-card` | 400px | Green dot marker plus one paragraph |
 | Case | `.ds-case-card` | 312px | Case teaser; S 312 / L 616 |
@@ -205,6 +219,8 @@ Quick index. Full markup and every style for each component is in section 9.
 
 | Component | CSS class | Size | Purpose |
 |---|---|---|---|
+| Articles | `.ds-articles-block` | min 1344px | Topics section: Title block with description, then a 2x2 grid of Article row cards, 16px gaps. 664 x 2 + 16 = 1344 |
+| Awards | `.ds-awards-block` | min 1344px · h 870px | Awards section, 870px tall: Title block at the top, four 324px Award cards pinned to the bottom, animated 3D scene between them. 324 x 4 + 16 x 3 = 1344 |
 | Case | `.ds-case-block` | min 1344px | Case study block; desktop / tablet / mobile |
 | Case outcomes | `.ds-case-outcomes-block` | min 1344px | Case metrics row |
 | CTA | `.ds-cta-block` | min 1344px | Closing call to action with two buttons |
@@ -212,6 +228,7 @@ Quick index. Full markup and every style for each component is in section 9.
 | Outcomes | `.ds-outcomes-block` | min 1344px | Dark block holding Outcomes cards |
 | Process | `.ds-process-block` | min 1344px | One process step: image, title, text, button |
 | Service | `.ds-service-block` | min 1344px | Service offering; wide and narrow layouts |
+| Testimonials | `.ds-testimonials-block` | min 1344px | Testimonials section: Title block, then two 664px cards side by side. 664 x 2 + 16 = 1344 |
 | Text | `.ds-text-block` | min 1344px | Grid of Text cards |
 | Contact | `.ds-contact-block` | min 1344px | Contact section: 600x680 image on the left, 72px gap, then title, Contact form and three stats. 600 + 72 + 672 = 1344 |
 | Menu | `.ds-menu` | 1342px | Full header menu panel |
@@ -221,8 +238,8 @@ Quick index. Full markup and every style for each component is in section 9.
 
 | Component | CSS class | Size | Purpose |
 |---|---|---|---|
-| Header | `.ds-header` | min 1344px | Fixed top bar: logo, links, button |
 | Footer | `.ds-footer` | 1342px | Three stacked blocks: contacts, services, legal |
+| Header | `.ds-header` | min 1344px | Fixed top bar: logo, links, button |
 
 ### Pages
 
@@ -234,13 +251,13 @@ Quick index. Full markup and every style for each component is in section 9.
 
 | Component | CSS class | Size | Purpose |
 |---|---|---|---|
-| Layout | `.ds-article-grid` | min 1344px | Two columns: 992 body, 336 aside, gap 16 |
-| Typography | `.ds-art-` | — | h2/h3/h4, lead, body, bullet, number list — each carries its own padding |
-| Title block | `.ds-article-title` | min 992px | Article header: tag, date, h1, author, reading time |
 | Attention block | `.ds-attention-block` | fluid | Callout with a green hairline on the left |
+| Layout | `.ds-article-grid` | min 1344px | Two columns: 992 body, 336 aside, gap 16 |
+| Navigation | `.ds-toc` | 336px | Table of contents with reading progress |
 | Quote | `.ds-art-quote-block` | fluid | Serif quote with author |
 | Table | `.ds-art-table` | min 992px | Header row plus data rows, 2px apart |
-| Navigation | `.ds-toc` | 336px | Table of contents with reading progress |
+| Title block | `.ds-article-title` | min 992px | Article header: tag, date, h1, author, reading time |
+| Typography | `.ds-art-` | — | h2/h3/h4, lead, body, bullet, number list — each carries its own padding |
 
 ## 9. Full component specifications
 
@@ -313,6 +330,8 @@ Every value below is resolved inline in the rules that follow. This block is the
   --spacing-64: 64px;
   --spacing-72: 72px;
   --spacing-128: 128px;
+  --spacing-180: 180px;
+  --spacing-220: 220px;
   --spacing-48: 48px;
 
   /* --- Радіуси: primitives.radius.* --- */
@@ -1494,6 +1513,9 @@ Styles:
 .ds-tag + .ds-tag::before {
   content: none;
 }
+.ds-tag:last-child::after {
+  content: none;
+}
 .ds-tag.is-default {
   color: #697382ff; /* --color-action-inactive */
 }
@@ -1829,16 +1851,22 @@ Styles:
 ```
 
 
-### Cards — Article menu
+### Cards — Article row
 
-Article teaser inside the header menu
+Horizontal article card: 159x100 preview, optional tag+date line, title, arrow button. Used in the header submenu and in the Articles block
 
 Markup:
 
 ```html
-<span class="ds-card-am">
+<span class="ds-article-row">
   <span class="ds-media ds-media--s" />
-  <span class="ds-card-am__title">Як дизайн-система скорочує шлях від макета до продакшену і чому інвентаризація токенів має передувати першому написаному рядку коду в проєкті</span>
+  <span class="ds-article-row__main">
+    <span class="ds-card-meta">
+      <span class="ds-tag is-default">Tag</span>
+      <span class="ds-card-date">04 May 2026</span>
+    </span>
+    <span class="ds-article-row__title">Web design principles, tools, and best practices</span>
+  </span>
   <span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--arrow-up-right" /></span>
 </span>
 ```
@@ -1846,7 +1874,7 @@ Markup:
 Styles:
 
 ```css
-.ds-card-am {
+.ds-article-row {
   display: flex;
   align-items: flex-start;
   box-sizing: border-box;
@@ -1857,13 +1885,21 @@ Styles:
   border-radius: 4px; /* --radius-4 */
   background: #ffffffff; /* --color-background-block */
 }
-.ds-card-am .ds-media {
+.ds-article-row .ds-media {
   flex: none;
   width: 159px;
   aspect-ratio: 159 / 100;
 }
-.ds-card-am__title {
+.ds-article-row__main {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
   flex: 1;
+  min-width: 0;
+  /* card/card-article/tag-title-gap */
+  gap: 12px; /* --spacing-12 */
+}
+.ds-article-row__title {
   min-width: 0;
   font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
   /* font.heading.h6-20 — Archivo 20/24, вага 500, трекінг -0.5 */
@@ -2481,6 +2517,191 @@ Styles:
   line-height: 20px;
   font-weight: 400;
   color: #000000ff; /* --color-text-primary */
+}
+```
+
+
+### Blocks — Articles
+
+Topics section: Title block with description, then a 2x2 grid of Article row cards, 16px gaps. 664 x 2 + 16 = 1344
+
+Markup:
+
+```html
+<span class="ds-articles-block">
+  <span class="ds-title-block">
+    <span class="ds-title-block__title">What we write about</span>
+    <span class="ds-title-block__desc">Practical design knowledge across AI products, UX/UI, product strategy, growth &amp; CRO, research, and industry teardowns</span>
+  </span>
+  <span class="ds-articles-block__grid">
+    <span class="ds-article-row">
+      <span class="ds-media ds-media--s" />
+      <span class="ds-article-row__main">
+        <span class="ds-card-meta"><span class="ds-tag is-default">Tag</span></span>
+        <span class="ds-article-row__title">Web design principles, tools, and best practices</span>
+      </span>
+      <span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--arrow-up-right" /></span>
+    </span>
+    <span class="ds-article-row">
+      <span class="ds-media ds-media--s" />
+      <span class="ds-article-row__main">
+        <span class="ds-card-meta"><span class="ds-tag is-default">Tag</span></span>
+        <span class="ds-article-row__title">UX/UI design insights and resources</span>
+      </span>
+      <span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--arrow-up-right" /></span>
+    </span>
+    <span class="ds-article-row">
+      <span class="ds-media ds-media--s" />
+      <span class="ds-article-row__main">
+        <span class="ds-card-meta"><span class="ds-tag is-default">Tag</span></span>
+        <span class="ds-article-row__title">Research and strategy: the foundation of every successful product</span>
+      </span>
+      <span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--arrow-up-right" /></span>
+    </span>
+    <span class="ds-article-row">
+      <span class="ds-media ds-media--s" />
+      <span class="ds-article-row__main">
+        <span class="ds-card-meta"><span class="ds-tag is-default">Tag</span></span>
+        <span class="ds-article-row__title">Mobile design: the ultimate guide to creating experiences</span>
+      </span>
+      <span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--arrow-up-right" /></span>
+    </span>
+  </span>
+</span>
+```
+
+Styles:
+
+```css
+.ds-articles-block.ds-articles-block--tab {
+  width: 844px;
+  min-width: 844px;
+  padding: 0 24px; /* --spacing-24 */
+  background: #e9e9e9ff; /* --color-background-page */
+}
+.ds-articles-block--tab .ds-articles-block__grid {
+  grid-template-columns: 1fr;
+  /* global-blocks/cards-gap на tab */
+  gap: 12px; /* --spacing-12 */
+  /* global-blocks/gap на tab */
+  margin-top: 48px; /* --spacing-48 */
+}
+.ds-articles-block--tab .ds-article-row {
+  /* card/card-article/gap на tab */
+  gap: 16px; /* --spacing-16 */
+}
+.ds-articles-block--tab .ds-article-row__title,
+.ds-articles-block--mob .ds-article-row__title,
+.ds-articles-block--tab .ds-title-block__desc,
+.ds-articles-block--mob .ds-title-block__desc {
+  font-size: 16px;
+  line-height: 20px;
+}
+.ds-articles-block--tab .ds-title-block__title {
+  font-size: 36px;
+  line-height: 32px;
+}
+.ds-articles-block--tab .ds-title-block__desc {
+  /* blocks/title-group/title-text-gap на tab */
+  margin-top: 16px; /* --spacing-16 */
+}
+.ds-articles-block.ds-articles-block--mob {
+  width: 430px;
+  min-width: 430px;
+  padding: 0 24px; /* --spacing-24 */
+  background: #e9e9e9ff; /* --color-background-page */
+}
+.ds-articles-block--mob .ds-articles-block__grid {
+  grid-template-columns: 1fr;
+  /* global-blocks/cards-gap на mob */
+  gap: 8px; /* --spacing-8 */
+  /* global-blocks/gap на mob */
+  margin-top: 40px; /* --spacing-40 */
+}
+.ds-articles-block--mob .ds-article-row {
+  /* card/card-article/gap і padding на mob */
+  gap: 12px; /* --spacing-12 */
+  padding: 12px; /* --spacing-12 */
+}
+.ds-articles-block--mob .ds-article-row > .ds-btn {
+  display: none;
+}
+.ds-articles-block--mob .ds-title-block__title {
+  font-size: 32px;
+  line-height: 28px;
+}
+.ds-articles-block--mob .ds-title-block__desc {
+  /* blocks/title-group/title-text-gap на mob */
+  margin-top: 12px; /* --spacing-12 */
+}
+.ds-articles-block {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 1344px;
+}
+.ds-articles-block__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  box-sizing: border-box;
+  gap: 16px; /* --spacing-16 */
+  /* 56px від заголовка до контенту — загальне правило для всіх блоків */
+  margin-top: 56px; /* --spacing-56 */
+}
+```
+
+
+### Blocks — Awards
+
+Awards section, 870px tall: Title block at the top, four 324px Award cards pinned to the bottom, animated 3D scene between them. 324 x 4 + 16 x 3 = 1344
+
+Markup:
+
+```html
+<span class="ds-awards-block">
+  <span class="ds-title-block">
+    <span class="ds-title-block__title">We're a UX/UI web design agency with 140+ awards that helps AI-native and AI-ambitious B2B teams translate complex products into clear, conversion-ready websites.</span>
+  </span>
+  <span class="ds-awards-block__cards">
+    <span class="ds-award-card">
+      <span class="ds-award-card__logo" />
+      <span class="ds-award-card__title">Webby Awards x10</span>
+    </span>
+    <span class="ds-award-card">
+      <span class="ds-award-card__logo" />
+      <span class="ds-award-card__title">Red Dot Design Award x6</span>
+    </span>
+    <span class="ds-award-card">
+      <span class="ds-award-card__logo" />
+      <span class="ds-award-card__title">Awwwards x16</span>
+    </span>
+    <span class="ds-award-card">
+      <span class="ds-award-card__logo" />
+      <span class="ds-award-card__title">FWA x5</span>
+    </span>
+  </span>
+</span>
+```
+
+Styles:
+
+```css
+.ds-awards-block {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 1344px;
+  height: 870px;
+}
+.ds-awards-block__cards {
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
+  gap: 16px; /* --spacing-16 */
+  /* картки притиснуті до низу: простір між ними й заголовком займає анімація */
+  margin-top: auto;
 }
 ```
 
@@ -3155,6 +3376,140 @@ Styles:
 ```
 
 
+### Blocks — Testimonials
+
+Testimonials section: Title block, then two 664px cards side by side. 664 x 2 + 16 = 1344
+
+Markup:
+
+```html
+<span class="ds-testimonials-block ds-testimonials-block--tab">
+  <span class="ds-title-block">
+    <span class="ds-title-block__title">Clients speak out: what they say about our AI design</span>
+    <span class="ds-title-block__desc">Even though the world of the decentralized web is a next-level experience, it has fundamental issues that hinder your project from growing.</span>
+  </span>
+  <span class="ds-testimonials-block__cards">
+    <span class="ds-testimonial">
+      <span class="ds-testimonial__top"><span class="ds-testimonial__quote">&ldquo;</span></span>
+      <span class="ds-testimonial__text">&ldquo;I had the pleasure of working with Maria and Lera backed by the amazing design team at Lazarev.agency, and I cannot recommend them highly enough. From start to finish, they were excellent communicators and made the entire process incredibly smooth.&rdquo;</span>
+      <span class="ds-testimonial__bottom">
+        <span class="ds-avatar-info ds-avatar-info--s">
+          <span class="ds-avatar ds-avatar--s" />
+          <span class="ds-avatar-info__text">
+            <span class="ds-avatar-info__name">Nick Chapman</span>
+            <span class="ds-avatar-info__job">Chief Product Officer, Pika AI</span>
+          </span>
+        </span>
+      </span>
+    </span>
+    <span class="ds-testimonial">
+      <span class="ds-testimonial__top"><span class="ds-testimonial__quote">&ldquo;</span></span>
+      <span class="ds-testimonial__text">&quot;They care about the client and have a deep focus on solving problems efficiently.&quot;</span>
+      <span class="ds-testimonial__bottom">
+        <span class="ds-avatar-info ds-avatar-info--s">
+          <span class="ds-avatar ds-avatar--s" />
+          <span class="ds-avatar-info__text">
+            <span class="ds-avatar-info__name">Jens Mathiasson</span>
+            <span class="ds-avatar-info__job">CPO &amp; Co-founder at Fieldstream</span>
+          </span>
+        </span>
+      </span>
+    </span>
+  </span>
+</span>
+```
+
+Styles:
+
+```css
+.ds-testimonials-block {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 1344px;
+}
+.ds-testimonials-block__cards {
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
+  gap: 16px; /* --spacing-16 */
+  /* 56px від заголовка до контенту — загальне правило для всіх блоків */
+  margin-top: 56px; /* --spacing-56 */
+}
+.ds-testimonials-block.ds-testimonials-block--tab {
+  width: 844px;
+  min-width: 844px;
+  padding: 0 24px; /* --spacing-24 */
+  background: #e9e9e9ff; /* --color-background-page */
+}
+.ds-testimonials-block--tab .ds-testimonials-block__cards {
+  /* global-blocks/cards-gap на tab */
+  gap: 12px; /* --spacing-12 */
+  /* global-blocks/gap на tab */
+  margin-top: 48px; /* --spacing-48 */
+}
+.ds-testimonials-block--tab .ds-testimonial {
+  /* (796 − 12) / 2 */
+  width: 392px;
+  /* фіксованої висоти немає: картки тягнуться до найвищої */
+  height: auto;
+}
+.ds-testimonials-block--tab .ds-testimonial__text {
+  font-size: 18px;
+  line-height: 24px;
+}
+.ds-testimonials-block--tab .ds-testimonial__quote {
+  font-size: 46px;
+  line-height: 40px;
+}
+.ds-testimonials-block--tab .ds-title-block__title {
+  font-size: 36px;
+  line-height: 32px;
+}
+.ds-testimonials-block--tab .ds-title-block__desc {
+  /* blocks/title-group/title-text-gap на tab */
+  margin-top: 16px; /* --spacing-16 */
+  font-size: 16px;
+  line-height: 20px;
+}
+.ds-testimonials-block.ds-testimonials-block--mob {
+  width: 430px;
+  min-width: 430px;
+  padding: 0 24px; /* --spacing-24 */
+  background: #e9e9e9ff; /* --color-background-page */
+}
+.ds-testimonials-block--mob .ds-testimonials-block__cards {
+  flex-direction: column;
+  /* global-blocks/cards-gap на mob */
+  gap: 8px; /* --spacing-8 */
+  /* global-blocks/gap на mob */
+  margin-top: 40px; /* --spacing-40 */
+}
+.ds-testimonials-block--mob .ds-testimonial {
+  width: 100%;
+  height: auto;
+}
+.ds-testimonials-block--mob .ds-testimonial__text {
+  font-size: 16px;
+  line-height: 24px;
+}
+.ds-testimonials-block--mob .ds-testimonial__quote {
+  font-size: 36px;
+  line-height: 32px;
+}
+.ds-testimonials-block--mob .ds-title-block__title {
+  font-size: 32px;
+  line-height: 28px;
+}
+.ds-testimonials-block--mob .ds-title-block__desc {
+  margin-top: 12px; /* --spacing-12 */
+  font-size: 16px;
+  line-height: 20px;
+}
+```
+
+
 ### Blocks — Text
 
 Grid of Text cards
@@ -3440,19 +3795,19 @@ Markup:
   <span class="ds-menu__aside">
     <span class="ds-menu__aside-title">Latest articles</span>
     <span class="ds-menu__articles">
-      <span class="ds-card-am">
+      <span class="ds-article-row">
         <span class="ds-media" />
-        <span class="ds-card-am__title">New Milestone: Our Financial Fund Achieves Growth and Stability</span>
+        <span class="ds-article-row__main"><span class="ds-article-row__title">New Milestone: Our Financial Fund Achieves Growth and Stability</span></span>
         <span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--arrow-up-right" /></span>
       </span>
-      <span class="ds-card-am">
+      <span class="ds-article-row">
         <span class="ds-media" />
-        <span class="ds-card-am__title">Empowering Communities: Impact Stories from Grand Founders</span>
+        <span class="ds-article-row__main"><span class="ds-article-row__title">Empowering Communities: Impact Stories from Grand Founders</span></span>
         <span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--arrow-up-right" /></span>
       </span>
-      <span class="ds-card-am">
+      <span class="ds-article-row">
         <span class="ds-media" />
-        <span class="ds-card-am__title">New Milestone: Our Financial Fund Achieves Growth and Stability</span>
+        <span class="ds-article-row__main"><span class="ds-article-row__title">New Milestone: Our Financial Fund Achieves Growth and Stability</span></span>
         <span class="ds-btn ds-btn--icon-outline is-default"><span class="ds-icon ds-icon--arrow-up-right" /></span>
       </span>
     </span>
@@ -3585,7 +3940,7 @@ Section header: title, description, optional button. Starts nearly every section
 Markup:
 
 ```html
-<span class="ds-title-block">
+<span class="ds-title-block ds-title-block--tab">
   <span class="ds-title-block__title">Title</span>
   <span class="ds-title-block__desc">Description</span>
   <span class="ds-title-block__action"><span class="ds-btn ds-btn--primary is-default">All case studies</span></span>
@@ -3634,47 +3989,55 @@ Styles:
   display: block;
   margin-top: 24px; /* --spacing-24 */
 }
-```
-
-
-### Layout — Header
-
-Fixed top bar: logo, links, button
-
-Markup:
-
-```html
-<span class="ds-header">
-  <img class="ds-header__logo" src="/logo/lazarev-logo.svg" alt="LAZAREV.AGENCY" />
-  <span class="ds-header-menu">
-    <span class="ds-link is-default">Product design</span>
-    <span class="ds-link is-default">Agentic websites</span>
-    <span class="ds-link is-default">AI visibility</span>
-    <span class="ds-link ds-link--plain is-default">Outcomes</span>
-    <span class="ds-link ds-link--plain is-default">Cases studies</span>
-    <span class="ds-link is-default">About us</span>
-  </span>
-  <span class="ds-btn ds-btn--primary is-default">Let's talk</span>
-</span>
-```
-
-Styles:
-
-```css
-.ds-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px; /* --spacing-24 */
-  width: 100%;
-  /* 1344px = 1440 − 48 × 2, тобто хедер має ту саму ширину, що й контейнер
-  сторінки. У документації колонка вужча, тому приклад прокручується. */
-  min-width: 1344px;
+.ds-title-block.ds-title-block--tab {
+  width: 844px;
+  min-width: 844px;
+  box-sizing: border-box;
+  padding: 180px 24px 0; /* --spacing-180, --spacing-24 */
+  background: #e9e9e9ff; /* --color-background-page */
 }
-.ds-header__logo {
-  flex: none;
-  height: 32px;
-  width: auto;
+.ds-title-block--tab .ds-title-block__title {
+  /* font.heading.h2 на tab — 36/32 */
+  font-size: 36px;
+  line-height: 32px;
+}
+.ds-title-block--tab .ds-title-block__desc {
+  /* blocks/title-group/title-text-gap на tab */
+  margin-top: 16px; /* --spacing-16 */
+  /* font.heading.h6 на tab — 16/20 */
+  font-size: 16px;
+  line-height: 20px;
+}
+.ds-title-block--tab .ds-title-block__action {
+  /* blocks/title-group/text-button-gap на tab */
+  margin-top: 16px; /* --spacing-16 */
+}
+.ds-title-block.ds-title-block--mob {
+  width: 430px;
+  min-width: 430px;
+  box-sizing: border-box;
+  padding: 128px 24px 0; /* --spacing-128, --spacing-24 */
+  background: #e9e9e9ff; /* --color-background-page */
+}
+.ds-title-block--mob .ds-title-block__title {
+  /* blocks/title-group/title-width на mob */
+  max-width: 382px;
+  /* font.heading.h2 на mob — 32/28 */
+  font-size: 32px;
+  line-height: 28px;
+}
+.ds-title-block--mob .ds-title-block__desc {
+  /* blocks/title-group/title-action-gap на mob — це ширина опису, не проміжок */
+  max-width: 382px;
+  /* blocks/title-group/title-text-gap на mob */
+  margin-top: 12px; /* --spacing-12 */
+  /* font.heading.h6 на mob — 16/20 */
+  font-size: 16px;
+  line-height: 20px;
+}
+.ds-title-block--mob .ds-title-block__action {
+  /* blocks/title-group/text-button-gap на mob */
+  margin-top: 12px; /* --spacing-12 */
 }
 ```
 
@@ -3846,6 +4209,91 @@ Styles:
 ```
 
 
+### Layout — Header
+
+Fixed top bar: logo, links, button
+
+Markup:
+
+```html
+<span class="ds-header">
+  <img class="ds-header__logo" src="/logo/lazarev-logo.svg" alt="LAZAREV.AGENCY" />
+  <span class="ds-header-menu">
+    <span class="ds-link is-default">Product design</span>
+    <span class="ds-link is-default">Agentic websites</span>
+    <span class="ds-link is-default">AI visibility</span>
+    <span class="ds-link ds-link--plain is-default">Outcomes</span>
+    <span class="ds-link ds-link--plain is-default">Cases studies</span>
+    <span class="ds-link is-default">About us</span>
+  </span>
+  <span class="ds-btn ds-btn--primary is-default">Let's talk</span>
+</span>
+```
+
+Styles:
+
+```css
+.ds-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px; /* --spacing-24 */
+  width: 100%;
+  /* 1344px = 1440 − 48 × 2, тобто хедер має ту саму ширину, що й контейнер
+  сторінки. У документації колонка вужча, тому приклад прокручується. */
+  min-width: 1344px;
+}
+.ds-header__logo {
+  flex: none;
+  height: 32px;
+  width: auto;
+}
+```
+
+
+### Article — Attention block
+
+Callout with a green hairline on the left
+
+Markup:
+
+```html
+<span class="ds-attention-block">
+  <span class="ds-attention-block__line" />
+  <span class="ds-attention-block__text">Insight for consumer mobile AI apps: the activation funnel, in-app agent, retention loop, and storefront belong under one roadmap owner. Teams that split them across separate workstreams ship a product where the onboarding promises things the agent can't deliver, and the storefront surfaces upgrades at the wrong moments.</span>
+</span>
+```
+
+Styles:
+
+```css
+.ds-attention-block {
+  display: flex;
+  /* stretch (типове значення) розтягує лінію рівно на висоту тексту */
+  align-items: stretch;
+  box-sizing: border-box;
+  gap: 16px; /* --spacing-16 */
+  width: 100%;
+  /* мірка тексту статті */
+  max-width: 640px;
+  padding: 16px; /* --spacing-16 */
+}
+.ds-attention-block__line {
+  flex: none;
+  width: 1px;
+  background: #0f9549ff; /* --color-icon-brand */
+}
+.ds-attention-block__text {
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  /* article.body.b1-regular-20 — Archivo 20/28, вага 400 */
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+  color: #000000ff; /* --color-text-primary */
+}
+```
+
+
 ### Article — Layout
 
 Two columns: 992 body, 336 aside, gap 16
@@ -3916,7 +4364,7 @@ Styles:
 }
 .ds-article-grid--mobile {
   flex-direction: column;
-  /* Mob-sm: 430 − 24 × 2 */
+  /* Mobile: 430 − 24 × 2 */
   width: 382px;
   min-width: 382px;
 }
@@ -3929,6 +4377,303 @@ Styles:
 }
 .ds-article-grid--mobile .ds-article-grid__block {
   height: 96px;
+}
+```
+
+
+### Article — Navigation
+
+Table of contents with reading progress
+
+Markup:
+
+```html
+<span class="ds-toc">
+  <span class="ds-toc__inner">
+    <span class="ds-toc__title">Table of contents</span>
+    <span class="ds-toc__progress"><span class="ds-toc__progress-bar ds-toc__progress-bar--p25" /></span>
+    <span class="ds-toc__links">
+      <span class="ds-toc__link is-active">Key takeaways</span>
+      <span class="ds-toc__link">What chatbot design means now that the AI does the talking</span>
+      <span class="ds-toc__link">5 principles of effective chatbot design for AI-native products</span>
+      <span class="ds-toc__link">11 chatbot design best practices for AI-native products</span>
+      <span class="ds-toc__link">6 chatbot design mistakes to avoid</span>
+      <span class="ds-toc__link">How we design AI-native chatbots at Lazarev.agency</span>
+      <span class="ds-toc__link">Build AI chatbots people return to</span>
+    </span>
+  </span>
+</span>
+```
+
+Styles:
+
+```css
+.ds-toc {
+  display: flex;
+  box-sizing: border-box;
+  width: 336px;
+  padding: 32px 24px; /* --spacing-32, --spacing-24 */
+  /* TODO: звірити з Figma — фон і заокруглення не названо */
+  border-radius: 8px; /* --radius-8 */
+  background: #ffffffff; /* --color-background-block */
+}
+.ds-toc__inner {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 16px; /* --spacing-16 */
+  width: 240px;
+  padding: 0 16px; /* --spacing-16 */
+}
+.ds-toc__title {
+  font-family: "Pragati Narrow", "Arial Narrow", Arial, sans-serif; /* --font-pragati */
+  /* font.caption.c1-16 — Pragati Narrow 16/16, uppercase */
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: #697382ff; /* --color-text-secondary */
+}
+.ds-toc__progress {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #cdd4deff; /* --color-gray-300 */
+}
+.ds-toc__progress-bar {
+  display: block;
+  height: 1px;
+  background: #000000ff; /* --color-background-inverse */
+}
+.ds-toc__progress-bar--p25 {
+  width: 25%;
+}
+.ds-toc__progress-bar--p60 {
+  width: 60%;
+}
+.ds-toc__links {
+  display: flex;
+  flex-direction: column;
+}
+.ds-toc__link {
+  position: relative;
+  display: block;
+  padding: 4px 0; /* --spacing-4 */
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  /* font.paragraph.p4-14 — Archivo 14/16 */
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  color: #697382ff; /* --color-text-placeholder */
+}
+.ds-toc__link.is-active {
+  color: #000000ff; /* --color-text-primary */
+}
+.ds-toc__link.is-active::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 10px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #000000ff; /* --color-text-primary */
+}
+```
+
+
+### Article — Quote
+
+Serif quote with author
+
+Markup:
+
+```html
+<span class="ds-art-quote-block">
+  <span class="ds-art-quote">Don't fall into the trap of perspective taking when developing accessible UX solutions. While helpful at first glance, imagining yourself in someone else's shoes leaves too much room for bias.</span>
+  <span class="ds-avatar-info">
+    <span class="ds-avatar ds-avatar--m" />
+    <span class="ds-avatar-info__text">
+      <span class="ds-avatar-info__name">Kyrylo Lazarev</span>
+      <span class="ds-avatar-info__job">CEO, Lazarev agency</span>
+    </span>
+  </span>
+</span>
+```
+
+Styles:
+
+```css
+.ds-art-quote-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+  gap: 32px; /* --spacing-32 */
+  width: 100%;
+  /* мірка тексту статті */
+  max-width: 640px;
+  padding-top: 32px; /* --spacing-32 */
+  padding-bottom: 32px; /* --spacing-32 */
+}
+```
+
+
+### Article — Table
+
+Header row plus data rows, 2px apart
+
+Markup:
+
+```html
+<span class="ds-art-table">
+  <span class="ds-art-table__row ds-art-table__row--head">
+    <span class="ds-art-table__cell">Column title</span>
+    <span class="ds-art-table__cell">Column title</span>
+    <span class="ds-art-table__cell">Column title</span>
+  </span>
+  <span class="ds-art-table__row ds-art-table__row--body">
+    <span class="ds-art-table__cell">Column text</span>
+    <span class="ds-art-table__cell">Column text</span>
+    <span class="ds-art-table__cell">Column text</span>
+  </span>
+  <span class="ds-art-table__row ds-art-table__row--body">
+    <span class="ds-art-table__cell">Column text</span>
+    <span class="ds-art-table__cell">Column text</span>
+    <span class="ds-art-table__cell">Column text</span>
+  </span>
+</span>
+```
+
+Styles:
+
+```css
+.ds-art-table {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 2px; /* --spacing-2 */
+  width: 100%;
+  /* таблиця йде на всю ширину блоку, без обмеження 640px */
+  min-width: 992px;
+  margin: 12px 0; /* --spacing-12 */
+}
+.ds-art-table__row {
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
+  /* TODO: звірити з Figma — заокруглення не названо */
+  border-radius: 8px; /* --radius-8 */
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  color: #000000ff; /* --color-text-primary */
+}
+.ds-art-table__row--head {
+  background: #e9e9e9ff; /* --color-gray-100 */
+  /* article.body.b2-bold-16 — Archivo 16/20, вага 700 */
+  font-weight: 700;
+}
+.ds-art-table__row--body {
+  background: #f4f4f4ff; /* --color-gray-50 */
+  /* article.body.b2-regular-16 — Archivo 16/20, вага 400 */
+  font-weight: 400;
+}
+.ds-art-table__cell {
+  /* fill: усі колонки ділять ширину порівну, поки не впруться в min або max */
+  flex: 1 1 0;
+  box-sizing: border-box;
+  min-width: 120px;
+  padding: 16px; /* --spacing-16 */
+  font-size: 16px;
+  line-height: 20px;
+}
+.ds-art-table__cell:first-child {
+  min-width: 80px;
+  max-width: 208px;
+}
+```
+
+
+### Article — Title block
+
+Article header: tag, date, h1, author, reading time
+
+Markup:
+
+```html
+<span class="ds-article-title">
+  <span class="ds-article-title__meta">
+    <span class="ds-tag is-default">AI product design</span>
+    <span class="ds-article-title__date">04 May 2026</span>
+  </span>
+  <span class="ds-article-title__heading">AI product roadmap 2026: how to build one with a training-loop method</span>
+  <span class="ds-article-title__author">
+    <span class="ds-avatar-info">
+      <span class="ds-avatar ds-avatar--m" />
+      <span class="ds-avatar-info__text">
+        <span class="ds-avatar-info__name">Kyrylo Lazarev</span>
+        <span class="ds-avatar-info__job">CEO, Lazarev agency</span>
+      </span>
+    </span>
+    <span class="ds-article-title__time">12 min read</span>
+  </span>
+</span>
+```
+
+Styles:
+
+```css
+.ds-article-title {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 992px;
+}
+.ds-article-title__meta {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* --spacing-16 */
+}
+.ds-article-title__date {
+  font-family: "Pragati Narrow", "Arial Narrow", Arial, sans-serif; /* --font-pragati */
+  /* font.caption.c1-16 — Pragati Narrow 16/16, uppercase */
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #bbc2ccff; /* --color-text-tertiary */
+}
+.ds-article-title__heading {
+  margin-top: 16px; /* --spacing-16 */
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif; /* --font-instrument */
+  /* article.heading.h1-64 — Instrument Serif 64/64, вага 400 */
+  font-size: 64px;
+  line-height: 64px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: #000000ff; /* --color-text-primary */
+}
+.ds-article-title__author {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px; /* --spacing-24 */
+  margin-top: 40px; /* --spacing-40 */
+}
+.ds-article-title__time {
+  flex: none;
+  /* 4px знизу: час вирівняний по нижньому краю, але трохи піднятий */
+  margin-bottom: 4px; /* --spacing-4 */
+  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
+  /* font.paragraph.p3-16 — Archivo 16/20 */
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
+  white-space: nowrap;
+  color: #000000ff; /* --color-text-primary */
 }
 ```
 
@@ -4086,346 +4831,6 @@ Styles:
 ```
 
 
-### Article — Title block
-
-Article header: tag, date, h1, author, reading time
-
-Markup:
-
-```html
-<span class="ds-article-title">
-  <span class="ds-article-title__meta">
-    <span class="ds-tag is-default">AI product design</span>
-    <span class="ds-article-title__date">04 May 2026</span>
-  </span>
-  <span class="ds-article-title__heading">AI product roadmap 2026: how to build one with a training-loop method</span>
-  <span class="ds-article-title__author">
-    <span class="ds-avatar-info">
-      <span class="ds-avatar ds-avatar--m" />
-      <span class="ds-avatar-info__text">
-        <span class="ds-avatar-info__name">Kyrylo Lazarev</span>
-        <span class="ds-avatar-info__job">CEO, Lazarev agency</span>
-      </span>
-    </span>
-    <span class="ds-article-title__time">12 min read</span>
-  </span>
-</span>
-```
-
-Styles:
-
-```css
-.ds-article-title {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  width: 100%;
-  min-width: 992px;
-}
-.ds-article-title__meta {
-  display: flex;
-  align-items: center;
-  gap: 16px; /* --spacing-16 */
-}
-.ds-article-title__date {
-  font-family: "Pragati Narrow", "Arial Narrow", Arial, sans-serif; /* --font-pragati */
-  /* font.caption.c1-16 — Pragati Narrow 16/16, uppercase */
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: 400;
-  letter-spacing: -0.5px;
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: #bbc2ccff; /* --color-text-tertiary */
-}
-.ds-article-title__heading {
-  margin-top: 16px; /* --spacing-16 */
-  font-family: "Instrument Serif", Georgia, "Times New Roman", serif; /* --font-instrument */
-  /* article.heading.h1-64 — Instrument Serif 64/64, вага 400 */
-  font-size: 64px;
-  line-height: 64px;
-  font-weight: 400;
-  letter-spacing: -0.5px;
-  color: #000000ff; /* --color-text-primary */
-}
-.ds-article-title__author {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px; /* --spacing-24 */
-  margin-top: 40px; /* --spacing-40 */
-}
-.ds-article-title__time {
-  flex: none;
-  /* 4px знизу: час вирівняний по нижньому краю, але трохи піднятий */
-  margin-bottom: 4px; /* --spacing-4 */
-  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
-  /* font.paragraph.p3-16 — Archivo 16/20 */
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 400;
-  white-space: nowrap;
-  color: #000000ff; /* --color-text-primary */
-}
-```
-
-
-### Article — Attention block
-
-Callout with a green hairline on the left
-
-Markup:
-
-```html
-<span class="ds-attention-block">
-  <span class="ds-attention-block__line" />
-  <span class="ds-attention-block__text">Insight for consumer mobile AI apps: the activation funnel, in-app agent, retention loop, and storefront belong under one roadmap owner. Teams that split them across separate workstreams ship a product where the onboarding promises things the agent can't deliver, and the storefront surfaces upgrades at the wrong moments.</span>
-</span>
-```
-
-Styles:
-
-```css
-.ds-attention-block {
-  display: flex;
-  /* stretch (типове значення) розтягує лінію рівно на висоту тексту */
-  align-items: stretch;
-  box-sizing: border-box;
-  gap: 16px; /* --spacing-16 */
-  width: 100%;
-  /* мірка тексту статті */
-  max-width: 640px;
-  padding: 16px; /* --spacing-16 */
-}
-.ds-attention-block__line {
-  flex: none;
-  width: 1px;
-  background: #0f9549ff; /* --color-icon-brand */
-}
-.ds-attention-block__text {
-  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
-  /* article.body.b1-regular-20 — Archivo 20/28, вага 400 */
-  font-size: 20px;
-  line-height: 28px;
-  font-weight: 400;
-  color: #000000ff; /* --color-text-primary */
-}
-```
-
-
-### Article — Quote
-
-Serif quote with author
-
-Markup:
-
-```html
-<span class="ds-art-quote-block">
-  <span class="ds-art-quote">Don't fall into the trap of perspective taking when developing accessible UX solutions. While helpful at first glance, imagining yourself in someone else's shoes leaves too much room for bias.</span>
-  <span class="ds-avatar-info">
-    <span class="ds-avatar ds-avatar--m" />
-    <span class="ds-avatar-info__text">
-      <span class="ds-avatar-info__name">Kyrylo Lazarev</span>
-      <span class="ds-avatar-info__job">CEO, Lazarev agency</span>
-    </span>
-  </span>
-</span>
-```
-
-Styles:
-
-```css
-.ds-art-quote-block {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  box-sizing: border-box;
-  gap: 32px; /* --spacing-32 */
-  width: 100%;
-  /* мірка тексту статті */
-  max-width: 640px;
-  padding-top: 32px; /* --spacing-32 */
-  padding-bottom: 32px; /* --spacing-32 */
-}
-```
-
-
-### Article — Table
-
-Header row plus data rows, 2px apart
-
-Markup:
-
-```html
-<span class="ds-art-table">
-  <span class="ds-art-table__row ds-art-table__row--head">
-    <span class="ds-art-table__cell">Column title</span>
-    <span class="ds-art-table__cell">Column title</span>
-    <span class="ds-art-table__cell">Column title</span>
-  </span>
-  <span class="ds-art-table__row ds-art-table__row--body">
-    <span class="ds-art-table__cell">Column text</span>
-    <span class="ds-art-table__cell">Column text</span>
-    <span class="ds-art-table__cell">Column text</span>
-  </span>
-  <span class="ds-art-table__row ds-art-table__row--body">
-    <span class="ds-art-table__cell">Column text</span>
-    <span class="ds-art-table__cell">Column text</span>
-    <span class="ds-art-table__cell">Column text</span>
-  </span>
-</span>
-```
-
-Styles:
-
-```css
-.ds-art-table {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  gap: 2px; /* --spacing-2 */
-  width: 100%;
-  /* таблиця йде на всю ширину блоку, без обмеження 640px */
-  min-width: 992px;
-  margin: 12px 0; /* --spacing-12 */
-}
-.ds-art-table__row {
-  display: flex;
-  align-items: stretch;
-  box-sizing: border-box;
-  /* TODO: звірити з Figma — заокруглення не названо */
-  border-radius: 8px; /* --radius-8 */
-  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
-  color: #000000ff; /* --color-text-primary */
-}
-.ds-art-table__row--head {
-  background: #e9e9e9ff; /* --color-gray-100 */
-  /* article.body.b2-bold-16 — Archivo 16/20, вага 700 */
-  font-weight: 700;
-}
-.ds-art-table__row--body {
-  background: #f4f4f4ff; /* --color-gray-50 */
-  /* article.body.b2-regular-16 — Archivo 16/20, вага 400 */
-  font-weight: 400;
-}
-.ds-art-table__cell {
-  /* fill: усі колонки ділять ширину порівну, поки не впруться в min або max */
-  flex: 1 1 0;
-  box-sizing: border-box;
-  min-width: 120px;
-  padding: 16px; /* --spacing-16 */
-  font-size: 16px;
-  line-height: 20px;
-}
-.ds-art-table__cell:first-child {
-  min-width: 80px;
-  max-width: 208px;
-}
-```
-
-
-### Article — Navigation
-
-Table of contents with reading progress
-
-Markup:
-
-```html
-<span class="ds-toc">
-  <span class="ds-toc__inner">
-    <span class="ds-toc__title">Table of contents</span>
-    <span class="ds-toc__progress"><span class="ds-toc__progress-bar ds-toc__progress-bar--p25" /></span>
-    <span class="ds-toc__links">
-      <span class="ds-toc__link is-active">Key takeaways</span>
-      <span class="ds-toc__link">What chatbot design means now that the AI does the talking</span>
-      <span class="ds-toc__link">5 principles of effective chatbot design for AI-native products</span>
-      <span class="ds-toc__link">11 chatbot design best practices for AI-native products</span>
-      <span class="ds-toc__link">6 chatbot design mistakes to avoid</span>
-      <span class="ds-toc__link">How we design AI-native chatbots at Lazarev.agency</span>
-      <span class="ds-toc__link">Build AI chatbots people return to</span>
-    </span>
-  </span>
-</span>
-```
-
-Styles:
-
-```css
-.ds-toc {
-  display: flex;
-  box-sizing: border-box;
-  width: 336px;
-  padding: 32px 24px; /* --spacing-32, --spacing-24 */
-  /* TODO: звірити з Figma — фон і заокруглення не названо */
-  border-radius: 8px; /* --radius-8 */
-  background: #ffffffff; /* --color-background-block */
-}
-.ds-toc__inner {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  gap: 16px; /* --spacing-16 */
-  width: 240px;
-  padding: 0 16px; /* --spacing-16 */
-}
-.ds-toc__title {
-  font-family: "Pragati Narrow", "Arial Narrow", Arial, sans-serif; /* --font-pragati */
-  /* font.caption.c1-16 — Pragati Narrow 16/16, uppercase */
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: 400;
-  letter-spacing: -0.5px;
-  text-transform: uppercase;
-  color: #697382ff; /* --color-text-secondary */
-}
-.ds-toc__progress {
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: #cdd4deff; /* --color-gray-300 */
-}
-.ds-toc__progress-bar {
-  display: block;
-  height: 1px;
-  background: #000000ff; /* --color-background-inverse */
-}
-.ds-toc__progress-bar--p25 {
-  width: 25%;
-}
-.ds-toc__progress-bar--p60 {
-  width: 60%;
-}
-.ds-toc__links {
-  display: flex;
-  flex-direction: column;
-}
-.ds-toc__link {
-  position: relative;
-  display: block;
-  padding: 4px 0; /* --spacing-4 */
-  font-family: Archivo, system-ui, -apple-system, "Segoe UI", sans-serif; /* --font-archivo */
-  /* font.paragraph.p4-14 — Archivo 14/16 */
-  font-size: 14px;
-  line-height: 16px;
-  font-weight: 500;
-  color: #697382ff; /* --color-text-placeholder */
-}
-.ds-toc__link.is-active {
-  color: #000000ff; /* --color-text-primary */
-}
-.ds-toc__link.is-active::before {
-  content: "";
-  position: absolute;
-  left: -12px;
-  top: 10px;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #000000ff; /* --color-text-primary */
-}
-```
-
-
 ### Icons — SVG source
 
 In CSS these are drawn as `mask` with a data URI so they inherit `currentColor`.
@@ -4533,7 +4938,7 @@ Rules used by more than one component.
 ## 10. Known gaps — do not invent these
 
 - Breakpoint threshold values.
-- Vertical rhythm on Tab-md and Mob-sm.
+- Vertical rhythm on Tablet and Mobile.
 - Any container, column or grid width (none exist as tokens).
 - Motion: no duration, easing or transition tokens exist.
 - Elevation: one shadow only, `effect.shadow.modal`, a green glow.
@@ -4544,8 +4949,209 @@ Rules used by more than one component.
 
 ## 11. Token file warning
 
-`tokens.json` is a stale export. Padding values across nearly every group are smaller
-than the confirmed design values, article spacing is wrong in 6 of 8 places, radius tokens
-are bound to `primitives.spacing.*` instead of `primitives.radius.*`, and two conflicting
-article type scales exist. **This brief and the documentation are more correct than the
-token file.** Do not read tokens.json directly.
+`tokens.json` is a single-mode export, and the mode is `mob`. Confirmed against
+fresh per-mode exports: of the component tokens that vary by mode, 102 of 108 match
+the `mob` column and only 3 match `desktop`. The semantic collection matches `mob`
+on 35 of 36. Every "export defect" previously recorded in this brief was in fact a
+desktop-vs-mobile comparison.
+
+It is also stale: `global-blocks/padding-x` reads 12px there, which matches no mode
+(desktop 48, every other mode 24). Section 12 carries the current four-mode values.
+
+Its `primitives` branch is fine, though — that collection is single-mode and has not
+changed: 112 tokens then, 112 now.
+
+Two cosmetic defects in Primitives: the group is spelled `font/letter-spasing`
+(missing the c), and `font/String` is an empty placeholder variable that should be
+deleted. Neither affects rendering.
+
+Radius tokens are also bound to `primitives.spacing.*` instead of `primitives.radius.*`.
+
+**This brief and the documentation carry the desktop values and are more correct than
+the token file.** Do not read tokens.json directly.
+
+## 12. Responsive modes
+
+The Semantic and Component collections have FOUR modes: desktop, tab-large, tab, mob.
+**Primitives has a single mode** ("default") — a raw 24px is 24px on every screen, so
+only the semantic and component layers reskin. Primitives holds 112 tokens:
+42 colours, 21 spacing steps, 8 radii, 39 type values, 2 border widths.
+Canvas widths: desktop 1440, tab 844, mob 430 (side padding 48 / 24 / 24).
+The tab-large canvas width is not documented; its values mostly track desktop.
+
+Everything else in this brief is the **desktop** mode. Below is every token whose
+value changes with screen size — 131 of them. Colours never change: the palette is
+identical in all four modes.
+
+### Page rhythm
+
+| Token | desktop | tab-large | tab | mob |
+|---|---|---|---|---|
+| `spacing.global-blocks.padding-x` | 48 | 24 | 24 | 24 |
+| `spacing.global-blocks.padding-y` | 220 | 220 | 180 | 128 |
+| `spacing.global-blocks.gap` | 56 | 48 | 48 | 40 |
+| `spacing.global-blocks.cards-gap` | 16 | 16 | 12 | 8 |
+
+### Site type scale
+
+| Role | desktop | tab-large | tab | mob |
+|---|---|---|---|---|
+| h1 | 80 / 72 | 56 / 48 | 46 / 40 | 36 / 32 |
+| h2 | 56 / 48 | 46 / 40 | 36 / 32 | 32 / 28 |
+| h3 | 46 / 40 | 36 / 32 | 32 / 32 | 28 / 28 |
+| h4 | 36 / 32 | 32 / 32 | 28 / 28 | 28 / 28 |
+| h5 | 24 / 24 | 24 / 24 | 18 / 24 | 16 / 24 |
+| h6 | 20 / 24 | 20 / 24 | 16 / 20 | 16 / 20 |
+| p1 | 20 / 20 | 18 / 20 | 16 / 20 | 16 / 20 |
+| p2 | 18 / 20 | 16 / 20 | 16 / 20 | 14 / 16 |
+| p3 | 16 / 20 | 14 / 16 | 14 / 16 | 13 / 16 |
+| p4 | 14 / 16 | 14 / 16 | 14 / 16 | 14 / 16 |
+| c1 | 16 / 16 | 16 / 16 | 14 / 16 | 14 / 16 |
+| c2 | 12 / 12 | 12 / 16 | 12 / 16 | 12 / 16 |
+| n1 | 200 / 140 | 200 / 140 | 80 / 72 | 80 / 72 |
+
+### Article type scale
+
+| Role | desktop | tab-large | tab | mob |
+|---|---|---|---|---|
+| h1 | 64 / 64 | 64 / 64 | 56 / 56 | 46 / 48 |
+| lead | 24 / 32 | 24 / 32 | 18 / 28 | 18 / 28 |
+| body-1 | 20 / 28 | 20 / 28 | 16 / 24 | 16 / 24 |
+| body-2 | 16 / 20 | 16 / 20 | 14 / 20 | 14 / 16 |
+| quote | 36 / 36 | 36 / 36 | 32 / 32 | 28 / 32 |
+
+### Component tokens
+
+| Token | desktop | tab-large | tab | mob |
+|---|---|---|---|---|
+| `avatart.stroke-inverse` | #E9E9E9 | #FFFFFF | #FFFFFF | #FFFFFF |
+| `blocks.article.content-gap` | 16 | 16 | 16 | 12 |
+| `blocks.article.h2-bottom` | 12 | 12 | 8 | 8 |
+| `blocks.article.h2-top` | 64 | 48 | 40 | 32 |
+| `blocks.article.h3-top` | 48 | 32 | 24 | 16 |
+| `blocks.article.h4-top` | 24 | 16 | 16 | 16 |
+| `blocks.article.media-gap-bottom` | 24 | 24 | 24 | 20 |
+| `blocks.article.media-gap-top` | 12 | 12 | 12 | 8 |
+| `blocks.article.quote-gap-avatar` | 32 | 24 | 16 | 16 |
+| `blocks.article.quote-top-bottom` | 32 | 24 | 16 | 16 |
+| `blocks.article.section-gap` | 56 | 48 | 40 | 24 |
+| `blocks.articles-listing.padding-y` | 128 | 128 | 88 | 64 |
+| `blocks.articles-listing.section-gap` | 80 | 64 | 48 | 32 |
+| `blocks.articles-listing.title-gap` | 48 | 40 | 32 | 24 |
+| `blocks.block-CTA.gap` | 40 | 32 | 24 | 20 |
+| `blocks.block-CTA.padding` | 64 | 48 | 40 | 24 |
+| `blocks.block-card.option-1.padding` | 24 | 24 | 20 | 16 |
+| `blocks.block-case-industry.bullet-point-gap` | 16 | 16 | 12 | 12 |
+| `blocks.block-case-industry.content-gap` | 88 | 64 | 40 | 40 |
+| `blocks.block-case-industry.media-gap` | 16 | 16 | 16 | 12 |
+| `blocks.block-case-industry.padding` | 24 | 16 | 16 | 12 |
+| `blocks.block-case-industry.statistik-gap` | 64 | 32 | 32 | 24 |
+| `blocks.block-case-industry.text-button-gap` | 32 | 24 | 24 | 20 |
+| `blocks.block-case-industry.title-text-gap` | 24 | 16 | 16 | 12 |
+| `blocks.block-case-outcomes.container-widht` | 400 | 400 | 400 | 250 |
+| `blocks.block-case-outcomes.gap` | 32 | 32 | 24 | 16 |
+| `blocks.block-case-outcomes.padding` | 24 | 24 | 20 | 16 |
+| `blocks.block-case-outcomes.title-text-gap` | 32 | 32 | 20 | 20 |
+| `blocks.block-icon.padding` | 24 | 16 | 16 | 12 |
+| `blocks.block-icon.text-gap` | 24 | 24 | 20 | 20 |
+| `blocks.block-icon.title-text-gap` | 32 | 32 | 20 | 20 |
+| `blocks.block-phrase.gap` | 40 | 32 | 24 | 20 |
+| `blocks.block-phrase.inner-padding-x` | 24 | 24 | 20 | 16 |
+| `blocks.block-phrase.inner-padding-y` | 64 | 48 | 40 | 24 |
+| `blocks.block-phrase.text-block-button-gap` | 32 | 32 | 24 | 24 |
+| `blocks.block-text.option-1.gap` | 32 | 32 | 24 | 16 |
+| `blocks.block-text.option-1.padding` | 24 | 24 | 20 | 16 |
+| `blocks.block-text.option-2.padding` | 24 | 24 | 20 | 16 |
+| `blocks.block-text.option-3.padding` | 24 | 24 | 20 | 16 |
+| `blocks.case.gap` | 64 | 40 | 40 | 24 |
+| `blocks.case.padding` | 24 | 16 | 16 | 12 |
+| `blocks.case.statistik-gap` | 64 | 32 | 32 | 24 |
+| `blocks.case.text-button-gap` | 32 | 24 | 24 | 20 |
+| `blocks.case.title-text-gap` | 24 | 16 | 16 | 12 |
+| `blocks.hero.header-offset` | 116 | 116 | 96 | 88 |
+| `blocks.hero.label-title-gap` | 24 | 20 | 16 | 12 |
+| `blocks.hero.title-action-gap` | 64 | 48 | 40 | 32 |
+| `blocks.industry-text-block.bullet-points-gap` | 16 | 16 | 12 | 12 |
+| `blocks.industry-text-block.padding` | 24 | 24 | 20 | 16 |
+| `blocks.industry-text-block.text-button-gap` | 40 | 40 | 32 | 24 |
+| `blocks.outcomes.card-gap` | 24 | 20 | 16 | 12 |
+| `blocks.outcomes.padding-y` | 64 | 64 | 56 | 48 |
+| `blocks.process.img-text-gap` | 0 | 48 | 0 | 0 |
+| `blocks.process.padding` | 24 | 16 | 16 | 12 |
+| `blocks.service.gap` | 64 | 32 | 32 | 24 |
+| `blocks.service.gap-innfo-blocks` | 40 | 24 | 20 | 20 |
+| `blocks.service.padding` | 24 | 16 | 16 | 16 |
+| `blocks.service.title-text-gap` | 24 | 20 | 20 | 16 |
+| `blocks.title-group.text-button-gap` | 24 | 20 | 16 | 12 |
+| `blocks.title-group.title-action-gap` | 640 | 640 | 640 | 382 |
+| `blocks.title-group.title-text-gap` | 24 | 20 | 16 | 12 |
+| `blocks.title-group.title-width` | 672 | 672 | 672 | 382 |
+| `button.button-block.gap` | 80 | 80 | 64 | 32 |
+| `button.button-block.padding-left` | 20 | 20 | 16 | 12 |
+| `button.button-block.padding-right-top-bottom` | 8 | 8 | 8 | 12 |
+| `button.button-block.radius` | 80 | 80 | 80 | 8 |
+| `button.button-icon-secondary.padding` | 12 | 12 | 12 | 8 |
+| `button.industry.padding-x` | 16 | 16 | 12 | 12 |
+| `button.industry.padding-y` | 12 | 12 | 8 | 8 |
+| `card.L.gap` | 32 | 32 | 24 | 20 |
+| `card.L.padding` | 24 | 16 | 16 | 12 |
+| `card.L.text-button-gap` | 32 | 24 | 20 | 20 |
+| `card.L.title-text-gap` | 24 | 20 | 20 | 16 |
+| `card.bullet-point-card.padding` | 24 | 24 | 16 | 12 |
+| `card.card-article-full.avatar-img-gap` | 16 | 16 | 16 | 12 |
+| `card.card-article-full.gap` | 32 | 32 | 24 | 20 |
+| `card.card-article-full.padding` | 24 | 16 | 16 | 12 |
+| `card.card-article-full.tag-text-gap` | 20 | 20 | 16 | 12 |
+| `card.card-article-full.title-max-height` | 96 | 96 | 72 | 64 |
+| `card.card-article.gap` | 24 | 16 | 16 | 12 |
+| `card.card-article.padding` | 16 | 16 | 16 | 12 |
+| `card.card-award.gap` | 40 | 40 | 32 | 24 |
+| `card.card-award.padding` | 16 | 16 | 16 | 12 |
+| `card.card-comparison.gap` | 56 | 48 | 48 | 40 |
+| `card.card-comparison.padding` | 24 | 16 | 16 | 12 |
+| `card.card-icon.gap` | 80 | 80 | 72 | 56 |
+| `card.card-icon.padding` | 24 | 16 | 16 | 12 |
+| `card.card-icon.text-gap` | 24 | 24 | 20 | 20 |
+| `card.card-number.padding` | 24 | 24 | 16 | 12 |
+| `card.card-outcomes-l.padding` | 24 | 24 | 16 | 12 |
+| `card.card-outcomes-s.padding` | 16 | 16 | 16 | 12 |
+| `card.case-card.gap` | 32 | 32 | 24 | 20 |
+| `card.case-card.padding` | 24 | 16 | 16 | 12 |
+| `card.case-card.text-button-gap` | 20 | 20 | 16 | 12 |
+| `card.case-card.title-text-gap` | 16 | 16 | 16 | 12 |
+| `card.case-mini-card.gap` | 12 | 12 | 12 | 8 |
+| `card.case-mini-card.padding` | 16 | 16 | 16 | 12 |
+| `card.logo-card.gap` | 20 | 20 | 20 | 16 |
+| `card.logo-card.padding` | 16 | 16 | 16 | 12 |
+| `card.m.gap` | 32 | 32 | 24 | 20 |
+| `card.m.padding` | 24 | 16 | 16 | 12 |
+| `card.m.text-button-gap` | 20 | 20 | 16 | 12 |
+| `card.m.title-text-gap` | 16 | 16 | 16 | 12 |
+| `card.s.gap` | 32 | 32 | 24 | 20 |
+| `card.s.padding` | 16 | 16 | 16 | 12 |
+| `card.s.tag-text-button-gap` | 24 | 24 | 20 | 16 |
+| `card.s.text-button-gap` | 16 | 16 | 16 | 12 |
+| `card.s.text-gap` | 12 | 12 | 12 | 8 |
+| `card.testimonials.padding` | 24 | 24 | 20 | 16 |
+| `card.text.padding` | 16 | 16 | 16 | 12 |
+| `dropdown.dropdown.gap` | 4 | 4 | 4 | 2 |
+| `dropdown.dropdown.padding-y` | 12 | 12 | 8 | 8 |
+| `dropdown.gap` | 40 | 40 | 32 | 24 |
+| `dropdown.menu.gap` | 12 | 8 | 8 | 8 |
+| `dropdown.menu.hover-item` | #E9E9E9 | #FFFFFF | #FFFFFF | #FFFFFF |
+| `dropdown.menu.padding-x` | 8 | 12 | 12 | 8 |
+| `dropdown.menu.padding-y` | 8 | 12 | 8 | 8 |
+| `dropdown.menu.radius` | 8 | 32 | 32 | 32 |
+| `dropdown.menu.radius-item` | 4 | 32 | 32 | 32 |
+| `dropdown.padding` | 24 | 24 | 20 | 16 |
+| `footer.padding` | 24 | 24 | 20 | 16 |
+| `heading-menu.header-menu.gap` | 20 | 20 | 16 | 16 |
+| `heading-menu.mobile-menu-item.gap` | 16 | 16 | 12 | 12 |
+| `heading-menu.submenu.article-gap` | 16 | 16 | 12 | 8 |
+| `heading-menu.submenu.menu-item-gap` | 24 | 24 | 20 | 16 |
+| `heading-menu.submenu.padding` | 24 | 24 | 16 | 12 |
+| `input.padding-left` | 20 | 20 | 16 | 16 |
+| `pagination.wrapper.gap-elements` | 24 | 24 | 24 | 20 |
+| `spasing.global-blocks.padding-x` | 48 | 24 | 24 | 24 |
+| `tab.tab.padding-x` | 12 | 12 | 12 | 8 |
+| `tab.tab.padding-y` | 12 | 12 | 8 | 8 |

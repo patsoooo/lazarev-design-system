@@ -1,0 +1,235 @@
+---
+title: "Articles"
+description: "Блок тем і статей: заголовок і сітка горизонтальних карток."
+---
+
+<div className="ds-preview ds-preview--s05">
+  <span className="ds-preview__stage ds-preview__stage--w1344"><span className="ds-articles-block"><span className="ds-title-block"><span className="ds-title-block__title">What we write about</span><span className="ds-title-block__desc">Practical design knowledge across AI products, UX/UI, product strategy, growth &amp; CRO, research, and industry teardowns</span></span><span className="ds-articles-block__grid"><span className="ds-article-row"><span className="ds-media ds-media--s" /><span className="ds-article-row__main"><span className="ds-card-meta"><span className="ds-tag is-default">Tag</span></span><span className="ds-article-row__title">Web design principles, tools, and best practices</span></span><span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span></span><span className="ds-article-row"><span className="ds-media ds-media--s" /><span className="ds-article-row__main"><span className="ds-card-meta"><span className="ds-tag is-default">Tag</span></span><span className="ds-article-row__title">UX/UI design insights and resources</span></span><span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span></span><span className="ds-article-row"><span className="ds-media ds-media--s" /><span className="ds-article-row__main"><span className="ds-card-meta"><span className="ds-tag is-default">Tag</span></span><span className="ds-article-row__title">Research and strategy: the foundation of every successful product</span></span><span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span></span><span className="ds-article-row"><span className="ds-media ds-media--s" /><span className="ds-article-row__main"><span className="ds-card-meta"><span className="ds-tag is-default">Tag</span></span><span className="ds-article-row__title">Mobile design: the ultimate guide to creating experiences</span></span><span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span></span></span></span></span>
+</div>
+
+Блок тем і статей. [Title block](/blocks/title-block) згори, під ним сітка з чотирьох карток [Article row](/cards/article-row).
+
+## Збірка
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-articles-block">
+    <span className="ds-title-block">
+      <span className="ds-title-block__title">What we write about</span>
+      <span className="ds-title-block__desc">Practical design knowledge across AI products, UX/UI, product strategy, growth &amp; CRO, research, and industry teardowns</span>
+    </span>
+    <span className="ds-articles-block__grid">
+      <span className="ds-article-row">
+        <span className="ds-media ds-media--s" />
+        <span className="ds-article-row__main">
+          <span className="ds-card-meta"><span className="ds-tag is-default">Tag</span></span>
+          <span className="ds-article-row__title">Web design principles, tools, and best practices</span>
+        </span>
+        <span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span>
+      </span>
+      <span className="ds-article-row">
+        <span className="ds-media ds-media--s" />
+        <span className="ds-article-row__main">
+          <span className="ds-card-meta"><span className="ds-tag is-default">Tag</span></span>
+          <span className="ds-article-row__title">UX/UI design insights and resources</span>
+        </span>
+        <span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span>
+      </span>
+      <span className="ds-article-row">
+        <span className="ds-media ds-media--s" />
+        <span className="ds-article-row__main">
+          <span className="ds-card-meta"><span className="ds-tag is-default">Tag</span></span>
+          <span className="ds-article-row__title">Research and strategy: the foundation of every successful product</span>
+        </span>
+        <span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span>
+      </span>
+      <span className="ds-article-row">
+        <span className="ds-media ds-media--s" />
+        <span className="ds-article-row__main">
+          <span className="ds-card-meta"><span className="ds-tag is-default">Tag</span></span>
+          <span className="ds-article-row__title">Mobile design: the ultimate guide to creating experiences</span>
+        </span>
+        <span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span>
+      </span>
+    </span>
+  </span>
+</div>
+
+## Сітка
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Ширина блоку | 1344px | немає |
+| Картка | 664px | немає |
+| Проміжок між картками | 16px по горизонталі й вертикалі | `primitives.spacing.16px` |
+| Проміжок заголовок — картки | 56px | `primitives.spacing.56px` |
+
+</div>
+
+Дві колонки по 664px: **664 × 2 + 16 = 1344**. Та сама сітка, що в [Testimonials](/blocks/block-testimonials) — картка дорівнює половині контейнера мінус половина проміжку.
+
+Ряди мають однаковий проміжок, що й колонки, тож сітка рівномірна в обидва боки.
+
+## Адаптація
+
+Сітка з двох колонок стає однією вже на планшеті. Далі змінюються тільки відступи й кеглі — їх віддають режими токенів, див. [Адаптація](/pages/adaptation).
+
+<div className="ds-table">
+
+| Розмір | Полотно | Поле | Контейнер | Колонок | Стрілка |
+| --- | --- | --- | --- | --- | --- |
+| Desktop | 1440px | 48px | 1344px | 2 | є |
+| Tablet | 844px | 24px | **796px** | 1 | є |
+| Mobile | 430px | 24px | **382px** | 1 | **немає** |
+
+</div>
+
+Від 1440 до 844 макет масштабується пропорційно — окремої розкладки для проміжних ширин немає.
+
+### Tablet — 844px
+
+Прев'ю показано в повному полотні 844px: сіре поле по 24px з боків — це край екрана, білі картки всередині — контейнер 796px.
+
+Картка займає весь контейнер. Зображення лишається 159px, кнопка на місці, заголовок вміщається в один рядок.
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-articles-block ds-articles-block--tab">
+    <span className="ds-title-block">
+      <span className="ds-title-block__title">What we write about</span>
+      <span className="ds-title-block__desc">Practical design knowledge across AI products, UX/UI, product strategy, growth &amp; CRO, research, and industry teardowns</span>
+    </span>
+    <span className="ds-articles-block__grid">
+      <span className="ds-article-row">
+        <span className="ds-media ds-media--s" />
+        <span className="ds-article-row__main"><span className="ds-article-row__title">AI and digital transformation: the playbook for business growth</span></span>
+        <span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span>
+      </span>
+      <span className="ds-article-row">
+        <span className="ds-media ds-media--s" />
+        <span className="ds-article-row__main"><span className="ds-article-row__title">Web design principles, tools, and best practices</span></span>
+        <span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span>
+      </span>
+      <span className="ds-article-row">
+        <span className="ds-media ds-media--s" />
+        <span className="ds-article-row__main"><span className="ds-article-row__title">UX/UI design insights and resources</span></span>
+        <span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span>
+      </span>
+    </span>
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Що | Desktop | Tablet | Звідки |
+| --- | --- | --- | --- |
+| Колонок | 2 | 1 | рішення дизайнера |
+| Між картками | 16px | **12px** | `global-blocks/cards-gap` |
+| Заголовок → сітка | 56px | **48px** | `global-blocks/gap` |
+| Відступ картки | 16px | 16px | `card/card-article/padding` |
+| Зображення → текст | 24px | **16px** | `card/card-article/gap` |
+| Заголовок картки | 20 / 24 | **16 / 20** | `font.heading.h6` |
+| Заголовок блока | 56 / 48 | **36 / 32** | `font.heading.h2` |
+| Опис блока | 20 / 24 | **16 / 20** | `font.heading.h6` |
+
+</div>
+
+### Mobile — 430px
+
+Те саме полотно цілком — 430px разом із полями.
+
+Головна відмінність: **кнопка-стрілка зникає**. Уся картка стає натисканням, а стрілка звільняє місце заголовку.
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-articles-block ds-articles-block--mob">
+    <span className="ds-title-block">
+      <span className="ds-title-block__title">What we write about</span>
+      <span className="ds-title-block__desc">Practical design knowledge across AI products, UX/UI, product strategy, growth &amp; CRO, research, and industry teardowns</span>
+    </span>
+    <span className="ds-articles-block__grid">
+      <span className="ds-article-row">
+        <span className="ds-media ds-media--s" />
+        <span className="ds-article-row__main"><span className="ds-article-row__title">AI and digital transformation: the playbook for business growth</span></span>
+      </span>
+      <span className="ds-article-row">
+        <span className="ds-media ds-media--s" />
+        <span className="ds-article-row__main"><span className="ds-article-row__title">Web design principles, tools, and best practices</span></span>
+      </span>
+      <span className="ds-article-row">
+        <span className="ds-media ds-media--s" />
+        <span className="ds-article-row__main"><span className="ds-article-row__title">UX/UI design insights and resources</span></span>
+      </span>
+    </span>
+  </span>
+</div>
+
+Арифметика пояснює, чому інакше не можна. Контейнер 382px, відступи картки по 12px, зображення 159px, проміжок 12px. Зі стрілкою на заголовок лишилося б 382 − 24 − 159 − 12 − 40 − 12 = **135px**, тобто одне слово в рядку. Без неї — **187px**, і заголовок лягає у два-три рядки, як на макеті.
+
+<div className="ds-table">
+
+| Що | Tablet | Mobile | Звідки |
+| --- | --- | --- | --- |
+| Між картками | 12px | **8px** | `global-blocks/cards-gap` |
+| Заголовок → сітка | 48px | **40px** | `global-blocks/gap` |
+| Відступ картки | 16px | **12px** | `card/card-article/padding` |
+| Зображення → текст | 16px | **12px** | `card/card-article/gap` |
+| Заголовок блока | 36 / 32 | **32 / 28** | `font.heading.h2` |
+| Кнопка-стрілка | є | **немає** | рішення дизайнера |
+
+</div>
+
+<Check>
+  Зображення 159 × 106px не змінюється на жодному розмірі. Це єдина фіксована величина в картці.
+</Check>
+
+<Warning>
+  Прибрана стрілка забирає єдину видиму підказку, що картка клікабельна. На мобільному це прийнятно — там натискають будь-що, — але переконайтеся, що картка справді лишається посиланням цілком.
+</Warning>
+
+<Warning>
+  Скільки карток у блоці на вужчих екранах, з макетів не видно: на обох показано сім, тобто весь список. Чи обрізається він до чотирьох, як на десктопі, — [уточнити].
+</Warning>
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Компонент | Кількість |
+| --- | --- | --- |
+| Заголовок | [Title block](/blocks/title-block) | 1 |
+| Картка | [Article row](/cards/article-row) | 4 |
+
+</div>
+
+Картки йдуть **із міткою, але без дати**: у цьому блоці вони ведуть на теми, а не на конкретні статті, тож дата не має сенсу.
+
+Заголовок тут єдиний із трьох останніх блоків, який використовує **опис** Title block, а не лише заголовок.
+
+<Warning>
+  Чотири картки — це те, що на макеті. Чи буває їх шість або вісім, тобто три й чотири ряди, — [уточнити]. Сітка на це розрахована, обмежень немає.
+</Warning>
+
+<Warning>
+  Власної групи токенів у блоку немає, але `blocks/articles-listing/cards-gap` дорівнює **16px в усіх чотирьох режимах** — рівно стільки, скільки в цьому блоці. Раніше тут стояло 8px: це значення зі старого однорежимного експорту, воно не відповідає жодному режиму.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Заголовок | Title block із описом | Так |
+| Сітка карток | Дві колонки, рівний проміжок | Так |
+
+## Правила
+
+<Check>
+  Ставте парну кількість карток. Сітка на дві колонки, і непарна лишить порожнє місце в останньому ряду.
+</Check>
+
+<Check>
+  Тримайте заголовки карток у двох рядках. Ширина текстової частини — 385px, і третій рядок зробить картки різної висоти.
+</Check>
+
+<Warning>
+  Не додавайте дату, коли картка веде на тему, а не на статтю. Дата тут читається як дата публікації, якої немає.
+</Warning>

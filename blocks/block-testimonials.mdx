@@ -1,0 +1,254 @@
+---
+title: "Testimonials"
+description: "Блок відгуків: заголовок і дві картки в ряд."
+---
+
+<div className="ds-preview ds-preview--s05">
+  <span className="ds-preview__stage"><span className="ds-testimonials-block"><span className="ds-title-block"><span className="ds-title-block__title">Having forged tight bonds with countless startups and enterprises</span></span><span className="ds-testimonials-block__cards"><span className="ds-testimonial"><span className="ds-testimonial__top"><span className="ds-testimonial__quote">“</span><span className="ds-testimonial__rating" /></span><span className="ds-testimonial__text">I am truly grateful to Grand Founders and its exceptional network of Ambassadors.</span><span className="ds-testimonial__bottom"><span className="ds-avatar-info ds-avatar-info--s"><span className="ds-avatar ds-avatar--s" /><span className="ds-avatar-info__text"><span className="ds-avatar-info__name">Name</span><span className="ds-avatar-info__job">Job title</span></span></span></span></span><span className="ds-testimonial"><span className="ds-testimonial__top"><span className="ds-testimonial__quote">“</span><span className="ds-testimonial__rating" /></span><span className="ds-testimonial__text">Thanks to Grand Founders and its unique community of Ambassadors.</span><span className="ds-testimonial__bottom"><span className="ds-avatar-info ds-avatar-info--s"><span className="ds-avatar ds-avatar--s" /><span className="ds-avatar-info__text"><span className="ds-avatar-info__name">Name</span><span className="ds-avatar-info__job">Job title</span></span></span></span></span></span></span></span>
+</div>
+
+Блок відгуків клієнтів. [Title block](/blocks/title-block) згори, під ним дві картки [Testimonials](/cards/testimonials) у ряд.
+
+## Збірка
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-testimonials-block">
+    <span className="ds-title-block">
+      <span className="ds-title-block__title">Having forged tight bonds with countless startups and enterprises</span>
+    </span>
+    <span className="ds-testimonials-block__cards">
+      <span className="ds-testimonial">
+        <span className="ds-testimonial__top">
+          <span className="ds-testimonial__quote">“</span>
+          <span className="ds-testimonial__rating" />
+        </span>
+        <span className="ds-testimonial__text">I am truly grateful to Grand Founders and its exceptional network of Ambassadors. Through their support, I've unlocked doors to business expansion opportunities in Ukraine and enhanced my ability to raise capital.</span>
+        <span className="ds-testimonial__bottom">
+          <span className="ds-avatar-info ds-avatar-info--s">
+            <span className="ds-avatar ds-avatar--s" />
+            <span className="ds-avatar-info__text">
+              <span className="ds-avatar-info__name">Name</span>
+              <span className="ds-avatar-info__job">Job title</span>
+            </span>
+          </span>
+        </span>
+      </span>
+      <span className="ds-testimonial">
+        <span className="ds-testimonial__top">
+          <span className="ds-testimonial__quote">“</span>
+          <span className="ds-testimonial__rating" />
+        </span>
+        <span className="ds-testimonial__text">Thanks to Grand Founders and its unique community of Ambassadors, I've gained access to opportunities for expanding my business in Ukraine and have also grown my capital raising capabilities.</span>
+        <span className="ds-testimonial__bottom">
+          <span className="ds-avatar-info ds-avatar-info--s">
+            <span className="ds-avatar ds-avatar--s" />
+            <span className="ds-avatar-info__text">
+              <span className="ds-avatar-info__name">Name</span>
+              <span className="ds-avatar-info__job">Job title</span>
+            </span>
+          </span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+
+## Сітка
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Ширина блоку | 1344px | немає |
+| Картка | 664px | немає |
+| Проміжок між картками | 16px | `primitives.spacing.16px` |
+| Проміжок заголовок — картки | 56px | `primitives.spacing.56px` |
+
+</div>
+
+Дві картки рівно заповнюють контейнер: **664 × 2 + 16 = 1344**. Ширина картки не окреме рішення, а половина контейнера мінус половина проміжку.
+
+Проміжок 56px між заголовком і контентом — **загальне правило для всіх блоків сайту**, а не властивість цього. Воно описане в [Grid](/pages/grid).
+
+Картки однакової висоти — 604px, задано в самій [картці](/cards/testimonials). Автор притиснутий до низу, тож короткий і довгий відгуки виглядають однаково.
+
+## Адаптація
+
+Цей блок — **виняток**: на планшеті він лишається двоколонковим. [Articles](/blocks/block-articles) на 844px складається в одну колонку, а Testimonials ні, бо картка з цитатою читається і у вужчій колонці.
+
+<div className="ds-table">
+
+| Розмір | Полотно | Поле | Контейнер | Колонок | Картка | Висота |
+| --- | --- | --- | --- | --- | --- | --- |
+| Desktop | 1440px | 48px | 1344px | 2 | 664px | 604px |
+| Tablet | 844px | 24px | **796px** | 2 | **392px** | за вмістом |
+| Mobile | 430px | 24px | **382px** | **1** | 382px | за вмістом |
+
+</div>
+
+Ширина картки щоразу виводиться з контейнера: **392 × 2 + 12 = 796**, як на десктопі **664 × 2 + 16 = 1344**.
+
+### Tablet — 844px
+
+Дві колонки лишаються, картка стискається до 392px. Фіксована висота 604px зникає: картки тягнуться до найвищої, тож обидві однакові, але висоту диктує довша цитата.
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-testimonials-block ds-testimonials-block--tab">
+    <span className="ds-title-block">
+      <span className="ds-title-block__title">Clients speak out: what they say about our AI design</span>
+      <span className="ds-title-block__desc">Even though the world of the decentralized web is a next-level experience, it has fundamental issues that hinder your project from growing.</span>
+    </span>
+    <span className="ds-testimonials-block__cards">
+      <span className="ds-testimonial">
+        <span className="ds-testimonial__top"><span className="ds-testimonial__quote">&ldquo;</span></span>
+        <span className="ds-testimonial__text">&ldquo;I had the pleasure of working with Maria and Lera backed by the amazing design team at Lazarev.agency, and I cannot recommend them highly enough. From start to finish, they were excellent communicators and made the entire process incredibly smooth.&rdquo;</span>
+        <span className="ds-testimonial__bottom">
+          <span className="ds-avatar-info ds-avatar-info--s">
+            <span className="ds-avatar ds-avatar--s" />
+            <span className="ds-avatar-info__text">
+              <span className="ds-avatar-info__name">Nick Chapman</span>
+              <span className="ds-avatar-info__job">Chief Product Officer, Pika AI</span>
+            </span>
+          </span>
+        </span>
+      </span>
+      <span className="ds-testimonial">
+        <span className="ds-testimonial__top"><span className="ds-testimonial__quote">&ldquo;</span></span>
+        <span className="ds-testimonial__text">&quot;They care about the client and have a deep focus on solving problems efficiently.&quot;</span>
+        <span className="ds-testimonial__bottom">
+          <span className="ds-avatar-info ds-avatar-info--s">
+            <span className="ds-avatar ds-avatar--s" />
+            <span className="ds-avatar-info__text">
+              <span className="ds-avatar-info__name">Jens Mathiasson</span>
+              <span className="ds-avatar-info__job">CPO &amp; Co-founder at Fieldstream</span>
+            </span>
+          </span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Що | Desktop | Tablet | Звідки |
+| --- | --- | --- | --- |
+| Колонок | 2 | 2 | без змін |
+| Картка | 664px | **392px** | виводиться з контейнера |
+| Висота картки | 604px | **за вмістом** | рішення дизайнера |
+| Між картками | 16px | **12px** | `global-blocks/cards-gap` |
+| Заголовок → картки | 56px | **48px** | `global-blocks/gap` |
+| Текст відгуку | 24 / 24 | **18 / 24** | `font.heading.h5` |
+| Лапки | 80 / 72 | **46 / 40** | `font.heading.h1` |
+| Заголовок блока | 56 / 48 | **36 / 32** | `font.heading.h2` |
+
+</div>
+
+### Mobile — 430px
+
+Одна колонка. Картки перестають бути рівними: кожна така, якої довжини її цитата.
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-testimonials-block ds-testimonials-block--mob">
+    <span className="ds-title-block">
+      <span className="ds-title-block__title">Clients speak out: what they say about our AI design</span>
+      <span className="ds-title-block__desc">Even though the world of the decentralized web is a next-level experience, it has fundamental issues that hinder your project from growing.</span>
+    </span>
+    <span className="ds-testimonials-block__cards">
+      <span className="ds-testimonial">
+        <span className="ds-testimonial__top"><span className="ds-testimonial__quote">&ldquo;</span></span>
+        <span className="ds-testimonial__text">&ldquo;I had the pleasure of working with Maria and Lera backed by the amazing design team at Lazarev.agency, and I cannot recommend them highly enough. From start to finish, they were excellent communicators and made the entire process incredibly smooth.&rdquo;</span>
+        <span className="ds-testimonial__bottom">
+          <span className="ds-avatar-info ds-avatar-info--s">
+            <span className="ds-avatar ds-avatar--s" />
+            <span className="ds-avatar-info__text">
+              <span className="ds-avatar-info__name">Nick Chapman</span>
+              <span className="ds-avatar-info__job">Chief Product Officer, Pika AI</span>
+            </span>
+          </span>
+        </span>
+      </span>
+      <span className="ds-testimonial">
+        <span className="ds-testimonial__top"><span className="ds-testimonial__quote">&ldquo;</span></span>
+        <span className="ds-testimonial__text">&quot;They care about the client and have a deep focus on solving problems efficiently.&quot;</span>
+        <span className="ds-testimonial__bottom">
+          <span className="ds-avatar-info ds-avatar-info--s">
+            <span className="ds-avatar ds-avatar--s" />
+            <span className="ds-avatar-info__text">
+              <span className="ds-avatar-info__name">Jens Mathiasson</span>
+              <span className="ds-avatar-info__job">CPO &amp; Co-founder at Fieldstream</span>
+            </span>
+          </span>
+        </span>
+      </span>
+    </span>
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Що | Tablet | Mobile | Звідки |
+| --- | --- | --- | --- |
+| Колонок | 2 | **1** | рішення дизайнера |
+| Висота карток | однакова | **у кожної своя** | наслідок колонки |
+| Між картками | 12px | **8px** | `global-blocks/cards-gap` |
+| Заголовок → картки | 48px | **40px** | `global-blocks/gap` |
+| Текст відгуку | 18 / 24 | **16 / 24** | `font.heading.h5` |
+| Лапки | 46 / 40 | **36 / 32** | `font.heading.h1` |
+| Заголовок блока | 36 / 32 | **32 / 28** | `font.heading.h2` |
+
+</div>
+
+<Check>
+  Автор лишається притиснутим до низу картки на всіх розмірах — це `margin-top: auto`, і воно працює й за фіксованої висоти, й за висоти за вмістом.
+</Check>
+
+<Warning>
+  На десктопі висота 604px задана в самій [картці](/cards/testimonials), а не в блоці. На вужчих екранах вона знімається — тобто картка має знати про розмір екрана. [Уточнити], чи це справді властивість картки, чи блок має її перекривати.
+</Warning>
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Компонент | Кількість |
+| --- | --- | --- |
+| Заголовок | [Title block](/blocks/title-block) | 1 |
+| Відгук | [Testimonials](/cards/testimonials) | 2 |
+
+</div>
+
+<Warning>
+  У макеті над заголовком є ще невеликий сірий підпис у два рядки — «Clients speak out about Us». [Title block](/blocks/title-block) такого елемента не має: у нього заголовок, опис і кнопка, причому опис іде **під** заголовком, а не над.
+
+  Схоже, заголовку потрібен необов'язковий лейбл згори. Непрямо це підтверджує токен `blocks/hero/label-title-gap` — 24px на десктопі (20 / 16 / 12 на вужчих): у героя така пара вже описана. [Уточнити] стиль лейбла і проміжок.
+</Warning>
+
+<Warning>
+  Чи бувають у блоці інші кількості карток — три, чотири, гортання вбік — з макета не видно. [Уточнити].
+</Warning>
+
+<Warning>
+  Власної групи токенів у блоку немає. Ні ширини 1344, ні проміжку 16px в експорті під нього не заведено.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Заголовок | Title block по центру | Так |
+| Картки відгуків | Дві в ряд, однакової висоти | Так |
+
+## Правила
+
+<Check>
+  Ставте рівно дві картки. Вони розраховані на половину контейнера кожна, і третя зламає ряд.
+</Check>
+
+<Check>
+  Добирайте відгуки схожої довжини. Висота картки фіксована, тож короткий відгук лишить велику порожнечу над автором.
+</Check>
+
+<Warning>
+  Не змінюйте проміжок 56px під заголовком. Він однаковий у всіх блоках сайту, і власне значення тут розсинхронізує ритм сторінки.
+</Warning>

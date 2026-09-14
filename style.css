@@ -67,6 +67,8 @@
   --spacing-64: 64px;
   --spacing-72: 72px;
   --spacing-128: 128px;
+  --spacing-180: 180px;
+  --spacing-220: 220px;
   --spacing-48: 48px;
 
   /* --- Радіуси: primitives.radius.* --- */
@@ -713,6 +715,7 @@
 .ds-preview__stage--w640 { width: 640px; }
 .ds-preview__stage--w900 { width: 900px; }
 .ds-preview__stage--w992 { width: 992px; }
+.ds-preview__stage--w1344 { width: 1344px; }
 
 /* Замість масштабу — розтягнути на доступну ширину, зберігши справжні розміри */
 .ds-preview--fit {
@@ -1983,6 +1986,12 @@
   content: none;
 }
 
+/* Симетрично до :first-child — якщо після мітки нічого немає,
+   роздільник праворуч не малюється */
+.ds-tag:last-child::after {
+  content: none;
+}
+
 .ds-tag.is-default {
   color: var(--color-action-inactive);
 }
@@ -2382,7 +2391,7 @@
    Заголовок обрізається на третьому рядку.
    ========================================================================== */
 
-.ds-card-am {
+.ds-article-row {
   display: flex;
   align-items: flex-start;
   box-sizing: border-box;
@@ -2396,14 +2405,24 @@
 
 /* У картці прев'ю малюється 159 × 100 — це власне співвідношення 1.59,
    а не пропорційне зменшення Size S (1.505). */
-.ds-card-am .ds-media {
+.ds-article-row .ds-media {
   flex: none;
   width: 159px;
   aspect-ratio: 159 / 100;
 }
 
-.ds-card-am__title {
+/* Колонка: необов'язковий рядок мітки з датою, під ним заголовок */
+.ds-article-row__main {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
   flex: 1;
+  min-width: 0;
+  /* card/card-article/tag-title-gap */
+  gap: var(--spacing-12);
+}
+
+.ds-article-row__title {
   min-width: 0;
   font-family: var(--font-archivo);
   /* font.heading.h6-20 — Archivo 20/24, вага 500, трекінг -0.5 */
@@ -3152,7 +3171,7 @@
 /* Мобільна розкладка: одна колонка, бічні блоки йдуть під текстом */
 .ds-article-grid--mobile {
   flex-direction: column;
-  /* Mob-sm: 430 − 24 × 2 */
+  /* Mobile: 430 − 24 × 2 */
   width: 382px;
   min-width: 382px;
 }
@@ -4148,4 +4167,313 @@
   line-height: 12px;
   font-weight: 400;
   color: var(--color-text-primary);
+}
+
+/* ==========================================================================
+   Testimonials — блок відгуків
+   Дві картки по 664px у ряд: 664 × 2 + 16 = 1344, тобто вони рівно
+   заповнюють контейнер сторінки.
+   ========================================================================== */
+
+.ds-testimonials-block {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 1344px;
+}
+
+.ds-testimonials-block__cards {
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
+  gap: var(--spacing-16);
+  /* 56px від заголовка до контенту — загальне правило для всіх блоків */
+  margin-top: var(--spacing-56);
+}
+
+/* Tablet 844: полотно з полем 24px, контейнер 796, дві колонки по 392.
+   Єдиний блок, який на планшеті лишається двоколонковим. */
+.ds-testimonials-block.ds-testimonials-block--tab {
+  width: 844px;
+  min-width: 844px;
+  padding: 0 var(--spacing-24);
+  background: var(--color-background-page);
+}
+
+.ds-testimonials-block--tab .ds-testimonials-block__cards {
+  /* global-blocks/cards-gap на tab */
+  gap: var(--spacing-12);
+  /* global-blocks/gap на tab */
+  margin-top: var(--spacing-48);
+}
+
+.ds-testimonials-block--tab .ds-testimonial {
+  /* (796 − 12) / 2 */
+  width: 392px;
+  /* фіксованої висоти немає: картки тягнуться до найвищої */
+  height: auto;
+}
+
+/* font.heading.h5 на tab — 18/24 */
+.ds-testimonials-block--tab .ds-testimonial__text {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+/* font.heading.h1 на tab — 46/40 */
+.ds-testimonials-block--tab .ds-testimonial__quote {
+  font-size: 46px;
+  line-height: 40px;
+}
+
+.ds-testimonials-block--tab .ds-title-block__title {
+  font-size: 36px;
+  line-height: 32px;
+}
+
+.ds-testimonials-block--tab .ds-title-block__desc {
+  /* blocks/title-group/title-text-gap на tab */
+  margin-top: var(--spacing-16);
+  font-size: 16px;
+  line-height: 20px;
+}
+
+/* Mobile 430: полотно з полем 24px, контейнер 382, одна колонка.
+   Висота кожної картки своя — вона визначається довжиною цитати. */
+.ds-testimonials-block.ds-testimonials-block--mob {
+  width: 430px;
+  min-width: 430px;
+  padding: 0 var(--spacing-24);
+  background: var(--color-background-page);
+}
+
+.ds-testimonials-block--mob .ds-testimonials-block__cards {
+  flex-direction: column;
+  /* global-blocks/cards-gap на mob */
+  gap: var(--spacing-8);
+  /* global-blocks/gap на mob */
+  margin-top: var(--spacing-40);
+}
+
+.ds-testimonials-block--mob .ds-testimonial {
+  width: 100%;
+  height: auto;
+}
+
+/* font.heading.h5 на mob — 16/24 */
+.ds-testimonials-block--mob .ds-testimonial__text {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* font.heading.h1 на mob — 36/32 */
+.ds-testimonials-block--mob .ds-testimonial__quote {
+  font-size: 36px;
+  line-height: 32px;
+}
+
+.ds-testimonials-block--mob .ds-title-block__title {
+  font-size: 32px;
+  line-height: 28px;
+}
+
+.ds-testimonials-block--mob .ds-title-block__desc {
+  margin-top: var(--spacing-12);
+  font-size: 16px;
+  line-height: 20px;
+}
+
+/* Tablet 844: повне полотно з полем 24px, усередині контейнер 796.
+   Значення беруться з режиму `tab` семантичних і компонентних змінних. */
+.ds-articles-block.ds-articles-block--tab {
+  width: 844px;
+  min-width: 844px;
+  padding: 0 var(--spacing-24);
+  background: var(--color-background-page);
+}
+
+.ds-articles-block--tab .ds-articles-block__grid {
+  grid-template-columns: 1fr;
+  /* global-blocks/cards-gap на tab */
+  gap: var(--spacing-12);
+  /* global-blocks/gap на tab */
+  margin-top: var(--spacing-48);
+}
+
+.ds-articles-block--tab .ds-article-row {
+  /* card/card-article/gap на tab */
+  gap: var(--spacing-16);
+}
+
+/* font.heading.h6 на tab — 16/20 */
+.ds-articles-block--tab .ds-article-row__title,
+.ds-articles-block--mob .ds-article-row__title,
+.ds-articles-block--tab .ds-title-block__desc,
+.ds-articles-block--mob .ds-title-block__desc {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+/* font.heading.h2 на tab — 36/32 */
+.ds-articles-block--tab .ds-title-block__title {
+  font-size: 36px;
+  line-height: 32px;
+}
+
+.ds-articles-block--tab .ds-title-block__desc {
+  /* blocks/title-group/title-text-gap на tab */
+  margin-top: var(--spacing-16);
+}
+
+/* Mobile 430: повне полотно з полем 24px, усередині контейнер 382,
+   одна колонка, стрілка прибрана */
+.ds-articles-block.ds-articles-block--mob {
+  width: 430px;
+  min-width: 430px;
+  padding: 0 var(--spacing-24);
+  background: var(--color-background-page);
+}
+
+.ds-articles-block--mob .ds-articles-block__grid {
+  grid-template-columns: 1fr;
+  /* global-blocks/cards-gap на mob */
+  gap: var(--spacing-8);
+  /* global-blocks/gap на mob */
+  margin-top: var(--spacing-40);
+}
+
+.ds-articles-block--mob .ds-article-row {
+  /* card/card-article/gap і padding на mob */
+  gap: var(--spacing-12);
+  padding: var(--spacing-12);
+}
+
+/* Кнопка-стрілка на мобільному не показується: без неї заголовку
+   лишається 187px замість 131px, і він вміщає два-три рядки */
+.ds-articles-block--mob .ds-article-row > .ds-btn {
+  display: none;
+}
+
+/* font.heading.h2 на mob — 32/28 */
+.ds-articles-block--mob .ds-title-block__title {
+  font-size: 32px;
+  line-height: 28px;
+}
+
+.ds-articles-block--mob .ds-title-block__desc {
+  /* blocks/title-group/title-text-gap на mob */
+  margin-top: var(--spacing-12);
+}
+
+/* ==========================================================================
+   Awards — блок нагород
+   Заголовок згори, картки притиснуті до низу, між ними — простір під
+   анімацію тривимірної сцени. 324 × 4 + 16 × 3 = 1344.
+   ========================================================================== */
+
+.ds-awards-block {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 1344px;
+  height: 870px;
+}
+
+.ds-awards-block__cards {
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
+  gap: var(--spacing-16);
+  /* картки притиснуті до низу: простір між ними й заголовком займає анімація */
+  margin-top: auto;
+}
+
+/* ==========================================================================
+   Articles — блок тем і статей
+   Сітка 2 × 2 з горизонтальних карток: 664 × 2 + 16 = 1344.
+   ========================================================================== */
+
+.ds-articles-block {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 1344px;
+}
+
+.ds-articles-block__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  box-sizing: border-box;
+  gap: var(--spacing-16);
+  /* 56px від заголовка до контенту — загальне правило для всіх блоків */
+  margin-top: var(--spacing-56);
+}
+
+/* ==========================================================================
+   Title block — адаптація
+   Полотно показане повністю: 844 / 430, поле 24px по боках.
+   Верхній відступ — spasing/global-blocks/padding-y: 220 / 180 / 128.
+   ========================================================================== */
+
+/* Tablet 844 */
+.ds-title-block.ds-title-block--tab {
+  width: 844px;
+  min-width: 844px;
+  box-sizing: border-box;
+  padding: var(--spacing-180) var(--spacing-24) 0;
+  background: var(--color-background-page);
+}
+
+.ds-title-block--tab .ds-title-block__title {
+  /* font.heading.h2 на tab — 36/32 */
+  font-size: 36px;
+  line-height: 32px;
+}
+
+.ds-title-block--tab .ds-title-block__desc {
+  /* blocks/title-group/title-text-gap на tab */
+  margin-top: var(--spacing-16);
+  /* font.heading.h6 на tab — 16/20 */
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.ds-title-block--tab .ds-title-block__action {
+  /* blocks/title-group/text-button-gap на tab */
+  margin-top: var(--spacing-16);
+}
+
+/* Mobile 430: ширини заголовка й опису стискаються до контейнера 382 */
+.ds-title-block.ds-title-block--mob {
+  width: 430px;
+  min-width: 430px;
+  box-sizing: border-box;
+  padding: var(--spacing-128) var(--spacing-24) 0;
+  background: var(--color-background-page);
+}
+
+.ds-title-block--mob .ds-title-block__title {
+  /* blocks/title-group/title-width на mob */
+  max-width: 382px;
+  /* font.heading.h2 на mob — 32/28 */
+  font-size: 32px;
+  line-height: 28px;
+}
+
+.ds-title-block--mob .ds-title-block__desc {
+  /* blocks/title-group/title-action-gap на mob — це ширина опису, не проміжок */
+  max-width: 382px;
+  /* blocks/title-group/title-text-gap на mob */
+  margin-top: var(--spacing-12);
+  /* font.heading.h6 на mob — 16/20 */
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.ds-title-block--mob .ds-title-block__action {
+  /* blocks/title-group/text-button-gap на mob */
+  margin-top: var(--spacing-12);
 }

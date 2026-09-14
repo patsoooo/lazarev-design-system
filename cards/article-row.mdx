@@ -1,22 +1,24 @@
 ---
-title: "Article (menu)"
-description: "Картка статті в меню хедера: склад, токени, обмеження заголовка."
+title: "Article row"
+description: "Горизонтальна картка статті: прев'ю, мітка з датою, заголовок, кнопка."
 ---
 
 <div className="ds-preview ds-preview--s07">
-  <span className="ds-preview__stage ds-preview__stage--w900"><span className="ds-card-am"><span className="ds-media" /><span className="ds-card-am__title">New Milestone: Our Financial Fund Achieves Growth and Stability</span><span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span></span></span>
+  <span className="ds-preview__stage ds-preview__stage--w900"><span className="ds-article-row"><span className="ds-media" /><span className="ds-article-row__main"><span className="ds-article-row__title">New Milestone: Our Financial Fund Achieves Growth and Stability</span></span><span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span></span></span>
 </div>
 
-Картка статті, яка показується в підменю хедера. У Figma компонент називається `card-article-menu`.
+Горизонтальна картка статті: прев'ю ліворуч, текст посередині, кнопка переходу праворуч. Уся картка клікабельна, кнопка лише позначає дію.
 
-Складається з прев'ю зображення, заголовка та кнопки переходу. Уся картка клікабельна, кнопка лише позначає дію.
+Використовується в підменю [хедера](/blocks/menu) і в блоці [Articles](/blocks/block-articles). У Figma компонент поки називається `card-article-menu` — ім'я лишилось від першого місця використання.
+
+Від вертикальної [Article](/cards/article) відрізняється розкладкою: там колонка й опис, тут ряд і тільки заголовок.
 
 ## Збірка
 
 <div className="ds-btn-row">
-  <span className="ds-card-am">
+  <span className="ds-article-row">
     <span className="ds-media ds-media--s" />
-    <span className="ds-card-am__title">Title</span>
+    <span className="ds-article-row__main"><span className="ds-article-row__title">Title</span></span>
     <span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span>
   </span>
 </div>
@@ -30,6 +32,41 @@ description: "Картка статті в меню хедера: склад, т
 | Кнопка | Icon-secondary button з [Button](/components/button) | 40px |
 
 </div>
+
+## Мітка з датою
+
+Над заголовком може стояти рядок із [Tag](/components/tag) і датою. Він **необов'язковий**: у підменю хедера картка йде без нього, у блоці [Articles](/blocks/block-articles) — з ним.
+
+<div className="ds-btn-row">
+  <span className="ds-article-row">
+    <span className="ds-media ds-media--s" />
+    <span className="ds-article-row__main">
+      <span className="ds-card-meta">
+        <span className="ds-tag is-default">Tag</span>
+        <span className="ds-card-date">04 May 2026</span>
+      </span>
+      <span className="ds-article-row__title">Web design principles, tools, and best practices</span>
+    </span>
+    <span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span>
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Мітка | [Tag](/components/tag) | — |
+| Дата | `font.caption.c1-16` — 16 / 16, uppercase | <span className="ds-sw ds-sw--text-tertiary" /> `card/card-article-full/text-tertiary` |
+| Проміжок мітка — дата | 16px | `primitives.spacing.16px` |
+| Проміжок рядка — заголовок | 12px | `card/card-article/tag-title-gap` |
+
+</div>
+
+Рядок зібраний тим самим `.ds-card-meta`, що й у [Article](/cards/article) та [Case](/cards/case). Роздільник між міткою й датою малює сам Tag.
+
+<Warning>
+  У макеті блоку [Articles](/blocks/block-articles) стоїть лише мітка, без дати. Чи буває дата без мітки — [уточнити].
+</Warning>
 
 ## Розміри
 
@@ -77,9 +114,9 @@ description: "Картка статті в меню хедера: склад, т
 Приклад із заголовком на всю допустиму довжину:
 
 <div className="ds-btn-row">
-  <span className="ds-card-am">
+  <span className="ds-article-row">
     <span className="ds-media ds-media--s" />
-    <span className="ds-card-am__title">Як дизайн-система скорочує шлях від макета до продакшену і чому інвентаризація токенів має передувати першому написаному рядку коду в проєкті</span>
+    <span className="ds-article-row__main"><span className="ds-article-row__title">Як дизайн-система скорочує шлях від макета до продакшену і чому інвентаризація токенів має передувати першому написаному рядку коду в проєкті</span></span>
     <span className="ds-btn ds-btn--icon-outline is-default"><span className="ds-icon ds-icon--arrow-up-right" /></span>
   </span>
 </div>

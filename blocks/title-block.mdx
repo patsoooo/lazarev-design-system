@@ -44,7 +44,9 @@ description: "Заголовок секції: заголовок, опис, к�
 
 </div>
 
-Проміжки — по **24px**: між заголовком і описом, між описом і кнопкою.
+Значення в таблиці — десктопні.
+
+Проміжки — по **24px**: між заголовком і описом, між описом і кнопкою. На планшеті обидва стають 16px, на мобільному — 12px, див. [Адаптація](#адаптація).
 
 ## Орієнтовні ліміти тексту
 
@@ -63,12 +65,105 @@ description: "Заголовок секції: заголовок, опис, к�
   Ліміти орієнтовні. Надійне правило — рядки: два на заголовок, шість на опис. Кількість символів залежить від конкретного тексту.
 </Warning>
 
-## Токени
+## Адаптація
+
+Загальні правила — на сторінці [Адаптація](/pages/adaptation). Тут лише те, що змінюється в цьому блоці.
+
+Блок нічого не перебудовує: він лишається однією центрованою колонкою на всіх трьох пристроях. Змінюються тільки три речі — кегль, проміжки й верхній відступ над блоком.
+
+<div className="ds-table">
+
+| Крок | Полотно | Поле | Контейнер | Верхній відступ |
+| --- | --- | --- | --- | --- |
+| Desktop | 1440+ | 48px | 1344px | 220px |
+| Tablet | 844px | 24px | 796px | 180px |
+| Mobile | 430px | 24px | 382px | 128px |
+
+</div>
+
+Верхній відступ — це `spasing/global-blocks/padding-y`, спільний для всіх блоків сторінки. У прикладах нижче він показаний натурально: сіре поле над заголовком — і є цей відступ.
+
+### Tablet 844
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-title-block ds-title-block--tab">
+    <span className="ds-title-block__title">Title</span>
+    <span className="ds-title-block__desc">Description</span>
+    <span className="ds-title-block__action"><span className="ds-btn ds-btn--primary is-default">All case studies</span></span>
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Що | Desktop | Tablet | Токен |
+| --- | --- | --- | --- |
+| Верхній відступ | 220px | **180px** | `spasing/global-blocks/padding-y` |
+| Заголовок | 56 / 48 | **36 / 32** | `font.heading.h2` |
+| Опис | 20 / 24 | **16 / 20** | `font.heading.h6` |
+| Заголовок — опис | 24px | **16px** | `blocks/title-group/title-text-gap` |
+| Опис — кнопка | 24px | **16px** | `blocks/title-group/text-button-gap` |
+| Ширина заголовка | 672px | 672px | `blocks/title-group/title-width` |
+| Ширина опису | 640px | 640px | `blocks/title-group/title-action-gap` |
+
+</div>
+
+Максимальні ширини на планшеті не змінюються: 672px заголовка вільно вміщається в контейнер 796px.
+
+### Mobile 430
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-title-block ds-title-block--mob">
+    <span className="ds-title-block__title">Title</span>
+    <span className="ds-title-block__desc">Description</span>
+    <span className="ds-title-block__action"><span className="ds-btn ds-btn--primary is-default">All case studies</span></span>
+  </span>
+</div>
+
+<div className="ds-table">
+
+| Що | Tablet | Mobile | Токен |
+| --- | --- | --- | --- |
+| Верхній відступ | 180px | **128px** | `spasing/global-blocks/padding-y` |
+| Заголовок | 36 / 32 | **32 / 28** | `font.heading.h2` |
+| Опис | 16 / 20 | 16 / 20 | `font.heading.h6` |
+| Заголовок — опис | 16px | **12px** | `blocks/title-group/title-text-gap` |
+| Опис — кнопка | 16px | **12px** | `blocks/title-group/text-button-gap` |
+| Ширина заголовка | 672px | **382px** | `blocks/title-group/title-width` |
+| Ширина опису | 640px | **382px** | `blocks/title-group/title-action-gap` |
+
+</div>
+
+На мобільному обидві максимальні ширини стають рівними контейнеру — 382px. Тобто обмеження перестає працювати: текст і так упирається в поля. Заголовок і опис стають однакової ширини, чого на ширших пристроях не буває.
 
 <Warning>
-  Власної групи `title-block` в експорті немає. Назва трапляється лише всередині `blocks/block-text` як імена відступів — `title-block-bullet-points-gap` і `title-block-button-gap`. Тобто блок уже використовується іншими блоками, але власних токенів не має: ні проміжків 24px, ні максимальних ширин.
+  Ліміти рядків при цьому не змінюються — заголовок лишається обрізаним на двох рядках, опис на шести. При кеглі 32 і ширині 382px у два рядки вміщається приблизно **36 символів** замість 70 на десктопі. Короткі заголовки на мобільному обов'язкові.
+</Warning>
 
-  Заведіть групу у Figma, інакше ці значення житимуть тільки в документації.
+<Info>
+  Кнопка на всіх трьох пристроях однакова: у групі `button` немає жодного багаторежимного токена, окрім `button/industry/*`. Primary button не змінює ні кегль, ні відступи.
+</Info>
+
+## Токени
+
+Група називається `blocks/title-group` і містить чотири токени. Усі чотири багаторежимні.
+
+<div className="ds-table">
+
+| Токен | Що задає | desktop | tab-large | tab | mob |
+| --- | --- | --- | --- | --- | --- |
+| `blocks/title-group/title-width` | Максимальна ширина заголовка | 672 | 672 | 672 | 382 |
+| `blocks/title-group/title-action-gap` | Максимальна ширина опису | 640 | 640 | 640 | 382 |
+| `blocks/title-group/title-text-gap` | Заголовок — опис | 24 | 20 | 16 | 12 |
+| `blocks/title-group/text-button-gap` | Опис — кнопка | 24 | 20 | 16 | 12 |
+
+</div>
+
+<Warning>
+  Токен `title-action-gap` названо як проміжок, а тримає **ширину** — 640px. Проміжок до кнопки задає сусідній `text-button-gap`. Перейменуйте на `text-width`, інакше на нього рано чи пізно повісять відступ.
+</Warning>
+
+<Warning>
+  Верхній відступ блока — `spasing/global-blocks/padding-y` — власністю `title-group` не є: це спільний ритм сторінки. У назві групи є друкарська помилка, `spasing` замість `spacing`.
 </Warning>
 
 ## Анатомія
@@ -86,7 +181,7 @@ description: "Заголовок секції: заголовок, опис, к�
 </Check>
 
 <Check>
-  Тримайте заголовок у двох рядках. Опис ширший за заголовок не буває — 640px проти 672px.
+  Тримайте заголовок у двох рядках. На десктопі й планшеті опис ширший за заголовок не буває — 640px проти 672px. На мобільному обидва дорівнюють 382px.
 </Check>
 
 <Warning>

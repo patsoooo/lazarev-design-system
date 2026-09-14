@@ -129,10 +129,10 @@
           "purpose": "Article teaser; S 312 / M 388 / L 616"
         },
         {
-          "page": "cards/article-menu",
-          "title": "Article menu",
-          "class": "ds-card-am",
-          "purpose": "Article teaser inside the header menu"
+          "page": "cards/article-row",
+          "title": "Article row",
+          "class": "ds-article-row",
+          "purpose": "Horizontal article card: 159x100 preview, optional tag+date line, title, arrow button. Used in the header submenu and in the Articles block"
         },
         {
           "page": "cards/award",
@@ -194,6 +194,18 @@
       "name": "Blocks",
       "items": [
         {
+          "page": "blocks/block-articles",
+          "title": "Articles",
+          "class": "ds-articles-block",
+          "purpose": "Topics section: Title block with description, then a 2x2 grid of Article row cards, 16px gaps. 664 x 2 + 16 = 1344"
+        },
+        {
+          "page": "blocks/block-awards",
+          "title": "Awards",
+          "class": "ds-awards-block",
+          "purpose": "Awards section, 870px tall: Title block at the top, four 324px Award cards pinned to the bottom, animated 3D scene between them. 324 x 4 + 16 x 3 = 1344"
+        },
+        {
           "page": "blocks/block-case",
           "title": "Case",
           "class": "ds-case-block",
@@ -236,6 +248,12 @@
           "purpose": "Service offering; wide and narrow layouts"
         },
         {
+          "page": "blocks/block-testimonials",
+          "title": "Testimonials",
+          "class": "ds-testimonials-block",
+          "purpose": "Testimonials section: Title block, then two 664px cards side by side. 664 x 2 + 16 = 1344"
+        },
+        {
           "page": "blocks/block-text",
           "title": "Text",
           "class": "ds-text-block",
@@ -265,16 +283,16 @@
       "name": "Layout",
       "items": [
         {
-          "page": "layout/header",
-          "title": "Header",
-          "class": "ds-header",
-          "purpose": "Fixed top bar: logo, links, button"
-        },
-        {
           "page": "layout/footer",
           "title": "Footer",
           "class": "ds-footer",
           "purpose": "Three stacked blocks: contacts, services, legal"
+        },
+        {
+          "page": "layout/header",
+          "title": "Header",
+          "class": "ds-header",
+          "purpose": "Fixed top bar: logo, links, button"
         }
       ]
     },
@@ -293,28 +311,22 @@
       "name": "Article",
       "items": [
         {
+          "page": "article/attention-block",
+          "title": "Attention block",
+          "class": "ds-attention-block",
+          "purpose": "Callout with a green hairline on the left"
+        },
+        {
           "page": "article/layout",
           "title": "Layout",
           "class": "ds-article-grid",
           "purpose": "Two columns: 992 body, 336 aside, gap 16"
         },
         {
-          "page": "article/typography",
-          "title": "Typography",
-          "class": "ds-art-",
-          "purpose": "h2/h3/h4, lead, body, bullet, number list — each carries its own padding"
-        },
-        {
-          "page": "article/title-block",
-          "title": "Title block",
-          "class": "ds-article-title",
-          "purpose": "Article header: tag, date, h1, author, reading time"
-        },
-        {
-          "page": "article/attention-block",
-          "title": "Attention block",
-          "class": "ds-attention-block",
-          "purpose": "Callout with a green hairline on the left"
+          "page": "article/navigation",
+          "title": "Navigation",
+          "class": "ds-toc",
+          "purpose": "Table of contents with reading progress"
         },
         {
           "page": "article/quote",
@@ -329,10 +341,16 @@
           "purpose": "Header row plus data rows, 2px apart"
         },
         {
-          "page": "article/navigation",
-          "title": "Navigation",
-          "class": "ds-toc",
-          "purpose": "Table of contents with reading progress"
+          "page": "article/title-block",
+          "title": "Title block",
+          "class": "ds-article-title",
+          "purpose": "Article header: tag, date, h1, author, reading time"
+        },
+        {
+          "page": "article/typography",
+          "title": "Typography",
+          "class": "ds-art-",
+          "purpose": "h2/h3/h4, lead, body, bullet, number list — each carries its own padding"
         }
       ]
     }

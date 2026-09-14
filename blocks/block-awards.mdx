@@ -1,0 +1,122 @@
+---
+title: "Awards"
+description: "Блок нагород: заголовок, анімована сцена, чотири картки внизу."
+---
+
+<div className="ds-preview ds-preview--s05">
+  <span className="ds-preview__stage"><span className="ds-awards-block"><span className="ds-title-block"><span className="ds-title-block__title">We're a UX/UI web design agency with 140+ awards that helps AI-native B2B teams</span></span><span className="ds-awards-block__cards"><span className="ds-award-card"><span className="ds-award-card__logo" /><span className="ds-award-card__title">Webby Awards x10</span></span><span className="ds-award-card"><span className="ds-award-card__logo" /><span className="ds-award-card__title">Red Dot Design Award x6</span></span><span className="ds-award-card"><span className="ds-award-card__logo" /><span className="ds-award-card__title">Awwwards x16</span></span><span className="ds-award-card"><span className="ds-award-card__logo" /><span className="ds-award-card__title">FWA x5</span></span></span></span></span>
+</div>
+
+Блок нагород. [Title block](/blocks/title-block) згори, чотири картки [Award](/cards/award) внизу, а між ними — простір, у якому рухається тривимірна сцена.
+
+## Збірка
+
+<div className="ds-btn-row ds-btn-row--stretch">
+  <span className="ds-awards-block">
+    <span className="ds-title-block">
+      <span className="ds-title-block__title">We're a UX/UI web design agency with 140+ awards that helps AI-native and AI-ambitious B2B teams translate complex products into clear, conversion-ready websites.</span>
+    </span>
+    <span className="ds-awards-block__cards">
+      <span className="ds-award-card">
+        <span className="ds-award-card__logo" />
+        <span className="ds-award-card__title">Webby Awards x10</span>
+      </span>
+      <span className="ds-award-card">
+        <span className="ds-award-card__logo" />
+        <span className="ds-award-card__title">Red Dot Design Award x6</span>
+      </span>
+      <span className="ds-award-card">
+        <span className="ds-award-card__logo" />
+        <span className="ds-award-card__title">Awwwards x16</span>
+      </span>
+      <span className="ds-award-card">
+        <span className="ds-award-card__logo" />
+        <span className="ds-award-card__title">FWA x5</span>
+      </span>
+    </span>
+  </span>
+</div>
+
+## Сітка
+
+<div className="ds-table">
+
+| Властивість | Значення | Токен |
+| --- | --- | --- |
+| Ширина блоку | 1344px | немає |
+| Висота блоку | 870px | немає |
+| Картка | 324px | немає |
+| Проміжок між картками | 16px | `primitives.spacing.16px` |
+| Проміжок заголовок — картки | автоматично | — |
+
+</div>
+
+Чотири картки рівно заповнюють контейнер: **324 × 4 + 16 × 3 = 1344**. Ширина картки не окреме рішення, а чверть контейнера мінус проміжки.
+
+Заголовок стоїть згори, картки притиснуті до низу, а весь простір між ними лишається сцені. Тому проміжок не задається числом: він дорівнює тому, що лишилось від 870px.
+
+Це другий блок після [Testimonials](/blocks/block-testimonials), де картка виявилась похідною від контейнера, а не самостійною величиною.
+
+## Фон
+
+Позаду блоку рухається **тривимірна сцена**: об'єкти у вигляді нагород та абстрактних форм — сріблясті бруски, червоні смугасті кулі, спіралі, дрібні уламки — повільно пливуть і обертаються в просторі. Великі об'єкти по краях, дрібні ближче до центру.
+
+Сцена не має рамки й не обрізається: вона займає всю ширину екрана, а не контейнера 1344px, і виходить за краї блоку згори й знизу.
+
+<Warning>
+  Анімація описана словами, бо в дизайн-системі її **немає чим описати**. Токенів руху не існує взагалі: ні тривалості, ні кривих, ні затримок. Це загальна прогалина системи, не тільки цього блоку.
+
+  Щоб передати анімацію розробнику, потрібен або відеофайл, або окремий опис із параметрами — [уточнити], як це робити.
+</Warning>
+
+<Warning>
+  Об'єкти сцени заходять під картки й заголовок. Порядок накладання у системі теж не описаний — токенів `z-index` немає.
+</Warning>
+
+## Склад
+
+<div className="ds-table">
+
+| Елемент | Компонент | Кількість |
+| --- | --- | --- |
+| Заголовок | [Title block](/blocks/title-block) | 1 |
+| Нагорода | [Award](/cards/award) | 4 |
+| Сцена | Анімація на фоні | 1 |
+
+</div>
+
+<Warning>
+  У макеті над заголовком є підпис в один рядок — «Award-winning product design agency for AI-native B2B platforms». [Title block](/blocks/title-block) такого елемента не має.
+
+  Це **другий** блок із таким підписом, після [Testimonials](/blocks/block-testimonials). Токен `blocks/hero/label-title-gap` існує й дорівнює 24px на десктопі. Схоже, заголовку таки потрібен необов'язковий лейбл згори, і токен `blocks/hero/label-title-gap` — 12px описує саме його. [Уточнити].
+</Warning>
+
+<Warning>
+  Чи буває карток не чотири — з макета не видно. Ряд розрахований рівно на чотири по 324px, тож п'ята його зламає.
+</Warning>
+
+<Warning>
+  Власної групи токенів у блоку немає. Ні висоти 870px, ні проміжку 16px в експорті під нього не заведено.
+</Warning>
+
+## Анатомія
+
+| Елемент | Опис | Обов'язковий |
+| --- | --- | --- |
+| Заголовок | Title block по центру, згори | Так |
+| Сцена | Анімовані об'єкти на фоні | Так |
+| Картки нагород | Чотири в ряд, притиснуті до низу | Так |
+
+## Правила
+
+<Check>
+  Тримайте висоту 870px. Саме вона дає сцені простір — у нижчому блоці анімація стиснеться до смуги між заголовком і картками.
+</Check>
+
+<Check>
+  Ставте рівно чотири нагороди. Ряд розрахований на чверть контейнера кожна.
+</Check>
+
+<Warning>
+  Не розміщуйте поверх сцени нічого, крім заголовка й карток. Об'єкти рухаються, і будь-який дрібний текст на них стане нечитабельним.
+</Warning>

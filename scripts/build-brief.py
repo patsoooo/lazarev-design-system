@@ -189,8 +189,11 @@ def main():
 
     # Нічого не має загубитись: кожна сторінка навігації має бути в інвентарі
     # Сторінки, які не описують компонент: у брифі їм нема чого робити
+    # Сторінки, які не описують компонент: у брифі їм нема чого робити.
+    # pages/adaptation — виняток: її зміст уже є в розділі 12 брифу.
     skip = {"index", "claude-design", "foundations/colors", "foundations/typography",
-            "foundations/spacing", "foundations/icons", "foundations/logo"}
+            "foundations/spacing", "foundations/icons", "foundations/logo",
+            "pages/adaptation"}
     missing = [p for p in nav_pages() if p not in listed and p not in skip]
     print(f"system-brief.md — {len(brief.splitlines())} рядків, {len(brief)} символів")
     print(f"assets/lazarev-design-system.txt — копія для завантаження з сайту")

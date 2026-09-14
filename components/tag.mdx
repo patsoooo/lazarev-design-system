@@ -8,7 +8,7 @@ icon: "tag"
   <span className="ds-preview__stage"><span className="ds-card-meta"><span className="ds-tag is-default">Tag</span></span></span>
 </div>
 
-Мітка позначає категорію або рубрику. Складається з тексту великими літерами та двох вертикальних роздільників по боках.
+Мітка позначає категорію або рубрику. Складається з тексту великими літерами та вертикальних роздільників, які з'являються **лише між міткою й сусідами**.
 
 На відміну від [Chips](/components/chips), мітка не є елементом керування: вона нічого не вмикає й не фільтрує, а лише підписує вміст.
 
@@ -16,6 +16,28 @@ icon: "tag"
 
 - Для категорії статті, кейсу чи картки.
 - Коли підпис має бути помітним, але не претендувати на натискання.
+
+## Роздільники
+
+Мітка малює роздільник з кожного боку, але **тільки там, де є сусід**. Якщо мітка стоїть першою, зліва роздільника немає; якщо після неї нічого не йде — немає й справа.
+
+<div className="ds-btn-row ds-btn-row--plain">
+  <div className="ds-btn-item"><span className="ds-btn-caption">Сама</span><span className="ds-card-meta"><span className="ds-tag is-default">Tag</span></span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">З датою</span><span className="ds-card-meta"><span className="ds-tag is-default">Tag</span><span className="ds-card-date">04 May 2026</span></span></div>
+  <div className="ds-btn-item"><span className="ds-btn-caption">Дві поспіль</span><span className="ds-card-meta"><span className="ds-tag is-default">Tag</span><span className="ds-tag is-default">Tag</span><span className="ds-card-date">04 May 2026</span></span></div>
+</div>
+
+<div className="ds-table">
+
+| Положення мітки | Роздільник зліва | Роздільник справа |
+| --- | --- | --- |
+| Сама в рядку | немає | немає |
+| Перша, далі дата | немає | є |
+| Друга поспіль | немає | є |
+
+</div>
+
+Правило працює саме́, за положенням мітки в рядку — окремого класу вмикати чи вимикати не потрібно. Двох роздільників поспіль між сусідніми мітками теж не буває.
 
 ## Коли не використовувати
 
@@ -36,6 +58,7 @@ icon: "tag"
 | --- | --- | --- | --- |
 | Колір тексту | <span className="ds-sw ds-sw--action-inactive" /> `color/action/inactive` | <span className="ds-sw ds-sw--action-primary" /> `color/action/primary` | <span className="ds-sw ds-sw--action-primary" /> `color/action/primary` |
 | Колір роздільника | <span className="ds-sw ds-sw--text-secondary" /> `blocks/case/separator` | те саме | те саме |
+| Роздільник | 1 × 11px | те саме | те саме |
 | Розмір тексту | `font.caption.c1-16` — 16 / 16 | те саме | те саме |
 | Проміжок | 16px | 16px | 16px |
 
